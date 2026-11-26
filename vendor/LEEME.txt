@@ -1,0 +1,6 @@
+Bibliotecas de terceros que usa el lector de contratos. Se sirven desde esta misma web
+para que el documento se lea en el dispositivo del usuario, sin acudir a otros servidores.
+
+- tesseract.js 5.1.1 y tesseract.js-core 5.1.1 (Apache-2.0) - https://github.com/naptha/tesseract.js
+- Datos del idioma español de Tesseract, 4.0.0_best_int (Apache-2.0) - https://github.com/tesseract-ocr/tessdata_best
+- pdf.js 3.11.174, pdfjs-dist (Apache-2.0) - https://github.com/mozilla/pdf.js

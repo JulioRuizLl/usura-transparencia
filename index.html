@@ -115,6 +115,18 @@ textarea{resize:vertical;min-height:62px}
 .ocr-found .k{color:var(--ink3);font-size:11.5px;display:block}
 .ocr-found .v{font-weight:600}
 .ocr-found .pend{color:var(--amber);font-weight:500}
+.ocr .tip{margin:10px 0 0;font-size:11.8px;color:var(--ink3)}
+.ocr-found{text-align:left}
+.ocr-found .dato{padding:7px 0;border-bottom:1px solid var(--line)}
+.ocr-found .cx{display:block;font-size:11.8px;color:var(--ink2);line-height:1.45;font-style:italic;overflow-wrap:anywhere}
+.ocr-found .alt{font-size:11.8px;color:var(--ink3);margin-top:3px}
+.ocr-found .alt button{border:1px solid var(--line2);background:#fff;border-radius:11px;padding:1px 9px;margin:2px 4px 2px 0;font-size:12px;color:var(--brand-ink)}
+.ocr-found .alt button:hover{border-color:var(--brand)}
+.ocr-found .nota{margin-top:8px;color:var(--ink3);font-size:11.8px;line-height:1.45}
+.ocr-found .leido{margin-top:6px;font-size:12px}
+.ocr-found .leido summary{cursor:pointer;color:var(--brand)}
+.ocr-found .leido pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:240px;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:5px;padding:8px;font:11.5px/1.45 var(--mono);margin:6px 0 0}
+.ocr-found .linkbtn{margin-top:8px}
 
 /* ---------- Results summary ---------- */
 .empty{color:var(--ink2);padding:46px 4px;font-size:16px;max-width:52ch;font-family:var(--serif)}
@@ -388,7 +400,7 @@ footer{border-top:1px solid var(--line);margin-top:30px}
     <p class="dateline" id="dateline"></p>
   </div>
 </header>
-<div class="privacy-bar">🔒 Funciona sin conexión. Todos los datos están en su dispositivo: no se envía nada a ningún servidor. El lector de contratos también opera en local.</div>
+<div class="privacy-bar">🔒 Funciona sin conexión. Los datos del contrato y los documentos que lea el lector se quedan en su dispositivo: no se envían a ningún servidor. Solo se cuentan las visitas, de forma anónima y sin cookies.</div>
 
 <nav class="modes" role="tablist" aria-label="Modo de trabajo">
   <button class="mode" id="tab-consulta" role="tab" aria-selected="true" aria-controls="v-consulta">
@@ -423,7 +435,7 @@ footer{border-top:1px solid var(--line);margin-top:30px}
         <option value="seguro_vinculado">Seguro vinculado</option></select></label>
     <button class="cta" type="submit" form="f">Ver resoluciones</button>
   </div>
-  <p class="hero-o"><button type="button" class="linkbtn" id="ocr_go">O lea el contrato con una foto o un PDF</button></p>
+  <p class="hero-o"><button type="button" class="linkbtn" id="ocr_go">O lea el contrato: suba el PDF o una foto</button></p>
   <div class="hero-s">
     <span class="hs-t">Subida de tipo posterior <small>para la usura sobrevenida</small></span>
     <label><span>Año</span><input id="sanio" form="f" type="number" inputmode="numeric" min="1990" max="2035" placeholder="2018"></label>
@@ -451,9 +463,10 @@ footer{border-top:1px solid var(--line);margin-top:30px}
 
     <div class="ocr" id="ocrzone">
       <h3>Leer el contrato</h3>
-      <p>Suba una foto o el PDF del contrato y se intentará reconocer la entidad, la fecha y la TAE para rellenar la búsqueda.</p>
-      <label class="pick" for="ocrfile">Elegir archivo</label>
-      <input id="ocrfile" type="file" accept="image/*,application/pdf" hidden>
+      <p>Suba el PDF del contrato o una o varias fotos. Se buscan la entidad, la fecha y la TAE para rellenar la consulta. El documento se lee en su propio dispositivo y no se envía a ningún sitio.</p>
+      <label class="pick" for="ocrfile">Elegir PDF o fotos</label>
+      <input id="ocrfile" type="file" accept="image/*,application/pdf,.pdf" multiple hidden>
+      <p class="tip">Para fotos: de frente, con buena luz y que se lea la letra pequeña. La primera vez se descarga el lector (unos 6 MB).</p>
       <div class="ocr-bar" id="ocrbar"><i id="ocrbari"></i></div>
       <div class="ocr-status" id="ocrstatus"></div>
       <div class="ocr-found" id="ocrfound"></div>
@@ -582,7 +595,6 @@ footer{border-top:1px solid var(--line);margin-top:30px}
 <div class="selbar" id="selbar" hidden><span id="selbar_t"></span><button type="button" id="selbar_b">Redactar con ellas →</button></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script>
 <script>
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){})}
 fetch('datos.json').then(function(r){return r.json()}).then(function(__C){
@@ -736,7 +748,7 @@ function buscar(ev){
 }
 $('f').addEventListener('submit',function(ev){buscar(ev);gcEvt('buscar')});
 function gcEvt(name){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'evt/'+name,title:name,event:true})}catch(e){}}
-$('reset').addEventListener('click',function(){$('f').reset();veredicto(readQ());$('out').innerHTML='<p class="empty">Introduzca los datos del contrato que tiene delante.</p>'});
+$('reset').addEventListener('click',function(){HTMLFormElement.prototype.reset.call($('f'));veredicto(readQ());$('out').innerHTML='<p class="empty">Introduzca los datos del contrato que tiene delante.</p>'});
 
 /* ============ VEREDICTO ORIENTATIVO ============ */
 var CONTACTO="julio.ruiz@poderjudicial.es";
@@ -940,7 +952,7 @@ veredicto=function(q){VR=[];VS=null;_veredicto(q);lastVQ=q;
   renderChart(q)};
 var rzT;window.addEventListener('resize',function(){clearTimeout(rzT);rzT=setTimeout(function(){renderChart(lastVQ||readQ())},200)});
 if(window.innerWidth>=900)$('filtros').open=true;
-$('ocr_go').addEventListener('click',function(){$('filtros').open=true;try{$('ocrzone').scrollIntoView({behavior:'smooth',block:'center'})}catch(e){}});
+$('ocr_go').addEventListener('click',function(){$('filtros').open=true;try{$('ocrzone').scrollIntoView({behavior:'smooth',block:'center'})}catch(e){}try{$('ocrfile').click()}catch(e){}});
 setTimeout(function(){renderChart(readQ())},0);
 
 /* ============ ENTREGA DE ARCHIVOS ============ */
@@ -991,72 +1003,228 @@ function compartir(){
 var verdT;function verdLive(){clearTimeout(verdT);verdT=setTimeout(function(){veredicto(readQ())},180)}
 ['ent','anio','mes','tae','prod','cla','sanio','smes','stae'].forEach(function(id){$(id).addEventListener('input',verdLive);$(id).addEventListener('change',verdLive)});
 
-/* ============ OCR ============ */
-var ocrLibs=null;
-function loadScript(src){return new Promise(function(res,rej){var s=document.createElement('script');s.src=src;s.crossOrigin='anonymous';s.onload=res;s.onerror=function(){rej(new Error('No se pudo cargar '+src))};document.head.appendChild(s)})}
-function ensureOCR(){
-  if(ocrLibs)return ocrLibs;
-  ocrLibs=(window.Tesseract?Promise.resolve():loadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'))
-    .then(function(){if(window.pdfjsLib){try{pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'}catch(e){}}});
-  return ocrLibs;
+/* ============ LECTOR DE CONTRATOS ============ */
+/* --- análisis del texto (funciones puras) --- */
+function lcPlano(s){return s.toLowerCase().replace(/[áàäâ]/g,'a').replace(/[éèëê]/g,'e').replace(/[íìïî]/g,'i').replace(/[óòöô]/g,'o').replace(/[úùüû]/g,'u')}
+function lcNum(s){s=s.replace(/\s/g,'');
+  if(s.indexOf(',')>=0)return parseFloat(s.replace(/\./g,'').replace(',','.'));
+  if(/^\d{1,3}(\.\d{3})+$/.test(s)){var v=parseFloat(s.replace(/\./g,''));return v>20000?parseFloat(s):v}
+  return parseFloat(s)}
+function lcCtx(T,i,j){var a=Math.max(0,i-45),b=Math.min(T.length,j+25);return (a>0?'…':'')+T.slice(a,b).trim()+(b<T.length?'…':'')}
+var LC_TAE=/(^|[^a-z0-9])(t\s?\.?\s?a\s?\.?\s?e\s?\.?(?![a-z0-9])|tasa\s+anual\s+equivalente|tipo\s+anual\s+equivalente)/g;
+var LC_NEG=/(^|[^a-z0-9])(t\s?\.?\s?i\s?\.?\s?n\s?\.?(?![a-z0-9])|nominal|demora|moratori|comision|mensual|descuento|bonificacion|penalizacion|recargo|t\.?e\.?d\.?r|euribor|diferencial|i\.?v\.?a\.?(?![a-z0-9])|irpf|retencion|minimo|limite)/g;
+function lcEtiquetas(w){var E=[],m;LC_TAE.lastIndex=0;while((m=LC_TAE.exec(w)))E.push({i:m.index+m[1].length,f:LC_TAE.lastIndex,t:1});LC_NEG.lastIndex=0;while((m=LC_NEG.exec(w)))E.push({i:m.index+m[1].length,f:LC_NEG.lastIndex,t:0});E.sort(function(a,b){return a.i-b.i});return E}
+function lcTAE(T,L){
+  var re=/(\d{1,3}(?:\.\d{3})+(?:,\d{1,4})?|\d{1,5}(?:,\s?\d{1,4}|\.\d{1,4})?)\s?(?:%|por\s?ciento|por\s?100(?!\d))/g,m,C=[];
+  while((m=re.exec(L))){var v=lcNum(m[1]);if(!isNaN(v))C.push({i:m.index,f:re.lastIndex,v:v,s:0})}
+  var cab=null;
+  C.forEach(function(c,k){
+    var ini=Math.max(k?C[k-1].f:0,c.i-90),w=L.slice(ini,c.i),E=lcEtiquetas(w);
+    if(E.length>=2){ // cabecera de tabla: «TIN TAE» seguidas y luego los valores en el mismo orden
+      var grupo=[E[E.length-1]];for(var y=E.length-1;y>0;y--){if(/^[\s\/|:;.,\-()]*$/.test(w.slice(E[y-1].f,E[y].i)))grupo.unshift(E[y-1]);else break}
+      if(grupo.length>=2){cab={et:grupo,n:1,fin:c.f};c.s=grupo[0].t?9:-5;return}
+    }
+    if(!E.length&&cab&&cab.n<cab.et.length&&c.i-cab.fin<40){c.s=cab.et[cab.n].t?9:-5;cab.n++;cab.fin=c.f;return}
+    cab=null;
+    var sig=L.slice(c.f,Math.min(k+1<C.length?C[k+1].i:L.length,c.f+22));
+    if(/^\s*[(\-:]?\s*(t\s?\.?\s?i\s?\.?\s?n(?![a-z0-9])|nominal|mensual|de\s+demora)/.test(sig)){c.s=-5;return}
+    if(E.length){var u=E[E.length-1];c.s=u.t?10-(w.length-u.f)/25:-5;return}
+    if(/^\s*[(\-:]?\s*(t\s?\.?\s?a\s?\.?\s?e(?![a-z0-9])|tasa\s+anual\s+equiv)/.test(sig))c.s=6;
+  });
+  C.forEach(function(c){
+    if(c.s>=6){if(!(c.v>0&&c.v<=50000))c.s=c.v===0?2:-1}
+    else if(c.s===0)c.s=(c.v>=12&&c.v<=45)?1:-1;
+  });
+  var ok=C.filter(function(c){return c.s>0});if(!ok.length)return null;
+  var mejor=Math.max.apply(null,ok.map(function(c){return c.s})),nivel=mejor>=6?6:1;
+  var G={},orden=[];ok.filter(function(c){return c.s>=nivel}).forEach(function(c){var key=String(c.v);if(!G[key]){G[key]={v:c.v,n:0,c:c};orden.push(key)}G[key].n++});
+  orden.sort(function(a,b){return G[b].n-G[a].n});
+  var pri=G[orden[0]];
+  return {v:pri.v,seguro:nivel>=6,ctx:lcCtx(T,pri.c.i,pri.c.f),otras:orden.slice(1,5).map(function(k){return {v:G[k].v,ctx:lcCtx(T,G[k].c.i,G[k].c.f)}})};
 }
-function setBar(p){var b=$('ocrbar');b.classList.add('on');$('ocrbari').style.width=Math.round(p*100)+'%'}
+var LC_MES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+function lcFecha(T,L,hoy){
+  var Y=(hoy||new Date()).getFullYear(),C=[],m;
+  var r1=/(^|[^\d\/.\-])(\d{1,2})\s?[\/\-.]\s?(\d{1,2})\s?[\/\-.]\s?((?:19|20)\d{2}|\d{2})(?![\d\/])/g;
+  while((m=r1.exec(L))){var d=+m[2],mo=+m[3],a=+m[4];if(a<100){if(!/^\d{1,2}\/\d{1,2}\/\d{2}$/.test(m[0].slice(m[1].length)))continue;a+=a>(Y%100)?1900:2000}if(d>=1&&d<=31&&mo>=1&&mo<=12)C.push({i:m.index+m[1].length,f:r1.lastIndex,a:a,m:mo,d:d})}
+  var r2=/(?:(\d{1,2})\s*(?:de\s+)?)?(enero|febrero|marzo|abril|mayo|junio|julio|agosto|sep?tiembre|octubre|noviembre|diciembre)\s*(?:del?\s+)?((?:19|20)\d{2})(?!\d)/g;
+  while((m=r2.exec(L))){var mes=LC_MES.indexOf(m[2].replace('setiembre','septiembre'))+1;C.push({i:m.index,f:r2.lastIndex,a:+m[3],m:mes,d:m[1]?+m[1]:null})}
+  C=C.filter(function(c){return c.a>=1985&&c.a<=Y});
+  C.forEach(function(c){
+    var w=L.slice(Math.max(0,c.i-75),c.i),p=L.slice(c.f,c.f+30);c.s=1;
+    if(/fecha\s*(de)?\s*(la|el)?\s*(firma|contrat|solicitud|formaliz|alta|suscrip|celebr|aceptac|apertura|emision del contrato)/.test(w))c.s+=8;
+    else if(/lugar\s+y\s+fecha|\ben\s+[a-zñ .\-]{2,28},?\s+a\s*$|\ba\s*$/.test(w)&&c.d)c.s+=(/lugar\s+y\s+fecha|\ben\s+[a-zñ .\-]{2,28},?\s+a\s*$/.test(w)?7:1);
+    else if(/(firmad|suscrit|celebrad|formalizad|contratad)[oa]\b[^.]{0,40}$/.test(w))c.s+=5;
+    else if(/fecha\s*:?\s*$/.test(w))c.s+=3;
+    if(/(nacim|nacid|caduc|validez|valid[oa] hasta|vencim|expedic|antigu|ingreso|edicion|version|revision|impres|modelo|\bley\b|decreto|\borden\b|circular|directiva|\bboe\b|reglamento|sentencia|registro mercantil|inscrit|escritura|notari)[^.;]{0,45}$/.test(w))c.s-=8;
+    if(/^\s*(\(?fecha de nacimiento|de nacimiento)/.test(p))c.s-=8;
+  });
+  C=C.filter(function(c){return c.s>0});if(!C.length)return null;
+  C.sort(function(x,y){return (y.s-x.s)||((y.a*372+y.m*31+(y.d||0))-(x.a*372+x.m*31+(x.d||0)))});
+  var pri=C[0],vis={},otras=[];vis[pri.a+'-'+pri.m]=1;
+  C.slice(1).forEach(function(c){var k=c.a+'-'+c.m;if(!vis[k]&&otras.length<4){vis[k]=1;otras.push({a:c.a,m:c.m,ctx:lcCtx(T,c.i,c.f)})}});
+  return {a:pri.a,m:pri.m,seguro:pri.s>=5,ctx:lcCtx(T,pri.i,pri.f),otras:otras};
+}
+/* Marcas y denominaciones → nombre con el que figura la entidad en la base. Las específicas van antes que las genéricas. */
+var LC_ENT=[
+  [/wi\s?z\s?ink/g,'WiZink'],[/citi\s?bank|\bciti\b/g,'Citibank (hoy WiZink)'],[/popular[\s\-]?e\b|bancopopular[\s\-]?e\b/g,'Banco Popular-e (hoy WiZink)'],[/barclay/g,'Barclaycard'],
+  [/caixabank\s+(payments|consumer)|finconsum/g,'CaixaBank Payments & Consumer'],[/caixabank|la\s+caixa\b/g,'CaixaBank'],
+  [/cetelem|bnp\s+paribas/g,'BNP Paribas Personal Finance (Cetelem)'],[/cofidis/g,'Cofidis'],[/carrefour/g,'Servicios Financieros Carrefour'],
+  [/santander\s+consumer/g,'Santander Consumer Finance'],[/open\s?bank/g,'Open Bank'],[/santander/g,'Banco Santander'],[/banco\s+popular/g,'Banco Popular (hoy Santander)'],
+  [/bankinter/g,'Bankinter'],[/\boney\b/g,'Oney'],[/\bbbva\b|bilbao\s+vizcaya/g,'BBVA'],
+  [/dineo/g,'Dineo'],[/4\s?finance|vivus/g,'4Finance Spain Financial Services'],[/global\s+kapital|mykredit/g,'Global Kapital Group Spain'],[/wenance|\bwelp\b/g,'Wenance Lending De España'],
+  [/\bnbq\b|quebueno/g,'Nbq Fund One'],[/prescriptor\s+y\s+medios|evo\s?finance/g,'Servicios Prescriptor Y Medios De Pago'],[/evo\s+banco/g,'EVO Banco'],
+  [/moneyman|id\s+finance/g,'Moneyman (ID Finance)'],[/ibercredito/g,'Ibercredito Rapido'],[/pepper/g,'Pepper Finance Corporation'],[/twinero/g,'Twinero'],[/celeris/g,'Celeris'],
+  [/bulnes/g,'Bulnes Capital'],[/avant\s?card/g,'Avantcard'],[/\bmbna\b/g,'Mbna'],[/sabadell/g,'Banco Sabadell'],[/unicaja/g,'Unicaja'],[/\bing\s+(bank|direct)/g,'ING'],
+  [/volkswagen/g,'Volkswagen Bank'],[/psa\s+financ/g,'Psa Financial Services Spain'],[/deutsche\s+bank/g,'Deutsche Bank'],[/capital\s+one/g,'Capital One'],[/american\s+express/g,'American Express Europe'],
+  [/accordfin/g,'Accordfin España'],[/kreditech/g,'Kreditech Spain'],[/bondora/g,'Bondora As']];
+var LC_MICRO={'Dineo':1,'4Finance Spain Financial Services':1,'Global Kapital Group Spain':1,'Wenance Lending De España':1,'Nbq Fund One':1,'Moneyman (ID Finance)':1,'Ibercredito Rapido':1,'Twinero':1,'Celeris':1,'Bulnes Capital':1,'Kreditech Spain':1,'Bondora As':1};
+function lcEntidad(T,L,validas){
+  var W=L,P={},orden=[];
+  LC_ENT.forEach(function(e){if(validas&&!validas[e[1]])return;var re=e[0],m;re.lastIndex=0;
+    while((m=re.exec(W))){var i=m.index,f=re.lastIndex;if(f===i){re.lastIndex++;continue}
+      if(!P[e[1]]){P[e[1]]={v:e[1],n:0,i:i,f:f};orden.push(e[1])}P[e[1]].n++;
+      W=W.slice(0,i)+new Array(f-i+1).join('#')+W.slice(f)}});
+  if(!orden.length)return null;
+  orden.forEach(function(k){var p=P[k];p.s=Math.min(p.n,6)*2+(p.i<700?3:0)});
+  orden.sort(function(a,b){return (P[b].s-P[a].s)||(P[a].i-P[b].i)});
+  var pri=P[orden[0]];
+  return {v:pri.v,seguro:pri.n>=2||orden.length===1,ctx:lcCtx(T,pri.i,pri.f),otras:orden.slice(1,4).map(function(k){return {v:P[k].v,ctx:lcCtx(T,P[k].i,P[k].f)}})};
+}
+function parseContrato(texto,validas,hoy){
+  var T=String(texto||'').replace(/[ \t\r\n ]+/g,' '),L=lcPlano(T);
+  var o={tae:lcTAE(T,L),fecha:lcFecha(T,L,hoy),ent:lcEntidad(T,L,validas),micro:false,chars:T.replace(/\s/g,'').length};
+  o.micro=!!((o.ent&&LC_MICRO[o.ent.v])||/micro\s?(prestamo|credito)|mini\s?(prestamo|credito)|prestamo\s+rapido/.test(L)||(o.tae&&o.tae.seguro&&o.tae.v>300));
+  return o;
+}
+function lcCalidad(t){return (lcPlano(String(t||'')).match(/(^|[^a-z])(de|la|el|que|en|del|los|las|por|con|se|para|al|un|una|su|no)(?![a-z])/g)||[]).length}
+/* --- fin de las funciones puras --- */
+
+/* --- bibliotecas, servidas desde esta misma web: el documento no sale del dispositivo --- */
+var LC_V='vendor/',lcPdfP=null,lcWorkP=null,lcProg=null,lcOcupado=false;
+function lcAbs(p){return new URL(p,document.baseURI).href}
+function loadScript(src){return new Promise(function(res,rej){var s=document.createElement('script');s.src=src;s.onload=res;s.onerror=function(){s.remove();rej({lc:'carga'})};document.head.appendChild(s)})}
+function lcPDF(){if(!lcPdfP)lcPdfP=(window.pdfjsLib?Promise.resolve():loadScript(LC_V+'pdfjs/pdf.min.js')).then(function(){pdfjsLib.GlobalWorkerOptions.workerSrc=lcAbs(LC_V+'pdfjs/pdf.worker.min.js')}).catch(function(e){lcPdfP=null;throw {lc:'carga'}});return lcPdfP}
+function lcWorker(){
+  if(!lcWorkP)lcWorkP=(window.Tesseract?Promise.resolve():loadScript(LC_V+'tesseract/tesseract.min.js')).then(function(){
+    return Tesseract.createWorker('spa',1,{workerPath:lcAbs(LC_V+'tesseract/worker.min.js'),corePath:lcAbs(LC_V+'tesseract'),langPath:lcAbs(LC_V+'tesseract'),logger:function(m){if(m.status==='recognizing text'&&lcProg)lcProg(m.progress)}});
+  }).then(function(w){return w.setParameters({tessedit_pageseg_mode:'3',preserve_interword_spaces:'1'}).then(function(){return w})}).catch(function(e){lcWorkP=null;throw {lc:'carga'}});
+  return lcWorkP;
+}
+function setBar(p){var b=$('ocrbar');b.classList.add('on');$('ocrbari').style.width=Math.round(Math.max(0,Math.min(1,p))*100)+'%'}
 function ocrStatus(t){$('ocrstatus').textContent=t||''}
-async function pdfToText(buf){
-  if(!window.pdfjsLib)throw new Error('pdf');
-  var pdf=await pdfjsLib.getDocument({data:buf}).promise;var txt='';var pages=Math.min(pdf.numPages,2);
-  for(var i=1;i<=pages;i++){var page=await pdf.getPage(i);var vp=page.getViewport({scale:2});var cv=document.createElement('canvas');cv.width=vp.width;cv.height=vp.height;var cx=cv.getContext('2d');await page.render({canvasContext:cx,viewport:vp}).promise;
-    var r=await Tesseract.recognize(cv,'spa',{logger:function(m){if(m.status==='recognizing text')setBar((i-1+m.progress)/pages)}});txt+='\n'+r.data.text}
-  return txt;
-}
-async function handleFile(file){
-  if(!file)return;
-  $('ocrfound').classList.remove('on');ocrStatus('Preparando el lector…');setBar(0.02);
+/* --- imagen: escala, giro y corrección de sombras antes de reconocer --- */
+function lcImg(file){return new Promise(function(res,rej){var u=URL.createObjectURL(file),im=new Image();im.onload=function(){URL.revokeObjectURL(u);res(im)};im.onerror=function(){URL.revokeObjectURL(u);rej({lc:'imagen'})};im.src=u})}
+function lcLienzo(src,w,h,max,giro){
+  var M=Math.max(w,h),k=M>max?max/M:(M<1400&&max>=2000?Math.min(2,1400/M):1),cw=Math.max(1,Math.round(w*k)),ch=Math.max(1,Math.round(h*k));
+  var cv=document.createElement('canvas'),q=giro===90||giro===270;cv.width=q?ch:cw;cv.height=q?cw:ch;
+  var g=cv.getContext('2d',{willReadFrequently:true});g.fillStyle='#fff';g.fillRect(0,0,cv.width,cv.height);
+  g.save();g.translate(cv.width/2,cv.height/2);g.rotate((giro||0)*Math.PI/180);g.imageSmoothingQuality='high';g.drawImage(src,-cw/2,-ch/2,cw,ch);g.restore();
   try{
-    await ensureOCR();
-    var text;
-    if(file.type==='application/pdf'||/\.pdf$/i.test(file.name)){var buf=await file.arrayBuffer();ocrStatus('Leyendo el PDF…');text=await pdfToText(buf)}
-    else{ocrStatus('Leyendo la imagen…');var r=await Tesseract.recognize(file,'spa',{logger:function(m){if(m.status==='recognizing text')setBar(m.progress)}});text=r.data.text}
-    setBar(1);ocrStatus('');
-    var f=parseContrato(text||'');
-    aplicaOCR(f);
-  }catch(e){
-    $('ocrbar').classList.remove('on');
-    ocrStatus('No se pudo leer el documento automáticamente. Puede que no haya conexión para cargar el lector la primera vez. Introduzca los datos a mano.');
+    var W=cv.width,H=cv.height,d=g.getImageData(0,0,W,H),p=d.data,n=W*H,hist=new Uint32Array(256),i,y;
+    for(i=0;i<p.length;i+=4){y=(p[i]*77+p[i+1]*150+p[i+2]*29)>>8;p[i]=p[i+1]=p[i+2]=y;p[i+3]=255;hist[y]++}
+    var ac=0,med=128;for(i=0;i<256;i++){ac+=hist[i];if(ac>=n/2){med=i;break}}
+    if(med<95){for(i=0;i<p.length;i+=4){p[i]=p[i+1]=p[i+2]=255-p[i]}} // texto claro sobre fondo oscuro
+    g.putImageData(d,0,0);
+    // fondo estimado (la hoja, con sus sombras) = la propia imagen muy reducida y suavizada
+    var sw=Math.max(8,Math.round(W/28)),sh=Math.max(8,Math.round(H/28)),a=document.createElement('canvas');a.width=sw;a.height=sh;
+    var ga=a.getContext('2d');ga.imageSmoothingQuality='high';ga.drawImage(cv,0,0,sw,sh);
+    var b=document.createElement('canvas');b.width=W;b.height=H;var gb=b.getContext('2d',{willReadFrequently:true});gb.imageSmoothingQuality='high';gb.drawImage(a,0,0,W,H);
+    var f=gb.getImageData(0,0,W,H).data,v;
+    for(i=0;i<p.length;i+=4){v=p[i]*245/Math.max(f[i],48);v=(v-70)*255/160;p[i]=p[i+1]=p[i+2]=v<0?0:(v>255?255:v)}
+    g.putImageData(d,0,0);
+  }catch(e){}
+  return cv;
+}
+async function lcOCR(src,w,h,pos,total){
+  var wk=await lcWorker();
+  function nota(r){var t=r.data.text||'',q=lcCalidad(t),pal=(t.match(/[a-zñáéíóú]{2,}/gi)||[]).length;return {t:t,q:q,mala:q<8||q<pal*0.12||(r.data.confidence||0)<60}}
+  lcProg=function(x){setBar((pos+x*0.9)/total)};
+  var a=nota(await wk.recognize(lcLienzo(src,w,h,2800,0)));
+  if(a.mala){ // casi nada legible: suele ser una foto girada o boca abajo. Se prueba en pequeño y se repite con el giro bueno.
+    lcProg=null;ocrStatus('La imagen parece girada: probando otras orientaciones…');
+    var giros=[180,90,270],mejor=0,mq=a.q;
+    for(var j=0;j<giros.length;j++){var b=nota(await wk.recognize(lcLienzo(src,w,h,1500,giros[j])));if(b.q>mq*1.5+5){mq=b.q;mejor=giros[j];if(!b.mala)break}}
+    if(mejor){lcProg=function(x){setBar((pos+0.5+x*0.5)/total)};var c=nota(await wk.recognize(lcLienzo(src,w,h,2800,mejor)));if(c.q>a.q)a=c}
   }
+  lcProg=null;return a.t;
 }
-function parseContrato(text){
-  var low=' '+text.toLowerCase().replace(/\s+/g,' ')+' ';
-  var out={ent:null,anio:null,mes:null,tae:null};
-  // TAE
-  var mt=/t\.?\s*a\.?\s*e\.?\s*(?:anual|nominal)?\s*[:=]?\s*(?:del?\s*)?(\d{1,2}[.,]\d{1,2})\s*%/.exec(low);
-  if(!mt){var all=low.match(/(\d{1,2}[.,]\d{1,2})\s*%/g)||[];for(var i=0;i<all.length;i++){var n=num(all[i]);if(n!=null&&n>=10&&n<=45){out.tae=n;break}}}
-  else out.tae=num(mt[1]);
-  // fecha dd/mm/yyyy
-  var md=/\b([0-3]?\d)[\/\-.]([01]?\d)[\/\-.](\d{4})\b/.exec(low);
-  if(md){out.anio=+md[3];out.mes=+md[2]||null}
-  if(!out.anio){var mm=/\bde\s+(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre)\s+de\s+(\d{4})\b/.exec(low);if(mm){out.anio=+mm[2];out.mes=MESES.indexOf(mm[1].replace('setiembre','septiembre'))+1||null}}
-  if(!out.anio){var my=/\b(19[89]\d|20[0-2]\d)\b/.exec(low);if(my)out.anio=+my[1]}
-  // entidad
-  var map=[['wizink','WiZink'],['wi zink','WiZink'],['citibank','Citibank (hoy WiZink)'],['citi bank','Citibank (hoy WiZink)'],['barclaycard','Barclays (Barclaycard)'],['barclays','Barclays (Barclaycard)'],['barclay','Barclays (Barclaycard)'],['popular-e','WiZink'],['popular e','WiZink'],['banco popular','WiZink'],['cofidis','Cofidís'],['cofidís','Cofidís'],['oney','Oney Servicios Financieros'],['caixabank payments','CaixaBank Payments & Consumer'],['bankinter consumer','Bankinter Consumer Finance'],['cetelem','Banco Cetelem'],['evofinance','Evo Finance'],['evo finance','Evo Finance'],['sabadell','Banco Sabadell'],['bbva','Banco Bilbao Vizcaya Argentaria'],['mbna','Mbna']];
-  for(var j=0;j<map.length;j++){if(low.indexOf(map[j][0])>=0){out.ent=map[j][1];break}}
-  return out;
+async function lcLeePDF(file,pos,total,validas){
+  await lcPDF();var pdf;
+  try{pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise}catch(e){throw {lc:(e&&e.name==='PasswordException')?'clave':'pdf'}}
+  var n=pdf.numPages,N=Math.min(n,40),pags=[],vacias=[],i;
+  for(i=1;i<=N;i++){var pg=await pdf.getPage(i),tc=await pg.getTextContent(),s='',ly=null;
+    tc.items.forEach(function(it){var y=it.transform?it.transform[5]:null;if(ly!==null&&y!==null&&Math.abs(y-ly)>3)s+='\n';else if(s&&!/\s$/.test(s))s+=' ';s+=it.str||'';if(it.hasEOL)s+='\n';if(y!==null)ly=y});
+    pags.push(s);if(s.replace(/\s/g,'').length<60)vacias.push(i);setBar((pos+0.1*i/N)/total)}
+  var modo=vacias.length?(vacias.length<N?'mixto':'ocr'):'texto',aviso='';
+  if(vacias.length){ // páginas escaneadas: reconocimiento óptico, hasta seis, y se para en cuanto están los tres datos
+    var tope=vacias.slice(0,6);
+    for(var k=0;k<tope.length;k++){
+      ocrStatus('Reconociendo la página '+tope[k]+' de '+n+' (escaneada)…');
+      var p2=await pdf.getPage(tope[k]),v1=p2.getViewport({scale:1}),vp=p2.getViewport({scale:Math.min(4,2800/Math.max(v1.width,v1.height))});
+      var cv=document.createElement('canvas');cv.width=Math.round(vp.width);cv.height=Math.round(vp.height);
+      await p2.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;
+      pags[tope[k]-1]=await lcOCR(cv,cv.width,cv.height,pos+0.1+0.9*k/tope.length,total*1);
+      var r=parseContrato(pags.join('\n'),validas);if(r.tae&&r.tae.seguro&&r.fecha&&r.ent){if(k+1<tope.length)aviso='Se ha dejado de leer en la página '+tope[k]+' porque ya estaban los tres datos.';break}
+    }
+    if(!aviso&&vacias.length>tope.length)aviso='Solo se han reconocido las '+tope.length+' primeras páginas escaneadas.';
+  }
+  if(n>N)aviso=(aviso?aviso+' ':'')+'El PDF tiene '+n+' páginas; se han leído las '+N+' primeras.';
+  return {t:pags.join('\n'),modo:modo,aviso:aviso};
 }
-function optExists(sel,val){return Array.prototype.some.call(sel.options,function(o){return o.value===val})}
-function aplicaOCR(f){
+function lcValidas(){var v={};Array.prototype.forEach.call($('ent').options,function(o){v[o.value]=1});return v}
+async function handleFiles(lista){
+  var files=Array.prototype.slice.call(lista||[]).filter(Boolean);if(!files.length)return;
+  if(lcOcupado){toast('Se está leyendo otro documento');return}
+  lcOcupado=true;$('ocrfound').classList.remove('on');setBar(0.02);
+  var textos=[],modos={},avisos=[],validas=lcValidas();
+  try{
+    for(var i=0;i<files.length;i++){var f=files[i],cual=files.length>1?' ('+(i+1)+' de '+files.length+')':'';
+      if(f.type==='application/pdf'||/\.pdf$/i.test(f.name)){ocrStatus('Leyendo el PDF'+cual+'…');var r=await lcLeePDF(f,i,files.length,validas);textos.push(r.t);modos[r.modo]=1;if(r.aviso)avisos.push(r.aviso)}
+      else if(/^image\//.test(f.type)||/\.(jpe?g|png|webp|gif|bmp|heic|heif)$/i.test(f.name)){ocrStatus('Preparando el lector'+cual+'… La primera vez tarda un poco más.');var im=await lcImg(f);await lcWorker();ocrStatus('Reconociendo el texto de la imagen'+cual+'…');textos.push(await lcOCR(im,im.naturalWidth,im.naturalHeight,i,files.length));modos.ocr=1}
+      else throw {lc:'tipo'};
+    }
+    setBar(1);ocrStatus('');
+    var texto=textos.join('\n\n');
+    aplicaOCR(parseContrato(texto,validas),texto,modos,avisos.join(' '));
+    gcEvt('lector');
+  }catch(e){
+    var M={carga:'No se ha podido descargar el lector. La primera vez hace falta conexión; después funciona sin ella.',imagen:'No se ha podido abrir la imagen. Pruebe con una foto en JPG o PNG, o con una captura de pantalla.',clave:'El PDF está protegido con contraseña y no se puede leer.',pdf:'No se ha podido abrir el PDF. Puede estar dañado.',tipo:'Tipo de archivo no admitido. Use una foto (JPG, PNG) o un PDF.'};
+    ocrStatus((e&&e.lc&&M[e.lc])||'No se ha podido leer el documento. Introduzca los datos a mano.');
+  }finally{lcOcupado=false;lcProg=null;setTimeout(function(){$('ocrbar').classList.remove('on')},400)}
+}
+function aplicaOCR(r,texto,modos,aviso){
   var found=$('ocrfound');found.classList.add('on');found.innerHTML='';
-  function row(k,v,ok){found.innerHTML+='<div><span class="k">'+k+'</span><span class="'+(ok?'v':'pend')+'">'+esc(ok?v:'no reconocido — introdúzcalo a mano')+'</span></div>'}
-  if(f.ent&&optExists($('ent'),f.ent)){$('ent').value=f.ent;row('Entidad',f.ent,true)}else row('Entidad',null,false);
-  if(f.anio){$('anio').value=f.anio;$('mes').value=f.mes||'';row('Fecha',(f.mes?MESES[f.mes-1]+' de ':'')+f.anio,true)}else row('Fecha',null,false);
-  if(f.tae!=null){$('tae').value=String(f.tae).replace('.',',');row('TAE',fmt(f.tae),true)}else row('TAE',null,false);
-  found.innerHTML+='<div style="margin-top:6px;color:var(--ink3);font-size:11.5px">Revise los datos antes de buscar: el reconocimiento puede fallar.</div>';
-  toast('Documento leído. Revise los datos.');
+  if(r.chars<40){found.appendChild(el('div',{cls:'pend',text:'No se ha encontrado texto legible en el documento.'}));found.appendChild(el('div',{cls:'nota',text:'Pruebe con una foto más nítida, de frente, con buena luz y sin recortar el texto, o con el PDF original del contrato.'}));toast('No se ha podido leer el texto');return}
+  function fila(k,valor,dato,poner,otras,fmtO,duda){
+    var d=el('div',{cls:'dato'},[el('span',{cls:'k',text:k})]);
+    if(dato){d.appendChild(el('span',{cls:'v',text:valor}));if(duda)d.appendChild(el('span',{cls:'pend',text:' · '+duda}));
+      d.appendChild(el('span',{cls:'cx',text:'«'+dato.ctx+'»'}));
+      if(otras&&otras.length){var o=el('div',{cls:'alt'},[el('span',{text:'También aparece: '})]);
+        otras.forEach(function(x){var b=el('button',{type:'button',text:fmtO(x),title:'«'+x.ctx+'»'});b.addEventListener('click',function(){poner(x);d.querySelector('.v').textContent=fmtO(x);d.querySelector('.cx').textContent='«'+x.ctx+'»';var p=d.querySelector('.pend');if(p)p.remove();verdLive()});o.appendChild(b)});d.appendChild(o)}
+    }else d.appendChild(el('span',{cls:'pend',text:'no reconocida: indíquela a mano'}));
+    found.appendChild(d);
+  }
+  var fE=function(x){return x.v},fF=function(x){return (x.m?MESES[x.m-1]+' de ':'')+x.a},fT=function(x){return fmt(x.v)};
+  var pE=function(x){$('ent').value=x.v},pF=function(x){$('anio').value=x.a;$('mes').value=x.m||''},pT=function(x){$('tae').value=String(x.v).replace('.',',')};
+  var stM=document.querySelector('.subtab[data-prod="microcredito"]'),stR=document.querySelector('.subtab[data-prod="revolving"]'),enM=stM&&/\bon\b/.test(stM.className);
+  if(r.micro){if(stM&&!enM)stM.click()}else if(enM&&stR&&(r.tae||r.ent))stR.click(); // la pestaña sigue al tipo de contrato leído
+  if(r.ent)pE(r.ent);if(r.fecha)pF(r.fecha);if(r.tae)pT(r.tae);
+  fila('Entidad',r.ent&&fE(r.ent),r.ent,pE,r.ent&&r.ent.otras,fE,'');
+  fila('Fecha del contrato',r.fecha&&fF(r.fecha),r.fecha,pF,r.fecha&&r.fecha.otras,fF,r.fecha&&!r.fecha.seguro?'no consta como fecha de firma: compruébela':'');
+  fila('TAE',r.tae&&fT(r.tae),r.tae,pT,r.tae&&r.tae.otras,fT,r.tae&&!r.tae.seguro?'sin la etiqueta «TAE» al lado: compruébela':'');
+  var como=modos.texto&&!modos.ocr&&!modos.mixto?'Leído del texto del propio PDF.':'Leído por reconocimiento óptico: puede confundir alguna cifra.';
+  found.appendChild(el('div',{cls:'nota',text:como+(aviso?' '+aviso:'')+' Revise los datos antes de buscar.'}));
+  var det=el('details',{cls:'leido'},[el('summary',{text:'Ver el texto leído'}),el('pre',{text:texto.replace(/[ \t]+/g,' ').replace(/\n{3,}/g,'\n\n').trim().slice(0,12000)})]);found.appendChild(det);
+  var ir=el('button',{type:'button',cls:'linkbtn',text:'Ver qué se ha resuelto ↑'});ir.addEventListener('click',function(){try{$('hero_r').scrollIntoView({behavior:'smooth',block:'center'})}catch(e){}});found.appendChild(ir);
+  verdLive();
+  var nn=(r.ent?1:0)+(r.fecha?1:0)+(r.tae?1:0);toast(nn===3?'Documento leído. Revise los datos.':(nn?'Documento leído: falta algún dato.':'No se han reconocido los datos del contrato.'));
 }
-$('ocrfile').addEventListener('change',function(e){handleFile(e.target.files[0]);e.target.value=''});
+$('ocrfile').addEventListener('change',function(e){var fs=Array.prototype.slice.call(e.target.files||[]);e.target.value='';handleFiles(fs)});
 var oz=$('ocrzone');
 ['dragenter','dragover'].forEach(function(ev){oz.addEventListener(ev,function(e){e.preventDefault();oz.classList.add('drag')})});
 ['dragleave','drop'].forEach(function(ev){oz.addEventListener(ev,function(e){e.preventDefault();oz.classList.remove('drag')})});
-oz.addEventListener('drop',function(e){if(e.dataTransfer.files[0])handleFile(e.dataTransfer.files[0])});
+oz.addEventListener('drop',function(e){if(e.dataTransfer.files.length)handleFiles(e.dataTransfer.files)});
 
 /* ============ COMPOSER ============ */
 var EJES={
@@ -1292,9 +1460,9 @@ function fdPresc(caso){
     var src=selList().filter(function(c){return c.presc&&c.presc_crit})[0];if(src)USED[src.id]=1;
     if(esUsura){
       /* ---- Prescripción estimada en usura: doctrina STS 350/2025 (Pleno) ---- */
-      var b='<p>Opuesta por la parte demandada la prescripción parcial de la acción de restitución, procede estimarla en los términos fijados por la STS (Pleno) 350/2025, de 5 de marzo (ROJ STS 1091/2025; ECLI:ES:TS:2025:1091).</p>';
+      var b='<p>Opuesta por la parte demandada la prescripción parcial de la acción de restitución, procede estimarla en los términos fijados por la STS (Pleno) 350/2025, de 5 de marzo (ROJ STS 836/2025; ECLI:ES:TS:2025:836).</p>';
       b+='<p>Dicha sentencia establece una distinción fundamental: cuando la nulidad se declara por <b>usura</b> (artículo 1 de la Ley de 23 de julio de 1908), la prescripción de la acción de restitución se rige por el Código Civil, <i>no</i> por la doctrina del TJUE sobre cláusulas abusivas, porque la usura es una cuestión ajena al ámbito del Derecho de la UE. Así lo razona el Pleno:</p>';
-      b+='<div class="cite">«La acción de restitución de lo pagado en exceso respecto del capital objeto del préstamo o crédito no nace cuando se celebra el contrato sino cuando se hace el pago de la cantidad cuya restitución se solicita. [...] La consecuencia de lo expuesto es que el acreditado tiene acción para reclamar lo pagado que exceda del capital prestado en los cinco años anteriores a la formulación de la reclamación extrajudicial o a la interposición de la demanda. En este caso, ese plazo debe ampliarse en 82 días como consecuencia de la suspensión de los plazos de prescripción acordada en el Real Decreto 463/2020, de 14 de marzo.»<span class="src">STS (Pleno) 350/2025, de 5 de marzo (ROJ STS 1091/2025), FD 4.º</span></div>';
+      b+='<div class="cite">«[L]a acción de restitución de lo pagado en exceso respecto del capital objeto del préstamo o crédito no nace cuando se celebra el contrato sino cuando se hace el pago de la cantidad cuya restitución se solicita. [...] La consecuencia de lo expuesto es que el acreditado tiene acción para reclamar lo pagado que exceda del capital prestado en los cinco años anteriores a la formulación de la reclamación extrajudicial o a la interposición de la demanda. En este caso, ese plazo debe ampliarse en 82 días como consecuencia de la suspensión de los plazos de prescripción acordada en el Real Decreto 463/2020, de 14 de marzo.»<span class="src">STS (Pleno) 350/2025, de 5 de marzo (ROJ STS 836/2025; ECLI:ES:TS:2025:836), FD 2.º</span></div>';
       b+='<p>Conviene subrayar que esta doctrina se aplica exclusivamente cuando el contrato es declarado nulo por usura (interés notablemente superior al normal del dinero). Cuando la nulidad se funda en la falta de transparencia de las condiciones generales (protección del consumidor, Directiva 93/13/CEE), la prescripción de la acción restitutoria se rige por la jurisprudencia del TJUE, que impide que el plazo comience a correr antes de que el consumidor conozca o pueda razonablemente conocer el carácter abusivo de la cláusula.</p>';
       b+='<p>En el caso de autos, habiéndose declarado la nulidad por usura, la acción de restitución se limita a las cantidades pagadas en exceso sobre el capital dispuesto en los <b>cinco años y 82 días</b> anteriores a la '+(src?esc(src.presc_crit.match(/reclamación (extrajudicial|previa)/i)?'reclamación extrajudicial':'demanda'):'reclamación extrajudicial o a la demanda')+'. Las cantidades anteriores a ese plazo están prescritas.</p>';
       if(src){b+='<p>Este criterio se aplica en la Sala vigesimoquinta bis ('+esc(tribCorto(src))+', '+esc(src.roj)+').</p>';}
@@ -1345,7 +1513,7 @@ function fdClausula(g){
     b+='<li>Debe integrarse obligatoriamente en una <b>única comisión</b>, que tiene que denominarse necesariamente «comisión de apertura».</li>';
     b+='<li>Se devengará de <b>una sola vez</b>.</li>';
     b+='<li>Su <b>importe y su forma y fecha de liquidación</b> deben estar especificados en la propia cláusula.</li></ul>';
-    b+='<p>El incumplimiento de cualquiera de estos requisitos determina la falta de transparencia y, con ella, la nulidad de la cláusula por abusiva (STJUE de 3 de octubre de 2019, <i>Kiss y CIB Bank</i>, C-621/1).</p>';
+    b+='<p>El incumplimiento de cualquiera de estos requisitos determina la falta de transparencia y, con ella, la nulidad de la cláusula por abusiva (STJUE de 3 de octubre de 2019, <i>Kiss y CIB Bank</i>, C-621/17).</p>';
     if(ts.length)b+='<p>En este sentido se ha pronunciado el Tribunal Supremo:</p>'+bloque(ts);
     if(ap.length)b+='<p>'+(ts.length?'En el mismo sentido, la':'Sobre esta cuestión se ha pronunciado la')+' Audiencia Provincial de Madrid:</p>'+bloque(ap);
     var resto=g.items.slice(4);if(resto.length){resto.forEach(function(x){USED[x.c.id]=1});b+='<p>En el mismo sentido: '+resto.map(function(x){return refOf(x.c)}).join('; ')+'.</p>'}
