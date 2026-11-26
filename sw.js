@@ -1,5 +1,5 @@
-/* Criterio 25 bis: funciona sin conexión y se actualiza sola cuando hay red. */
-var CACHE = 'criterio25bis-v2';
+/* Usura y transparencia: funciona sin conexión y se actualiza sola cuando hay red. */
+var CACHE = 'usura-transp-v3';
 var ARCHIVOS = ['./', 'index.html', 'datos.json', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(ARCHIVOS); }).then(function () { return self.skipWaiting(); }));

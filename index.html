@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#1f3a57">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="icon" href="icon-192.png">
-<title>Criterio 25 bis — usura, transparencia y cláusulas abusivas (TS y AP Madrid)</title>
+<title>Usura y transparencia: jurisprudencia de la AP Madrid y del TS</title>
 <style>
 :root{
   --paper:#f4f5f2; --card:#fbfbf9; --ink:#17191d; --ink2:#565a61; --ink3:#878b90;
@@ -39,6 +39,7 @@ button{font:inherit;cursor:pointer;color:inherit}
 .mast h1{margin:0;font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.02;
   letter-spacing:-.015em}
 .mast h1 .bis{color:var(--oxblood)}
+.mast .byline{font-size:12px;color:var(--ink3);margin:6px 0 0;font-weight:400}
 .mast .kicker{font-size:13px;color:var(--ink2);margin:0 0 7px;font-weight:500}
 .mast .dateline{text-align:right;font-size:12.5px;color:var(--ink2);line-height:1.5;max-width:300px}
 .mast .dateline b{color:var(--ink);font-variant-numeric:tabular-nums}
@@ -369,9 +370,10 @@ footer{border-top:1px solid var(--line);margin-top:30px}
 <header class="mast">
   <div class="mast-in">
     <div>
-      <p class="kicker">Usura, transparencia y cláusulas abusivas · qué se ha resuelto ya</p>
-      <h1>Criterio <span class="bis">25 bis</span></h1>
-      <p class="scope">Basada principalmente en las sentencias de la <b>Sección 25.ª bis de la Audiencia Provincial de Madrid</b> y en la jurisprudencia del <b>Tribunal Supremo</b>. Actualización mensual. <span class="inf">Herramienta informativa: compruebe siempre la resolución en el CENDOJ.</span></p>
+      <p class="kicker">Qué se ha resuelto ya · herramienta informativa</p>
+      <h1>Usura y transparencia</h1>
+      <p class="scope">Jurisprudencia de la <b>Audiencia Provincial de Madrid</b> y del <b>Tribunal Supremo</b>. Actualización mensual. <span class="inf">Compruebe siempre la resolución en el CENDOJ.</span></p>
+      <p class="byline">Desarrollada por Julio Ruiz Llario · magistrado AP Madrid (Sección 25.ª bis)</p>
     </div>
     <p class="dateline" id="dateline"></p>
   </div>
@@ -548,7 +550,7 @@ footer{border-top:1px solid var(--line);margin-top:30px}
   </ul>
 
   <h2>Autoría y actualización</h2>
-  <p><b>Julio Ruiz Llario</b>, magistrado de la Audiencia Provincial de Madrid (Sección 25.ª bis). Iniciativa personal: no es una publicación oficial del Consejo General del Poder Judicial ni de la Audiencia Provincial.</p>
+  <p>Desarrollada por Julio Ruiz Llario, magistrado de la Audiencia Provincial de Madrid (Sección 25.ª bis). Iniciativa personal: no es una publicación oficial del Consejo General del Poder Judicial ni de la Audiencia Provincial.</p>
   <p>Se actualiza cada mes. Última actualización: <b id="m_fecha"></b>. Si encuentra un error, pulse <b>Avisar de un error</b> en la ficha.<span id="m_contacto"></span></p>
 </div>
 </section>
@@ -741,7 +743,7 @@ var REGLA=(function(){var ok=0,n=0;C.forEach(function(c){if(c.org==='TS'||fam(c.
 function etiqueta(a,n){if(!n)return null;if(n<5)return ['Pocos precedentes','am'];return Math.max(a,n-a)/n>=0.85?['Criterio consolidado','ok']:['Resoluciones dispares','am']}
 function vrow(rows,q,html,et){VR.push({q:q,t:String(html).replace(/<small>[\s\S]*?<\/small>/g,'').replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>'),e:et?et[0]:''});var r=el('div',{cls:'v-row'},[el('div',{cls:'q',text:q}),el('div',{cls:'a',html:html})]);if(et)r.appendChild(el('span',{cls:'pill '+et[1],text:et[0]}));rows.appendChild(r)}
 function avisar(c){
-  var asunto='Criterio 25 bis · aviso de error en '+c.roj;
+  var asunto='Usura y transparencia · aviso de error en '+c.roj;
   var cuerpo='Resolución: ROJ '+c.roj+' · '+(c.ecli||'')+'\nVersión de los datos: '+D.generado+'\n\nDato de la ficha que es incorrecto:\n\nLo que dice la resolución:\n';
   if(CONTACTO){window.location.href='mailto:'+CONTACTO+'?subject='+encodeURIComponent(asunto)+'&body='+encodeURIComponent(cuerpo);return}
   copyText(asunto+'\n\n'+cuerpo);toast('Aviso copiado. Péguelo en un correo al autor.');
@@ -924,7 +926,7 @@ function entregar(blob,name,mime){
   var okT=function(){toast('Archivo preparado: '+name)},koT=function(){toast('No se ha podido guardar el archivo')};
   if(window.claude&&window.claude.use){window.claude.use('downloads').then(function(d){if(!d)throw 0;return d.save({filename:name,data:blob})}).then(okT,function(e){if(!e||e.code!=='declined')koT()});return}
   var f=null;try{f=new File([blob],name,{type:mime})}catch(e){}
-  if(f&&/Android|iPhone|iPad/i.test(navigator.userAgent)&&navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f],title:'Criterio 25 bis'}).catch(function(){});return}
+  if(f&&/Android|iPhone|iPad/i.test(navigator.userAgent)&&navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f],title:'Usura y transparencia'}).catch(function(){});return}
   var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();okT();
 }
 
@@ -938,7 +940,7 @@ function compartir(){
   function wrap(t,x,y,mw,lh,max){var ws=String(t).split(/\s+/),ln='',n=0;for(var i=0;i<ws.length;i++){var tt=ln?ln+' '+ws[i]:ws[i];if(g.measureText(tt).width>mw&&ln){g.fillText(ln,x,y);y+=lh;n++;ln=ws[i];if(max&&n>=max-1){while(i+1<ws.length&&g.measureText(ln+' '+ws[i+1]+'…').width<=mw){ln+=' '+ws[++i]}if(i+1<ws.length)ln+='…';break}}else ln=tt}g.fillText(ln,x,y);return y+lh}
   g.fillStyle='#f4f5f2';g.fillRect(0,0,W,H);g.fillStyle=col;g.fillRect(0,0,18,H);
   var X=84,MW=W-X-70,y=112;
-  g.textBaseline='alphabetic';g.fillStyle='#17191d';g.font='600 46px '+SER;g.fillText('Criterio ',X,y);var cw=g.measureText('Criterio ').width;g.fillStyle='#8a2b2b';g.fillText('25 bis',X+cw,y);
+  g.textBaseline='alphabetic';g.fillStyle='#17191d';g.font='600 42px '+SER;g.fillText('Usura y transparencia',X,y);
   g.fillStyle='#565a61';g.font='400 24px '+SAN;g.textAlign='right';g.fillText('Datos de '+fechaLarga(D.generado),W-70,y);g.textAlign='left';
   g.fillStyle='#17191d';g.fillRect(X,y+26,MW,2);
   y+=104;g.fillStyle='#878b90';g.font='600 23px '+SAN;g.fillText(v.querySelector('.v-k').textContent.toUpperCase(),X,y);
@@ -957,11 +959,10 @@ function compartir(){
   var yMax=H-262;
   VR.filter(function(r){return r.q!=='Cálculo'}).forEach(function(r){if(y>yMax-96)return;g.fillStyle='#dcded7';g.fillRect(X,y,MW,2);y+=42;g.fillStyle='#878b90';g.font='600 22px '+SAN;g.fillText((r.q+(r.e?' · '+r.e:'')).toUpperCase(),X,y);y+=38;g.fillStyle='#17191d';g.font='400 28px '+SAN;y=wrap(r.t,X,y,MW,38,3)+2});
   var fy=H-212;g.fillStyle='#17191d';g.fillRect(X,fy,MW,2);
-  g.font='600 34px '+SER;g.fillText('Julio Ruiz Llario',X,fy+54);
-  g.font='400 24px '+SAN;g.fillStyle='#565a61';g.fillText('Magistrado de la Audiencia Provincial de Madrid (Sección 25.ª bis)',X,fy+90);
-  g.font='400 21px '+SAN;g.fillText('Basado en resoluciones del Tribunal Supremo y de la Audiencia Provincial de Madrid.',X,fy+132);
-  g.fillText('Información orientativa: compruebe siempre la resolución en el CENDOJ.',X,fy+164);
-  cv.toBlob(function(b){if(!b){toast('No se ha podido crear la imagen');return}entregar(b,'criterio25bis_veredicto.png','image/png')},'image/png');
+  g.font='400 24px '+SAN;g.fillStyle='#565a61';g.fillText('Desarrollada por Julio Ruiz Llario · magistrado AP Madrid (Sección 25.ª bis)',X,fy+54);
+  g.font='400 21px '+SAN;g.fillText('Basado en resoluciones del Tribunal Supremo y de la Audiencia Provincial de Madrid.',X,fy+92);
+  g.fillText('Información orientativa: compruebe siempre la resolución en el CENDOJ.',X,fy+124);
+  cv.toBlob(function(b){if(!b){toast('No se ha podido crear la imagen');return}entregar(b,'usura_transparencia_veredicto.png','image/png')},'image/png');
 }
 
 var verdT;function verdLive(){clearTimeout(verdT);verdT=setTimeout(function(){veredicto(readQ())},180)}
@@ -1526,7 +1527,7 @@ var nR=Object.keys(nres).length,nTS={},nBis={},fmin=null,fmax=null;
 C.forEach(function(c){if(c.org==='TS')nTS[c.roj]=1;else if(c.bis)nBis[c.roj]=1;if(c.fs){if(!fmin||c.fs<fmin)fmin=c.fs;if(!fmax||c.fs>fmax)fmax=c.fs}});
 function mil(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.')}
 $('dateline').innerHTML='<b>'+mil(nR)+'</b> resoluciones · <b>'+mil(C.length)+'</b> contratos analizados<br>Actualización mensual · última: <b>'+esc(fechaLarga(D.generado))+'</b>';
-$('pie').innerHTML='<b>Criterio 25 bis</b> · Julio Ruiz Llario, magistrado de la Audiencia Provincial de Madrid (Sección 25.ª bis). Herramienta informativa, basada principalmente en las sentencias de esa Sección y en la jurisprudencia del Tribunal Supremo. Se recomienda comprobar siempre la resolución directamente en el CENDOJ. No es una publicación oficial y no sustituye la decisión del juez.';
+$('pie').innerHTML='<b>Usura y transparencia</b>: jurisprudencia de la AP Madrid y del TS. Desarrollada por Julio Ruiz Llario, magistrado de la Audiencia Provincial de Madrid (Sección 25.ª bis). Herramienta informativa. Se recomienda comprobar siempre la resolución en el CENDOJ. No es una publicación oficial y no sustituye la decisión del juez.';
 (function(){var s=$('m_stats');function st(l,a,b){s.appendChild(el('div',{cls:'stat'},[el('div',{cls:'lab',text:l}),el('div',{cls:'fig'},[document.createTextNode(a),el('span',{cls:'s',text:b?' '+b:''})])]))}
   st('Resoluciones',mil(nR),'');st('Tribunal Supremo',mil(Object.keys(nTS).length),'');st('AP Madrid, Sección 25.ª bis',mil(Object.keys(nBis).length),'');st('Contratos analizados',mil(C.length),'');st('Periodo',fecha(fmin)+' – '+fecha(fmax),'');
   $('m_fecha').textContent=fechaLarga(D.generado);
