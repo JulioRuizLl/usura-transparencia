@@ -560,7 +560,7 @@ footer{border-top:1px solid var(--line);margin-top:30px}
   <h2>En qué se basa</h2>
   <div class="stats" id="m_stats"></div>
   <p>Principalmente, en las sentencias de la <b>Sección 25.ª bis de la Audiencia Provincial de Madrid</b> (sección especializada en condiciones generales de la contratación de entidades financieras) y en la jurisprudencia del <b>Tribunal Supremo</b>, que se muestra siempre primero. Otras Audiencias pueden seguir criterios distintos.</p>
-  <p>Se han excluido los productos hipotecarios (cláusula suelo, multidivisa, IRPH) por ser competencia de los juzgados especializados en condiciones generales de la contratación.</p>
+  <p>Se han excluido los productos hipotecarios (cláusula suelo, multidivisa, IRPH) por ser competencia de los juzgados especializados en condiciones generales de la contratación. Si está interesado en ella, también existe y puede solicitarla escribiendo al desarrollador (<a href="mailto:julio.ruiz@poderjudicial.es">julio.ruiz@poderjudicial.es</a>).</p>
 
   <h2>Cómo leerla</h2>
   <ul>
@@ -738,7 +738,7 @@ $('f').addEventListener('submit',buscar);
 $('reset').addEventListener('click',function(){$('f').reset();veredicto(readQ());$('out').innerHTML='<p class="empty">Introduzca los datos del contrato que tiene delante.</p>'});
 
 /* ============ VEREDICTO ORIENTATIVO ============ */
-var CONTACTO="";
+var CONTACTO="julio.ruiz@poderjudicial.es";
 function readQ(){return {cla:$('cla').value,ent:$('ent').value,anio:+$('anio').value||null,mes:+$('mes').value||null,tae:num($('tae').value),prod:$('prod').value,txt:($('txt').value||'').trim().toLowerCase(),sanio:+$('sanio').value||null,smes:+$('smes').value||null,stae:num($('stae').value)}}
 function fam(p){p=p||'';if(/revolving|tarjeta|pago_aplazado/.test(p))return 'rev';if(/microcredito/.test(p))return 'micro';if(/personal|consumo/.test(p))return 'cons';if(/hipotec|multidivisa/.test(p))return 'hip';return 'otro'}
 var FAMTXT={rev:'tarjetas y créditos revolving',cons:'préstamos personales y créditos al consumo',micro:'microcréditos'};
@@ -1500,7 +1500,7 @@ function redactar(ev){
 
   blocks.forEach(function(blk,i){
     var art=el('article',{cls:'fd'});
-    art.appendChild(el('h3',{text:'Fundamento de derecho '+(ORD[i]||(i+1)+'.º')+'. '+blk.title}));
+    art.appendChild(el('h3',{text:(ORDM[i]||(i+1)+'.º')+'.- '+blk.title}));
     art.appendChild(el('div',{cls:'body',contenteditable:'true',html:blk.body}));
     var tools=el('div',{cls:'fdtools'});
     var bc=el('button',{type:'button',text:'Copiar este fundamento'});
