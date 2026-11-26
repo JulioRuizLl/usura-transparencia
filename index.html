@@ -1333,6 +1333,25 @@ function fdClausula(g){
   var txt=CLATXT[g.tipo],its=g.items.slice(0,4);
   function bloque(l){return l.map(function(x){USED[x.c.id]=1;return '<div class="cite">«'+esc(x.k.pasaje_clave)+'»<span class="src">'+esc(citaSala(x.c,x.k.fundamento||''))+(RESCLA[x.k.resultado]?' · '+RESCLA[x.k.resultado]:'')+'</span></div>'}).join('')}
   var ts=its.filter(function(x){return x.c.org==='TS'}),ap=its.filter(function(x){return x.c.org!=='TS'});
+
+  /* ---- Comisión de apertura: fundamento específico con doctrina STS ---- */
+  if(g.tipo==='comision_apertura'){
+    var b='<p>Se examina a continuación la comisión de apertura pactada en el contrato.</p>';
+    b+='<p>Conforme a la doctrina del Tribunal Supremo (SSTS 44/2019, 964/2025, 965/2025, 1138/2026, 1147/2026, 1422/2026 y 1668/2026), la comisión de apertura no constituye el precio del préstamo, sino una retribución que el prestamista percibe por los servicios de estudio, concesión y tramitación del crédito. Como tal, se somete al control de transparencia de los artículos 5 y 7 de la Ley 7/1998, de Condiciones Generales de la Contratación, y de los artículos 80 y 82 del TRLGDCU.</p>';
+    b+='<p>En la STS 1668/2026, de 29 de octubre (ROJ STS 4362/2026; ECLI:ES:TS:2026:4362), la Sala ha extendido expresamente a los <b>préstamos personales</b> los requisitos de validez de la comisión de apertura que antes se aplicaban solo a los hipotecarios, estableciendo cuatro requisitos de transparencia:</p>';
+    b+='<ul><li>Debe comprender <b>todos</b> los gastos de estudio, concesión o tramitación del préstamo.</li>';
+    b+='<li>Debe integrarse obligatoriamente en una <b>única comisión</b>, que tiene que denominarse necesariamente «comisión de apertura».</li>';
+    b+='<li>Se devengará de <b>una sola vez</b>.</li>';
+    b+='<li>Su <b>importe y su forma y fecha de liquidación</b> deben estar especificados en la propia cláusula.</li></ul>';
+    b+='<p>El incumplimiento de cualquiera de estos requisitos determina la falta de transparencia y, con ella, la nulidad de la cláusula por abusiva (STJUE de 3 de octubre de 2019, <i>Kiss y CIB Bank</i>, C-621/1).</p>';
+    if(ts.length)b+='<p>En este sentido se ha pronunciado el Tribunal Supremo:</p>'+bloque(ts);
+    if(ap.length)b+='<p>'+(ts.length?'En el mismo sentido, la':'Sobre esta cuestión se ha pronunciado la')+' Audiencia Provincial de Madrid:</p>'+bloque(ap);
+    var resto=g.items.slice(4);if(resto.length){resto.forEach(function(x){USED[x.c.id]=1});b+='<p>En el mismo sentido: '+resto.map(function(x){return refOf(x.c)}).join('; ')+'.</p>'}
+    b+='<p>'+ph('','Aplique estos cuatro requisitos al contrato enjuiciado y concrete si la comisión los cumple o no')+'</p>';
+    return {title:'La comisión de apertura',body:b};
+  }
+
+  /* ---- Resto de cláusulas: genérico ---- */
   var b='<p>Se examina a continuación '+txt+' del contrato'+'.</p>';
   if(ts.length)b+='<p>Sobre esta cuestión se ha pronunciado el Tribunal Supremo:</p>'+bloque(ts);
   if(ap.length)b+='<p>'+(ts.length?'En el mismo sentido, la':'Sobre esta cuestión se ha pronunciado la')+' Audiencia Provincial de Madrid:</p>'+bloque(ap);
@@ -1453,6 +1472,18 @@ function falloMicro(caso){
 function esMicro(prod){return /micro|microcr/i.test(prod||'')}
 function esRevolving(prod){var p=(prod||'').toLowerCase();return !p||/revolving|tarjeta revolv|línea de crédito revolv/i.test(p)}
 
+function fdTitulo(t){
+  if(!t)return '';
+  var u=t.toUpperCase();
+  // Añadir DE LA / DEL / DE LAS / DE LOS si no empieza ya con preposición
+  if(/^(DE |DEL |SOBRE |NO )/.test(u))return u;
+  // Detectar artículo para elegir DE LA / DEL / DE LOS / DE LAS
+  if(/^(CARÁCTER|OBJETO|EFECTO|NO SE)/.test(u))return 'DEL '+u;
+  if(/^(FALTA|SUPERACIÓN|USURA|PRESCRIPCIÓN|DESESTIMACIÓN|NO CONCURR)/.test(u))return 'DE LA '+u;
+  if(/^(COSTAS)/.test(u))return 'DE LAS '+u;
+  return 'DEL '+u;
+}
+
 function redactar(ev){
   if(ev)ev.preventDefault();
   var caso={
@@ -1500,7 +1531,7 @@ function redactar(ev){
 
   blocks.forEach(function(blk,i){
     var art=el('article',{cls:'fd'});
-    art.appendChild(el('h3',{text:(ORDM[i]||(i+1)+'.º')+'.- '+blk.title}));
+    art.appendChild(el('h3',{text:(ORDM[i]||(i+1)+'.º')+'.- '+(blk.title?fdTitulo(blk.title):'')}));
     art.appendChild(el('div',{cls:'body',contenteditable:'true',html:blk.body}));
     var tools=el('div',{cls:'fdtools'});
     var bc=el('button',{type:'button',text:'Copiar este fundamento'});
