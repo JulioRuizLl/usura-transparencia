@@ -734,7 +734,8 @@ function buscar(ev){
   P.forEach(function(r,i){var fc=ficha(r.c,r.lv,r.sm,last);if(i===0)fc.open=true;out.appendChild(fc)});
   if(O.length){var det=el('details',{cls:'more'},[el('summary',{text:'Otras '+O.length+' resoluciones con coincidencia menor (época próxima o solo la entidad)'})]);O.forEach(function(r){det.appendChild(ficha(r.c,r.lv,r.sm,last))});out.appendChild(det)}
 }
-$('f').addEventListener('submit',buscar);
+$('f').addEventListener('submit',function(ev){buscar(ev);gcEvt('buscar')});
+function gcEvt(name){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'evt/'+name,title:name,event:true})}catch(e){}}
 $('reset').addEventListener('click',function(){$('f').reset();veredicto(readQ());$('out').innerHTML='<p class="empty">Introduzca los datos del contrato que tiene delante.</p>'});
 
 /* ============ VEREDICTO ORIENTATIVO ============ */
@@ -954,6 +955,7 @@ function entregar(blob,name,mime){
 /* ============ VEREDICTO COMO IMAGEN ============ */
 var VR=[],VS=null;
 function compartir(){
+  gcEvt('compartir');
   var v=$('verd').querySelector('.verd');if(!v)return;
   var W=1080,H=1350,cv=document.createElement('canvas');cv.width=W;cv.height=H;var g=cv.getContext('2d');
   var SER='Georgia,"Times New Roman",serif',SAN='system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif';
@@ -1597,10 +1599,10 @@ function docPlain(){
 }
 function copyText(t){var fb=function(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e2){}ta.remove()};try{navigator.clipboard.writeText(t).catch(fb)}catch(e){fb()}}
 
-$('cf').addEventListener('submit',redactar);
+$('cf').addEventListener('submit',function(ev){redactar(ev);gcEvt('redactar')});
 $('c_reset').addEventListener('click',function(){TOUCH={};$('cf').reset();Object.keys(EST).forEach(function(k){EST[k]='';var h=$(EJES[k].host);h.querySelectorAll('.opt').forEach(function(x,idx){x.className='opt';var inp=x.querySelector('input');if(inp.value===''){inp.checked=true;x.className='opt on'}else inp.checked=false})});});
-$('d_copy').addEventListener('click',function(){if(!document.querySelector('#doc .fd')){toast('Primero redacte el borrador');return}copyText(docPlain());toast('Borrador copiado al portapapeles')});
-$('d_print').addEventListener('click',function(){if(!document.querySelector('#doc .fd')){toast('Primero redacte el borrador');return}window.print()});
+$('d_copy').addEventListener('click',function(){if(!document.querySelector('#doc .fd')){toast('Primero redacte el borrador');return}copyText(docPlain());toast('Borrador copiado al portapapeles');gcEvt('copiar')});
+$('d_print').addEventListener('click',function(){if(!document.querySelector('#doc .fd')){toast('Primero redacte el borrador');return}window.print();gcEvt('imprimir')});
 /* ---------- .docx: zip sin compresión y WordprocessingML ---------- */
 var CRCT=(function(){var t=[],c,n,k;for(n=0;n<256;n++){c=n;for(k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
 function crc32(u){var c=0xFFFFFFFF;for(var i=0;i<u.length;i++)c=CRCT[(c^u[i])&0xFF]^(c>>>8);return (c^0xFFFFFFFF)>>>0}
@@ -1681,7 +1683,7 @@ function docxSentencia(){
 }
 $('d_word').addEventListener('click',function(){
   if(!document.querySelector('#doc .fd')){toast('Primero redacte el borrador');return}
-  try{entregar(docxSentencia(),'Borrador_sentencia.docx','application/vnd.openxmlformats-officedocument.wordprocessingml.document')}catch(e){toast('No se ha podido crear el documento de Word')}
+  try{entregar(docxSentencia(),'Borrador_sentencia.docx','application/vnd.openxmlformats-officedocument.wordprocessingml.document');gcEvt('word')}catch(e){toast('No se ha podido crear el documento de Word')}
 });
 
 /* ============ FOOTER / DATELINE ============ */
@@ -1737,6 +1739,6 @@ $('pie').innerHTML='<b>Usura y transparencia</b>: jurisprudencia de la AP Madrid
 updateSelUI();
 }).catch(function(e){document.getElementById('out').innerHTML='<p class="empty">No se han podido cargar los datos. Recargue la página.</p>'});
 </script>
-<script data-goatcounter="https://dosierapm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://usura-transparencia.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
