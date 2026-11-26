@@ -43,6 +43,7 @@ button{font:inherit;cursor:pointer;color:inherit}
 .mast .kicker{font-size:13px;color:var(--ink2);margin:0 0 7px;font-weight:500}
 .mast .dateline{text-align:right;font-size:12.5px;color:var(--ink2);line-height:1.5;max-width:300px}
 .mast .dateline b{color:var(--ink);font-variant-numeric:tabular-nums}
+.privacy-bar{max-width:1180px;margin:0 auto;padding:9px 28px;font-size:13px;color:var(--green);background:var(--gr-soft);border-bottom:1px solid #c8d8cc}
 @media(max-width:620px){.mast h1{font-size:27px}.mast .dateline{text-align:left}}
 
 /* ---------- Mode switch ---------- */
@@ -387,6 +388,7 @@ footer{border-top:1px solid var(--line);margin-top:30px}
     <p class="dateline" id="dateline"></p>
   </div>
 </header>
+<div class="privacy-bar">🔒 Funciona sin conexión. Todos los datos están en su dispositivo: no se envía nada a ningún servidor. El lector de contratos también opera en local.</div>
 
 <nav class="modes" role="tablist" aria-label="Modo de trabajo">
   <button class="mode" id="tab-consulta" role="tab" aria-selected="true" aria-controls="v-consulta">
