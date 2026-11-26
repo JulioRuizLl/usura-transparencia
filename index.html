@@ -1288,14 +1288,32 @@ function fdEfectos(caso){
 }
 
 function fdPresc(caso){
+  var V0=V();
+  var esUsura=EST.usura==='si';
   if(EST.presc==='estimo'){
     var src=selList().filter(function(c){return c.presc&&c.presc_crit})[0];if(src)USED[src.id]=1;
+    if(esUsura){
+      /* ---- Prescripción estimada en usura: doctrina STS 350/2025 (Pleno) ---- */
+      var b='<p>Opuesta por la parte demandada la prescripción parcial de la acción de restitución, procede estimarla en los términos fijados por la STS (Pleno) 350/2025, de 5 de marzo (ROJ STS 1091/2025; ECLI:ES:TS:2025:1091).</p>';
+      b+='<p>Dicha sentencia establece una distinción fundamental: cuando la nulidad se declara por <b>usura</b> (artículo 1 de la Ley de 23 de julio de 1908), la prescripción de la acción de restitución se rige por el Código Civil, <i>no</i> por la doctrina del TJUE sobre cláusulas abusivas, porque la usura es una cuestión ajena al ámbito del Derecho de la UE. Así lo razona el Pleno:</p>';
+      b+='<div class="cite">«La acción de restitución de lo pagado en exceso respecto del capital objeto del préstamo o crédito no nace cuando se celebra el contrato sino cuando se hace el pago de la cantidad cuya restitución se solicita. [...] La consecuencia de lo expuesto es que el acreditado tiene acción para reclamar lo pagado que exceda del capital prestado en los cinco años anteriores a la formulación de la reclamación extrajudicial o a la interposición de la demanda. En este caso, ese plazo debe ampliarse en 82 días como consecuencia de la suspensión de los plazos de prescripción acordada en el Real Decreto 463/2020, de 14 de marzo.»<span class="src">STS (Pleno) 350/2025, de 5 de marzo (ROJ STS 1091/2025), FD 4.º</span></div>';
+      b+='<p>Conviene subrayar que esta doctrina se aplica exclusivamente cuando el contrato es declarado nulo por usura (interés notablemente superior al normal del dinero). Cuando la nulidad se funda en la falta de transparencia de las condiciones generales (protección del consumidor, Directiva 93/13/CEE), la prescripción de la acción restitutoria se rige por la jurisprudencia del TJUE, que impide que el plazo comience a correr antes de que el consumidor conozca o pueda razonablemente conocer el carácter abusivo de la cláusula.</p>';
+      b+='<p>En el caso de autos, habiéndose declarado la nulidad por usura, la acción de restitución se limita a las cantidades pagadas en exceso sobre el capital dispuesto en los <b>cinco años y 82 días</b> anteriores a la '+(src?esc(src.presc_crit.match(/reclamación (extrajudicial|previa)/i)?'reclamación extrajudicial':'demanda'):'reclamación extrajudicial o a la demanda')+'. Las cantidades anteriores a ese plazo están prescritas.</p>';
+      if(src){b+='<p>Este criterio se aplica en la Sala vigesimoquinta bis ('+esc(tribCorto(src))+', '+esc(src.roj)+').</p>';}
+      return {title:'Prescripción parcial de la acción de restitución (usura — STS Pleno 350/2025)',body:b};
+    }
+    /* ---- Prescripción estimada en no-usura (genérica) ---- */
     var crit=src?('Esta conclusión se asienta en que '+esc(src.presc_crit)+' ('+esc(tribCorto(src))+', '+esc(src.roj)+').'):'[exprese el criterio de prescripción que se aplica en el caso concreto].';
-    var b='<p>Opuesta por la parte demandada la prescripción de la acción de restitución, procede su estimación. '+crit+'</p><p>En consecuencia, la condena restitutoria se limita a las cantidades reclamables dentro del plazo no prescrito.</p>';
-    return {title:'Prescripción parcial de la acción de restitución',body:b};
+    var b2='<p>Opuesta por la parte demandada la prescripción de la acción de restitución, procede su estimación. '+crit+'</p><p>En consecuencia, la condena restitutoria se limita a las cantidades reclamables dentro del plazo no prescrito.</p>';
+    return {title:'Prescripción parcial de la acción de restitución',body:b2};
   }
-  var b2='<p>Opuesta la prescripción de la acción de restitución, procede su desestimación. Conforme a reiterada doctrina (STS 350/2025 y las que en ella se citan), la acción de nulidad es imprescriptible y la de restitución, consecuencia necesaria de aquella, no puede entenderse prescrita en los términos planteados por la parte demandada. La reclamación se ha ejercitado dentro del plazo legalmente establecido.</p>';
-  return {title:'Desestimación de la excepción de prescripción',body:b2};
+  /* ---- Prescripción desestimada ---- */
+  if(esUsura){
+    var b3='<p>Opuesta la prescripción de la acción de restitución, procede su desestimación. Conforme a la STS (Pleno) 350/2025, de 5 de marzo, la acción de nulidad del préstamo usurario es imprescriptible. La acción de restitución del artículo 3 de la Ley de Represión de la Usura sí está sujeta al plazo de cinco años del artículo 1964 del Código Civil, contados desde cada pago, ampliados en 82 días (RD 463/2020). Pero en el caso de autos, la reclamación se ha ejercitado dentro de dicho plazo respecto de todas las cantidades cuya restitución se solicita, por lo que la excepción debe ser desestimada.</p>';
+    return {title:'Desestimación de la excepción de prescripción',body:b3};
+  }
+  var b4='<p>Opuesta la prescripción de la acción de restitución, procede su desestimación. Cuando la nulidad se funda en la falta de transparencia de las condiciones generales de la contratación (Directiva 93/13/CEE), la jurisprudencia del TJUE impide que el plazo de prescripción comience a correr antes de que el consumidor conozca o pueda razonablemente conocer el carácter abusivo de la cláusula (STJUE de 10 de junio de 2021, asuntos acumulados C-776/19 a C-782/19, BNP Paribas). La reclamación se ha ejercitado dentro del plazo legalmente establecido.</p>';
+  return {title:'Desestimación de la excepción de prescripción',body:b4};
 }
 
 function fdCostas(){
