@@ -488,7 +488,17 @@ footer{border-top:1px solid var(--line);margin-top:30px}
       <label class="fld"><span>Entidad contratante</span><input id="c_ent" placeholder="p. ej. Banco Popular-e"></label>
       <div class="two">
         <label class="fld"><span>Fecha del contrato</span><input id="c_fecha" placeholder="mayo de 2015"></label>
-        <label class="fld"><span>Producto</span><input id="c_prod" placeholder="tarjeta revolving"></label>
+        <label class="fld"><span>Producto</span><select id="c_prod">
+          <option value="">— elija —</option>
+          <option value="tarjeta revolving">Tarjeta revolving</option>
+          <option value="línea de crédito revolving">Línea de crédito revolving</option>
+          <option value="microcrédito">Micropréstamo / microcrédito</option>
+          <option value="préstamo hipotecario">Préstamo hipotecario</option>
+          <option value="préstamo hipotecario multidivisa">Hipoteca multidivisa</option>
+          <option value="préstamo personal">Préstamo personal</option>
+          <option value="crédito al consumo">Crédito al consumo</option>
+          <option value="otro">Otro producto</option>
+        </select></label>
       </div>
       <div class="two">
         <label class="fld"><span>TAE pactada (%)</span><input id="c_tae" inputmode="decimal" placeholder="27,24"></label>
@@ -1072,7 +1082,7 @@ function prefillComposer(){
     if(lastQuery.ent&&lastQuery.ent!=='*')fill('c_ent',lastQuery.ent==='WZ'?'WiZink':lastQuery.ent);
     if(lastQuery.anio){var fch=(lastQuery.mes?MESES[lastQuery.mes-1]+' de ':'')+lastQuery.anio;fill('c_fecha',fch)}
     if(lastQuery.tae!=null)fill('c_tae',String(lastQuery.tae).replace('.',','));
-    var PRODTXT={prestamo_hipotecario:'préstamo hipotecario',hipoteca_multidivisa:'préstamo hipotecario multidivisa',prestamo_personal:'préstamo personal',microcredito:'microcrédito',tarjeta_revolving:'tarjeta revolving',linea_credito_revolving:'línea de crédito revolving',tarjeta_pago_aplazado:'tarjeta de pago aplazado'};if(lastQuery.prod&&PRODTXT[lastQuery.prod])fill('c_prod',PRODTXT[lastQuery.prod]);
+    var PRODTXT={prestamo_hipotecario:'préstamo hipotecario',hipoteca_multidivisa:'préstamo hipotecario multidivisa',prestamo_personal:'préstamo personal',microcredito:'microcrédito',tarjeta_revolving:'tarjeta revolving',linea_credito_revolving:'línea de crédito revolving',tarjeta_pago_aplazado:'tarjeta revolving',credito_al_consumo:'crédito al consumo'};if(lastQuery.prod&&PRODTXT[lastQuery.prod])fill('c_prod',PRODTXT[lastQuery.prod]);
     var yr=lastQuery.anio;if(yr){var mr=refModal('rev',yr);if(mr&&mr.fiable){fill('c_ref',String(mr.val).replace('.',','));fill('c_umbral','tipo medio + 0,20 o 0,30 + 6 puntos: '+f2(mr.val+6.2).replace(' %','')+' – '+f2(mr.val+6.3)+' (STS 258/2023)')}}
   }
   autoSentido();
@@ -1348,13 +1358,71 @@ function cab(caso){
   html+='<div class="lugar">En '+esc(caso.lugar||'Madrid')+', a '+esc(caso.fs||'[fecha de la sentencia]')+'.</div>';
   var intro;
   if(V0.yo==='esta Sala'){
-    intro='<div class="lugar">Vistos por la Sección Vigesimoquinta bis de la Audiencia Provincial de Madrid, integrada por las Magistradas y Magistrados cuyo nombre consta al margen, el recurso de apelación interpuesto contra la sentencia dictada por el Juzgado de Primera Instancia, en el procedimiento de referencia, sobre '+(MAT?'nulidad de condiciones generales de la contratación':'nulidad de contrato de tarjeta revolving por usura y falta de transparencia')+'.</div>';
+    var materia=MAT?'nulidad de condiciones generales de la contratación':(esMicro(caso.prod)?'nulidad de contratos de micropréstamo por usura':'nulidad de contrato de tarjeta revolving por usura y falta de transparencia');
+    intro='<div class="lugar">Vistos por la Sección Vigesimoquinta bis de la Audiencia Provincial de Madrid, integrada por las Magistradas y Magistrados cuyo nombre consta al margen, el recurso de apelación interpuesto contra la sentencia dictada por el Juzgado de Primera Instancia, en el procedimiento de referencia, sobre '+materia+'.</div>';
   } else {
-    intro='<div class="lugar">Vistos por '+esc(caso.org||'este Juzgado de Primera Instancia')+' los autos de juicio ordinario registrados con el número de referencia, seguidos a instancia de '+ph(caso.act,'la parte actora')+', frente a '+ph(caso.dem,'la parte demandada')+', sobre '+(MAT?'nulidad de condiciones generales de la contratación':'nulidad de contrato de tarjeta revolving por usura y falta de transparencia')+', procede dictar la presente resolución con arreglo a los siguientes</div>';
+    var materia2=MAT?'nulidad de condiciones generales de la contratación':(esMicro(caso.prod)?'nulidad de contratos de micropréstamo por usura':'nulidad de contrato de tarjeta revolving por usura y falta de transparencia');
+    intro='<div class="lugar">Vistos por '+esc(caso.org||'este Juzgado de Primera Instancia')+' los autos de juicio ordinario registrados con el número de referencia, seguidos a instancia de '+ph(caso.act,'la parte actora')+', frente a '+ph(caso.dem,'la parte demandada')+', sobre '+materia2+', procede dictar la presente resolución con arreglo a los siguientes</div>';
   }
   html+=intro;
   return html;
 }
+
+/* ========== MODELO: MICROPRÉSTAMO (usura) ========== */
+function antMicro(caso){
+  var V0=V();
+  if(V0.yo==='esta Sala'){
+    return {title:'',body:'<p><b>Primero.</b> Por el Juzgado de Primera Instancia se dictó sentencia en los autos de referencia, seguidos a instancia de '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+', cuyo fallo es del tenor literal siguiente: '+ph('','transcriba el fallo de la sentencia de instancia')+'.</p><p><b>Segundo.</b> Contra la anterior resolución se interpuso recurso de apelación por '+ph('','la parte apelante')+', que fue admitido, y, en su virtud, previos los oportunos emplazamientos, se remitieron las actuaciones a esta Sección, sustanciándose el recurso por sus trámites legales.</p><p><b>Tercero.</b> En la tramitación de este recurso se han observado las prescripciones legales.</p>',sec:'ANTECEDENTES DE HECHO'};
+  }
+  return {title:'',body:'<p><b>Primero.</b> Por la representación procesal de '+ph(caso.act,'la parte actora')+' se formuló demanda de juicio ordinario frente a '+ph(caso.dem,'la parte demandada')+', en ejercicio de la acción de nulidad de los contratos de micropréstamo'+(caso.ent?' suscritos con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+', por su carácter usurario, con arreglo al artículo 1 de la Ley de 23 de julio de 1908, de Represión de la Usura, con los efectos restitutorios inherentes a la declaración de nulidad.</p><p><b>Segundo.</b> Admitida a trámite la demanda y emplazada la parte demandada, compareció en tiempo y forma y contestó oponiéndose a las pretensiones ejercitadas, con las alegaciones que obran en autos y que, por evitar reiteraciones innecesarias, se dan aquí por reproducidas.</p><p><b>Tercero.</b> Convocadas las partes al acto de la audiencia previa, se tuvo por fijados los términos del debate, se practicó la prueba propuesta y declarada pertinente en el acto del juicio y, oídas las conclusiones de las partes, quedaron los autos vistos para sentencia.</p><p><b>Cuarto.</b> En la tramitación del presente procedimiento se han observado las prescripciones legales de aplicación.</p>',sec:'ANTECEDENTES DE HECHO'};
+}
+function fdObjetoMicro(caso){
+  var b='<p>Ejercita '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+' la acción de nulidad de los contratos de micropréstamo'+(caso.ent?' suscritos con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+', por su carácter usurario, con arreglo al artículo 1 de la Ley de 23 de julio de 1908, de Represión de la Usura.</p>';
+  b+='<p>El micropréstamo —préstamo al consumo de escasa cuantía y corto plazo de devolución, habitualmente concertado en línea— se caracteriza por la exigencia de un interés remuneratorio extraordinariamente elevado, traducido en TAEs que superan con mucho las habituales en el crédito al consumo. Resueltas las cuestiones procesales y fijados los términos del debate, procede entrar en el fondo con arreglo a los fundamentos que siguen.</p>';
+  return {title:'Objeto del proceso y planteamiento',body:b};
+}
+function fdUsuraMicro(caso){
+  var V0=V();
+  var pct=function(v,t){return v?esc(v)+(/%/.test(v)?'':' %'):ph('',t)};
+  var tae=pct(caso.tae,'TAE');
+  var p1='<p>Los contratos enjuiciados'+(caso.ent?', suscritos con '+esc(caso.ent):'')+(caso.fecha?', de '+esc(caso.fecha)+',':'')+' fijaron un interés remuneratorio equivalente a una TAE del '+tae+'.</p>';
+  var pDoc='<p>El parámetro de referencia aplicable al micropréstamo presenta una singularidad que '+V0.yo+' debe abordar. El Banco de España no publica un tipo medio de referencia (TEDR) específico para micropréstamos: las tablas oficiales distinguen los créditos revolving, los préstamos al consumo y otros segmentos, pero ninguna categoría se corresponde con el préstamo de baja cuantía y corta duración. Tampoco existe una norma jurídica ni una doctrina generalmente aceptada que defina con precisión los límites cuantitativos o temporales del micropréstamo.</p>';
+  pDoc+='<p>Ante esta indeterminación, no cabe aceptar como comparador objetivo el certificado de la Asociación Española de Microcréditos, en la medida en que no concreta sobre qué muestra del mercado aplica sus cálculos estadísticos, ni las cuantías máximas y mínimas, ni los periodos temporales que incluye dentro de la categoría «micropréstamo», ni las entidades financieras consultadas ni su representatividad. Por todo ello, el parámetro de comparación debe ser, necesariamente, el que ofrecen las tablas estadísticas del Banco de España para préstamos al consumo, aplicando, en su caso, el criterio de corrección adecuado a las singularidades de la operación.</p>';
+  var pJur='<p>Conforme a la doctrina del Tribunal Supremo (SSTS 628/2015, del Pleno, de 25 de noviembre, y 149/2020, de 4 de marzo), un interés es usurario cuando es «notablemente superior al normal del dinero y manifiestamente desproporcionado con las circunstancias del caso» (artículo 1 de la Ley de 23 de julio de 1908). La carga de probar la concurrencia de circunstancias excepcionales que justifiquen estipular un interés elevado corresponde a la entidad financiera. Y no constituye circunstancia excepcional el riesgo de alto nivel de impagos asociado a operaciones de crédito concedidas de modo ágil y sin comprobar adecuadamente la solvencia del prestatario, pues «la concesión irresponsable de préstamos al consumo a tipos de interés muy superiores a los normales, que facilita el sobreendeudamiento de los consumidores y trae como consecuencia que quienes cumplen regularmente sus obligaciones tengan que cargar con las consecuencias del elevado nivel de impagos, no puede ser objeto de protección por el ordenamiento jurídico» (STS 149/2020, FD 5.º).</p>';
+  if(EST.usura==='si'){
+    var cl=pick('usurario','usura','u_pas',4);var tsFirst=cl.filter(function(c){return c.org==='TS'});
+    var b=p1+pDoc+pJur+'<p>En el caso de autos, la TAE pactada ('+tae+') resulta extraordinariamente superior al tipo medio de los préstamos al consumo publicado por el Banco de España para cualquier periodo, sin que la entidad prestamista haya aportado justificación alguna que permita considerar proporcionada la fijación de un interés de tal magnitud. No puede, por tanto, sino calificarse de notablemente superior al normal del dinero y manifiestamente desproporcionado, en el sentido del artículo 1 de la Ley de 23 de julio de 1908.</p>';
+    if(tsFirst.length){b+='<p>Así lo tiene declarado el Tribunal Supremo:</p>'+citeBlocks(tsFirst,'u_pas','u_fd');var ap=cl.filter(function(c){return c.org!=='TS'});if(ap.length)b+='<p>En el mismo sentido, la Sala vigesimoquinta bis de la Audiencia Provincial de Madrid, en supuestos de micropréstamo equivalentes al enjuiciado:</p>'+citeBlocks(ap,'u_pas','u_fd')}
+    else if(cl.length){b+='<p>Así lo ha declarado la Sala vigesimoquinta bis de la Audiencia Provincial de Madrid en supuestos de micropréstamo equivalentes al enjuiciado:</p>'+citeBlocks(cl,'u_pas','u_fd')}
+    else{b+=warn('Elija en «Consultar» alguna resolución que aprecie la usura en micropréstamos para que se incorporen aquí sus pasajes literales.')}
+    b+=otras('usurario','usura',cl);
+    b+='<p>Procede, en consecuencia, declarar la nulidad de los contratos de micropréstamo por su carácter usurario, con los efectos restitutorios previstos en el artículo 3 de la Ley de Represión de la Usura.</p>';
+    return {title:'Carácter usurario de los contratos de micropréstamo',body:b};
+  }
+  var cl2=pick('no_usurario','usura','u_pas',4);
+  var b2=p1+pDoc+pJur+'<p>En el caso de autos, aun siendo elevada, la TAE pactada ('+tae+') no alcanza una magnitud que, en relación con el tipo medio de los préstamos al consumo y atendidas las circunstancias del caso, permita calificar el interés como notablemente superior al normal del dinero a los efectos del artículo 1 de la Ley de 23 de julio de 1908.</p>';
+  if(cl2.length){b2+='<p>En este sentido se ha pronunciado la Sala vigesimoquinta bis en supuestos comparables:</p>'+citeBlocks(cl2,'u_pas','u_fd')}
+  b2+=otras('no_usurario','usura',cl2);
+  b2+='<p>Descartada la usura, procede desestimar la pretensión de nulidad de los contratos de micropréstamo.</p>';
+  return {title:'No se aprecia el carácter usurario de los micropréstamos',body:b2};
+}
+function fdEfectosMicro(caso){
+  var b='<p>Declarada la nulidad de los contratos de micropréstamo por su carácter usurario, resulta de aplicación el artículo 3 de la Ley de 23 de julio de 1908, conforme al cual el prestatario queda obligado únicamente a devolver el capital efectivamente dispuesto, sin intereses. La entidad prestamista, por su parte, debe restituir cuantas cantidades hubiera percibido por encima de ese capital por cualquier concepto (intereses, comisiones, gastos o cualesquiera otros), con los intereses legales desde la fecha de cada cobro y hasta su efectiva restitución.</p>';
+  b+='<p>La liquidación de las cantidades a restituir se determinará, de no ser posible en este momento procesal, en ejecución de sentencia, partiendo de los extractos aportados por la entidad y, en su defecto, de los que resulten del propio funcionamiento de los contratos.</p>';
+  return {title:'Efectos de la declaración de nulidad y restitución de prestaciones',body:b};
+}
+function falloMicro(caso){
+  var V0=V();
+  if(EST.usura==='si'){
+    var b='<p><b>'+V0.resuelvo+':</b></p><p><b>Primero.</b> Estim'+(V0.yo==='esta Sala'?'amos':'o')+' la demanda interpuesta por '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+'.</p><p><b>Segundo.</b> Declar'+(V0.yo==='esta Sala'?'amos':'o')+' la nulidad, por usurarios, de los contratos de micropréstamo celebrados entre las partes'+(caso.ent?' con '+esc(caso.ent):'')+(caso.fecha?', de '+esc(caso.fecha):'')+', con los efectos previstos en el artículo 3 de la Ley de 23 de julio de 1908, de Represión de la Usura: el prestatario vendrá obligado a restituir únicamente las sumas efectivamente dispuestas, y la entidad demandada deberá reintegrar cuantas cantidades hubiera percibido por encima de ese capital, con los intereses legales desde cada cobro.</p><p><b>Tercero.</b> '+ph('','pronunciamiento sobre costas')+'.</p><p>'+V0.recurso+'</p>';
+    return {title:'',body:b};
+  }
+  return {title:'',body:'<p><b>'+V0.resuelvo+':</b></p><p><b>Primero.</b> Desestim'+(V0.yo==='esta Sala'?'amos':'o')+' la demanda interpuesta por '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+'.</p><p><b>Segundo.</b> '+ph('','pronunciamiento sobre costas')+'.</p><p>'+V0.recurso+'</p>'};
+}
+
+/* ========== DETECCIÓN DE PRODUCTO ========== */
+function esMicro(prod){return /micro|microcr/i.test(prod||'')}
+function esRevolving(prod){var p=(prod||'').toLowerCase();return !p||/revolving|tarjeta revolv|línea de crédito revolv/i.test(p)}
 
 function redactar(ev){
   if(ev)ev.preventDefault();
@@ -1366,6 +1434,7 @@ function redactar(ev){
     ent:cv('c_ent'),fecha:cv('c_fecha'),prod:cv('c_prod'),
     tae:cv('c_tae'),ref:cv('c_ref'),umbral:cv('c_umbral'),sobDesde:''
   };
+  var micro=esMicro(caso.prod);
 
   USED={};var GC=clausSel();MAT=(!EST.usura&&!EST.trans&&!EST.sob&&GC.length)?GC.map(function(g){return CLATXT[g.tipo]}).join(', ').replace(/, ([^,]*)$/,' y $1'):'';
   var doc=$('doc');doc.innerHTML='';
@@ -1374,21 +1443,31 @@ function redactar(ev){
 
   // ANTECEDENTES
   doc.appendChild(el('div',{cls:'seccion',text:'ANTECEDENTES DE HECHO'}));
-  var ant=antecedentes(caso);
+  var ant=micro?antMicro(caso):antecedentes(caso);
   var artA=el('article',{cls:'fd'});
   artA.appendChild(el('div',{cls:'body',contenteditable:'true',html:ant.body}));
   doc.appendChild(artA);
 
   // FUNDAMENTOS DE DERECHO
   doc.appendChild(el('div',{cls:'seccion',text:'FUNDAMENTOS DE DERECHO'}));
-  var blocks=[fdObjeto(caso)];
-  if(EST.usura)blocks.push(fdUsura(caso));
-  if(EST.trans)blocks.push(fdTrans(caso));
-  if(EST.sob)blocks.push(fdSob(caso));
-  GC.forEach(function(g){blocks.push(fdClausula(g))});
-  if(EST.usura==='si'||EST.trans==='no_supera')blocks.push(fdEfectos(caso));
-  if(EST.presc)blocks.push(fdPresc(caso));
-  if(EST.costas)blocks.push(fdCostas());
+  var blocks;
+  if(micro){
+    blocks=[fdObjetoMicro(caso)];
+    if(EST.usura)blocks.push(fdUsuraMicro(caso));
+    if(EST.usura==='si')blocks.push(fdEfectosMicro(caso));
+    GC.forEach(function(g){blocks.push(fdClausula(g))});
+    if(EST.presc)blocks.push(fdPresc(caso));
+    if(EST.costas)blocks.push(fdCostas());
+  } else {
+    blocks=[fdObjeto(caso)];
+    if(EST.usura)blocks.push(fdUsura(caso));
+    if(EST.trans)blocks.push(fdTrans(caso));
+    if(EST.sob)blocks.push(fdSob(caso));
+    GC.forEach(function(g){blocks.push(fdClausula(g))});
+    if(EST.usura==='si'||EST.trans==='no_supera')blocks.push(fdEfectos(caso));
+    if(EST.presc)blocks.push(fdPresc(caso));
+    if(EST.costas)blocks.push(fdCostas());
+  }
 
   blocks.forEach(function(blk,i){
     var art=el('article',{cls:'fd'});
@@ -1404,7 +1483,7 @@ function redactar(ev){
 
   // FALLO
   doc.appendChild(el('div',{cls:'seccion',text:caso.tipo==='colegiado'?'FALLAMOS':'FALLO'}));
-  var fallo=fdFallo(caso);
+  var fallo=micro?falloMicro(caso):fdFallo(caso);
   var artF=el('article',{cls:'fd'});
   artF.appendChild(el('div',{cls:'body',contenteditable:'true',html:fallo.body}));
   doc.appendChild(artF);
