@@ -394,7 +394,7 @@ footer{border-top:1px solid var(--line);margin-top:30px}
   <button class="mode" id="tab-consulta" role="tab" aria-selected="true" aria-controls="v-consulta">
     <span class="n">01</span><span class="lg">Consultar jurisprudencia</span><span class="sm">Consultar</span></button>
   <button class="mode" id="tab-redactar" role="tab" aria-selected="false" aria-controls="v-redactar">
-    <span class="n">02</span><span class="lg">Redactar sentencia</span><span class="sm">Redactar</span></button>
+    <span class="n">02</span><span class="lg">Redactar borrador</span><span class="sm">Borrador</span></button>
   <button class="mode" id="tab-metodo" role="tab" aria-selected="false" aria-controls="v-metodo">
     <span class="n">03</span><span class="lg">Metodología y límites</span><span class="sm">Metodología</span></button>
 </nav>
@@ -528,7 +528,7 @@ footer{border-top:1px solid var(--line);margin-top:30px}
     </fieldset>
 
     <div class="selcount" id="selcount"></div>
-    <button class="cta" type="submit">Redactar la sentencia</button>
+    <button class="cta" type="submit">Redactar borrador</button>
     <p class="hint" style="margin-top:11px"><button class="linkbtn" type="button" id="c_reset">Vaciar</button></p>
   </form>
 
@@ -543,7 +543,7 @@ footer{border-top:1px solid var(--line);margin-top:30px}
       </div>
       <div class="noused" id="d_aviso" hidden></div>
       <div class="doc" id="doc">
-        <div class="doc-empty"><div class="big">§</div>Elija en la pestaña <b>Consultar</b> las resoluciones en que quiere apoyarse (botón «Usar en el borrador»), fije arriba el sentido del fallo y pulse <b>Redactar la sentencia</b>. Se generará con antecedentes, fundamentos de derecho y fallo, imitando la estructura de una sentencia real.</div>
+        <div class="doc-empty"><div class="big">§</div>Elija en la pestaña <b>Consultar</b> las resoluciones en que quiere apoyarse (botón «Usar en el borrador»), fije arriba el sentido del fallo y pulse <b>Redactar borrador</b>. Se generará con antecedentes, fundamentos de derecho y fallo, imitando la estructura de una sentencia real.</div>
       </div>
     </div>
   </section>
@@ -1382,13 +1382,37 @@ function fdFallo(caso){
   if(EST.costas==='dem') items.push('Imponer a la parte demandada las costas de '+V0.instancia+'.');
   else if(EST.costas==='act') items.push('Imponer a la parte actora las costas de '+V0.instancia+'.');
   else if(EST.costas==='sin') items.push('No hacer especial imposición de las costas de '+V0.instancia+'.');
-  var html='<p>Vistos los preceptos legales citados y demás de general y pertinente aplicación,</p>';
-  html+='<div class="fallo"><p>'+(V0.yo==='esta Sala'?'En atención a lo expuesto, la Sala acuerda:':'En atención a lo expuesto, acuerdo:')+'</p>';
-  items.forEach(function(it,i){ html+='<p><b>'+(i+1)+'.º</b> '+it+'</p>'; });
-  html+='</div>';
-  html+='<div class="rec">'+V0.recurso+'</div>';
-  html+='<div class="rec">'+(V0.yo==='esta Sala'?'Así, por esta nuestra sentencia, lo pronunciamos, mandamos y firmamos.':'Así por esta mi sentencia, de la que se expedirá testimonio para su unión a los autos, lo pronuncio, mando y firmo.')+'</div>';
-  return {title:'',body:html,sec:'FALLO',raw:true};
+  var html;
+  if(V0.yo==='esta Sala'){
+    /* ---- FALLO COLEGIADO (AP) ---- */
+    var estima=(EST.usura==='si'||EST.trans==='no_supera');
+    var desestima=(EST.usura==='no'&&!EST.trans)||(EST.trans==='supera'&&EST.usura!=='si');
+    html='<p>Vistos los preceptos legales citados y demás de general y pertinente aplicación, en nombre de S. M. el Rey y por la autoridad que le confiere la Constitución,</p>';
+    html+='<p style="text-align:center;font-weight:600">FALLAMOS</p>';
+    if(estima){
+      html+='<p>Que estimando '+(items.length>2?'en parte ':'')+'el recurso de apelación interpuesto por '+ph('','la parte apelante')+' contra la sentencia dictada por '+ph('','el Juzgado de Primera Instancia')+', DEBEMOS REVOCAR Y REVOCAMOS '+(items.length>2?'parcialmente ':'')+'dicha resolución, y en su lugar acordamos:</p>';
+    } else if(desestima){
+      html+='<p>Que desestimando el recurso de apelación interpuesto por '+ph('','la parte apelante')+' contra la sentencia dictada por '+ph('','el Juzgado de Primera Instancia')+', DEBEMOS CONFIRMAR Y CONFIRMAMOS íntegramente la resolución recurrida.</p>';
+    } else {
+      html+='<p>'+ph('','Complete el fallo según el sentido del recurso: estimación total, parcial o desestimación')+'</p>';
+    }
+    if(estima||(!estima&&!desestima)){items.forEach(function(it,i){ html+='<p><b>'+(i+1)+'.º</b> '+it+'</p>'; })}
+    if(EST.costas==='dem') html+='<p>Se imponen a la parte recurrida las costas de esta alzada.</p>';
+    else if(EST.costas==='act') html+='<p>Se imponen a la parte apelante las costas de esta alzada.</p>';
+    else if(EST.costas==='sin') html+='<p>No se hace especial imposición de las costas de esta alzada.</p>';
+    html+='<p>'+V0.recurso+'</p>';
+    html+='<p>Así, por esta nuestra sentencia, lo pronunciamos, mandamos y firmamos.</p>';
+  } else {
+    /* ---- FALLO UNIPERSONAL (instancia) ---- */
+    html='<p>Vistos los preceptos legales citados y demás de general y pertinente aplicación,</p>';
+    html+='<p style="text-align:center;font-weight:600">FALLO</p>';
+    html+='<div class="fallo"><p>En atención a lo expuesto, acuerdo:</p>';
+    items.forEach(function(it,i){ html+='<p><b>'+(i+1)+'.º</b> '+it+'</p>'; });
+    html+='</div>';
+    html+='<p>'+V0.recurso+'</p>';
+    html+='<p>Así por esta mi sentencia, de la que se expedirá testimonio para su unión a los autos, lo pronuncio, mando y firmo.</p>';
+  }
+  return {title:'',body:html,sec:V0.yo==='esta Sala'?'FALLAMOS':'FALLO',raw:true};
 }
 
 /* ========== REDACTAR ========== */
@@ -1552,7 +1576,7 @@ function redactar(ev){
   $('d_meta').textContent=blocks.length+' fundamentos · '+Object.keys(USED).length+' de '+selN()+' resoluciones elegidas citadas · '+(caso.tipo==='colegiado'?'órgano colegiado':'órgano unipersonal');
   if(noU.length){av.hidden=false;av.textContent=(noU.length===1?'No se ha citado 1 resolución elegida':'No se han citado '+noU.length+' resoluciones elegidas')+(noU.length===1?' porque no resuelve en el sentido marcado o no trata los puntos activos: ':' porque no resuelven en el sentido marcado o no tratan los puntos activos: ')+noU.map(function(c){return c.roj}).join('; ')+'. Cambie el sentido del fallo si quiere citarla'+(noU.length===1?'':'s')+'.'}else av.hidden=true;
   if(ev&&window.innerWidth<900){try{$('doc').parentNode.scrollIntoView({behavior:'smooth',block:'start'})}catch(e){}}
-  toast('Sentencia redactada. Puede editarla directamente sobre el documento.');
+  toast('Borrador redactado. Puede editarlo directamente sobre el documento.');
 }
 function fdPlain(art){
   var h=art.querySelector('h3');
@@ -1575,8 +1599,8 @@ function copyText(t){var fb=function(){var ta=document.createElement('textarea')
 
 $('cf').addEventListener('submit',redactar);
 $('c_reset').addEventListener('click',function(){TOUCH={};$('cf').reset();Object.keys(EST).forEach(function(k){EST[k]='';var h=$(EJES[k].host);h.querySelectorAll('.opt').forEach(function(x,idx){x.className='opt';var inp=x.querySelector('input');if(inp.value===''){inp.checked=true;x.className='opt on'}else inp.checked=false})});});
-$('d_copy').addEventListener('click',function(){if(!document.querySelector('#doc .fd')){toast('Primero redacte la sentencia');return}copyText(docPlain());toast('Sentencia copiada al portapapeles')});
-$('d_print').addEventListener('click',function(){if(!document.querySelector('#doc .fd')){toast('Primero redacte la sentencia');return}window.print()});
+$('d_copy').addEventListener('click',function(){if(!document.querySelector('#doc .fd')){toast('Primero redacte el borrador');return}copyText(docPlain());toast('Borrador copiado al portapapeles')});
+$('d_print').addEventListener('click',function(){if(!document.querySelector('#doc .fd')){toast('Primero redacte el borrador');return}window.print()});
 /* ---------- .docx: zip sin compresión y WordprocessingML ---------- */
 var CRCT=(function(){var t=[],c,n,k;for(n=0;n<256;n++){c=n;for(k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
 function crc32(u){var c=0xFFFFFFFF;for(var i=0;i<u.length;i++)c=CRCT[(c^u[i])&0xFF]^(c>>>8);return (c^0xFFFFFFFF)>>>0}
@@ -1656,8 +1680,8 @@ function docxSentencia(){
     {name:'word/document.xml',data:doc},{name:'word/styles.xml',data:sty}]);
 }
 $('d_word').addEventListener('click',function(){
-  if(!document.querySelector('#doc .fd')){toast('Primero redacte la sentencia');return}
-  try{entregar(docxSentencia(),'Sentencia_borrador.docx','application/vnd.openxmlformats-officedocument.wordprocessingml.document')}catch(e){toast('No se ha podido crear el documento de Word')}
+  if(!document.querySelector('#doc .fd')){toast('Primero redacte el borrador');return}
+  try{entregar(docxSentencia(),'Borrador_sentencia.docx','application/vnd.openxmlformats-officedocument.wordprocessingml.document')}catch(e){toast('No se ha podido crear el documento de Word')}
 });
 
 /* ============ FOOTER / DATELINE ============ */
