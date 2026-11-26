@@ -1319,7 +1319,7 @@ function prefillComposer(){
     if(lastQuery.anio){var fch=(lastQuery.mes?MESES[lastQuery.mes-1]+' de ':'')+lastQuery.anio;fill('c_fecha',fch)}
     if(lastQuery.tae!=null)fill('c_tae',String(lastQuery.tae).replace('.',','));
     var PRODTXT={prestamo_hipotecario:'préstamo hipotecario',hipoteca_multidivisa:'préstamo hipotecario multidivisa',prestamo_personal:'préstamo personal',microcredito:'microcrédito',tarjeta_revolving:'tarjeta revolving',linea_credito_revolving:'línea de crédito revolving',tarjeta_pago_aplazado:'tarjeta revolving',credito_al_consumo:'crédito al consumo'};if(lastQuery.prod&&PRODTXT[lastQuery.prod])fill('c_prod',PRODTXT[lastQuery.prod]);
-    var yr=lastQuery.anio;if(yr&&famProd($('c_prod').value)==='rev'){var mr=refModal('rev',yr);if(mr&&mr.fiable){fill('c_ref',String(mr.val).replace('.',','));fill('c_umbral','tipo medio + 0,20 o 0,30 + 6 puntos: '+f2(mr.val+6.2).replace(' %','')+' – '+f2(mr.val+6.3)+' (STS 258/2023)')}}
+    var yr=lastQuery.anio;if(yr&&famProd($('c_prod').value)==='rev'){var mr=refModal('rev',yr);if(mr&&mr.fiable){fill('c_ref',String(mr.val).replace('.',','));fill('c_umbral','entre el '+f2(mr.val+6.2)+' y el '+f2(mr.val+6.3))}}
   }
   autoSentido();
   if(!$('c_fs').value){var d=new Date();$('c_fs').value=d.getDate()+' de '+MESES[d.getMonth()]+' de '+d.getFullYear()}
