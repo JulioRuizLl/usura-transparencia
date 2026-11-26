@@ -60,6 +60,15 @@ button{font:inherit;cursor:pointer;color:inherit}
 main{max-width:1180px;margin:0 auto;padding:26px 28px 40px}
 .view{display:none}.view.on{display:block}
 
+/* ---------- Sub-tabs de producto ---------- */
+.subtabs{display:flex;gap:0;margin:0 0 18px;border-bottom:2px solid var(--line)}
+.subtab{padding:10px 20px;border:none;background:none;font:600 14.5px/1.3 var(--sans);color:var(--ink3);cursor:pointer;
+  border-bottom:2.5px solid transparent;margin-bottom:-2px;transition:color .12s,border-color .12s}
+.subtab:hover{color:var(--ink)}
+.subtab.on{color:var(--brand-ink);border-bottom-color:var(--oxblood)}
+.subtab .stcount{font-family:var(--mono);font-size:12px;color:var(--ink3);margin-left:6px}
+.subtab.on .stcount{color:var(--oxblood)}
+
 /* ---------- Two-column working layout ---------- */
 .work{display:grid;grid-template-columns:340px 1fr;gap:34px;align-items:start}
 @media(max-width:900px){.work{grid-template-columns:1fr}}
@@ -392,6 +401,12 @@ footer{border-top:1px solid var(--line);margin-top:30px}
 
 <!-- ============ VIEW: CONSULTA ============ -->
 <section class="view on" id="v-consulta" role="tabpanel" aria-labelledby="tab-consulta">
+<nav class="subtabs" id="prodtabs">
+  <button class="subtab on" data-prod="revolving" type="button">Revolving<span class="stcount" id="st_rev"></span></button>
+  <button class="subtab" data-prod="microcredito" type="button">Micropréstamos<span class="stcount" id="st_mic"></span></button>
+  <button class="subtab" data-prod="hipotecario" type="button">Hipotecarios<span class="stcount" id="st_hip"></span></button>
+  <button class="subtab" data-prod="otros" type="button">Otras cláusulas<span class="stcount" id="st_otr"></span></button>
+</nav>
 <section class="hero" aria-label="Consulta rápida">
   <div class="hero-q">
     <label class="big sel ent"><span>Entidad</span><select id="ent" form="f"></select></label>
@@ -1612,6 +1627,48 @@ $('pie').innerHTML='<b>Usura y transparencia</b>: jurisprudencia de la AP Madrid
   $('m_fecha').textContent=fechaLarga(D.generado);
   if(CONTACTO)$('m_contacto').textContent=' También puede escribir a '+CONTACTO+'.';
 })();
+
+/* ============ SUB-TABS DE PRODUCTO ============ */
+(function(){
+  var REV_PRODS={'tarjeta_revolving':1,'linea_credito_revolving':1,'tarjeta_pago_aplazado':1};
+  var MIC_PRODS={'microcredito':1};
+  var HIP_PRODS={'prestamo_hipotecario':1,'hipoteca_multidivisa':1};
+  function catOf(c){
+    var p=c.prod||'';
+    if(REV_PRODS[p]||(!p&&c.claus&&!c.claus.length))return 'revolving';
+    if(MIC_PRODS[p])return 'microcredito';
+    if(HIP_PRODS[p])return 'hipotecario';
+    if(/otro:/i.test(p))return 'otros';
+    return p?'otros':'revolving';
+  }
+  var counts={revolving:0,microcredito:0,hipotecario:0,otros:0};
+  C.forEach(function(c){var cat=catOf(c);if(counts[cat]!=null)counts[cat]++});
+  var e=function(id){return document.getElementById(id)};
+  if(e('st_rev'))e('st_rev').textContent=mil(counts.revolving);
+  if(e('st_mic'))e('st_mic').textContent=mil(counts.microcredito);
+  if(e('st_hip'))e('st_hip').textContent=mil(counts.hipotecario);
+  if(e('st_otr'))e('st_otr').textContent=mil(counts.otros);
+
+  var PROD_MAP={
+    revolving:{prod:'',cla:'',placeholder:'Usura y transparencia en revolving'},
+    microcredito:{prod:'microcredito',cla:'',placeholder:'Usura en micropréstamos'},
+    hipotecario:{prod:'prestamo_hipotecario',cla:'clausula_suelo',placeholder:'Cláusulas hipotecarias'},
+    otros:{prod:'',cla:'comision_apertura',placeholder:'Otras cláusulas abusivas'}
+  };
+  document.querySelectorAll('.subtab').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.subtab').forEach(function(b){b.className='subtab'});
+      btn.className='subtab on';
+      var cfg=PROD_MAP[btn.dataset.prod]||{};
+      if(cfg.prod!=null)$('prod').value=cfg.prod;
+      if(cfg.cla!=null)$('cla').value=cfg.cla;
+      // Show/hide sob fields based on product type
+      var sobDiv=document.querySelector('.hero-s');
+      if(sobDiv)sobDiv.style.display=(btn.dataset.prod==='revolving')?'':'none';
+    });
+  });
+})();
+
 updateSelUI();
 }).catch(function(e){document.getElementById('out').innerHTML='<p class="empty">No se han podido cargar los datos. Recargue la página.</p>'});
 </script>
