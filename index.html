@@ -33,18 +33,32 @@ button{font:inherit;cursor:pointer;color:inherit}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
 
 /* ---------- Masthead ---------- */
-.mast{border-bottom:1.5px solid var(--ink);background:var(--paper)}
-.mast-in{max-width:1180px;margin:0 auto;padding:26px 28px 20px;
-  display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-.mast h1{margin:0;font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.02;
-  letter-spacing:-.015em}
-.mast h1 .bis{color:var(--oxblood)}
-.mast .byline{font-size:12px;color:var(--ink3);margin:6px 0 0;font-weight:400}
-.mast .kicker{font-size:13px;color:var(--ink2);margin:0 0 7px;font-weight:500}
-.mast .dateline{text-align:right;font-size:12.5px;color:var(--ink2);line-height:1.5;max-width:300px}
-.mast .dateline b{color:var(--ink);font-variant-numeric:tabular-nums}
+.mast{position:relative;overflow:hidden;color:#fff;background:#16293e;
+  background-image:linear-gradient(118deg,#12233a 0%,#1b3350 55%,#234469 100%)}
+.mast-deco{position:absolute;right:-30px;top:-14px;height:calc(100% + 28px);width:auto;opacity:.24;pointer-events:none}
+.mast-in{position:relative;max-width:1180px;margin:0 auto;padding:30px 28px 22px;
+  display:flex;justify-content:space-between;align-items:center;gap:26px 40px;flex-wrap:wrap}
+.mast-id{display:flex;align-items:center;gap:20px;min-width:0;flex:1 1 520px}
+.mast .mark{flex:none;width:74px;height:74px;border-radius:17px;background:rgba(255,255,255,.07);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.mast h1{margin:0;font-family:var(--serif);font-weight:600;font-size:40px;line-height:1.02;
+  letter-spacing:-.015em;color:#fff}
+.mast h1 em{font-style:italic;font-weight:500;color:#e9b9b3}
+.mast .kicker{font-size:11.5px;color:#a9bdd3;margin:0 0 8px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.mast .scope{margin:9px 0 0;font-size:15px;line-height:1.45;color:#d4deea;max-width:600px}
+.mast .scope b{color:#fff;font-weight:600}
+.mast-stats{display:flex;gap:0;margin:0;flex:none}
+.mast-stats div{padding:2px 22px;border-left:1px solid rgba(255,255,255,.2)}
+.mast-stats div:first-child{padding-left:0;border-left:0}
+.mast-stats dt{font-family:var(--serif);font-size:30px;line-height:1.05;font-weight:600;color:#fff;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.mast-stats dd{margin:5px 0 0;font-size:11.5px;line-height:1.3;color:#a9bdd3;letter-spacing:.04em;text-transform:uppercase}
+.mast-foot{position:relative;border-top:1px solid rgba(255,255,255,.14);background:rgba(8,18,31,.28)}
+.mast-foot p{max-width:1180px;margin:0 auto;padding:9px 28px;font-size:12.5px;line-height:1.45;color:#b9c8d9;
+  display:flex;justify-content:space-between;gap:6px 26px;flex-wrap:wrap}
+.mast-foot b{color:#e6edf5;font-weight:600}
 .privacy-bar{max-width:1180px;margin:0 auto;padding:9px 28px;font-size:13px;color:var(--green);background:var(--gr-soft);border-bottom:1px solid #c8d8cc}
-@media(max-width:620px){.mast h1{font-size:27px}.mast .dateline{text-align:left}}
+@media(max-width:900px){.mast-deco{opacity:.14}}
+@media(max-width:620px){.mast h1{font-size:28px}.mast .mark{width:52px;height:52px;border-radius:13px}.mast-id{gap:13px;flex-basis:100%}.mast-in{padding:20px 18px 16px;gap:16px}.mast .scope{font-size:13px;margin-top:6px}.mast .kicker{font-size:10px;margin-bottom:5px}.mast-stats{width:100%}.mast-stats dt{font-size:21px}.mast-stats div{padding:0 11px;flex:1 1 0;min-width:0}.mast-stats dd{font-size:9.5px;letter-spacing:.02em}.mast-foot p{padding:8px 18px;font-size:11.5px}}
 
 /* ---------- Mode switch ---------- */
 .modes{max-width:1180px;margin:0 auto;padding:16px 28px 0;display:flex;gap:4px}
@@ -248,9 +262,6 @@ blockquote .src{display:block;margin-top:5px;font-family:var(--mono);font-size:1
 .doc-empty .big{font-size:40px;line-height:1;margin-bottom:14px;color:var(--line2)}
 
 /* ---------- Cabecera: alcance ---------- */
-.mast .scope{font-size:13.5px;color:var(--ink2);margin:10px 0 0;max-width:64ch;line-height:1.5}
-.mast .scope b{color:var(--ink);font-weight:600}
-.mast .scope .inf{display:block;margin-top:3px;color:var(--ink3);font-size:12.5px}
 .metod .aviso-m{border-left:3px solid var(--amber);background:var(--am-soft);padding:10px 14px;border-radius:0 6px 6px 0}
 .modes{overflow-x:auto}.mode{white-space:nowrap}
 @media(max-width:620px){.modes{padding:14px 12px 0}.mode{padding:10px 11px 12px;font-size:13.5px}.mode .n{display:none}main{padding:20px 16px 34px}.mast-in{padding:20px 16px 16px}}
@@ -308,7 +319,7 @@ div.toast{bottom:84px}
 @media print{.selbar,.noused{display:none!important}}
 
 a.ghost{text-decoration:none;display:inline-block}
-@media(max-width:620px){.mast .kicker,.mast .scope .inf{display:none}.mast .scope{font-size:12.5px;margin-top:6px}.mast .dateline{font-size:11.5px}.mast-in{gap:8px}}
+
 /* ---------- Inicio ---------- */
 .hero{margin:0 0 28px}
 .hero-q{display:grid;grid-template-columns:minmax(220px,1.5fr) 128px 128px minmax(170px,1fr) auto;gap:12px;align-items:end;margin-bottom:12px}
@@ -381,7 +392,7 @@ footer{border-top:1px solid var(--line);margin-top:30px}
 .foot-in{max-width:1180px;margin:0 auto;padding:22px 28px 46px;color:var(--ink3);font-size:12.5px;line-height:1.6;max-width:900px}
 
 @media print{
-  .mast,.modes,.rail,.docbar,footer,.fdtools,.ocr{display:none!important}
+  .mast,.modes,.rail,.docbar,footer,.fdtools,.ocr,.fd .warn{display:none!important}
   .work{grid-template-columns:1fr}.docwrap{border:0;box-shadow:none}
   body{background:#fff}.doc{max-width:none;padding:0}
 }
@@ -390,15 +401,30 @@ footer{border-top:1px solid var(--line);margin-top:30px}
 </head>
 <body>
 <header class="mast">
+  <svg class="mast-deco" viewBox="0 0 520 240" aria-hidden="true" fill="none">
+    <path d="M0 150C120 142 210 96 300 92s150 22 220 6" stroke="#e9b9b3" stroke-width="1.6" stroke-dasharray="2 7" stroke-linecap="round"/>
+    <g stroke="#e9b9b3" stroke-width="1.5"><circle cx="118" cy="92" r="9"/><circle cx="176" cy="70" r="14"/><circle cx="236" cy="46" r="7"/><circle cx="286" cy="38" r="19"/><circle cx="352" cy="58" r="11"/><circle cx="412" cy="30" r="8"/><circle cx="462" cy="52" r="15"/></g>
+    <g stroke="#9fb6cf" stroke-width="1.5"><circle cx="96" cy="182" r="7"/><circle cx="160" cy="166" r="11"/><circle cx="222" cy="148" r="6"/><circle cx="268" cy="176" r="15"/><circle cx="336" cy="140" r="9"/><circle cx="392" cy="170" r="12"/><circle cx="452" cy="134" r="7"/><circle cx="492" cy="178" r="10"/></g>
+  </svg>
   <div class="mast-in">
-    <div>
-      <p class="kicker">Qué se ha resuelto ya · herramienta informativa</p>
-      <h1>Usura y transparencia</h1>
-      <p class="scope">Jurisprudencia de la <b>Audiencia Provincial de Madrid</b> y del <b>Tribunal Supremo</b>. Actualización mensual. <span class="inf">Compruebe siempre la resolución en el CENDOJ.</span></p>
-      <p class="byline">Desarrollada por Julio Ruiz Llario · magistrado AP Madrid (Sección 25.ª bis, especializada en condiciones generales de la contratación de entidades financieras)</p>
+    <div class="mast-id">
+      <svg class="mark" viewBox="4 8 56 50" role="img" aria-label="Balanza inclinada cuyos platillos recuerdan el signo de porcentaje" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M32 15v35M22 50h20" stroke="#fff" stroke-width="3"/>
+      <path d="M13 19.5 51 26.5" stroke="#fff" stroke-width="3"/>
+      <circle cx="32" cy="23" r="2.6" fill="#fff"/>
+      <path d="M13 19.5v6M51 26.5v7" stroke="#fff" stroke-width="2"/>
+      <circle cx="13" cy="31.5" r="6" stroke="#fff" stroke-width="3"/>
+      <circle cx="51" cy="40.5" r="7" stroke="#e9b9b3" stroke-width="3.4"/>
+    </svg>
+      <div>
+        <p class="kicker">Qué se ha resuelto ya · para jueces y magistrados</p>
+        <h1>Usura <em>y</em> transparencia</h1>
+        <p class="scope">Jurisprudencia de la <b>Audiencia Provincial de Madrid</b> y del <b>Tribunal Supremo</b> sobre revolving, micropréstamos y cláusulas abusivas.</p>
+      </div>
     </div>
-    <p class="dateline" id="dateline"></p>
+    <dl class="mast-stats" id="dateline"></dl>
   </div>
+  <div class="mast-foot"><p><span>Desarrollada por <b>Julio Ruiz Llario</b>, magistrado de la AP de Madrid (Sección 25.ª bis, especializada en condiciones generales de la contratación de entidades financieras)</span><span>Herramienta informativa: compruebe siempre la resolución en el CENDOJ</span></p></div>
 </header>
 <div class="privacy-bar">🔒 Funciona sin conexión. Los datos del contrato y los documentos que lea el lector se quedan en su dispositivo: no se envían a ningún servidor. Solo se cuentan las visitas, de forma anónima y sin cookies.</div>
 
@@ -491,20 +517,25 @@ footer{border-top:1px solid var(--line);margin-top:30px}
   <form class="rail" id="cf" autocomplete="off">
     <fieldset><legend>Datos del caso</legend>
       <label class="fld"><span>Tipo de órgano</span><select id="c_tipo">
-        <option value="unipersonal" selected>Unipersonal (juez de primera instancia)</option>
-        <option value="colegiado">Colegiado (Sala de la AP, apelación)</option>
+        <option value="unipersonal" selected>Unipersonal (primera instancia)</option>
+        <option value="colegiado">Colegiado (Audiencia Provincial, apelación)</option>
       </select></label>
-      <label class="fld"><span>Órgano</span><input id="c_org" placeholder="Juzgado de Primera Instancia nº … de Madrid"></label>
+      <label class="fld"><span>Órgano que dicta la sentencia</span><input id="c_org" placeholder="Tribunal de Instancia de …, Sección Civil, plaza n.º …"></label>
+      <label class="fld"><span>Clase de juicio</span><select id="c_juicio">
+        <option value="">— elija —</option>
+        <option value="ordinario">Juicio ordinario</option>
+        <option value="verbal">Juicio verbal</option>
+      </select></label>
       <div class="two">
-        <label class="fld"><span>Procedimiento</span><input id="c_proc" placeholder="Ordinario …/…"></label>
+        <label class="fld"><span>Procedimiento</span><input id="c_proc" placeholder="Juicio ordinario / verbal …/…"></label>
         <label class="fld"><span>Sentencia nº</span><input id="c_num" placeholder="…/…"></label>
       </div>
       <div class="two">
-        <label class="fld"><span>Lugar</span><input id="c_lugar" placeholder="Madrid" value="Madrid"></label>
+        <label class="fld"><span>Lugar</span><input id="c_lugar" placeholder="Madrid"></label>
         <label class="fld"><span>Fecha de la sentencia</span><input id="c_fs" placeholder="25 de noviembre de 2026"></label>
       </div>
       <label class="fld"><span>Parte actora</span><input id="c_act" placeholder="Nombre de la parte actora"></label>
-      <label class="fld"><span>Parte demandada</span><input id="c_dem" placeholder="WiZink Bank, S.A."></label>
+      <label class="fld"><span>Parte demandada</span><input id="c_dem" placeholder="Nombre de la entidad demandada"></label>
       <label class="fld"><span>Letrado/a de la parte actora (opcional)</span><input id="c_letact" placeholder=""></label>
       <label class="fld"><span>Letrado/a de la demandada (opcional)</span><input id="c_letdem" placeholder=""></label>
     </fieldset>
@@ -527,17 +558,41 @@ footer{border-top:1px solid var(--line);margin-top:30px}
         <label class="fld"><span>TAE pactada (%)</span><input id="c_tae" inputmode="decimal" placeholder="27,24"></label>
         <label class="fld"><span>Tipo medio (%)</span><input id="c_ref" inputmode="decimal" placeholder="21,23"></label>
       </div>
-      <p class="hint">El tipo medio y el umbral se proponen a partir de la referencia que más utiliza la Audiencia para ese año; compruébelos.</p>
-      <label class="fld"><span>Umbral de usura</span><input id="c_umbral" placeholder="tipo medio + 6 puntos (STS 258/2023)"></label>
+      <p class="hint">En revolving, el tipo medio y el umbral se proponen a partir de la referencia que más utiliza la Audiencia para ese año; compruébelos. En los demás productos, indique el tipo medio de la categoría que corresponda.</p>
+      <label class="fld"><span>Umbral de usura (solo revolving)</span><input id="c_umbral" placeholder="tipo medio + 0,20 o 0,30 + 6 puntos (STS 258/2023)"></label>
     </fieldset>
 
     <fieldset><legend>Sentido del fallo</legend>
-      <p class="hint" style="margin-top:0">Se propone según las resoluciones que ha elegido. Cámbielo si resuelve en otro sentido: solo se citan las resoluciones que resuelven en el sentido marcado.</p>
+      <p class="hint" style="margin-top:0">Se propone según las resoluciones que ha elegido. Cámbielo si resuelve en otro sentido: solo se citan las resoluciones que resuelven en el sentido marcado. Para añadir un fundamento sobre otra cláusula (comisiones, seguro…), elija la resolución en «Consultar» con esa cláusula marcada en «Cuestión».</p>
       <div class="fld"><span>Usura (TAE inicial)</span><div class="seg" id="s_usura"></div></div>
       <div class="fld"><span>Transparencia</span><div class="seg" id="s_trans"></div></div>
-      <div class="fld"><span>Usura sobrevenida</span><div class="seg" id="s_sob"></div></div>
+      <div class="fld"><span>Subida posterior del tipo de interés</span><div class="seg" id="s_sob"></div></div>
       <div class="fld"><span>Prescripción</span><div class="seg" id="s_presc"></div></div>
-      <div class="fld"><span>Costas</span><div class="seg" id="s_costas"></div></div>
+      <div class="fld"><span id="lb_costas">Costas</span><div class="seg" id="s_costas"></div></div>
+    </fieldset>
+
+    <fieldset id="fs_rec" hidden><legend>El recurso de apelación</legend>
+      <p class="hint" style="margin-top:0">El sentido del fallo de arriba indica cómo queda resuelto el pleito. Aquí se indica quién recurre y qué suerte corre el recurso.</p>
+      <label class="fld"><span>Parte apelante</span><select id="c_apela">
+        <option value="">— elija —</option>
+        <option value="dem">La entidad demandada</option>
+        <option value="act">La parte actora (consumidor)</option>
+        <option value="ambas">Ambas partes</option>
+      </select></label>
+      <label class="fld"><span>Resultado del recurso</span><select id="c_res">
+        <option value="">— elija —</option>
+        <option value="desestimar">Se desestima (se confirma la sentencia)</option>
+        <option value="parcial">Se estima en parte</option>
+        <option value="estimar">Se estima (se revoca la sentencia)</option>
+      </select></label>
+      <label class="fld"><span>Costas de la alzada</span><select id="c_calz">
+        <option value="">Propuesta automática</option>
+        <option value="apelante">A la parte apelante</option>
+        <option value="apelada">A la parte apelada</option>
+        <option value="entidad">A la entidad (SSTS 1785/2025 y 1786/2025)</option>
+        <option value="mitad">Mitad a la entidad (STS 1796/2025)</option>
+        <option value="sin">Sin imposición</option>
+      </select></label>
     </fieldset>
 
     <div class="selcount" id="selcount"></div>
@@ -573,7 +628,7 @@ footer{border-top:1px solid var(--line);margin-top:30px}
   <h2>En qué se basa</h2>
   <div class="stats" id="m_stats"></div>
   <p>Principalmente, en las sentencias de la <b>Sección 25.ª bis de la Audiencia Provincial de Madrid</b> (sección especializada en condiciones generales de la contratación de entidades financieras) y en la jurisprudencia del <b>Tribunal Supremo</b>, que se muestra siempre primero. Otras Audiencias pueden seguir criterios distintos.</p>
-  <p>Se han excluido los productos hipotecarios (cláusula suelo, multidivisa, IRPH) por ser competencia de los juzgados especializados en condiciones generales de la contratación. Si está interesado en ella, también existe y puede solicitarla escribiendo al desarrollador (<a href="mailto:julio.ruiz@poderjudicial.es">julio.ruiz@poderjudicial.es</a>).</p>
+  <p>Se han excluido los productos hipotecarios (cláusula suelo, multidivisa, IRPH) por ser competencia de los juzgados especializados en condiciones generales de la contratación. Esa parte también existe: si le interesa, puede pedirla escribiendo al desarrollador (<a href="mailto:julio.ruiz@poderjudicial.es">julio.ruiz@poderjudicial.es</a>).</p>
 
   <h2>Cómo leerla</h2>
   <ul>
@@ -698,7 +753,7 @@ function ficha(c,lv,sm,last){
   fila('Defectos',(c.tr_def||[]).map(defLabel));
   fila('Documento',c.rasgos);
   fila('Criterio',c.criterio);
-  (c.claus||[]).forEach(function(k){var t=(k.tipo==='otra'?'Cláusula':(k.tipo||'Cláusula').replace(/_/g,' ')).replace(/^otra:/,'');fila(t.charAt(0).toUpperCase()+t.slice(1),[(k.resultado||'').replace(/_/g,' ')+(k.control?' ('+k.control.replace(/_/g,' ')+')':'')].concat(k.motivos||[]))});
+  (c.claus||[]).forEach(function(k){var t=(k.tipo==='otra'?'Cláusula':(k.tipo||'Cláusula').replace(/_/g,' ')).replace(/^otra:/,'');fila(t.charAt(0).toUpperCase()+t.slice(1),[(k.resultado||'').replace(/_/g,' ')+(k.inst?' en la instancia (no revisada por la Sala)':'')+(k.control?' ('+k.control.replace(/_/g,' ')+')':'')].concat(k.motivos||[]))});
   card.appendChild(g);
   if(sm){var d=el('dl',{cls:'kv'});
     [['Subida de tipo',sm.fecha],['TAE',(sm.tae_anterior!=null?fmt(sm.tae_anterior)+' → ':'')+fmt(sm.tae)],['Comunicación',sm.forma_comunicacion],['Resultado',sm.resultado&&sm.resultado.replace(/_/g,' ')]].forEach(function(p){if(p[1]){d.appendChild(el('dt',{text:p[0]}));d.appendChild(el('dd',{text:p[1]}))}});card.appendChild(d);
@@ -795,7 +850,7 @@ function veredicto(q){
   if(q.cla&&q.cla!=='interes'){
     var ks=[];C.forEach(function(c){if(!inEnt(c))return;(c.claus||[]).forEach(function(k){if((k.tipo||'').indexOf(q.cla)===0)ks.push({c:c,k:k})})});
     if(!ks.length)return;
-    var dec=ks.filter(function(x){return x.k.resultado==='nula'||x.k.resultado==='valida'}),nul=dec.filter(function(x){return x.k.resultado==='nula'}).length;
+    var dec=ks.filter(function(x){return !x.k.inst&&(x.k.resultado==='nula'||x.k.resultado==='valida')}),nul=dec.filter(function(x){return x.k.resultado==='nula'}).length;
     var alla=ks.filter(function(x){return x.k.resultado==='allanamiento'}).length;
     var nom=CLANOM[q.cla]||'Cláusula';
     v.appendChild(el('div',{cls:'v-k',text:'Qué se ha resuelto'+(q.ent==='*'?'':' · '+(q.ent==='WZ'?'cartera WiZink':q.ent))}));
@@ -1230,7 +1285,7 @@ oz.addEventListener('drop',function(e){if(e.dataTransfer.files.length)handleFile
 var EJES={
   usura:{host:'s_usura',opts:[['si','Aprecio la usura','ox'],['no','No aprecio la usura','gr'],['','No la examino','']]},
   trans:{host:'s_trans',opts:[['no_supera','No supera la transparencia','ox'],['supera','Supera la transparencia','gr'],['','No la examino','']]},
-  sob:{host:'s_sob',opts:[['si','Aprecio usura sobrevenida','ox'],['no','La descarto','gr'],['','No procede','']]},
+  sob:{host:'s_sob',opts:[['si','Usurario desde la subida','ox'],['no','La subida no lo hace usurario','gr'],['','No se plantea','']]},
   presc:{host:'s_presc',opts:[['estimo','Estimo la prescripción','ox'],['desestimo','La desestimo','gr'],['','No se planteó','']]},
   costas:{host:'s_costas',opts:[['dem','A la parte demandada',''],['act','A la parte actora',''],['sin','Sin imposición',''],['','No me pronuncio','']]}
 };
@@ -1264,7 +1319,7 @@ function prefillComposer(){
     if(lastQuery.anio){var fch=(lastQuery.mes?MESES[lastQuery.mes-1]+' de ':'')+lastQuery.anio;fill('c_fecha',fch)}
     if(lastQuery.tae!=null)fill('c_tae',String(lastQuery.tae).replace('.',','));
     var PRODTXT={prestamo_hipotecario:'préstamo hipotecario',hipoteca_multidivisa:'préstamo hipotecario multidivisa',prestamo_personal:'préstamo personal',microcredito:'microcrédito',tarjeta_revolving:'tarjeta revolving',linea_credito_revolving:'línea de crédito revolving',tarjeta_pago_aplazado:'tarjeta revolving',credito_al_consumo:'crédito al consumo'};if(lastQuery.prod&&PRODTXT[lastQuery.prod])fill('c_prod',PRODTXT[lastQuery.prod]);
-    var yr=lastQuery.anio;if(yr){var mr=refModal('rev',yr);if(mr&&mr.fiable){fill('c_ref',String(mr.val).replace('.',','));fill('c_umbral','tipo medio + 0,20 o 0,30 + 6 puntos: '+f2(mr.val+6.2).replace(' %','')+' – '+f2(mr.val+6.3)+' (STS 258/2023)')}}
+    var yr=lastQuery.anio;if(yr&&famProd($('c_prod').value)==='rev'){var mr=refModal('rev',yr);if(mr&&mr.fiable){fill('c_ref',String(mr.val).replace('.',','));fill('c_umbral','tipo medio + 0,20 o 0,30 + 6 puntos: '+f2(mr.val+6.2).replace(' %','')+' – '+f2(mr.val+6.3)+' (STS 258/2023)')}}
   }
   autoSentido();
   if(!$('c_fs').value){var d=new Date();$('c_fs').value=d.getDate()+' de '+MESES[d.getMonth()]+' de '+d.getFullYear()}
@@ -1279,14 +1334,15 @@ function pick(result,field,pasKey,n){
     if(tx!==ty)return ty-tx;
     return (y.fs||'')<(x.fs||'')?-1:1;
   });
-  var r=a.slice(0,n||4);r.forEach(function(c){USED[c.id]=1});return r;
+  var visto={};a.forEach(function(c){USED[c.id]=1});a=a.filter(function(c){if(visto[c.roj])return false;visto[c.roj]=1;return true});
+  return a.slice(0,n||4);
 }
 var USED={};
 function refOf(c){return esc(trib(c)+', sentencia de '+fechaLarga(c.fs)+' (ROJ '+c.roj+'; '+(c.ecli||'')+')')}
 function otras(result,field,shown){
-  var ids={};(shown||[]).forEach(function(c){ids[c.id]=1});var inst=field==='usura'?'u_inst':'t_inst';
-  var o=selList().filter(function(c){return c[field]===result&&!c[inst]&&!ids[c.id]});if(!o.length)return '';
-  o.forEach(function(c){USED[c.id]=1});
+  var ids={};(shown||[]).forEach(function(c){ids[c.roj]=1});var inst=field==='usura'?'u_inst':'t_inst';
+  var o=selList().filter(function(c){return c[field]===result&&!c[inst]});o.forEach(function(c){USED[c.id]=1});
+  o=o.filter(function(c){if(ids[c.roj])return false;ids[c.roj]=1;return true});if(!o.length)return '';
   return '<p>En el mismo sentido: '+o.map(refOf).join('; ')+'.</p>';
 }
 function citeBlocks(list,pasKey,fdKey){
@@ -1297,197 +1353,265 @@ function citeBlocks(list,pasKey,fdKey){
 function warn(t){return '<div class="warn">'+esc(t)+'</div>'}
 
 /* ----- Voz según órgano ----- */
-function V(){
-  var t=cv('c_tipo')||'unipersonal';
-  if(t==='colegiado'){
-    return {
-      yo:'esta Sala',
-      yoMay:'Esta Sala',
-      juzgar:'juzgar',
-      fallo:'FALLAMOS',
-      decidimos:'acordamos',
-      resuelvo:'Fallamos',
-      articulo394:'artículo 394 de la Ley de Enjuiciamiento Civil',
-      instancia:'la instancia',
-      recurso:'Notifíquese esta resolución a las partes, haciéndoles saber que contra la misma cabe recurso de casación y, en su caso, extraordinario por infracción procesal ante la Sala Primera del Tribunal Supremo, en los términos previstos en los artículos 477 y siguientes de la Ley de Enjuiciamiento Civil.',
-    };
-  }
-  return {
-    yo:'este juzgador',
-    yoMay:'Este juzgador',
-    juzgar:'juzgar',
-    fallo:'FALLO',
-    decidimos:'acuerdo',
-    resuelvo:'Fallo',
-    articulo394:'artículo 394 de la Ley de Enjuiciamiento Civil',
-    instancia:'esta instancia',
-    recurso:'Notifíquese esta resolución a las partes, haciéndoles saber que contra la misma cabe recurso de apelación ante la Audiencia Provincial de Madrid, que deberá interponerse ante este mismo Juzgado en el plazo de veinte días desde su notificación, con los requisitos del artículo 458 de la Ley de Enjuiciamiento Civil.',
-  };
+function esCol(){return cv('c_tipo')==='colegiado'}
+function V(){var c=esCol();return {col:c,yo:c?'esta Sala':'este órgano judicial',yoMay:c?'Esta Sala':'Este órgano judicial',vb:function(s,p){return c?p:s}}}
+/* La Sección 25.ª bis se cita en tercera persona, salvo que redacte ella misma. */
+function sec25(may){var o=lcPlano(cv('c_org')),s=(esCol()&&/25|vigesimoquinta/.test(o)&&/madrid/.test(o))?'esta Sección':'la Sección 25.ª bis de la Audiencia Provincial de Madrid';return may?s.charAt(0).toUpperCase()+s.slice(1):s}
+/* Artículo del órgano: «el Tribunal…», «la Audiencia…»; con «de» delante, «del Tribunal…» */
+function orgArt(o,de,may){var a=/^(tribunal|juzgado)/i.test(o)?'el ':(/^(audiencia|secci[oó]n|sala)/i.test(o)?'la ':'');if(de)return a==='el '?'del '+o:'de '+a+o;a=a+o;return may?a.charAt(0).toUpperCase()+a.slice(1):a}
+function esMicro(prod){return /micro/i.test(prod||'')}
+function esRevolving(prod){var p=(prod||'').toLowerCase();return !p||/revolving|revolvente/.test(p)}
+function famProd(p){return esMicro(p)?'micro':(esRevolving(p)?'rev':'pers')}
+function pct(v,t){return v?esc(v)+(/%/.test(v)?'':' %'):ph('',t)}
+function elContrato(caso){
+  var f=famProd(caso.prod),p=f==='micro'?'micropréstamo':((caso.prod&&caso.prod!=='otro')?esc(caso.prod):ph('',f==='rev'?'tarjeta revolving':'préstamo'));
+  return 'contrato de '+p+(caso.ent?' suscrito con '+esc(caso.ent):'')+(caso.fecha?(/^\d/.test(caso.fecha)?' el ':' en ')+esc(caso.fecha):'');
+}
+function elJuicio(){var j=cv('c_juicio');return j?'juicio '+esc(j):ph('','juicio ordinario o verbal')}
+function apelante(caso){var a=cv('c_apela');if(a==='dem')return caso.dem?esc(caso.dem):'la parte demandada';if(a==='act')return caso.act?esc(caso.act):'la parte actora';if(a==='ambas')return 'ambas partes';return ph('','la parte apelante')}
+function tituloDe(t){t=String(t||'');return (/^el /i.test(t)?'DEL '+t.slice(3):'DE '+t).toUpperCase()}
+
+/* ----- Pasajes literales fijos. Se extraen de los textos de las sentencias con un programa; no están escritos a mano. ----- */
+var LIT={"t154_concepto": "Esta exigencia requiere que el consumidor medio, normalmente informado y razonablemente atento y perspicaz, esté en condiciones de comprender el funcionamiento concreto de tal cláusula y de valorar así, basándose en criterios precisos y comprensibles, las consecuencias económicas, potencialmente significativas, de dicha cláusula sobre sus obligaciones", "t154_info": "En términos comprensibles para el consumidor medio, la información debe indicar que el sistema de amortización es del tipo revolving; debe establecer cuál es la cuota mensual (bien en una cantidad determinada, bien en un porcentaje de la cantidad dispuesta); debe establecer cuál es la duración del contrato; debe indicar si, y en qué casos, el interés se devengará no solo respecto del capital dispuesto sino también respecto del total de la cantidad adeudada (incluyendo intereses, comisiones e indemnizaciones devengadas); y deberá contener unos ejemplos adecuados tanto para comprender los riesgos del sistema como para permitir la comparación con otras modalidades de amortización o con las ofertas de otras entidades financieras.", "t154_noauto": "La falta de transparencia no supone automáticamente que una cláusula contractual sea considerada abusiva en virtud del artículo 3, apartado 1, de la Directiva 93/13/CEE pues la mera circunstancia de que una cláusula no esté redactada de manera clara y comprensible no le confiere, por sí sola, carácter abusivo.", "t154_abus": "en el caso de las tarjetas revolving, la falta de transparencia de la cláusula relativa a la TAE, valorada junto con las cláusulas relativas al sistema de amortización, el anatocismo y la escasa cuota mensual, no es inocua para el consumidor, sino que provoca un grave desequilibrio, en contra de las exigencias de la buena fe, puesto que, al ignorar los riesgos significativos que entraña dicho sistema de amortización, no puede comparar la oferta con las de otros sistemas de amortización y se compromete en un contrato que puede tener para él graves consecuencias pues puede terminar siendo lo que hemos venido en llamar un «deudor cautivo» y el Banco de España denomina «efecto bola de nieve».", "t350_ue": "no es aplicable la doctrina sentada por el TJUE sobre la prescripción de la acción de restitución de las cantidades pagadas en aplicación de las cláusulas abusivas, porque la usura es una cuestión ajena al ámbito del Derecho de la UE.", "t350_nace": "la acción de restitución de lo pagado en exceso respecto del capital objeto del préstamo o crédito no nace cuando se celebra el contrato sino cuando se hace el pago de la cantidad cuya restitución se solicita.", "t350_plazo": "La consecuencia de lo expuesto es que el acreditado tiene acción para reclamar lo pagado que exceda del capital prestado en los cinco años anteriores a la formulación de la reclamación extrajudicial o a la interposición de la demanda. En este caso, ese plazo debe ampliarse en 82 días como consecuencia de la suspensión de los plazos de prescripción acordada en el Real Decreto 463/2020, de 14 de marzo.", "t350_int": "Las cantidades pagadas en exceso sobre el capital que han de ser restituidas al demandante devengarán el interés legal desde la fecha de cada pago.", "art3": "Declarada con arreglo a esta ley la nulidad de un contrato, el prestatario estará obligado a entregar tan sólo la suma recibida; y si hubiera satisfecho parte de aquélla y los intereses vencidos, el prestamista devolverá al prestatario lo que, tomando en cuenta el total de lo percibido, exceda del capital prestado", "t857": "salvo en aquellos casos en que la entidad prestamista pruebe que, en el marco de sus relaciones contractuales, ese concreto consumidor pudo conocer en una fecha anterior que esa estipulación (cláusula de gastos) era abusiva, el día inicial del plazo de prescripción de la acción de restitución de gastos hipotecarios indebidamente pagados por un consumidor será el de la firmeza de la sentencia que declara la nulidad de la cláusula que obligaba a tales pagos.", "t366_cat": "para determinar la referencia que ha de utilizarse como \"interés normal del dinero\" para realizar la comparación con el interés cuestionado en el litigio y decidir si el contrato es usurario, debe utilizarse el tipo medio de interés, en el momento de celebración del contrato, correspondiente a la categoría a la que corresponda la operación crediticia cuestionada", "t366_esp": "si existen categorías más específicas dentro de otras más amplias (como sucede con la de tarjetas de crédito y revolving, dentro de la categoría más amplia de operaciones de crédito al consumo), deberá utilizarse esa categoría más específica, con la que la operación crediticia cuestionada presenta más coincidencias (duración del crédito, importe, finalidad, medios a través de los cuáles el deudor puede disponer del crédito, garantías, facilidad de reclamación en caso de impago, etc.), pues esos rasgos comunes son determinantes del precio del crédito, esto es, de la TAE del interés remuneratorio.", "t366_seis": "Esta doctrina declarada para juzgar sobre el carácter usurario del interés pactado en una tarjeta revolving no resulta directamente aplicable a un supuesto como el presente de préstamo personal, en el que el tipo medio de mercado es inferior al 15%. Pero, nada impide que se tenga en consideración para realizar la valoración de si el interés pactado es notablemente superior al tipo medio de mercado de estas operaciones de crédito en el momento que se pactó.", "t1147_ext": "los requisitos establecidos para la validez de la comisión de apertura en los préstamos hipotecarios son trasladables a los préstamos personales como el que se examina en esta sentencia", "t1147_A": "A los efectos de que el prestatario pueda ser consciente de la carga económica de la comisión de apertura, el prestamista no tiene obligación de precisar en el contrato la naturaleza de todos los servicios proporcionados como contrapartida de la comisión de apertura, pero la naturaleza de tales servicios debe poder entenderse razonablemente o deducirse del contrato en su conjunto.", "t1147_B": "En cuanto a sus requisitos de transparencia, son los siguientes: (i) debe comprender todos («cualesquiera») los gastos de estudio, concesión o tramitación del préstamo, u otros similares inherentes a la actividad de la entidad prestamista ocasionada por la concesión del préstamo; (ii) debe integrarse obligatoriamente en una única comisión, que tiene que denominarse necesariamente «comisión de apertura»; (iii) dicha comisión se devengará de una sola vez; y (iv) su importe y su forma y fecha de liquidación deben estar especificados en la propia cláusula.", "t1147_costas": "si se declara la nulidad de alguna de las cláusulas impugnadas, aunque tal declaración no afecte al resto, procede la imposición de las costas al banco demandado", "t1785": "cuando el consumidor se vea obligado a acudir a la segunda instancia para no verse vinculado por una cláusula abusiva y su recurso de apelación o la impugnación de la sentencia de primera instancia resulten total o parcialmente estimados, las costas de esa segunda instancia deberán imponerse al profesional predisponente.", "t1796": "consideramos adecuado en casos como el presente en que el recurso de apelación del banco se estima parcialmente, para dar cumplimiento a los arts. 6.1 y 7.1 de la citada Directiva, que el banco abone la mitad de las costas del recurso de apelación causadas al consumidor", "a1073": "no existe parámetro objetivo de comparación, para determinar el carácter usurario del interés remuneratorio del micropréstamo, diferente del que ofrecen las tablas estadísticas del Banco de España para préstamos al consumo, sobre los que procedería desde luego aplicar algún criterio de corrección o adaptación a las singularidades del préstamo de bajo coste y escasa duración controvertido en cada supuesto concreto.", "a3675": "declarar nula por abusiva la cláusula que regula intereses remuneratorios analizada conjuntamente con el sistema de amortización y que acarrea la nulidad del contrato, al no poder subsistir sin las cláusulas declaradas nulas"};
+var REF={
+  s154:'Tribunal Supremo (Pleno), sentencia 154/2025, de 30 de enero. ROJ STS 242/2025 · ECLI:ES:TS:2025:242',
+  s350:'Tribunal Supremo (Pleno), sentencia 350/2025, de 5 de marzo. ROJ STS 836/2025 · ECLI:ES:TS:2025:836',
+  s857:'Tribunal Supremo (Pleno), sentencia 857/2024, de 14 de junio. ROJ STS 3076/2024 · ECLI:ES:TS:2024:3076',
+  s366:'Tribunal Supremo, sentencia 366/2026, de 9 de marzo. ROJ STS 1013/2026 · ECLI:ES:TS:2026:1013',
+  s1147:'Tribunal Supremo, sentencia 1147/2026, de 14 de julio. ROJ STS 3137/2026 · ECLI:ES:TS:2026:3137',
+  s1785:'Tribunal Supremo (Pleno), sentencia 1785/2025, de 4 de diciembre. ROJ STS 5479/2025 · ECLI:ES:TS:2025:5479',
+  s1796:'Tribunal Supremo (Pleno), sentencia 1796/2025, de 5 de diciembre. ROJ STS 5481/2025 · ECLI:ES:TS:2025:5481',
+  a1073:'Audiencia Provincial de Madrid, Sección 25.ª bis, sentencia de 23 de enero de 2024. ROJ SAP M 1073/2024 · ECLI:ES:APM:2024:1073',
+  a3675:'Audiencia Provincial de Madrid, Sección 25.ª bis, sentencia de 16 de marzo de 2026. ROJ SAP M 3675/2026 · ECLI:ES:APM:2026:3675'
+};
+function lit(keys,src){keys=[].concat(keys);return '<div class="cite">'+keys.map(function(k){return '«'+esc(LIT[k])+'»'}).join(' […] ')+'<span class="src">— '+esc(src)+'</span></div>'}
+function litEn(k){return '«'+esc(LIT[k])+'»'}
+function citasDe(cl,pas,fd){
+  if(!cl.length)return '';
+  var ts=cl.filter(function(c){return c.org==='TS'}),ap=cl.filter(function(c){return c.org!=='TS'}),b='';
+  if(ts.length)b+='<p>Así lo ha declarado el Tribunal Supremo:</p>'+citeBlocks(ts,pas,fd);
+  if(ap.length)b+='<p>'+(ts.length?'En el mismo sentido se ha pronunciado ':'Así lo ha resuelto ')+(ap.every(function(c){return c.bis})?sec25():'la Audiencia Provincial de Madrid')+' en casos equivalentes:</p>'+citeBlocks(ap,pas,fd);
+  return b;
 }
 
 var MAT='';
 /* ========== ANTECEDENTES ========== */
-function antecedentes(caso){
-  var V0=V();
-  var p1='<p><b>Primero.</b> Por la representación procesal de '+ph(caso.act,'la parte actora')+' se formuló demanda de juicio ordinario frente a '+ph(caso.dem,'la parte demandada')+', en ejercicio de la acción de nulidad del contrato de '+ph(caso.prod,'tarjeta revolving')+(caso.ent?' suscrito con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+', por su carácter usurario y, subsidiariamente, por falta de transparencia de las cláusulas relativas al interés remuneratorio y al sistema de amortización, con los efectos restitutorios inherentes a la declaración de nulidad.</p>';
-  if(MAT)p1='<p><b>Primero.</b> Por la representación procesal de '+ph(caso.act,'la parte actora')+' se formuló demanda de juicio ordinario frente a '+ph(caso.dem,'la parte demandada')+', en ejercicio de la acción de nulidad, por abusivas, de determinadas condiciones generales del contrato de '+ph(caso.prod,'préstamo')+(caso.ent?' suscrito con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+', en concreto '+esc(MAT)+', con los efectos restitutorios inherentes a la declaración de nulidad.</p>';
-  var p2='<p><b>Segundo.</b> Admitida a trámite la demanda y emplazada la parte demandada, compareció en tiempo y forma y contestó oponiéndose a las pretensiones ejercitadas, con las alegaciones que obran en autos y que, por evitar reiteraciones innecesarias, se dan aquí por reproducidas.</p>';
-  var p3='<p><b>Tercero.</b> Convocadas las partes al acto de la audiencia previa, se tuvo por fijados los términos del debate, se practicó la prueba propuesta y declarada pertinente en el acto del juicio y, oídas las conclusiones de las partes, quedaron los autos vistos para sentencia.</p>';
-  var p4='<p><b>Cuarto.</b> En la tramitación del presente procedimiento se han observado las prescripciones legales de aplicación.</p>';
-  if(V0.yo==='esta Sala'){
-    p1='<p><b>Primero.</b> Por el Juzgado de Primera Instancia se dictó sentencia en los autos de referencia, seguidos a instancia de '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+', cuyo fallo es del tenor literal siguiente: '+ph('','transcriba el fallo de la sentencia de instancia')+'.</p>';
-    p2='<p><b>Segundo.</b> Contra la anterior resolución se interpuso recurso de apelación por '+ph('','la parte apelante')+', que fue admitido, y, en su virtud, previos los oportunos emplazamientos, se remitieron las actuaciones a esta Sección, sustanciándose el recurso por sus trámites legales.</p>';
-    p3='<p><b>Tercero.</b> En la tramitación de este recurso se han observado las prescripciones legales.</p>';p4='';
+function peticion(caso,GC){
+  var f=famProd(caso.prod),P=[],hay=EST.usura||EST.trans||EST.sob;
+  if(EST.usura)P.push('la nulidad del '+elContrato(caso)+' por usura');
+  if(EST.trans)P.push((EST.usura?'subsidiariamente, ':'')+'la nulidad, por falta de transparencia y abusividad, de la cláusula que fija el interés remuneratorio'+(f==='rev'?', valorada junto con las que regulan el sistema de amortización':'')+(EST.usura?'':' del '+elContrato(caso)));
+  if(EST.sob&&!EST.usura&&!EST.trans)P.push('la nulidad del '+elContrato(caso)+' por usura, a raíz de la elevación posterior del tipo de interés');
+  else if(EST.sob)P.push('en todo caso, la declaración de usura desde la elevación posterior del tipo de interés');
+  if(GC.length)P.push('la nulidad, por su carácter abusivo, de '+GC.map(function(g){return CLATXT[g.tipo]}).join(', ').replace(/, ([^,]*)$/,' y $1')+(hay?'':' del '+elContrato(caso)));
+  if(!P.length)return ph('','pretensiones de la demanda');
+  return (P.length>1?P.slice(0,-1).join('; ')+'; y '+P[P.length-1]:P[0])+', con restitución de las cantidades indebidamente cobradas';
+}
+function antecedentes(caso,GC){
+  var b,j=cv('c_juicio');
+  if(esCol()){
+    b='<p><b>PRIMERO.-</b> '+ph('','Órgano de primera instancia')+' dictó sentencia el '+ph('','fecha')+' en el '+elJuicio()+' '+ph('','número')+', seguido a instancia de '+ph(caso.act,'la parte actora')+' contra '+ph(caso.dem,'la parte demandada')+'. Su fallo dice: «'+ph('','transcriba el fallo de la sentencia de primera instancia')+'».</p>';
+    b+='<p><b>SEGUNDO.-</b> Contra esa sentencia interpuso recurso de apelación '+apelante(caso)+'. '+ph('','La parte apelada se opuso al recurso / se opuso e impugnó la sentencia')+'. Recibidas las actuaciones en esta Sección, se señaló para deliberación, votación y fallo el día '+ph('','fecha')+'.</p>';
+    b+='<p><b>TERCERO.-</b> En la tramitación del recurso se han observado las prescripciones legales.</p>';
+  }else{
+    b='<p><b>PRIMERO.-</b> '+ph(caso.act,'La parte actora')+' presentó demanda de '+elJuicio()+' contra '+ph(caso.dem,'la parte demandada')+', en la que pidió '+peticion(caso,GC)+'.</p>';
+    b+='<p><b>SEGUNDO.-</b> Admitida la demanda, la parte demandada la contestó y pidió su desestimación.</p>';
+    b+='<p><b>TERCERO.-</b> '+(j==='ordinario'?'Celebrada la audiencia previa '+ph('','y el juicio'):(j==='verbal'?ph('','Celebrada la vista / Sin necesidad de celebrar vista'):ph('','Celebrada la audiencia previa y el juicio / la vista')))+', quedaron los autos conclusos para sentencia.</p>';
+    b+='<p><b>CUARTO.-</b> En la tramitación del procedimiento se han observado las prescripciones legales.</p>';
   }
-  return {title:'',body:p1+p2+p3+p4,sec:'ANTECEDENTES DE HECHO'};
+  return {title:'',body:b};
 }
 
 /* ========== FUNDAMENTOS ========== */
-function fdObjeto(caso){
-  var motivos=[];if(EST.usura==='si'||EST.usura==='no')motivos.push('usuraria');if(EST.trans)motivos.push('falta de transparencia de las cláusulas de precio');
-  var mot=motivos.length?motivos.join(' y '):'nulidad de las condiciones del crédito';
-  var V0=V();
-  var b='<p>Ejercita '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+' la acción de nulidad del contrato de '+ph(caso.prod,'tarjeta revolving')+(caso.ent?' suscrito con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+', por '+esc(mot)+'. Resueltas las cuestiones procesales y fijados los términos del debate, procede entrar en el fondo con arreglo a los fundamentos que siguen.</p>';
-  b+='<p>Antes de examinar los concretos motivos, conviene recordar que, por virtud del principio jura novit curia, '+V0.yo+' no se halla vinculad'+ (V0.yo==='esta Sala'?'a':'o')+' a la calificación jurídica propuesta por los litigantes, lo que resulta de particular relevancia en materia de nulidad por usura y por falta de transparencia, pues ambas acciones comparten una misma dirección impugnatoria del precio del crédito revolving y han sido objeto de un cuerpo doctrinal reiterado por el Tribunal Supremo y por la Sala vigesimoquinta bis de esta Audiencia Provincial.</p>';
-  if(MAT)b='<p>Ejercita '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+' la acción de nulidad, por abusivas, de determinadas condiciones generales del contrato de '+ph(caso.prod,'préstamo')+(caso.ent?' suscrito con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+': '+esc(MAT)+'. Se examinan por separado en los fundamentos que siguen, con arreglo a la Directiva 93/13/CEE, al texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios y a la jurisprudencia que los interpreta.</p>';
-  return {title:'Objeto del proceso y planteamiento',body:b};
+function fdObjeto(caso,GC){
+  if(esCol()){
+    var b='<p>La demanda pedía '+peticion(caso,GC)+'. La sentencia de primera instancia '+ph('','la estimó / la estimó en parte / la desestimó, y resuma su razonamiento')+'.</p>';
+    b+='<p>Recurre '+apelante(caso)+', que alega, en síntesis: '+ph('','motivos del recurso')+'. '+ph('','La parte apelada se opone y pide la confirmación de la sentencia')+'.</p>';
+    return {title:'DEL PLANTEAMIENTO DEL RECURSO',body:b};
+  }
+  var b2='<p>'+ph(caso.act,'La parte actora')+' pide '+peticion(caso,GC)+'. '+ph(caso.dem,'La parte demandada')+' se opone: '+ph('','resuma los motivos de oposición')+'.</p>';
+  b2+='<p>No se discute, o resulta de los documentos aportados, que '+ph('','hechos relevantes: fecha del contrato, TAE pactada, disposiciones y pagos')+'.</p>';
+  return {title:'DEL OBJETO DEL PROCESO',body:b2};
 }
-
+function docUsura(){
+  return '<p>La Ley de 23 de julio de 1908, de Represión de la Usura, declara nulo el préstamo en que se estipule un interés «notablemente superior al normal del dinero y manifiestamente desproporcionado con las circunstancias del caso» (artículo 1). Según la jurisprudencia del Tribunal Supremo (sentencias del Pleno 628/2015, de 25 de noviembre, y 149/2020, de 4 de marzo), basta con que concurran esos dos requisitos, sin que sea necesario además que el prestatario lo aceptara por su situación angustiosa o su inexperiencia; lo que se compara es la TAE, y no el interés nominal; y el «interés normal del dinero» es el tipo medio que publica el Banco de España para la categoría de operaciones a la que pertenece el contrato.</p>';
+}
+var SIN_JUSTIF='La entidad no ha justificado ninguna circunstancia excepcional que explique un interés de esa cuantía, y no lo es el riesgo de impago de operaciones concedidas de forma ágil y sin comprobar la solvencia del prestatario (sentencias del Pleno del Tribunal Supremo 628/2015 y 149/2020).';
 function fdUsura(caso){
-  var V0=V();
-  var pct=function(v,t){return v?esc(v)+(/%/.test(v)?'':' %'):ph('',t)};var tae=pct(caso.tae,'TAE'),ref=pct(caso.ref,'tipo medio'),umb=caso.umbral?esc(caso.umbral):'[umbral]';
-  var p1='<p>El contrato enjuiciado'+(caso.ent?', suscrito con '+esc(caso.ent):'')+(caso.fecha?', de '+esc(caso.fecha)+',':'')+' fijó una TAE del '+tae+'. El tipo medio de referencia de los créditos revolving publicado por el Banco de España para esa fecha se situaba en el '+ref+'.</p>';
-  var p2='<p>El criterio jurisprudencial aplicable viene fijado por el Tribunal Supremo en la sentencia 258/2023, de 15 de febrero (Pleno), conforme a la cual el interés de una tarjeta revolving es usurario cuando su TAE supera en más de seis puntos porcentuales el tipo medio de referencia (TEDR) de ese segmento publicado por el Banco de España para el mes de la contratación, incrementado en 0,20 o 0,30 puntos por las comisiones habituales. '+V0.yoMay+' debe, por consiguiente, cotejar la TAE pactada con el umbral así obtenido y verificar si lo supera.</p>';
-  if(EST.usura==='si'){
-    var cl=pick('usurario','usura','u_pas',4);
-    var tsFirst=cl.filter(function(c){return c.org==='TS'});
-    var b=p1+p2+'<p>En el caso de autos, la TAE pactada ('+tae+') rebasa el umbral de '+umb+', por lo que debe reputarse notablemente superior al normal del dinero y manifiestamente desproporcionada con las circunstancias del caso, en el sentido del artículo 1 de la Ley de 23 de julio de 1908, de Represión de la Usura.</p>';
-    if(tsFirst.length){
-      b+='<p>Así lo tiene declarado el Tribunal Supremo en resoluciones directamente aplicables al presente caso:</p>'+citeBlocks(tsFirst,'u_pas','u_fd');
-      var ap=cl.filter(function(c){return c.org!=='TS'});
-      if(ap.length)b+='<p>En el mismo sentido se ha pronunciado la Sala vigesimoquinta bis de la Audiencia Provincial de Madrid:</p>'+citeBlocks(ap,'u_pas','u_fd');
-    } else if(cl.length){
-      b+='<p>Así lo tiene declarado la Sala vigesimoquinta bis de la Audiencia Provincial de Madrid en supuestos equivalentes al enjuiciado:</p>'+citeBlocks(cl,'u_pas','u_fd');
-    } else {
-      b+=warn('Elija en «Consultar» alguna resolución que aprecie la usura para que se incorporen aquí sus pasajes literales.');
+  var f=famProd(caso.prod),si=EST.usura==='si',tae=pct(caso.tae,'TAE'),ref=pct(caso.ref,'tipo medio'),b,cl;
+  if(f==='micro')return fdUsuraMicro(caso);
+  if(f==='rev'){
+    var umb=caso.umbral?'el umbral que resulta de ese criterio ('+esc(caso.umbral)+')':'el umbral que resulta de ese criterio '+ph('','tipo medio, más la corrección, más seis puntos');
+    b='<p>El contrato fijó una TAE del '+tae+'. El tipo medio de las operaciones con tarjetas de crédito y revolving que publica el Banco de España, y que se toma como referencia, era del '+ref+' '+ph('','precise la fecha del dato')+'.</p>'+docUsura();
+    b+='<p>Para las tarjetas revolving, el Pleno del Tribunal Supremo fijó el criterio en la sentencia 258/2023, de 15 de febrero (ROJ STS 442/2023; ECLI:ES:TS:2023:442): el interés es notablemente superior al normal del dinero cuando la TAE supera en más de seis puntos porcentuales el tipo medio de las tarjetas de crédito y revolving. Ese tipo medio se publica como TEDR, que equivale a la TAE sin comisiones, de modo que para compararlo con la TAE debe elevarse entre 20 y 30 centésimas. Para los contratos anteriores a junio de 2010, en que no existe estadística específica, la sentencia parte, de forma orientativa, del dato de 2010 (19,32 %), con esa misma corrección.</p>';
+    if(si){cl=pick('usurario','usura','u_pas',4);
+      b+='<p>En este caso, la TAE pactada ('+tae+') supera '+umb+'. El interés es, por tanto, notablemente superior al normal del dinero. '+SIN_JUSTIF+'</p>';
+      b+=cl.length?citasDe(cl,'u_pas','u_fd'):warn('Elija en «Consultar» alguna resolución que aprecie la usura para que se incorporen aquí sus pasajes literales.');
+      b+=otras('usurario','usura',cl)+'<p>El contrato es, por ello, nulo por usurario.</p>';
+      return {title:'DEL CARÁCTER USURARIO DEL INTERÉS REMUNERATORIO',body:b};
     }
-    b+=otras('usurario','usura',cl);
-    b+='<p>Procede, en consecuencia, declarar la nulidad del contrato por su carácter usurario, con los efectos restitutorios previstos en el artículo 3 de la Ley de Represión de la Usura, que se precisan más adelante.</p>';
-    return {title:'Carácter usurario del interés remuneratorio',body:b};
+    cl=pick('no_usurario','usura','u_pas',4);
+    b+='<p>En este caso, la TAE pactada ('+tae+') no supera '+umb+'. El interés no es notablemente superior al normal del dinero y el contrato no es usurario.</p>';
+    b+=cl.length?citasDe(cl,'u_pas','u_fd'):warn('Elija en «Consultar» alguna resolución que descarte la usura para que se incorporen aquí sus pasajes literales.');
+    b+=otras('no_usurario','usura',cl);
+    return {title:'DEL CARÁCTER NO USURARIO DEL INTERÉS REMUNERATORIO',body:b};
   }
-  var cl2=pick('no_usurario','usura','u_pas',4);
-  var ts2=cl2.filter(function(c){return c.org==='TS'});
-  var b2=p1+p2+'<p>En el caso de autos, la diferencia entre la TAE pactada ('+tae+') y el tipo medio de referencia ('+ref+'), una vez incorporada la corrección por comisiones, no alcanza el umbral de '+umb+'. El interés no puede, por tanto, calificarse de notablemente superior al normal del dinero a los efectos del artículo 1 de la Ley de 23 de julio de 1908.</p>';
-  if(ts2.length){
-    b2+='<p>Esta conclusión se ajusta al criterio del Tribunal Supremo:</p>'+citeBlocks(ts2,'u_pas','u_fd');
-    var ap2=cl2.filter(function(c){return c.org!=='TS'});
-    if(ap2.length)b2+='<p>Y a lo resuelto por la Sala vigesimoquinta bis en supuestos equivalentes:</p>'+citeBlocks(ap2,'u_pas','u_fd');
-  } else if(cl2.length){
-    b2+='<p>Así lo ha declarado la Sala vigesimoquinta bis en supuestos equivalentes:</p>'+citeBlocks(cl2,'u_pas','u_fd');
-  } else {
-    b2+=warn('Elija en «Consultar» alguna resolución que descarte la usura para que se incorporen aquí sus pasajes literales.');
+  /* préstamo personal y demás créditos al consumo */
+  var nt=num(caso.tae),nr=num(caso.ref),dif=(nt!=null&&nr!=null)?String(Math.round((nt-nr)*100)/100).replace('.',','):null;
+  b='<p>El contrato fijó una TAE del '+tae+'. El tipo medio que publica el Banco de España para '+ph('','la categoría de la estadística que corresponde al contrato; por ejemplo, crédito al consumo de 1 a 5 años')+' era, en la fecha del contrato, del '+ref+'.</p>'+docUsura();
+  b+='<p>El Tribunal Supremo ha aplicado estos criterios a un préstamo personal en la sentencia 366/2026, de 9 de marzo. Recuerda que:</p>'+lit(['t366_cat','t366_esp'],REF.s366+' · FD 2.º');
+  b+='<p>Sobre el margen de seis puntos porcentuales fijado para las tarjetas revolving en la sentencia del Pleno 258/2023, de 15 de febrero (ROJ STS 442/2023; ECLI:ES:TS:2023:442), añade:</p>'+lit('t366_seis',REF.s366+' · FD 2.º');
+  if(si){cl=pick('usurario','usura','u_pas',4);
+    b+='<p>En este caso, la TAE pactada ('+tae+') supera en '+(dif!=null?dif:ph('','diferencia'))+' puntos porcentuales el tipo medio de referencia ('+ref+'). Es una diferencia que permite calificar el interés de notablemente superior al normal del dinero. '+SIN_JUSTIF+'</p>';
+    b+=citasDe(cl,'u_pas','u_fd')+otras('usurario','usura',cl)+'<p>El contrato es, por ello, nulo por usurario.</p>';
+    return {title:'DEL CARÁCTER USURARIO DEL INTERÉS REMUNERATORIO',body:b};
   }
-  b2+=otras('no_usurario','usura',cl2);
-  b2+='<p>Descartada la usura, debe examinarse, por así haberse planteado de forma subsidiaria, si las cláusulas relativas al precio superan el control de transparencia material, pues su eventual nulidad conduce a consecuencias restitutorias análogas.</p>';
-  return {title:'No se aprecia el carácter usurario del interés remuneratorio',body:b2};
+  cl=pick('no_usurario','usura','u_pas',4);
+  b+='<p>En este caso, la diferencia entre la TAE pactada ('+tae+') y el tipo medio de referencia ('+ref+') es de '+(dif!=null?dif:ph('','diferencia'))+' puntos porcentuales. No permite calificar el interés de notablemente superior al normal del dinero, y el contrato no es usurario.</p>';
+  b+=citasDe(cl,'u_pas','u_fd')+otras('no_usurario','usura',cl);
+  return {title:'DEL CARÁCTER NO USURARIO DEL INTERÉS REMUNERATORIO',body:b};
+}
+function fdUsuraMicro(caso){
+  var si=EST.usura==='si',tae=pct(caso.tae,'TAE'),ref=caso.ref?pct(caso.ref,''):ph('','dato del Banco de España para préstamos al consumo en la fecha del contrato'),cl;
+  var b='<p>El contrato fijó una TAE del '+tae+'. '+ph('','Si son varios préstamos, relacione la fecha, el capital, el plazo, el coste y la TAE de cada uno')+'</p>'+docUsura();
+  b+='<p>El micropréstamo, que es un préstamo de escasa cuantía y corto plazo de devolución, plantea una dificultad: el Banco de España no publica un tipo medio específico para estas operaciones. '+sec25(true)+' lo resuelve acudiendo a la estadística de los préstamos al consumo:</p>'+lit('a1073',REF.a1073+' · FD 2.º');
+  b+='<p>Conforme a ese mismo criterio, no sirve como término de comparación el certificado de la Asociación Española de Microcréditos que suelen aportar las prestamistas, porque no explica sobre qué muestra de operaciones, cuantías, plazos y entidades se ha elaborado. Y corresponde a la prestamista justificar las circunstancias excepcionales que expliquen un interés tan elevado, sin que lo sea el riesgo de impago de préstamos concedidos de forma ágil y sin comprobar la solvencia del prestatario (sentencias del Pleno del Tribunal Supremo 628/2015, de 25 de noviembre, y 149/2020, de 4 de marzo).</p>';
+  b+='<p>El Tribunal Supremo, al enjuiciar un préstamo personal en la sentencia 366/2026, de 9 de marzo (ROJ STS 1013/2026; ECLI:ES:TS:2026:1013), ha reiterado que la comparación debe hacerse con el tipo medio de la categoría más específica a la que corresponda la operación, y ha considerado notablemente superior un interés que excedía en más de seis puntos porcentuales de ese tipo medio.</p>';
+  if(si){cl=pick('usurario','usura','u_pas',4);
+    b+='<p>En este caso, la TAE pactada ('+tae+') supera de forma muy notable el tipo medio de los préstamos al consumo ('+ref+'). La diferencia es de tal magnitud que el interés es notablemente superior al normal del dinero y manifiestamente desproporcionado, y la prestamista no ha justificado ninguna circunstancia excepcional que lo explique.</p>';
+    b+=cl.length?citasDe(cl,'u_pas','u_fd'):warn('Elija en «Consultar» alguna resolución sobre micropréstamos para que se incorporen aquí sus pasajes literales.');
+    b+=otras('usurario','usura',cl)+'<p>El contrato es, por ello, nulo por usurario.</p>';
+    return {title:'DEL CARÁCTER USURARIO DEL MICROPRÉSTAMO',body:b};
+  }
+  cl=pick('no_usurario','usura','u_pas',4);
+  b+='<p>En este caso, la TAE pactada ('+tae+') no es notablemente superior al tipo medio de referencia ('+ref+'): '+ph('','explique por qué')+'. El contrato no es usurario.</p>';
+  b+=citasDe(cl,'u_pas','u_fd')+otras('no_usurario','usura',cl);
+  return {title:'DEL CARÁCTER NO USURARIO DEL MICROPRÉSTAMO',body:b};
 }
 
 function fdTrans(caso){
-  var V0=V();
-  if(EST.trans==='no_supera'){
-    var cl=pick('no_supera','tr','t_pas',4);
-    var tsCl=cl.filter(function(c){return c.org==='TS'});
-    var defs={};selList().forEach(function(c){if(c.tr==='no_supera')(c.tr_def||[]).forEach(function(d){defs[defLabel(d)]=1})});
-    var dl=Object.keys(defs);
-    var defTxt=dl.length?('En el contrato examinado se aprecian, entre otros, los siguientes defectos: '+dl.slice(0,8).join('; ')+'.'):'[describa los defectos de transparencia apreciados en el contrato].';
-    var b='<p>Se ejercita, con carácter subsidiario, la acción de nulidad por falta de transparencia de las cláusulas que fijan el interés remuneratorio y el sistema de amortización del crédito revolving.</p>';
-    b+='<p>El control de transparencia material, con arreglo a reiterada doctrina del Tribunal Supremo (SSTS 241/2013, 464/2014, 138/2015 y 367/2017, entre otras, y, en el ámbito del crédito revolving, SSTS 154/2025 y 155/2025), exige que el consumidor haya podido conocer, antes de contratar y con sencillez, la carga económica y jurídica del producto y, en particular, el modo de funcionamiento del sistema de amortización y las consecuencias de los pagos mínimos, de manera que no deba esperar al cobro efectivo para advertir el verdadero coste del crédito y el riesgo de deuda perpetua. El control opera, por lo demás, respecto de cláusulas no negociadas individualmente y sometidas a la Directiva 93/13/CEE.</p>';
-    b+='<p>'+esc(defTxt)+'</p>';
-    if(tsCl.length){
-      b+='<p>En este sentido se ha pronunciado el Tribunal Supremo:</p>'+citeBlocks(tsCl,'t_pas','t_fd');
-      var apCl=cl.filter(function(c){return c.org!=='TS'});
-      if(apCl.length)b+='<p>Y la Sala vigesimoquinta bis de esta Audiencia Provincial en supuestos de contratación equivalentes:</p>'+citeBlocks(apCl,'t_pas','t_fd');
-    } else if(cl.length){
-      b+='<p>Así lo ha apreciado la Sala vigesimoquinta bis en supuestos equivalentes:</p>'+citeBlocks(cl,'t_pas','t_fd');
-    } else {
-      b+=warn('Elija en «Consultar» alguna resolución que declare la falta de transparencia para que se incorporen aquí sus pasajes literales.');
-    }
-    b+=otras('no_supera','tr',cl);
-    b+='<p>Las cláusulas relativas al precio y al sistema de amortización no superan, por ello, el control de transparencia material, lo que determina, por su carácter esencial, la nulidad del contrato en su conjunto. En consecuencia, conforme a la doctrina sentada en las SSTS 154/2025 y 155/2025, procederá la restitución recíproca de prestaciones con arreglo al artículo 1303 del Código Civil, en los términos que se precisan a continuación.</p>';
-    return {title:'Falta de transparencia de las cláusulas de precio',body:b};
+  var rev=famProd(caso.prod)==='rev',sub=EST.usura?'Descartada la usura, se examina, como se pidió de forma subsidiaria,':'Se examina',b,cl;
+  if(EST.usura==='si')sub='Aunque la declaración de usura bastaría para estimar la demanda, se examina también';
+  b='<p>'+sub+' si la cláusula que fija el interés remuneratorio'+(rev?', valorada junto con las que regulan el sistema de amortización revolving,':'')+' supera el control de transparencia y, en caso contrario, si es abusiva (artículos 3.1, 4.2 y 5 de la Directiva 93/13/CEE).</p>';
+  if(rev){
+    b+='<p>El Pleno del Tribunal Supremo ha fijado la doctrina en las sentencias 154/2025 (ROJ STS 242/2025; ECLI:ES:TS:2025:242) y 155/2025 (ROJ STS 241/2025; ECLI:ES:TS:2025:241), ambas de 30 de enero. La información debe darse antes de contratar, y no basta con que exprese la TAE:</p>'+lit('t154_info',REF.s154+' · FD 3.º, apartado 6');
+  }else{
+    b+='<p>El control de transparencia no se agota en que la cláusula sea gramaticalmente comprensible. Sobre la exigencia de transparencia, el Pleno del Tribunal Supremo recuerda, con cita del Tribunal de Justicia:</p>'+lit('t154_concepto',REF.s154+' · FD 3.º, apartado 2');
   }
-  var cl2=pick('supera','tr','t_pas',4);
-  var b2='<p>Se examina, a continuación, la transparencia de las cláusulas que fijan el interés y el sistema de amortización. Como se ha expuesto, el control de transparencia material exige que el consumidor haya podido conocer, antes de contratar, la carga económica y jurídica del producto y, señaladamente, el funcionamiento del sistema de amortización revolving y el riesgo de deuda perpetua.</p>';
-  b2+='<p>En el caso de autos, la información precontractual facilitada permitía conocer con suficiente claridad el funcionamiento y el coste del crédito [precise la prueba documental aportada por la entidad y las concretas razones por las que se considera superado el control].</p>';
-  b2+=cl2.length?('<p>En este sentido se ha pronunciado el Tribunal Supremo y la Sala vigesimoquinta bis en supuestos equivalentes:</p>'+citeBlocks(cl2,'t_pas','t_fd')):'';
-  b2+=otras('supera','tr',cl2);
-  b2+='<p>Las cláusulas superan, en consecuencia, el control de transparencia material, no procediendo por ello su declaración de nulidad por este motivo.</p>';
-  return {title:'Superación del control de transparencia',body:b2};
+  if(EST.trans==='no_supera'){
+    cl=pick('no_supera','tr','t_pas',4);
+    var defs={};selList().forEach(function(c){if(c.tr==='no_supera')(c.tr_def||[]).forEach(function(d){defs[defLabel(d)]=1})});var dl=Object.keys(defs);
+    b+='<p>En este caso, la información facilitada no cumple esas exigencias: '+ph('','describa qué información se dio, cuándo y qué le falta'+(dl.length?'. En las resoluciones elegidas se apreciaron estos defectos: '+dl.slice(0,8).join('; '):''))+'.</p>';
+    b+='<p>La falta de transparencia no basta por sí sola para anular la cláusula; hay que valorar además si es abusiva:</p>'+lit('t154_noauto',REF.s154+' · FD 3.º, apartado 7');
+    if(rev)b+='<p>Y, para las tarjetas revolving, el Pleno concluye que</p>'+lit('t154_abus',REF.s154+' · FD 3.º, apartado 7');
+    b+='<p>'+ph('','Valore las circunstancias del caso: forma de comercialización, cuota mínima fijada por defecto, capitalización de intereses')+'</p>';
+    b+=cl.length?citasDe(cl,'t_pas','t_fd'):warn('Elija en «Consultar» alguna resolución que declare la falta de transparencia para que se incorporen aquí sus pasajes literales.');
+    b+=otras('no_supera','tr',cl);
+    b+='<p>La cláusula que fija el interés remuneratorio'+(rev?', valorada junto con las del sistema de amortización,':'')+' no es transparente y es abusiva. Es, por tanto, nula (artículos 8.2 de la Ley 7/1998, de Condiciones Generales de la Contratación, y 83 del texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios).</p>';
+    return {title:'DE LA FALTA DE TRANSPARENCIA Y LA ABUSIVIDAD DE LA CLÁUSULA DE INTERESES',body:b};
+  }
+  cl=pick('supera','tr','t_pas',4);
+  b+='<p>En este caso, la información facilitada permitía a un consumidor medio comprender el funcionamiento y el coste del crédito: '+ph('','precise los documentos entregados, cuándo se entregaron y por qué bastan')+'.</p>';
+  b+=citasDe(cl,'t_pas','t_fd')+otras('supera','tr',cl);
+  b+='<p>La cláusula supera el control de transparencia y no procede declarar su nulidad.</p>';
+  return {title:'DE LA TRANSPARENCIA DE LA CLÁUSULA DE INTERESES',body:b};
 }
 
 function fdSob(caso){
-  var V0=V();
+  var b;
   if(EST.sob==='si'){
-    var cl=selList().filter(function(c){return c.sob&&(c.u_pas||(c.mods&&c.mods.length&&c.mods[0].pasaje_clave))});
-    cl.sort(function(x,y){var tx=x.org==='TS'?1:0,ty=y.org==='TS'?1:0;return (ty-tx)||((y.fs||'')<(x.fs||'')?-1:1)});
-    var blocks=cl.slice(0,3).map(function(c){USED[c.id]=1;var m=(c.mods||[]).find?(c.mods||[]).find(function(x){return x.pasaje_clave}):null;var pas=m?m.pasaje_clave:c.u_pas;var fd=m?m.fundamento:c.u_fd;return '<div class="cite">«'+esc(pas)+'»<span class="src">'+esc(citaSala(c,fd))+'</span></div>'}).join('');
-    var b='<p>Se alega, además, que con posterioridad a la firma la entidad elevó unilateralmente el tipo de interés aplicable al contrato, lo que convierte la modificación en una elevación igualmente usuraria o, cuando menos, carente de eficacia frente a la prestataria por no haber sido debidamente comunicada.</p>';
-    b+='<p>Conforme a la doctrina del Tribunal Supremo (STS 317/2023), cada modificación unilateral del tipo equivale a un nuevo contrato a los efectos de examen de usura; y, con arreglo a la normativa sobre crédito al consumo y a los deberes de información precontractual (artículos 17 y 33 de la Ley 16/2011, de Contratos de Crédito al Consumo, y artículo 5 de la Ley 7/1998, de Condiciones Generales de la Contratación), la elevación solo es oponible al consumidor cuando se le comunica en forma que pueda conocerla y, en su caso, resolver el contrato; de no acreditarse esa comunicación, la modificación no produce efecto frente al prestatario.</p>';
-    b+=blocks?('<p>En este sentido se ha pronunciado:</p>'+blocks):warn('Elija en «Consultar» alguna resolución sobre subida de tipo para que se incorporen aquí sus pasajes literales.');
-    b+='<p>Procede, en consecuencia, apreciar el carácter usurario sobrevenido desde '+ph(caso.sobDesde,'fecha de la elevación')+', con los efectos restitutorios que se dirán.</p>';
-    return {title:'Usura sobrevenida por la elevación posterior del tipo',body:b};
+    var todos=selList().filter(function(c){return c.sob}),cl=todos.filter(function(c){return (c.mods||[]).some(function(x){return x.pasaje_clave})}),vs={};
+    cl=cl.filter(function(c){if(vs[c.roj])return false;vs[c.roj]=1;return true});
+    var blocks=cl.slice(0,3).map(function(c){USED[c.id]=1;var m=c.mods.filter(function(x){return x.pasaje_clave})[0];return '<div class="cite">«'+esc(m.pasaje_clave)+'»<span class="src">'+esc(citaSala(c,m.fundamento))+'</span></div>'}).join('');
+    var resto=todos.filter(function(c){if(vs[c.roj])return false;vs[c.roj]=1;return true});resto.concat(cl.slice(3)).forEach(function(c){USED[c.id]=1});
+    if(resto.length||cl.length>3)blocks+='<p>Han examinado también una subida posterior del tipo: '+cl.slice(3).concat(resto).map(refOf).join('; ')+'.</p>';
+    b='<p>Después de la firma, la entidad elevó el tipo de interés del contrato: '+ph('','fecha de la modificación y nueva TAE')+'.</p>';
+    b+='<p>El Tribunal Supremo resolvió este supuesto en la sentencia 317/2023, de 28 de febrero. En un crédito de duración indefinida, cada modificación del interés equivale, a los efectos de la Ley de Represión de la Usura, a la concertación de un nuevo contrato con un nuevo tipo. Desde ese momento el crédito es usurario si el nuevo interés es notablemente superior al normal del dinero en esa fecha. La usura no afecta entonces al contrato desde su origen, sino desde que se fijó el nuevo tipo, y solo desde entonces produce sus efectos.</p>';
+    b+=blocks?('<p>En este sentido:</p>'+blocks):warn('Elija en «Consultar» alguna resolución sobre subida de tipo para que se incorporen aquí sus pasajes literales.');
+    b+='<p>En este caso, la nueva TAE supera el umbral aplicable en la fecha de la modificación: '+ph('','tipo medio de esa fecha y umbral')+'. El contrato es usurario desde '+ph('','fecha de la elevación')+'.</p>';
+    return {title:'DE LA ELEVACIÓN POSTERIOR DEL TIPO DE INTERÉS',body:b};
   }
-  var b2='<p>Se alega, finalmente, usura sobrevenida derivada de la elevación posterior del tipo. Examinada la modificación, [el nuevo tipo no supera el umbral aplicable con arreglo al criterio de la STS 258/2023 / la modificación fue debidamente comunicada a la parte prestataria y no fue impugnada en su momento], por lo que no concurre el supuesto de usura sobrevenida pretendido.</p>';
-  return {title:'No concurrencia de usura sobrevenida',body:b2};
+  b='<p>Se alega también que la entidad elevó el tipo de interés después de la firma. Conforme a la sentencia del Tribunal Supremo 317/2023, de 28 de febrero, cada modificación del interés debe valorarse como un nuevo contrato y con el tipo medio de la fecha en que se produce. En este caso, la nueva TAE no supera el umbral aplicable en esa fecha: '+ph('','fecha de la modificación, nueva TAE, tipo medio y umbral')+'. La elevación no convierte el contrato en usurario.</p>';
+  return {title:'DE LA ELEVACIÓN POSTERIOR DEL TIPO DE INTERÉS',body:b};
 }
 
 function fdEfectos(caso){
-  var b;
-  if(EST.usura==='si'){
-    b='<p>Declarada la nulidad del contrato por su carácter usurario, resulta de aplicación el artículo 3 de la Ley de 23 de julio de 1908, conforme al cual el prestatario queda obligado únicamente a devolver el capital efectivamente dispuesto, sin intereses. La entidad prestamista, por su parte, debe restituir cuantas cantidades hubiera percibido por encima de ese capital por cualquier concepto (intereses, comisiones, gastos, primas de seguro vinculado o cualesquiera otros), con los intereses legales desde la fecha de cada cobro y hasta su efectiva restitución.</p>';
-    b+='<p>La liquidación de las cantidades a restituir se determinará, de no ser posible en este momento procesal, en ejecución de sentencia, partiendo de los extractos aportados por la entidad y, en su defecto, de los que resulten del propio funcionamiento del contrato.</p>';
-  }else{
-    b='<p>La declaración de falta de transparencia de las cláusulas relativas al precio y al sistema de amortización determina su nulidad y, por su carácter esencial, la del contrato en su conjunto, con las consecuencias restitutorias previstas en el artículo 1303 del Código Civil, en los términos sentados por las SSTS 154/2025 y 155/2025: el prestatario debe devolver únicamente el capital dispuesto y la entidad restituir las cantidades abonadas que excedan de él, con los intereses legales desde cada pago y hasta su efectiva restitución.</p>';
-    b+='<p>La liquidación se practicará, si no fuera posible en este momento procesal, en ejecución de sentencia.</p>';
+  var act=ph(caso.act,'La parte actora'),dem=ph(caso.dem,'La parte demandada'),b;
+  var liq='<p>La cantidad se determinará en ejecución de sentencia, a partir de los extractos y movimientos del contrato. Si lo pagado no alcanza el capital dispuesto, la parte prestataria deberá abonar la diferencia.</p>';
+  if(EST.usura==='si'||EST.sob==='si'){
+    b='<p>El artículo 3 de la Ley de Represión de la Usura establece la consecuencia de la nulidad:</p><div class="cite">«'+esc(LIT.art3)+'»<span class="src">— Artículo 3 de la Ley de 23 de julio de 1908, de Represión de la Usura</span></div>';
+    b+='<p>'+act+' solo debe devolver el capital dispuesto. '+dem+' debe restituir lo que haya cobrado por encima de ese capital, por cualquier concepto'+(EST.usura!=='si'?', desde la fecha en que el contrato pasó a ser usurario':'')+'. Esas cantidades devengan interés desde cada pago:</p>'+lit('t350_int',REF.s350+' · FD 2.º')+liq;
+    return {title:'DE LOS EFECTOS DE LA NULIDAD',body:b};
   }
-  return {title:'Efectos de la declaración de nulidad y restitución de prestaciones',body:b};
+  if(EST.trans==='no_supera'){
+    b='<p>La cláusula nula fija el precio del crédito. '+sec25(true)+' considera que el contrato no puede subsistir sin ella y que la nulidad alcanza, por eso, a todo el contrato. Así lo expresa, por todas, este fallo:</p>'+lit('a3675',REF.a3675+' · fallo');
+    b+='<p>En consecuencia, '+ph(caso.act,'la parte actora')+' solo debe devolver el capital dispuesto, y '+ph(caso.dem,'la parte demandada')+' debe restituir lo cobrado por encima de ese capital, con el interés legal desde cada pago.</p>'+liq;
+    b+=warn('Si en la demanda solo se pidió la nulidad de la cláusula de intereses y la devolución de lo cobrado por ese concepto (como en el caso de la STS 154/2025), ajuste este fundamento y el fallo a lo pedido.');
+    return {title:'DE LOS EFECTOS DE LA NULIDAD',body:b};
+  }
+  return null;
 }
 
 function fdPresc(caso){
-  var V0=V();
-  var esUsura=EST.usura==='si';
-  if(EST.presc==='estimo'){
-    var src=selList().filter(function(c){return c.presc&&c.presc_crit})[0];if(src)USED[src.id]=1;
-    if(esUsura){
-      /* ---- Prescripción estimada en usura: doctrina STS 350/2025 (Pleno) ---- */
-      var b='<p>Opuesta por la parte demandada la prescripción parcial de la acción de restitución, procede estimarla en los términos fijados por la STS (Pleno) 350/2025, de 5 de marzo (ROJ STS 836/2025; ECLI:ES:TS:2025:836).</p>';
-      b+='<p>Dicha sentencia establece una distinción fundamental: cuando la nulidad se declara por <b>usura</b> (artículo 1 de la Ley de 23 de julio de 1908), la prescripción de la acción de restitución se rige por el Código Civil, <i>no</i> por la doctrina del TJUE sobre cláusulas abusivas, porque la usura es una cuestión ajena al ámbito del Derecho de la UE. Así lo razona el Pleno:</p>';
-      b+='<div class="cite">«[L]a acción de restitución de lo pagado en exceso respecto del capital objeto del préstamo o crédito no nace cuando se celebra el contrato sino cuando se hace el pago de la cantidad cuya restitución se solicita. [...] La consecuencia de lo expuesto es que el acreditado tiene acción para reclamar lo pagado que exceda del capital prestado en los cinco años anteriores a la formulación de la reclamación extrajudicial o a la interposición de la demanda. En este caso, ese plazo debe ampliarse en 82 días como consecuencia de la suspensión de los plazos de prescripción acordada en el Real Decreto 463/2020, de 14 de marzo.»<span class="src">STS (Pleno) 350/2025, de 5 de marzo (ROJ STS 836/2025; ECLI:ES:TS:2025:836), FD 2.º</span></div>';
-      b+='<p>Conviene subrayar que esta doctrina se aplica exclusivamente cuando el contrato es declarado nulo por usura (interés notablemente superior al normal del dinero). Cuando la nulidad se funda en la falta de transparencia de las condiciones generales (protección del consumidor, Directiva 93/13/CEE), la prescripción de la acción restitutoria se rige por la jurisprudencia del TJUE, que impide que el plazo comience a correr antes de que el consumidor conozca o pueda razonablemente conocer el carácter abusivo de la cláusula.</p>';
-      b+='<p>En el caso de autos, habiéndose declarado la nulidad por usura, la acción de restitución se limita a las cantidades pagadas en exceso sobre el capital dispuesto en los <b>cinco años y 82 días</b> anteriores a la '+(src?esc(src.presc_crit.match(/reclamación (extrajudicial|previa)/i)?'reclamación extrajudicial':'demanda'):'reclamación extrajudicial o a la demanda')+'. Las cantidades anteriores a ese plazo están prescritas.</p>';
-      if(src){b+='<p>Este criterio se aplica en la Sala vigesimoquinta bis ('+esc(tribCorto(src))+', '+esc(src.roj)+').</p>';}
-      return {title:'Prescripción parcial de la acción de restitución (usura — STS Pleno 350/2025)',body:b};
+  var usura=EST.usura==='si'||EST.sob==='si',abus=!usura&&(EST.trans==='no_supera'||clausSel().length>0),b;
+  if(!usura&&!abus)return null;
+  var src=selList().filter(function(c){return c.presc&&c.presc_crit})[0];
+  if(usura){
+    b='<p>La parte demandada opone la prescripción de la acción de restitución. El Pleno del Tribunal Supremo resolvió esta cuestión en la sentencia 350/2025, de 5 de marzo. La acción para que se declare la nulidad del contrato usurario no prescribe. Sí prescribe la acción para reclamar lo pagado en exceso, que es una acción personal sujeta al plazo de cinco años del artículo 1964.2 del Código Civil. Ese plazo no se cuenta desde la firma del contrato, sino desde cada pago:</p>'+lit(['t350_nace','t350_plazo'],REF.s350+' · FD 2.º');
+    b+='<p>Esta regla es propia de la usura. Según la misma sentencia, '+litEn('t350_ue')+'</p>';
+    if(EST.presc==='estimo'){
+      if(src)USED[src.id]=1;
+      b+='<p>En este caso, solo procede restituir lo pagado en exceso en los cinco años y 82 días anteriores a '+ph('','la reclamación extrajudicial de fecha … / la demanda, presentada el …')+'. La acción para reclamar lo pagado antes ha prescrito.</p>';
+      if(src)b+='<p>En el mismo sentido: '+refOf(src)+'.</p>';
+      b+=warn('Los 82 días corresponden a la suspensión de plazos del estado de alarma (del 14 de marzo al 4 de junio de 2020). Solo amplían el plazo respecto de pagos anteriores a esa suspensión: compruebe la fecha de la reclamación.');
+      return {title:'DE LA PRESCRIPCIÓN PARCIAL DE LA ACCIÓN DE RESTITUCIÓN',body:b};
     }
-    /* ---- Prescripción estimada en no-usura (genérica) ---- */
-    var crit=src?('Esta conclusión se asienta en que '+esc(src.presc_crit)+' ('+esc(tribCorto(src))+', '+esc(src.roj)+').'):'[exprese el criterio de prescripción que se aplica en el caso concreto].';
-    var b2='<p>Opuesta por la parte demandada la prescripción de la acción de restitución, procede su estimación. '+crit+'</p><p>En consecuencia, la condena restitutoria se limita a las cantidades reclamables dentro del plazo no prescrito.</p>';
-    return {title:'Prescripción parcial de la acción de restitución',body:b2};
+    b+='<p>En este caso, la excepción no puede prosperar: '+ph('','los pagos cuya restitución se pide se hicieron dentro del plazo de cinco años, ampliado en su caso en 82 días, anterior a la reclamación / otra razón')+'.</p>';
+    return {title:'DE LA PRESCRIPCIÓN DE LA ACCIÓN DE RESTITUCIÓN',body:b};
   }
-  /* ---- Prescripción desestimada ---- */
-  if(esUsura){
-    var b3='<p>Opuesta la prescripción de la acción de restitución, procede su desestimación. Conforme a la STS (Pleno) 350/2025, de 5 de marzo, la acción de nulidad del préstamo usurario es imprescriptible. La acción de restitución del artículo 3 de la Ley de Represión de la Usura sí está sujeta al plazo de cinco años del artículo 1964 del Código Civil, contados desde cada pago, ampliados en 82 días (RD 463/2020). Pero en el caso de autos, la reclamación se ha ejercitado dentro de dicho plazo respecto de todas las cantidades cuya restitución se solicita, por lo que la excepción debe ser desestimada.</p>';
-    return {title:'Desestimación de la excepción de prescripción',body:b3};
+  b='<p>La parte demandada opone la prescripción de la acción de restitución. Cuando la nulidad deriva del carácter abusivo de una cláusula, la restitución se rige por la Directiva 93/13/CEE y por la jurisprudencia del Tribunal de Justicia. El Pleno del Tribunal Supremo la aplicó en la sentencia 857/2024, de 14 de junio, dictada a propósito de la cláusula de gastos:</p>'+lit('t857',REF.s857+' · FD 7.º, apartado 4');
+  if(EST.presc==='estimo'){
+    if(src)USED[src.id]=1;
+    b+='<p>En este caso, la entidad ha probado que la parte actora pudo conocer antes el carácter abusivo de la cláusula: '+ph('','razone la prueba, la fecha de ese conocimiento y las cantidades prescritas')+'.</p>';
+    if(src)b+='<p>En el mismo sentido: '+refOf(src)+'.</p>';
+    return {title:'DE LA PRESCRIPCIÓN PARCIAL DE LA ACCIÓN DE RESTITUCIÓN',body:b};
   }
-  var b4='<p>Opuesta la prescripción de la acción de restitución, procede su desestimación. Cuando la nulidad se funda en la falta de transparencia de las condiciones generales de la contratación (Directiva 93/13/CEE), la jurisprudencia del TJUE impide que el plazo de prescripción comience a correr antes de que el consumidor conozca o pueda razonablemente conocer el carácter abusivo de la cláusula (STJUE de 10 de junio de 2021, asuntos acumulados C-776/19 a C-782/19, BNP Paribas). La reclamación se ha ejercitado dentro del plazo legalmente establecido.</p>';
-  return {title:'Desestimación de la excepción de prescripción',body:b4};
+  b+='<p>La entidad no ha probado que la parte actora conociera el carácter abusivo de la cláusula antes de este proceso. La excepción se desestima.</p>';
+  return {title:'DE LA PRESCRIPCIÓN DE LA ACCIÓN DE RESTITUCIÓN',body:b};
 }
 
-function fdCostas(){
-  var V0=V(),t;
-  if(EST.costas==='dem')t='De conformidad con el '+V0.articulo394+', al estimarse sustancialmente la demanda, las costas de '+V0.instancia+' se imponen a la parte demandada.';
-  else if(EST.costas==='act')t='De conformidad con el '+V0.articulo394+', al desestimarse la demanda, las costas de '+V0.instancia+' se imponen a la parte actora.';
-  else t='Dadas las serias dudas de hecho y de derecho que presenta la materia, no procede hacer especial imposición de las costas de '+V0.instancia+' (artículo 394.1 de la Ley de Enjuiciamiento Civil).';
-  return {title:'Costas procesales',body:'<p>'+t+'</p>'};
+/* Costas de la apelación (solo órgano colegiado). Devuelve el criterio que se propone o el elegido. */
+function calzada(){
+  var sel=cv('c_calz'),res=cv('c_res'),ap=cv('c_apela'),abus=EST.usura!=='si'&&(EST.trans==='no_supera'||clausSel().length>0);
+  if(sel)return sel;if(!res)return '';
+  if(res==='desestimar')return 'apelante';
+  if(abus&&ap==='act')return 'entidad';
+  if(abus&&ap==='dem'&&res==='parcial')return 'mitad';
+  return 'sin';
+}
+function fdCostas(caso,GC){
+  var col=esCol(),res=cv('c_res'),abus=EST.usura!=='si'&&(EST.trans==='no_supera'||GC.length>0),P=[],pi=col?'Las costas de la primera instancia':'Las costas',lec=' de la Ley de Enjuiciamiento Civil';
+  if(!EST.costas&&!(col&&res))return null;
+  if(col&&res==='desestimar'){
+    P.push('<p>Se mantiene el pronunciamiento sobre costas de la sentencia apelada.</p>');
+  }else if(EST.costas==='dem'){
+    P.push('<p>'+pi+' se imponen a la parte demandada, al estimarse la demanda (artículo 394.1'+lec+').'+(abus?' Cuando se declara la nulidad de una cláusula abusiva, las costas se imponen a la entidad aunque la estimación sea parcial, porque así lo exige el principio de efectividad del Derecho de la Unión. Según la jurisprudencia, '+litEn('t1147_costas')+' (sentencia del Tribunal Supremo 1147/2026, de 14 de julio, ROJ STS 3137/2026, FD 3.º, con cita de las sentencias 35/2021, de 27 de enero, y 418/2023, de 28 de marzo, del Pleno, y de la sentencia del Tribunal de Justicia de 16 de julio de 2020, asuntos C-224/19 y C-259/19).':'')+'</p>');
+  }else if(EST.costas==='act'){
+    P.push('<p>'+pi+' se imponen a la parte actora, al desestimarse la demanda (artículo 394.1'+lec+').</p>');
+  }else if(EST.costas==='sin'){
+    P.push('<p>No se hace imposición de '+(col?'las costas de la primera instancia':'costas')+': '+ph('','por la estimación parcial de la demanda, artículo 394.2 LEC / por las serias dudas de hecho o de derecho del caso, artículo 394.1 LEC')+'.</p>');
+    if(abus)P.push(warn('Si se declara nula una cláusula por abusiva, la jurisprudencia impone las costas a la entidad aunque la estimación sea parcial o existan dudas de derecho (SSTS 35/2021 y 418/2023, del Pleno; STS 1147/2026).'));
+  }
+  if(col&&res){
+    var c=calzada(),par=res==='parcial';
+    if(c==='apelante')P.push('<p>Las costas de esta alzada se imponen a la parte apelante, al desestimarse su recurso (artículo 398.1'+lec+').</p>');
+    else if(c==='entidad')P.push('<p>Las costas de esta alzada se imponen a la entidad demandada, aunque el recurso se estime. El Pleno del Tribunal Supremo ha modificado su jurisprudencia y ha establecido que</p>'+lit('t1785',REF.s1785+' · FD 3.º, apartado 4.3')+'<p>En el mismo sentido, la sentencia del Pleno 1786/2025, de la misma fecha (ROJ STS 5480/2025; ECLI:ES:TS:2025:5480).</p>');
+    else if(c==='mitad')P.push('<p>El recurso de la entidad se estima solo en parte. Para estos casos, el Pleno del Tribunal Supremo ha resuelto:</p>'+lit('t1796',REF.s1796+' · FD 4.º')+'<p>Se impone, por ello, a la entidad la mitad de las costas causadas a la parte actora por el recurso.</p>');
+    else if(c==='apelada')P.push('<p>Las costas de esta alzada se imponen a la parte apelada, al estimarse el recurso (artículo 398, en relación con el artículo 394,'+lec+', en la redacción del Real Decreto-ley 6/2023, de 19 de diciembre).</p>');
+    else P.push('<p>No se hace imposición de las costas de esta alzada, al estimarse '+(par?'en parte ':'')+'el recurso (artículo 398.2'+lec+', en la redacción anterior al Real Decreto-ley 6/2023, de 19 de diciembre).</p>');
+    if(res!=='desestimar')P.push(warn('Costas de la alzada: el Real Decreto-ley 6/2023 (en vigor desde el 20 de marzo de 2024) modificó el artículo 398 LEC, que ahora remite al artículo 394 (vencimiento) también cuando el recurso se estima. Su aplicación en el tiempo se rige por las disposiciones transitorias del Real Decreto-ley: compruebe qué redacción corresponde a este proceso. Si se anula una cláusula abusiva, rigen además las sentencias del Pleno 1785/2025, 1786/2025 y 1796/2025.'));
+    P.push('<p>Procede '+(res==='desestimar'?'la pérdida':'la devolución')+' del depósito constituido para recurrir (disposición adicional 15.ª de la Ley Orgánica del Poder Judicial).</p>');
+  }
+  return {title:'DE LAS COSTAS',body:P.join('')};
 }
 
 /* ========== CLÁUSULAS ========== */
@@ -1495,189 +1619,99 @@ var CLATXT={multidivisa:'la cláusula multidivisa',clausula_suelo:'la cláusula 
 var RESCLA={nula:'la declara nula',valida:'la declara válida',allanamiento:'allanamiento de la entidad',allanamiento_consumidor:'allanamiento del consumidor'};
 function clausSel(){
   var T={},orden=[];
-  selList().forEach(function(c){var solo=typeof SEL[c.id]==='string'?SEL[c.id]:null;
-    (c.claus||[]).forEach(function(k){if(!k.pasaje_clave)return;var t=(k.tipo||'otra').split(':')[0];if(!CLATXT[t])t='otra';if(solo&&t!==solo)return;if(!T[t]){T[t]=[];orden.push(t)}T[t].push({c:c,k:k})})});
+  var eje=EST.usura||EST.trans||EST.sob;
+  selList().forEach(function(c){var solo=typeof SEL[c.id]==='string'?SEL[c.id]:null;if(!solo&&eje)return;
+    (c.claus||[]).forEach(function(k){if(!k.pasaje_clave||k.inst)return;var t=(k.tipo||'otra').split(':')[0];if(!CLATXT[t])t='otra';if(solo&&t!==solo)return;if(!T[t]){T[t]=[];orden.push(t)}T[t].push({c:c,k:k})})});
   return orden.map(function(t){return {tipo:t,items:T[t]}});
 }
 function fdClausula(g){
-  var txt=CLATXT[g.tipo],its=g.items.slice(0,4);
+  var vz={};g.items.forEach(function(x){USED[x.c.id]=1});g.items=g.items.filter(function(x){if(vz[x.c.roj])return false;vz[x.c.roj]=1;return true});
+  var txt=CLATXT[g.tipo],its=g.items.slice(0,4),b;
   function bloque(l){return l.map(function(x){USED[x.c.id]=1;return '<div class="cite">«'+esc(x.k.pasaje_clave)+'»<span class="src">'+esc(citaSala(x.c,x.k.fundamento||''))+(RESCLA[x.k.resultado]?' · '+RESCLA[x.k.resultado]:'')+'</span></div>'}).join('')}
   var ts=its.filter(function(x){return x.c.org==='TS'}),ap=its.filter(function(x){return x.c.org!=='TS'});
-
-  /* ---- Comisión de apertura: fundamento específico con doctrina STS ---- */
+  function elegidas(){var r='';
+    if(ts.length)r+='<p>Sobre esta cuestión se ha pronunciado el Tribunal Supremo:</p>'+bloque(ts);
+    if(ap.length)r+='<p>'+(ts.length?'En el mismo sentido, la':'Sobre esta cuestión se ha pronunciado la')+' Audiencia Provincial de Madrid:</p>'+bloque(ap);
+    var resto=g.items.slice(4);if(resto.length){resto.forEach(function(x){USED[x.c.id]=1});r+='<p>En el mismo sentido: '+resto.map(function(x){return refOf(x.c)}).join('; ')+'.</p>'}
+    return r}
   if(g.tipo==='comision_apertura'){
-    var b='<p>Se examina a continuación la comisión de apertura pactada en el contrato.</p>';
-    b+='<p>Conforme a la doctrina del Tribunal Supremo (SSTS 44/2019, 964/2025, 965/2025, 1138/2026, 1147/2026, 1422/2026 y 1668/2026), la comisión de apertura no constituye el precio del préstamo, sino una retribución que el prestamista percibe por los servicios de estudio, concesión y tramitación del crédito. Como tal, se somete al control de transparencia de los artículos 5 y 7 de la Ley 7/1998, de Condiciones Generales de la Contratación, y de los artículos 80 y 82 del TRLGDCU.</p>';
-    b+='<p>En la STS 1668/2026, de 29 de octubre (ROJ STS 4362/2026; ECLI:ES:TS:2026:4362), la Sala ha extendido expresamente a los <b>préstamos personales</b> los requisitos de validez de la comisión de apertura que antes se aplicaban solo a los hipotecarios, estableciendo cuatro requisitos de transparencia:</p>';
-    b+='<ul><li>Debe comprender <b>todos</b> los gastos de estudio, concesión o tramitación del préstamo.</li>';
-    b+='<li>Debe integrarse obligatoriamente en una <b>única comisión</b>, que tiene que denominarse necesariamente «comisión de apertura».</li>';
-    b+='<li>Se devengará de <b>una sola vez</b>.</li>';
-    b+='<li>Su <b>importe y su forma y fecha de liquidación</b> deben estar especificados en la propia cláusula.</li></ul>';
-    b+='<p>El incumplimiento de cualquiera de estos requisitos determina la falta de transparencia y, con ella, la nulidad de la cláusula por abusiva (STJUE de 3 de octubre de 2019, <i>Kiss y CIB Bank</i>, C-621/17).</p>';
-    if(ts.length)b+='<p>En este sentido se ha pronunciado el Tribunal Supremo:</p>'+bloque(ts);
-    if(ap.length)b+='<p>'+(ts.length?'En el mismo sentido, la':'Sobre esta cuestión se ha pronunciado la')+' Audiencia Provincial de Madrid:</p>'+bloque(ap);
-    var resto=g.items.slice(4);if(resto.length){resto.forEach(function(x){USED[x.c.id]=1});b+='<p>En el mismo sentido: '+resto.map(function(x){return refOf(x.c)}).join('; ')+'.</p>'}
-    b+='<p>'+ph('','Aplique estos cuatro requisitos al contrato enjuiciado y concrete si la comisión los cumple o no')+'</p>';
-    return {title:'La comisión de apertura',body:b};
+    b='<p>Se examina la comisión de apertura pactada en el contrato: '+ph('','importe o porcentaje, y si el contrato prevé además otra comisión o gasto de estudio')+'.</p>';
+    b+='<p>La jurisprudencia sobre esta comisión se formó en los préstamos hipotecarios (sentencias del Tribunal Supremo 816/2023, de 29 de mayo, y 964/2025 y 965/2025, de 17 de junio, dictadas tras las sentencias del Tribunal de Justicia de 16 de marzo de 2023, asunto C-565/21, y de 30 de abril de 2025, asuntos C-699/23 y C-39/24). El Tribunal Supremo la ha extendido a los préstamos personales en las sentencias 1138/2026 y 1147/2026, de 14 de julio, y la ha reiterado en las sentencias 1422/2026, de 14 de septiembre, 1656/2026, de 27 de octubre (ROJ STS 4358/2026; ECLI:ES:TS:2026:4358), y 1668/2026, de 29 de octubre (ROJ STS 4362/2026; ECLI:ES:TS:2026:4362):</p>'+lit(['t1147_ext','t1147_A','t1147_B'],REF.s1147+' · FD 2.º, apartado 4');
+    b+='<p>Además, el importe no puede ser desproporcionado. Según la misma sentencia (FD 2.º, apartados 5 y 6), en los préstamos hipotecarios no lo es una comisión situada entre el 0,25 % y el 1,50 % del capital. En los demás préstamos las magnitudes son distintas y dependen del tipo de operación: para la financiación de vehículos a más de dos años, la horquilla en la fecha de aquel contrato iba del 1,50 % al 3 %.</p>';
+    b+='<p>Por tanto, la comisión es válida si es única, se denomina «comisión de apertura», se devenga de una sola vez, expresa su importe y la forma y fecha de liquidación, no se solapa con otra comisión o gasto por los mismos servicios y su importe es proporcionado. El Tribunal Supremo la ha declarado no transparente y abusiva cuando el contrato cobra, además, una comisión de estudio por los mismos conceptos (sentencias 1656/2026 y 1668/2026).</p>';
+    b+=elegidas()+'<p>'+ph('','Aplique estos requisitos a la comisión del contrato y concluya si es válida o nula; si es nula, la entidad debe devolver su importe con el interés legal desde el pago')+'</p>';
+    return {title:'DE LA COMISIÓN DE APERTURA',body:b};
   }
-
-  /* ---- Resto de cláusulas: genérico ---- */
-  var b='<p>Se examina a continuación '+txt+' del contrato'+'.</p>';
-  if(ts.length)b+='<p>Sobre esta cuestión se ha pronunciado el Tribunal Supremo:</p>'+bloque(ts);
-  if(ap.length)b+='<p>'+(ts.length?'En el mismo sentido, la':'Sobre esta cuestión se ha pronunciado la')+' Audiencia Provincial de Madrid:</p>'+bloque(ap);
-  var resto=g.items.slice(4);if(resto.length){resto.forEach(function(x){USED[x.c.id]=1});b+='<p>En el mismo sentido: '+resto.map(function(x){return refOf(x.c)}).join('; ')+'.</p>'}
-  b+='<p>'+ph('','Aplique el criterio expuesto al contrato enjuiciado y concrete el pronunciamiento sobre '+txt)+'</p>';
-  return {title:'Sobre '+txt,body:b};
+  b='<p>'+(g.tipo==='otra'?'Se examinan':'Se examina')+' a continuación '+txt+' del contrato.</p>'+elegidas()+'<p>'+ph('','Aplique el criterio expuesto al contrato enjuiciado y concrete el pronunciamiento sobre '+txt)+'</p>';
+  return {title:tituloDe(txt),body:b};
 }
 
 /* ========== FALLO ========== */
-function fdFallo(caso){
-  var V0=V();
-  var items=[];
-  if(EST.usura==='si'){
-    items.push('Declarar la NULIDAD del contrato de '+ph(caso.prod,'tarjeta revolving')+(caso.ent?' suscrito con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+' por su carácter USURARIO.');
-    items.push('Condenar a '+ph(caso.dem,'la demandada')+' a restituir a '+ph(caso.act,'la actora')+' todas las cantidades percibidas por cualquier concepto por encima del capital efectivamente dispuesto, con los intereses legales desde la fecha de cada cobro y hasta su efectiva restitución, cantidades que se determinarán, en su caso, en ejecución de sentencia.');
-  } else if(EST.trans==='no_supera'){
-    items.push('Declarar la NULIDAD, por falta de transparencia de las cláusulas de precio y del sistema de amortización, del contrato de '+ph(caso.prod,'tarjeta revolving')+(caso.ent?' suscrito con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+'.');
-    items.push('Condenar a '+ph(caso.dem,'la demandada')+' a restituir a '+ph(caso.act,'la actora')+' las cantidades abonadas por encima del capital dispuesto, con los intereses legales desde la fecha de cada pago y hasta su efectiva restitución, a liquidar, en su caso, en ejecución de sentencia (artículo 1303 del Código Civil).');
-  } else if(EST.usura==='no'||EST.trans==='supera'){
-    items.push('Desestimar íntegramente la demanda interpuesta por '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+', con absolución de esta última de todos los pedimentos deducidos en su contra.');
-  } else {
-    items.push(ph('','Fije aquí el contenido del fallo conforme al sentido que resulte de los fundamentos anteriores'));
+function pronunciamientos(caso,GC){
+  var V0=V(),I=[],dem=ph(caso.dem,'la parte demandada'),act=ph(caso.act,'la parte actora'),D=V0.vb('Declaro','Declaramos'),C=V0.vb('Condeno','Condenamos'),rev=famProd(caso.prod)==='rev',pos=false;
+  var lim=EST.presc==='estimo'?((EST.usura==='si'||EST.sob==='si')?', con el límite de lo pagado en los cinco años y 82 días anteriores a '+ph('','la reclamación extrajudicial / la demanda'):', con el límite temporal fijado en el fundamento sobre la prescripción'):'';
+  function rest(desde){return C+' a '+dem+' a restituir a '+act+' las cantidades cobradas por cualquier concepto que'+(desde?', desde esa fecha,':'')+' excedan del capital dispuesto, con el interés legal desde la fecha de cada pago'+lim+'. La cantidad se determinará en ejecución de sentencia.'}
+  if(EST.usura==='si'){I.push(D+' la nulidad, por usurario, del '+elContrato(caso)+'.');I.push(rest(false));pos=true}
+  else if(EST.sob==='si'){I.push(D+' usurario el '+elContrato(caso)+' desde '+ph('','fecha de la elevación del tipo de interés')+', con los efectos del artículo 3 de la Ley de Represión de la Usura respecto de lo pagado desde esa fecha.');I.push(rest(true));pos=true}
+  else if(EST.trans==='no_supera'){I.push(D+' la nulidad, por falta de transparencia y abusividad, de la cláusula que fija el interés remuneratorio del '+elContrato(caso)+(rev?', valorada junto con las que regulan el sistema de amortización':'')+', y la nulidad del contrato, que no puede subsistir sin ella.');I.push(rest(false));pos=true}
+  GC.forEach(function(g){I.push(ph('','Pronunciamiento sobre '+CLATXT[g.tipo]+': nulidad y restitución, o desestimación'))});
+  var neg=EST.usura==='no'||EST.trans==='supera'||EST.sob==='no';
+  return {items:I,pos:pos,neg:neg,dudoso:GC.length>0};
+}
+function fdFallo(caso,GC){
+  var V0=V(),P=pronunciamientos(caso,GC),dem=ph(caso.dem,'la parte demandada'),act=ph(caso.act,'la parte actora'),h='',n=0;
+  function num1(t){n++;return '<p><b>'+n+'.º</b> '+t+'</p>'}
+  if(!V0.col){
+    if(P.pos)h+='<p>Estimo '+((P.neg||EST.presc==='estimo'||P.dudoso)?ph('','íntegramente / en parte')+' ':'')+'la demanda presentada por '+act+' contra '+dem+' y, en consecuencia:</p>';
+    else if(P.neg&&!P.dudoso)h+='<p>Desestimo la demanda presentada por '+act+' contra '+dem+' y, en consecuencia:</p>';
+    else h+='<p>'+ph('','Estimo / Estimo en parte / Desestimo')+' la demanda presentada por '+act+' contra '+dem+' y, en consecuencia:</p>';
+    P.items.forEach(function(t){h+=num1(t)});
+    if(!P.pos&&!P.dudoso&&P.neg)h+=num1('Absuelvo a '+dem+' de las pretensiones formuladas en su contra.');
+    if(EST.costas==='dem')h+=num1('Impongo las costas a la parte demandada.');
+    else if(EST.costas==='act')h+=num1('Impongo las costas a la parte actora.');
+    else if(EST.costas==='sin')h+=num1('No hago imposición de costas.');
+    h+='<p>Notifíquese esta sentencia a las partes. No es firme: contra ella cabe recurso de apelación, que deberá interponerse en el plazo de veinte días desde su notificación ante '+ph('','la Audiencia Provincial / este mismo órgano, si el proceso se inició antes del 20 de marzo de 2024')+' (artículo 458 de la Ley de Enjuiciamiento Civil), previa constitución del depósito de 50 euros previsto en la disposición adicional 15.ª de la Ley Orgánica del Poder Judicial.</p>';
+    h+=warn('Si se trata de un juicio verbal seguido por razón de la cuantía y esta no supera los 3.000 euros, la sentencia no es apelable (artículo 455.1 LEC): sustituya entonces el párrafo anterior.');
+    h+='<p>Así lo acuerdo, mando y firmo.</p>';
+    return {title:'',body:h};
   }
-  clausSel().forEach(function(g){items.push(ph('','Pronunciamiento sobre '+CLATXT[g.tipo]))});
-  // sobrevenida
-  if(EST.sob==='si') items.splice(1,0,'Declarar, con carácter subsidiario, el carácter USURARIO SOBREVENIDO del contrato desde '+ph(caso.sobDesde,'la fecha de la elevación posterior del tipo')+', con idénticos efectos restitutorios en cuanto a lo percibido con posterioridad a esa fecha.');
-  // costas
-  if(EST.costas==='dem') items.push('Imponer a la parte demandada las costas de '+V0.instancia+'.');
-  else if(EST.costas==='act') items.push('Imponer a la parte actora las costas de '+V0.instancia+'.');
-  else if(EST.costas==='sin') items.push('No hacer especial imposición de las costas de '+V0.instancia+'.');
-  var html;
-  if(V0.yo==='esta Sala'){
-    /* ---- FALLO COLEGIADO (AP) ---- */
-    var estima=(EST.usura==='si'||EST.trans==='no_supera');
-    var desestima=(EST.usura==='no'&&!EST.trans)||(EST.trans==='supera'&&EST.usura!=='si');
-    html='<p>Vistos los preceptos legales citados y demás de general y pertinente aplicación, en nombre de S. M. el Rey y por la autoridad que le confiere la Constitución,</p>';
-    html+='<p style="text-align:center;font-weight:600">FALLAMOS</p>';
-    if(estima){
-      html+='<p>Que estimando '+(items.length>2?'en parte ':'')+'el recurso de apelación interpuesto por '+ph('','la parte apelante')+' contra la sentencia dictada por '+ph('','el Juzgado de Primera Instancia')+', DEBEMOS REVOCAR Y REVOCAMOS '+(items.length>2?'parcialmente ':'')+'dicha resolución, y en su lugar acordamos:</p>';
-    } else if(desestima){
-      html+='<p>Que desestimando el recurso de apelación interpuesto por '+ph('','la parte apelante')+' contra la sentencia dictada por '+ph('','el Juzgado de Primera Instancia')+', DEBEMOS CONFIRMAR Y CONFIRMAMOS íntegramente la resolución recurrida.</p>';
-    } else {
-      html+='<p>'+ph('','Complete el fallo según el sentido del recurso: estimación total, parcial o desestimación')+'</p>';
-    }
-    if(estima||(!estima&&!desestima)){items.forEach(function(it,i){ html+='<p><b>'+(i+1)+'.º</b> '+it+'</p>'; })}
-    if(EST.costas==='dem') html+='<p>Se imponen a la parte recurrida las costas de esta alzada.</p>';
-    else if(EST.costas==='act') html+='<p>Se imponen a la parte apelante las costas de esta alzada.</p>';
-    else if(EST.costas==='sin') html+='<p>No se hace especial imposición de las costas de esta alzada.</p>';
-    html+='<p>'+V0.recurso+'</p>';
-    html+='<p>Así, por esta nuestra sentencia, lo pronunciamos, mandamos y firmamos.</p>';
-  } else {
-    /* ---- FALLO UNIPERSONAL (instancia) ---- */
-    html='<p>Vistos los preceptos legales citados y demás de general y pertinente aplicación,</p>';
-    html+='<p style="text-align:center;font-weight:600">FALLO</p>';
-    html+='<div class="fallo"><p>En atención a lo expuesto, acuerdo:</p>';
-    items.forEach(function(it,i){ html+='<p><b>'+(i+1)+'.º</b> '+it+'</p>'; });
-    html+='</div>';
-    html+='<p>'+V0.recurso+'</p>';
-    html+='<p>Así por esta mi sentencia, de la que se expedirá testimonio para su unión a los autos, lo pronuncio, mando y firmo.</p>';
+  var res=cv('c_res'),par=res==='parcial',donde=' contra la sentencia de '+ph('','fecha')+' dictada por '+ph('','órgano de primera instancia')+' en el '+elJuicio()+' '+ph('','número');
+  if(res==='desestimar'){
+    h+='<p>Desestimamos el recurso de apelación interpuesto por '+apelante(caso)+donde+', que confirmamos.</p>';
+  }else{
+    h+='<p>'+(res?'Estimamos '+(par?'en parte ':''):ph('','Estimamos / Estimamos en parte')+' ')+'el recurso de apelación interpuesto por '+apelante(caso)+donde+', que revocamos'+(par?' en parte':'')+'. En su lugar:</p>';
+    P.items.forEach(function(t){h+=num1(t)});
+    if(!P.pos&&!P.dudoso&&P.neg)h+=num1('Desestimamos la demanda presentada por '+act+' contra '+dem+'.');
+    if(!P.items.length&&!P.neg)h+=num1(ph('','Pronunciamientos que sustituyen a los revocados'));
+    if(par)h+=num1('Mantenemos los demás pronunciamientos de la sentencia apelada.');
+    if(EST.costas==='dem')h+=num1('Imponemos las costas de la primera instancia a la parte demandada.');
+    else if(EST.costas==='act')h+=num1('Imponemos las costas de la primera instancia a la parte actora.');
+    else if(EST.costas==='sin')h+=num1('No hacemos imposición de las costas de la primera instancia.');
   }
-  return {title:'',body:html,sec:V0.yo==='esta Sala'?'FALLAMOS':'FALLO',raw:true};
+  var c=calzada(),CA={apelante:'Imponemos las costas de esta alzada a la parte apelante.',entidad:'Imponemos las costas de esta alzada a la entidad demandada.',mitad:'Imponemos a la entidad demandada la mitad de las costas causadas a la parte actora por el recurso.',apelada:'Imponemos las costas de esta alzada a la parte apelada.',sin:'No hacemos imposición de las costas de esta alzada.'};
+  h+=res?num1(CA[c]):num1(ph('','Pronunciamiento sobre las costas de esta alzada'));
+  if(res)h+=num1('Acordamos '+(res==='desestimar'?'la pérdida':'la devolución')+' del depósito constituido para recurrir.');
+  h+='<p>Notifíquese esta sentencia a las partes. No es firme: contra ella cabe recurso de casación, en los supuestos previstos en el artículo 477 de la Ley de Enjuiciamiento Civil, que deberá interponerse ante este tribunal en el plazo de veinte días desde su notificación, previa constitución del depósito de 50 euros previsto en la disposición adicional 15.ª de la Ley Orgánica del Poder Judicial.</p>';
+  h+='<p>Así lo acordamos, mandamos y firmamos.</p>';
+  return {title:'',body:h};
 }
 
 /* ========== REDACTAR ========== */
-var ORD=['primero','segundo','tercero','cuarto','quinto','sexto','séptimo','octavo','noveno','décimo','undécimo','duodécimo'];
+function materia(caso){var f=famProd(caso.prod);return MAT?'nulidad de condiciones generales de la contratación':(f==='micro'?'nulidad de contrato de micropréstamo por usura':(f==='rev'?'nulidad de contrato de tarjeta revolving':'nulidad de contrato de préstamo'))}
 function cab(caso){
-  var V0=V();
-  var html='<div class="cab">';
+  var col=esCol(),html='<div class="cab">';
   html+='<div class="nsent">SENTENCIA '+(caso.num?'N.º '+esc(caso.num):'N.º …/…')+'</div>';
-  if(caso.org) html+='<div class="org">'+esc(caso.org)+'</div>';
-  if(caso.proc) html+='<div class="org">'+esc(caso.proc)+'</div>';
+  if(caso.org)html+='<div class="org">'+esc(caso.org)+'</div>';
+  if(caso.proc)html+='<div class="org">'+esc(caso.proc)+'</div>';
   html+='<div class="partes">';
-  if(caso.act) html+='<div><b>Parte actora:</b> '+esc(caso.act)+(caso.letact?' ('+esc(caso.letact)+')':'')+'</div>';
-  if(caso.dem) html+='<div><b>Parte demandada:</b> '+esc(caso.dem)+(caso.letdem?' ('+esc(caso.letdem)+')':'')+'</div>';
+  if(caso.act)html+='<div><b>Parte actora:</b> '+esc(caso.act)+(caso.letact?' ('+esc(caso.letact)+')':'')+'</div>';
+  if(caso.dem)html+='<div><b>Parte demandada:</b> '+esc(caso.dem)+(caso.letdem?' ('+esc(caso.letdem)+')':'')+'</div>';
   html+='</div></div>';
-  html+='<div class="lugar">En '+esc(caso.lugar||'Madrid')+', a '+esc(caso.fs||'[fecha de la sentencia]')+'.</div>';
-  var intro;
-  if(V0.yo==='esta Sala'){
-    var materia=MAT?'nulidad de condiciones generales de la contratación':(esMicro(caso.prod)?'nulidad de contratos de micropréstamo por usura':'nulidad de contrato de tarjeta revolving por usura y falta de transparencia');
-    intro='<div class="lugar">Vistos por la Sección Vigesimoquinta bis de la Audiencia Provincial de Madrid, integrada por las Magistradas y Magistrados cuyo nombre consta al margen, el recurso de apelación interpuesto contra la sentencia dictada por el Juzgado de Primera Instancia, en el procedimiento de referencia, sobre '+materia+'.</div>';
-  } else {
-    var materia2=MAT?'nulidad de condiciones generales de la contratación':(esMicro(caso.prod)?'nulidad de contratos de micropréstamo por usura':'nulidad de contrato de tarjeta revolving por usura y falta de transparencia');
-    intro='<div class="lugar">Vistos por '+esc(caso.org||'este Juzgado de Primera Instancia')+' los autos de juicio ordinario registrados con el número de referencia, seguidos a instancia de '+ph(caso.act,'la parte actora')+', frente a '+ph(caso.dem,'la parte demandada')+', sobre '+materia2+', procede dictar la presente resolución con arreglo a los siguientes</div>';
-  }
-  html+=intro;
+  html+='<div class="lugar">En '+ph(caso.lugar,'lugar')+', a '+ph(caso.fs,'fecha de la sentencia')+'.</div>';
+  if(col)html+='<div class="lugar">'+(caso.org?esc(orgArt(caso.org,false,true)):ph('','Sección … de la Audiencia Provincial de …'))+' ha visto en grado de apelación el recurso interpuesto contra la sentencia dictada en el procedimiento de referencia, sobre '+materia(caso)+'.</div>';
+  else html+='<div class="lugar">Vistos por '+(caso.org?esc(orgArt(caso.org)):ph('','órgano judicial'))+' los autos de '+elJuicio()+' seguidos a instancia de '+ph(caso.act,'la parte actora')+' contra '+ph(caso.dem,'la parte demandada')+', sobre '+materia(caso)+', se dicta esta sentencia.</div>';
   return html;
 }
-
-/* ========== MODELO: MICROPRÉSTAMO (usura) ========== */
-function antMicro(caso){
-  var V0=V();
-  if(V0.yo==='esta Sala'){
-    return {title:'',body:'<p><b>Primero.</b> Por el Juzgado de Primera Instancia se dictó sentencia en los autos de referencia, seguidos a instancia de '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+', cuyo fallo es del tenor literal siguiente: '+ph('','transcriba el fallo de la sentencia de instancia')+'.</p><p><b>Segundo.</b> Contra la anterior resolución se interpuso recurso de apelación por '+ph('','la parte apelante')+', que fue admitido, y, en su virtud, previos los oportunos emplazamientos, se remitieron las actuaciones a esta Sección, sustanciándose el recurso por sus trámites legales.</p><p><b>Tercero.</b> En la tramitación de este recurso se han observado las prescripciones legales.</p>',sec:'ANTECEDENTES DE HECHO'};
-  }
-  return {title:'',body:'<p><b>Primero.</b> Por la representación procesal de '+ph(caso.act,'la parte actora')+' se formuló demanda de juicio ordinario frente a '+ph(caso.dem,'la parte demandada')+', en ejercicio de la acción de nulidad de los contratos de micropréstamo'+(caso.ent?' suscritos con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+', por su carácter usurario, con arreglo al artículo 1 de la Ley de 23 de julio de 1908, de Represión de la Usura, con los efectos restitutorios inherentes a la declaración de nulidad.</p><p><b>Segundo.</b> Admitida a trámite la demanda y emplazada la parte demandada, compareció en tiempo y forma y contestó oponiéndose a las pretensiones ejercitadas, con las alegaciones que obran en autos y que, por evitar reiteraciones innecesarias, se dan aquí por reproducidas.</p><p><b>Tercero.</b> Convocadas las partes al acto de la audiencia previa, se tuvo por fijados los términos del debate, se practicó la prueba propuesta y declarada pertinente en el acto del juicio y, oídas las conclusiones de las partes, quedaron los autos vistos para sentencia.</p><p><b>Cuarto.</b> En la tramitación del presente procedimiento se han observado las prescripciones legales de aplicación.</p>',sec:'ANTECEDENTES DE HECHO'};
-}
-function fdObjetoMicro(caso){
-  var b='<p>Ejercita '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+' la acción de nulidad de los contratos de micropréstamo'+(caso.ent?' suscritos con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+', por su carácter usurario, con arreglo al artículo 1 de la Ley de 23 de julio de 1908, de Represión de la Usura.</p>';
-  b+='<p>El micropréstamo —préstamo al consumo de escasa cuantía y corto plazo de devolución, habitualmente concertado en línea— se caracteriza por la exigencia de un interés remuneratorio extraordinariamente elevado, traducido en TAEs que superan con mucho las habituales en el crédito al consumo. Resueltas las cuestiones procesales y fijados los términos del debate, procede entrar en el fondo con arreglo a los fundamentos que siguen.</p>';
-  return {title:'Objeto del proceso y planteamiento',body:b};
-}
-function fdUsuraMicro(caso){
-  var V0=V();
-  var pct=function(v,t){return v?esc(v)+(/%/.test(v)?'':' %'):ph('',t)};
-  var tae=pct(caso.tae,'TAE');
-  var p1='<p>Los contratos enjuiciados'+(caso.ent?', suscritos con '+esc(caso.ent):'')+(caso.fecha?', de '+esc(caso.fecha)+',':'')+' fijaron un interés remuneratorio equivalente a una TAE del '+tae+'.</p>';
-  var pDoc='<p>El parámetro de referencia aplicable al micropréstamo presenta una singularidad que '+V0.yo+' debe abordar. El Banco de España no publica un tipo medio de referencia (TEDR) específico para micropréstamos: las tablas oficiales distinguen los créditos revolving, los préstamos al consumo y otros segmentos, pero ninguna categoría se corresponde con el préstamo de baja cuantía y corta duración. Tampoco existe una norma jurídica ni una doctrina generalmente aceptada que defina con precisión los límites cuantitativos o temporales del micropréstamo.</p>';
-  pDoc+='<p>Ante esta indeterminación, no cabe aceptar como comparador objetivo el certificado de la Asociación Española de Microcréditos, en la medida en que no concreta sobre qué muestra del mercado aplica sus cálculos estadísticos, ni las cuantías máximas y mínimas, ni los periodos temporales que incluye dentro de la categoría «micropréstamo», ni las entidades financieras consultadas ni su representatividad. Por todo ello, el parámetro de comparación debe ser, necesariamente, el que ofrecen las tablas estadísticas del Banco de España para préstamos al consumo, aplicando, en su caso, el criterio de corrección adecuado a las singularidades de la operación.</p>';
-  var pJur='<p>Conforme a la doctrina del Tribunal Supremo (SSTS 628/2015, del Pleno, de 25 de noviembre, y 149/2020, de 4 de marzo), un interés es usurario cuando es «notablemente superior al normal del dinero y manifiestamente desproporcionado con las circunstancias del caso» (artículo 1 de la Ley de 23 de julio de 1908). La carga de probar la concurrencia de circunstancias excepcionales que justifiquen estipular un interés elevado corresponde a la entidad financiera. Y no constituye circunstancia excepcional el riesgo de alto nivel de impagos asociado a operaciones de crédito concedidas de modo ágil y sin comprobar adecuadamente la solvencia del prestatario, pues «la concesión irresponsable de préstamos al consumo a tipos de interés muy superiores a los normales, que facilita el sobreendeudamiento de los consumidores y trae como consecuencia que quienes cumplen regularmente sus obligaciones tengan que cargar con las consecuencias del elevado nivel de impagos, no puede ser objeto de protección por el ordenamiento jurídico» (STS 149/2020, FD 5.º).</p>';
-  if(EST.usura==='si'){
-    var cl=pick('usurario','usura','u_pas',4);var tsFirst=cl.filter(function(c){return c.org==='TS'});
-    var b=p1+pDoc+pJur+'<p>En el caso de autos, la TAE pactada ('+tae+') resulta extraordinariamente superior al tipo medio de los préstamos al consumo publicado por el Banco de España para cualquier periodo, sin que la entidad prestamista haya aportado justificación alguna que permita considerar proporcionada la fijación de un interés de tal magnitud. No puede, por tanto, sino calificarse de notablemente superior al normal del dinero y manifiestamente desproporcionado, en el sentido del artículo 1 de la Ley de 23 de julio de 1908.</p>';
-    if(tsFirst.length){b+='<p>Así lo tiene declarado el Tribunal Supremo:</p>'+citeBlocks(tsFirst,'u_pas','u_fd');var ap=cl.filter(function(c){return c.org!=='TS'});if(ap.length)b+='<p>En el mismo sentido, la Sala vigesimoquinta bis de la Audiencia Provincial de Madrid, en supuestos de micropréstamo equivalentes al enjuiciado:</p>'+citeBlocks(ap,'u_pas','u_fd')}
-    else if(cl.length){b+='<p>Así lo ha declarado la Sala vigesimoquinta bis de la Audiencia Provincial de Madrid en supuestos de micropréstamo equivalentes al enjuiciado:</p>'+citeBlocks(cl,'u_pas','u_fd')}
-    else{b+=warn('Elija en «Consultar» alguna resolución que aprecie la usura en micropréstamos para que se incorporen aquí sus pasajes literales.')}
-    b+=otras('usurario','usura',cl);
-    b+='<p>Procede, en consecuencia, declarar la nulidad de los contratos de micropréstamo por su carácter usurario, con los efectos restitutorios previstos en el artículo 3 de la Ley de Represión de la Usura.</p>';
-    return {title:'Carácter usurario de los contratos de micropréstamo',body:b};
-  }
-  var cl2=pick('no_usurario','usura','u_pas',4);
-  var b2=p1+pDoc+pJur+'<p>En el caso de autos, aun siendo elevada, la TAE pactada ('+tae+') no alcanza una magnitud que, en relación con el tipo medio de los préstamos al consumo y atendidas las circunstancias del caso, permita calificar el interés como notablemente superior al normal del dinero a los efectos del artículo 1 de la Ley de 23 de julio de 1908.</p>';
-  if(cl2.length){b2+='<p>En este sentido se ha pronunciado la Sala vigesimoquinta bis en supuestos comparables:</p>'+citeBlocks(cl2,'u_pas','u_fd')}
-  b2+=otras('no_usurario','usura',cl2);
-  b2+='<p>Descartada la usura, procede desestimar la pretensión de nulidad de los contratos de micropréstamo.</p>';
-  return {title:'No se aprecia el carácter usurario de los micropréstamos',body:b2};
-}
-function fdEfectosMicro(caso){
-  var b='<p>Declarada la nulidad de los contratos de micropréstamo por su carácter usurario, resulta de aplicación el artículo 3 de la Ley de 23 de julio de 1908, conforme al cual el prestatario queda obligado únicamente a devolver el capital efectivamente dispuesto, sin intereses. La entidad prestamista, por su parte, debe restituir cuantas cantidades hubiera percibido por encima de ese capital por cualquier concepto (intereses, comisiones, gastos o cualesquiera otros), con los intereses legales desde la fecha de cada cobro y hasta su efectiva restitución.</p>';
-  b+='<p>La liquidación de las cantidades a restituir se determinará, de no ser posible en este momento procesal, en ejecución de sentencia, partiendo de los extractos aportados por la entidad y, en su defecto, de los que resulten del propio funcionamiento de los contratos.</p>';
-  return {title:'Efectos de la declaración de nulidad y restitución de prestaciones',body:b};
-}
-function falloMicro(caso){
-  var V0=V();
-  if(EST.usura==='si'){
-    var b='<p><b>'+V0.resuelvo+':</b></p><p><b>Primero.</b> Estim'+(V0.yo==='esta Sala'?'amos':'o')+' la demanda interpuesta por '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+'.</p><p><b>Segundo.</b> Declar'+(V0.yo==='esta Sala'?'amos':'o')+' la nulidad, por usurarios, de los contratos de micropréstamo celebrados entre las partes'+(caso.ent?' con '+esc(caso.ent):'')+(caso.fecha?', de '+esc(caso.fecha):'')+', con los efectos previstos en el artículo 3 de la Ley de 23 de julio de 1908, de Represión de la Usura: el prestatario vendrá obligado a restituir únicamente las sumas efectivamente dispuestas, y la entidad demandada deberá reintegrar cuantas cantidades hubiera percibido por encima de ese capital, con los intereses legales desde cada cobro.</p><p><b>Tercero.</b> '+ph('','pronunciamiento sobre costas')+'.</p><p>'+V0.recurso+'</p>';
-    return {title:'',body:b};
-  }
-  return {title:'',body:'<p><b>'+V0.resuelvo+':</b></p><p><b>Primero.</b> Desestim'+(V0.yo==='esta Sala'?'amos':'o')+' la demanda interpuesta por '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+'.</p><p><b>Segundo.</b> '+ph('','pronunciamiento sobre costas')+'.</p><p>'+V0.recurso+'</p>'};
-}
-
-/* ========== DETECCIÓN DE PRODUCTO ========== */
-function esMicro(prod){return /micro|microcr/i.test(prod||'')}
-function esRevolving(prod){var p=(prod||'').toLowerCase();return !p||/revolving|tarjeta revolv|línea de crédito revolv/i.test(p)}
-
-function fdTitulo(t){
-  if(!t)return '';
-  var u=t.toUpperCase();
-  // Añadir DE LA / DEL / DE LAS / DE LOS si no empieza ya con preposición
-  if(/^(DE |DEL |SOBRE |NO )/.test(u))return u;
-  // Detectar artículo para elegir DE LA / DEL / DE LOS / DE LAS
-  if(/^(CARÁCTER|OBJETO|EFECTO|NO SE)/.test(u))return 'DEL '+u;
-  if(/^(FALTA|SUPERACIÓN|USURA|PRESCRIPCIÓN|DESESTIMACIÓN|NO CONCURR)/.test(u))return 'DE LA '+u;
-  if(/^(COSTAS)/.test(u))return 'DE LAS '+u;
-  return 'DEL '+u;
-}
-
 function redactar(ev){
   if(ev)ev.preventDefault();
   var caso={
@@ -1686,46 +1720,30 @@ function redactar(ev){
     lugar:cv('c_lugar'),fs:cv('c_fs'),
     act:cv('c_act'),dem:cv('c_dem'),letact:cv('c_letact'),letdem:cv('c_letdem'),
     ent:cv('c_ent'),fecha:cv('c_fecha'),prod:cv('c_prod'),
-    tae:cv('c_tae'),ref:cv('c_ref'),umbral:cv('c_umbral'),sobDesde:''
+    tae:cv('c_tae'),ref:cv('c_ref'),umbral:cv('c_umbral')
   };
-  var micro=esMicro(caso.prod);
-
+  var col=esCol();
   USED={};var GC=clausSel();MAT=(!EST.usura&&!EST.trans&&!EST.sob&&GC.length)?GC.map(function(g){return CLATXT[g.tipo]}).join(', ').replace(/, ([^,]*)$/,' y $1'):'';
   var doc=$('doc');doc.innerHTML='';
-  // Encabezado + lugar + intro
   var cabE=document.createElement('div');cabE.innerHTML=cab(caso);while(cabE.firstChild)doc.appendChild(cabE.firstChild);
+  function suelto(html){var a=el('article',{cls:'fd'});a.appendChild(el('div',{cls:'body',contenteditable:'true',html:html}));doc.appendChild(a)}
 
-  // ANTECEDENTES
   doc.appendChild(el('div',{cls:'seccion',text:'ANTECEDENTES DE HECHO'}));
-  var ant=micro?antMicro(caso):antecedentes(caso);
-  var artA=el('article',{cls:'fd'});
-  artA.appendChild(el('div',{cls:'body',contenteditable:'true',html:ant.body}));
-  doc.appendChild(artA);
+  suelto(antecedentes(caso,GC).body);
 
-  // FUNDAMENTOS DE DERECHO
   doc.appendChild(el('div',{cls:'seccion',text:'FUNDAMENTOS DE DERECHO'}));
-  var blocks;
-  if(micro){
-    blocks=[fdObjetoMicro(caso)];
-    if(EST.usura)blocks.push(fdUsuraMicro(caso));
-    if(EST.usura==='si')blocks.push(fdEfectosMicro(caso));
-    GC.forEach(function(g){blocks.push(fdClausula(g))});
-    if(EST.presc)blocks.push(fdPresc(caso));
-    if(EST.costas)blocks.push(fdCostas());
-  } else {
-    blocks=[fdObjeto(caso)];
-    if(EST.usura)blocks.push(fdUsura(caso));
-    if(EST.trans)blocks.push(fdTrans(caso));
-    if(EST.sob)blocks.push(fdSob(caso));
-    GC.forEach(function(g){blocks.push(fdClausula(g))});
-    if(EST.usura==='si'||EST.trans==='no_supera')blocks.push(fdEfectos(caso));
-    if(EST.presc)blocks.push(fdPresc(caso));
-    if(EST.costas)blocks.push(fdCostas());
-  }
-
+  var blocks=[fdObjeto(caso,GC)];
+  if(EST.usura)blocks.push(fdUsura(caso));
+  if(EST.trans)blocks.push(fdTrans(caso));
+  if(EST.sob)blocks.push(fdSob(caso));
+  GC.forEach(function(g){blocks.push(fdClausula(g))});
+  blocks.push(fdEfectos(caso));
+  if(EST.presc)blocks.push(fdPresc(caso));
+  blocks.push(fdCostas(caso,GC));
+  blocks=blocks.filter(Boolean);
   blocks.forEach(function(blk,i){
     var art=el('article',{cls:'fd'});
-    art.appendChild(el('h3',{text:(ORDM[i]||(i+1)+'.º')+'.- '+(blk.title?fdTitulo(blk.title):'')}));
+    art.appendChild(el('h3',{text:(ORDM[i]||(i+1)+'.º')+'.- '+blk.title}));
     art.appendChild(el('div',{cls:'body',contenteditable:'true',html:blk.body}));
     var tools=el('div',{cls:'fdtools'});
     var bc=el('button',{type:'button',text:'Copiar este fundamento'});
@@ -1734,24 +1752,31 @@ function redactar(ev){
     art.appendChild(tools);
     doc.appendChild(art);
   });
+  suelto('<p>Vistos los preceptos citados y los demás de general y pertinente aplicación, en nombre del Rey y por la autoridad que '+(col?'nos':'me')+' confiere la Constitución,</p>');
 
-  // FALLO
-  doc.appendChild(el('div',{cls:'seccion',text:caso.tipo==='colegiado'?'FALLAMOS':'FALLO'}));
-  var fallo=micro?falloMicro(caso):fdFallo(caso);
-  var artF=el('article',{cls:'fd'});
-  artF.appendChild(el('div',{cls:'body',contenteditable:'true',html:fallo.body}));
-  doc.appendChild(artF);
+  doc.appendChild(el('div',{cls:'seccion',text:col?'FALLAMOS':'FALLO'}));
+  suelto(fdFallo(caso,GC).body);
 
   var noU=selList().filter(function(c){return !USED[c.id]}),av=$('d_aviso');
-  $('d_meta').textContent=blocks.length+' fundamentos · '+Object.keys(USED).length+' de '+selN()+' resoluciones elegidas citadas · '+(caso.tipo==='colegiado'?'órgano colegiado':'órgano unipersonal');
+  $('d_meta').textContent=blocks.length+' fundamentos · '+Object.keys(USED).length+' de '+selN()+' resoluciones elegidas citadas · '+(col?'órgano colegiado':'órgano unipersonal');
   if(noU.length){av.hidden=false;av.textContent=(noU.length===1?'No se ha citado 1 resolución elegida':'No se han citado '+noU.length+' resoluciones elegidas')+(noU.length===1?' porque no resuelve en el sentido marcado o no trata los puntos activos: ':' porque no resuelven en el sentido marcado o no tratan los puntos activos: ')+noU.map(function(c){return c.roj}).join('; ')+'. Cambie el sentido del fallo si quiere citarla'+(noU.length===1?'':'s')+'.'}else av.hidden=true;
   if(ev&&window.innerWidth<900){try{$('doc').parentNode.scrollIntoView({behavior:'smooth',block:'start'})}catch(e){}}
   toast('Borrador redactado. Puede editarlo directamente sobre el documento.');
 }
+/* El formulario se adapta al tipo de órgano */
+function ajustaOrgano(){
+  var col=esCol();$('fs_rec').hidden=!col;
+  $('c_org').placeholder=col?'Audiencia Provincial de …, Sección …':'Tribunal de Instancia de …, Sección Civil, plaza n.º …';
+  $('c_proc').placeholder=col?'Recurso de apelación …/…':'Juicio ordinario / verbal …/…';
+  $('lb_costas').textContent=col?'Costas de la primera instancia':'Costas';
+}
+$('c_tipo').addEventListener('change',ajustaOrgano);ajustaOrgano();
 function fdPlain(art){
   var h=art.querySelector('h3');
   var be=art.querySelector('.body');
-  var body=((be.innerText||be.textContent)||'').replace(/\n{2,}/g,'\n\n').trim();
+  var tmp=be.cloneNode(true);tmp.querySelectorAll('.warn').forEach(function(w){w.remove()});tmp.style.cssText='position:absolute;left:-9999px;top:0;width:700px';document.body.appendChild(tmp);
+  var body=((tmp.innerText||tmp.textContent)||'');tmp.remove();
+  body=body.replace(/\n{2,}/g,'\n\n').trim();
   return (h?h.textContent+'\n\n':'')+body+'\n';
 }
 function docPlain(){
@@ -1768,7 +1793,7 @@ function docPlain(){
 function copyText(t){var fb=function(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e2){}ta.remove()};try{navigator.clipboard.writeText(t).catch(fb)}catch(e){fb()}}
 
 $('cf').addEventListener('submit',function(ev){redactar(ev);gcEvt('redactar')});
-$('c_reset').addEventListener('click',function(){TOUCH={};$('cf').reset();Object.keys(EST).forEach(function(k){EST[k]='';var h=$(EJES[k].host);h.querySelectorAll('.opt').forEach(function(x,idx){x.className='opt';var inp=x.querySelector('input');if(inp.value===''){inp.checked=true;x.className='opt on'}else inp.checked=false})});});
+$('c_reset').addEventListener('click',function(){TOUCH={};HTMLFormElement.prototype.reset.call($('cf'));ajustaOrgano();Object.keys(EST).forEach(function(k){EST[k]='';var h=$(EJES[k].host);h.querySelectorAll('.opt').forEach(function(x,idx){x.className='opt';var inp=x.querySelector('input');if(inp.value===''){inp.checked=true;x.className='opt on'}else inp.checked=false})});});
 $('d_copy').addEventListener('click',function(){if(!document.querySelector('#doc .fd')){toast('Primero redacte el borrador');return}copyText(docPlain());toast('Borrador copiado al portapapeles');gcEvt('copiar')});
 $('d_print').addEventListener('click',function(){if(!document.querySelector('#doc .fd')){toast('Primero redacte el borrador');return}window.print();gcEvt('imprimir')});
 /* ---------- .docx: zip sin compresión y WordprocessingML ---------- */
@@ -1800,45 +1825,45 @@ function wRunsOf(node,o){var s='';o=o||{};
 var ORDM=['PRIMERO','SEGUNDO','TERCERO','CUARTO','QUINTO','SEXTO','SÉPTIMO','OCTAVO','NOVENO','DÉCIMO','UNDÉCIMO','DUODÉCIMO'];
 function docxSentencia(){
   var col=cv('c_tipo')==='colegiado',B=[],H=function(t,o){return wPar(wRun(t,{b:true}),o)},T=function(t,o){return wPar(wRun(t),o)},HL=function(t){return wRun('['+t+']',{hl:true})};
-  var act=cv('c_act'),dem=cv('c_dem'),num=cv('c_num'),proc=cv('c_proc'),org=cv('c_org'),lugar=cv('c_lugar')||'Madrid',fs=cv('c_fs'),la=cv('c_letact'),ld=cv('c_letdem');
+  var act=cv('c_act'),dem=cv('c_dem'),num=cv('c_num'),proc=cv('c_proc'),org=cv('c_org'),lugar=cv('c_lugar')||'[lugar]',fs=cv('c_fs'),la=cv('c_letact'),ld=cv('c_letdem');
   var L={jc:'left',after:40,line:276};
+  var jui=cv('c_juicio'),ORG=function(t){return org?wRun(org):HL(t)},JUI=function(){return jui?wRun('juicio '+jui):HL('juicio ordinario o verbal')},caso0={prod:cv('c_prod')};
   if(col){
-    (org?org.split(/\s*[\/|]\s*|\n/):['Audiencia Provincial Civil de Madrid','Sección 25 BIS']).forEach(function(t){B.push(H(t,L))});
+    if(org)org.split(/\s*[\/|]\s*|\n/).forEach(function(t){B.push(H(t,L))});else B.push(wPar(HL('Audiencia Provincial de … · Sección …'),L));
     B.push(wPar(wRun('N.I.G.: ')+HL('número'),L));
-    B.push(wPar(wRun('Recurso de Apelación ',{b:true})+(proc?wRun(proc,{b:true}):HL('número/año')),L));
-    B.push(wPar(wRun('O. Judicial Origen: ')+HL('juzgado de origen'),L));
-    B.push(wPar(wRun('Autos de ')+HL('procedimiento de origen'),L));
+    B.push(wPar(wRun('Recurso de apelación ',{b:true})+(proc?wRun(proc.replace(/^recurso de apelaci[oó]n\s*/i,''),{b:true}):HL('número/año')),L));
+    B.push(wPar(wRun('Órgano de origen: ')+HL('órgano de primera instancia'),L));
+    B.push(wPar(wRun('Autos de ')+JUI()+wRun(' ')+HL('número/año'),L));
     B.push(wPar(wRun('APELANTE: ',{b:true})+HL('parte apelante'),{jc:'left',after:40,line:276,before:160}));
     B.push(wPar(wRun('PROCURADOR D./Dña. ')+HL('nombre'),L));
     B.push(wPar(wRun('APELADO: ',{b:true})+HL('parte apelada'),L));
     B.push(wPar(wRun('PROCURADOR D./Dña. ')+HL('nombre'),L));
-    B.push(wPar(wRun('SENTENCIA Nº ',{b:true})+(num?wRun(num,{b:true}):HL('número/año')),{jc:'center',before:360,after:240}));
-    B.push(H('TRIBUNAL QUE LO DICTA:',L));B.push(H('ILMOS/AS SRES./SRAS. MAGISTRADOS/AS:',L));
+    B.push(wPar(wRun('SENTENCIA N.º ',{b:true})+(num?wRun(num,{b:true}):HL('número/año')),{jc:'center',before:360,after:240}));
+    B.push(H('TRIBUNAL QUE LO DICTA:',L));B.push(H('ILMOS/AS. SRES./SRAS. MAGISTRADOS/AS:',L));
     for(var i=0;i<3;i++)B.push(wPar(wRun('D./Dña. ')+HL('nombre'),L));
     B.push(wPar(wRun('En '+lugar+', a ')+(fs?wRun(fs):HL('fecha'))+wRun('.'),{before:300,first:709}));
-    B.push(wPar(wRun('La Sección 25 BIS de la Ilma. Audiencia Provincial de esta Capital, constituida por los Sres. que al margen se expresan, ha visto en trámite de apelación los presentes autos civiles ')+HL('procedimiento de origen')+wRun(' seguidos en ')+HL('juzgado de origen')+wRun(' a instancia de ')+(act?wRun(act):HL('parte actora'))+(la?wRun(', defendido por el/la Letrado/a '+la):'')+wRun(' contra ')+(dem?wRun(dem):HL('parte demandada'))+(ld?wRun(', defendido por el/la Letrado/a '+ld):'')+wRun('; todo ello en virtud del recurso de apelación interpuesto contra la sentencia dictada por el mencionado Juzgado, de fecha ')+HL('fecha')+wRun('.'),{first:709}));
-    B.push(wPar(wRun('VISTO, siendo Magistrado/a Ponente D./Dña. ',{b:true})+HL('nombre')+wRun('.'),{first:709}));
+    B.push(wPar((org?wRun(orgArt(org,false,true)):HL('Sección … de la Audiencia Provincial de …'))+wRun(', constituida por los magistrados que arriba se expresan, ha visto en grado de apelación los autos de ')+JUI()+wRun(' ')+HL('número/año')+wRun(', seguidos en ')+HL('órgano de primera instancia')+wRun(' a instancia de ')+(act?wRun(act):HL('parte actora'))+(la?wRun(', defendida por el/la letrado/a '+la):'')+wRun(' contra ')+(dem?wRun(dem):HL('parte demandada'))+(ld?wRun(', defendida por el/la letrado/a '+ld):'')+wRun(', sobre '+materia(caso0)+', en virtud del recurso de apelación interpuesto contra la sentencia de ')+HL('fecha')+wRun('.'),{first:709}));
+    B.push(wPar(wRun('Ha sido ponente D./Dña. ')+HL('nombre')+wRun(', que expresa el parecer de la Sala.'),{first:709}));
   }else{
-    B.push(H((org||'JUZGADO DE PRIMERA INSTANCIA Nº … DE '+lugar.toUpperCase()).toUpperCase(),L));
+    B.push(org?H(org.toUpperCase(),L):wPar(HL('ÓRGANO JUDICIAL'),L));
     B.push(wPar(wRun('Procedimiento: ',{b:true})+(proc?wRun(proc):HL('clase y número')),L));
     B.push(wPar(wRun('Demandante: ',{b:true})+(act?wRun(act):HL('parte actora'))+(la?wRun('. Letrado/a: '+la):''),{jc:'left',after:40,line:276,before:160}));
     B.push(wPar(wRun('Demandado: ',{b:true})+(dem?wRun(dem):HL('parte demandada'))+(ld?wRun('. Letrado/a: '+ld):''),L));
-    B.push(wPar(wRun('SENTENCIA Nº ',{b:true})+(num?wRun(num,{b:true}):HL('número/año')),{jc:'center',before:360,after:240}));
+    B.push(wPar(wRun('SENTENCIA N.º ',{b:true})+(num?wRun(num,{b:true}):HL('número/año')),{jc:'center',before:360,after:240}));
     B.push(wPar(wRun('En '+lugar+', a ')+(fs?wRun(fs):HL('fecha'))+wRun('.'),{first:709}));
-    B.push(wPar(wRun('Vistos por mí, ')+HL('nombre')+wRun(', Magistrado/a-Juez/a del '+(org||'Juzgado de Primera Instancia')+', los presentes autos de juicio ordinario')+(proc?wRun(' '+proc):'')+wRun(', seguidos a instancia de ')+(act?wRun(act):HL('parte actora'))+wRun(' frente a ')+(dem?wRun(dem):HL('parte demandada'))+wRun(', sobre '+(MAT?'nulidad de condiciones generales de la contratación':'nulidad de contrato por usura y falta de transparencia')+', dicto la presente resolución con base en los siguientes'),{first:709}));
+    B.push(wPar(wRun('Vistos por mí, ')+HL('nombre')+wRun(', ')+HL('magistrado/a o juez/a')+(org?wRun(' '+orgArt(org,true)):wRun(' de ')+HL('órgano judicial'))+wRun(', los autos de ')+JUI()+(proc?wRun(' '+proc.replace(/^(juicio\s+)?(ordinario|verbal)\s*/i,'')):'')+wRun(', seguidos a instancia de ')+(act?wRun(act):HL('parte actora'))+wRun(' contra ')+(dem?wRun(dem):HL('parte demandada'))+wRun(', sobre '+materia(caso0)+', dicto esta sentencia.'),{first:709}));
   }
   var nfd=0;
   document.querySelectorAll('#doc .seccion, #doc article.fd').forEach(function(e){
     if(e.classList.contains('seccion')){var t=e.textContent.trim();if(t==='FALLO'&&col)t='FALLAMOS';B.push(wPar(wRun(t,{b:true}),{jc:'center',before:360,after:200,keep:true}));return}
     var h3=e.querySelector('h3'),body=e.querySelector('.body');if(!body)return;var pre='';
-    if(h3){var tt=h3.textContent.replace(/^Fundamento de derecho [^.]+\.\s*/,'');pre=wRun((ORDM[nfd]||String(nfd+1)+'.º')+'.- ',{b:true})+wRun(tt+'.',{b:true});nfd++;B.push(wPar(pre,{first:709,keep:true}))}
+    if(h3){nfd++;B.push(wPar(wRun(h3.textContent.trim(),{b:true}),{first:709,keep:true,before:200}))}
     (function walk(box){Array.prototype.forEach.call(box.children,function(p){
       if(p.classList.contains('warn')||p.classList.contains('fdtools'))return;
       if(p.classList.contains('cite')){var src=p.querySelector('.src'),q=p.cloneNode(true),sq=q.querySelector('.src');if(sq)sq.remove();
         B.push(wPar(wRunsOf(q,{i:true,sz:22}),{left:851,after:60,line:300}));if(src)B.push(wPar(wRun(src.textContent.replace(/^—\s*/,''),{sz:18}),{left:851,after:160,line:276,jc:'left'}));return}
       if(p.classList.contains('fallo')){walk(p);return}
       if(p.tagName==='P'||p.classList.contains('rec')){var r=wRunsOf(p,{});
-        r=r.replace(/(<w:r><w:rPr><w:b\/><\/w:rPr><w:t xml:space="preserve">)(Primero|Segundo|Tercero|Cuarto|Quinto)\.(<\/w:t>)/,function(m,a,o,z){return a+o.toUpperCase()+'.-'+z});
         B.push(wPar(r,{first:709}))}
     })})(body)});
   var doc='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>'+B.join('')+'<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1418" w:right="1418" w:bottom="1418" w:left="1701" w:header="709" w:footer="709" w:gutter="0"/></w:sectPr></w:body></w:document>';
@@ -1859,7 +1884,7 @@ var nres={};C.forEach(function(c){nres[c.roj]=1});
 var nR=Object.keys(nres).length,nTS={},nBis={},fmin=null,fmax=null;
 C.forEach(function(c){if(c.org==='TS')nTS[c.roj]=1;else if(c.bis)nBis[c.roj]=1;if(c.fs){if(!fmin||c.fs<fmin)fmin=c.fs;if(!fmax||c.fs>fmax)fmax=c.fs}});
 function mil(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.')}
-$('dateline').innerHTML='<b>'+mil(nR)+'</b> resoluciones · <b>'+mil(C.length)+'</b> contratos analizados<br>Actualización mensual · última: <b>'+esc(fechaLarga(D.generado))+'</b>';
+$('dateline').innerHTML='<div><dt>'+mil(nR)+'</dt><dd>resoluciones</dd></div><div><dt>'+mil(C.length)+'</dt><dd>contratos analizados</dd></div><div><dt>Mensual</dt><dd>actualizada el '+esc(fecha(D.generado))+'</dd></div>';
 $('pie').innerHTML='<b>Usura y transparencia</b>: jurisprudencia de la AP Madrid y del TS. Desarrollada por Julio Ruiz Llario, magistrado de la Audiencia Provincial de Madrid (Sección 25.ª bis). Herramienta informativa. Se recomienda comprobar siempre la resolución en el CENDOJ. No es una publicación oficial y no sustituye la decisión del juez.';
 (function(){var s=$('m_stats');function st(l,a,b){s.appendChild(el('div',{cls:'stat'},[el('div',{cls:'lab',text:l}),el('div',{cls:'fig'},[document.createTextNode(a),el('span',{cls:'s',text:b?' '+b:''})])]))}
   st('Resoluciones',mil(nR),'');st('Tribunal Supremo',mil(Object.keys(nTS).length),'');st('AP Madrid, Sección 25.ª bis',mil(Object.keys(nBis).length),'');st('Contratos analizados',mil(C.length),'');st('Periodo',fecha(fmin)+' – '+fecha(fmax),'');

@@ -1,5 +1,5 @@
 /* Usura y transparencia: funciona sin conexión y se actualiza sola cuando hay red. */
-var CACHE = 'usura-transp-v4';
+var CACHE = 'usura-transp-v5';
 var LECTOR = 'usura-lector-v1'; /* bibliotecas del lector de contratos: no cambian y pesan, se guardan aparte */
 var ARCHIVOS = ['./', 'index.html', 'datos.json', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
 self.addEventListener('install', function (e) {
