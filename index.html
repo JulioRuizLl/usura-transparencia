@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f3a57">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png">
+<title>Criterio 25 bis — usura, transparencia y cláusulas abusivas (TS y AP Madrid)</title>
+<style>
+:root{
+  --paper:#f4f5f2; --card:#fbfbf9; --ink:#17191d; --ink2:#565a61; --ink3:#878b90;
+  --line:#dcded7; --line2:#c8cabf;
+  --brand:#1f3a57; --brand-ink:#16293e; --brand-soft:#eef1f5;
+  --oxblood:#8a2b2b; --green:#2f5d3a; --amber:#8a5a12;
+  --ox-soft:#f5e9e8; --gr-soft:#e9f0ea; --am-soft:#f5efe0;
+  --focus:#1f3a57;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Hoefler Text",Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"SFMono-Regular","SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --r:7px; --shadow:0 1px 2px rgba(23,25,29,.05),0 6px 20px -12px rgba(23,25,29,.18);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans);
+  font-feature-settings:"kern" 1;-webkit-font-smoothing:antialiased}
+a{color:var(--brand)}
+button{font:inherit;cursor:pointer;color:inherit}
+:focus-visible{outline:2.5px solid var(--focus);outline-offset:2px;border-radius:3px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ---------- Masthead ---------- */
+.mast{border-bottom:1.5px solid var(--ink);background:var(--paper)}
+.mast-in{max-width:1180px;margin:0 auto;padding:26px 28px 20px;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.mast h1{margin:0;font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.02;
+  letter-spacing:-.015em}
+.mast h1 .bis{color:var(--oxblood)}
+.mast .kicker{font-size:13px;color:var(--ink2);margin:0 0 7px;font-weight:500}
+.mast .dateline{text-align:right;font-size:12.5px;color:var(--ink2);line-height:1.5;max-width:300px}
+.mast .dateline b{color:var(--ink);font-variant-numeric:tabular-nums}
+@media(max-width:620px){.mast h1{font-size:27px}.mast .dateline{text-align:left}}
+
+/* ---------- Mode switch ---------- */
+.modes{max-width:1180px;margin:0 auto;padding:16px 28px 0;display:flex;gap:4px}
+.mode{border:1.5px solid var(--line2);border-bottom:none;background:transparent;
+  padding:11px 20px 13px;border-radius:9px 9px 0 0;color:var(--ink2);font-weight:550;font-size:15px;
+  position:relative;top:1.5px;transition:background .12s,color .12s}
+.mode:hover{color:var(--ink);background:var(--card)}
+.mode[aria-selected="true"]{background:var(--card);color:var(--ink);border-color:var(--ink);
+  border-bottom:1.5px solid var(--card)}
+.mode .n{font-family:var(--mono);font-size:12px;color:var(--brand);margin-right:7px}
+.mode[aria-selected="true"] .n{color:var(--oxblood)}
+.sheet{border-top:1.5px solid var(--ink);margin-top:-1.5px}
+
+main{max-width:1180px;margin:0 auto;padding:26px 28px 40px}
+.view{display:none}.view.on{display:block}
+
+/* ---------- Two-column working layout ---------- */
+.work{display:grid;grid-template-columns:340px 1fr;gap:34px;align-items:start}
+@media(max-width:900px){.work{grid-template-columns:1fr}}
+.rail{position:sticky;top:18px;align-self:start}
+@media(max-width:900px){.rail{position:static}}
+
+/* ---------- Form ---------- */
+fieldset{border:1px solid var(--line);border-radius:var(--r);padding:15px 15px 4px;margin:0 0 15px;background:var(--card)}
+legend{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--ink);padding:0 7px}
+.fld{display:block;margin:0 0 13px}
+.fld > span{display:block;font-size:13px;color:var(--ink2);margin-bottom:5px;font-weight:500}
+input,select,textarea{display:block;width:100%;padding:9px 10px;border:1px solid var(--line2);
+  border-radius:6px;font:15px/1.4 var(--sans);color:var(--ink);background:#fff}
+input:focus,select:focus,textarea:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px var(--brand-soft)}
+textarea{resize:vertical;min-height:62px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.hint{font-size:12.5px;color:var(--ink3);margin:-7px 0 12px}
+.cta{width:100%;padding:12px;border-radius:7px;border:1.5px solid var(--brand-ink);
+  background:var(--brand);color:#fff;font-weight:600;font-size:15.5px;letter-spacing:.01em;
+  transition:background .12s}
+.cta:hover{background:var(--brand-ink)}
+.ghost{background:none;border:1px solid var(--line2);border-radius:6px;padding:8px 12px;
+  color:var(--ink2);font-size:13.5px}
+.ghost:hover{border-color:var(--ink2);color:var(--ink)}
+.linkbtn{background:none;border:0;color:var(--brand);text-decoration:underline;
+  text-underline-offset:2px;padding:0;font-size:13.5px}
+
+/* ---------- OCR dropzone ---------- */
+.ocr{border:1.5px dashed var(--line2);border-radius:var(--r);background:var(--card);
+  padding:16px;margin:0 0 15px;text-align:center}
+.ocr.drag{border-color:var(--brand);background:var(--brand-soft)}
+.ocr h3{font-family:var(--serif);margin:0 0 4px;font-size:16px;font-weight:600}
+.ocr p{margin:0 0 11px;font-size:12.8px;color:var(--ink2);line-height:1.5}
+.ocr .pick{display:inline-block;border:1.5px solid var(--ink);border-radius:6px;
+  padding:8px 15px;font-weight:550;font-size:14px;background:#fff}
+.ocr .pick:hover{background:var(--ink);color:#fff}
+.ocr-status{margin-top:11px;font-size:12.8px;color:var(--ink2);min-height:1px;text-align:left}
+.ocr-bar{height:4px;background:var(--line);border-radius:3px;overflow:hidden;margin:8px 0 2px;display:none}
+.ocr-bar.on{display:block}
+.ocr-bar i{display:block;height:100%;width:0;background:var(--brand);transition:width .25s}
+.ocr-found{margin-top:9px;font-size:13px;line-height:1.7;display:none}
+.ocr-found.on{display:block}
+.ocr-found .k{color:var(--ink3);font-size:11.5px;display:block}
+.ocr-found .v{font-weight:600}
+.ocr-found .pend{color:var(--amber);font-weight:500}
+
+/* ---------- Results summary ---------- */
+.empty{color:var(--ink2);padding:46px 4px;font-size:16px;max-width:52ch;font-family:var(--serif)}
+.empty b{color:var(--ink)}
+.summary{border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:var(--r);
+  background:var(--card);padding:18px 20px;margin-bottom:22px;box-shadow:var(--shadow)}
+.summary .head{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.2;margin-bottom:3px}
+.summary .sub{color:var(--ink2);font-size:13.5px;margin-bottom:13px}
+.stats{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.stat{background:var(--card);padding:9px 14px;flex:1 1 120px}
+.stat .lab{font-size:11.5px;color:var(--ink2);margin-bottom:2px}
+.stat .fig{font-family:var(--mono);font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.stat .fig .s{color:var(--ink3);font-weight:500;font-size:12px}
+.refbox{margin-top:14px;padding-top:13px;border-top:1px solid var(--line);font-size:13.8px;
+  color:var(--ink2);line-height:1.6}
+.refbox b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* ---------- Ficha (index card) ---------- */
+.ficha{position:relative;border:1px solid var(--line);border-radius:var(--r);background:var(--card);
+  padding:16px 18px 15px 20px;margin-bottom:14px;box-shadow:var(--shadow);overflow:hidden}
+.ficha::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--line2)}
+.ficha.u-si::before{background:var(--oxblood)}
+.ficha.u-no::before{background:var(--green)}
+.ficha.u-am::before{background:var(--amber)}
+.ficha .top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.ficha .roj{font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:-.02em}
+.ficha .org{font-family:var(--sans);font-weight:500;font-size:12.5px;color:var(--brand);
+  margin-left:9px;border-left:1px solid var(--line2);padding-left:9px}
+.ficha .org.ts{color:var(--oxblood)}
+.ficha .fecha{color:var(--ink3);font-size:12.5px;font-variant-numeric:tabular-nums}
+.ficha .match{display:inline-block;margin:11px 0 0;background:var(--brand-soft);color:var(--brand-ink);
+  font-size:12px;font-weight:600;padding:3px 10px;border-radius:5px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 2px}
+.pill{font-size:12px;font-weight:550;border:1px solid var(--line2);border-radius:5px;
+  padding:3px 9px;color:var(--ink2);background:#fff}
+.pill.si{border-color:var(--oxblood);color:var(--oxblood);background:var(--ox-soft)}
+.pill.no{border-color:var(--green);color:var(--green);background:var(--gr-soft)}
+.pill.am{border-color:var(--amber);color:var(--amber);background:var(--am-soft)}
+.kv{display:grid;grid-template-columns:148px 1fr;gap:4px 14px;font-size:14px;margin-top:12px}
+.kv dt{color:var(--ink2)}.kv dd{margin:0;color:var(--ink)}
+.ficha details{margin-top:11px}
+.ficha summary{cursor:pointer;color:var(--brand);font-size:13.5px;font-weight:500;list-style:none}
+.ficha summary::-webkit-details-marker{display:none}
+.ficha summary::before{content:"+ ";font-family:var(--mono)}
+.ficha details[open] summary::before{content:"– "}
+blockquote{margin:10px 0 2px;padding:8px 6px 8px 15px;border-left:3px solid var(--line2);
+  font-family:var(--serif);font-size:15px;line-height:1.5;color:#2a2c30;font-style:normal}
+blockquote .src{display:block;margin-top:5px;font-family:var(--mono);font-size:11.5px;
+  color:var(--ink3);font-style:normal}
+.flag{margin-top:11px;font-size:12.8px;color:var(--amber);background:var(--am-soft);
+  border-radius:5px;padding:6px 10px;line-height:1.45}
+.acts{margin-top:13px;display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.chk{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--ink);
+  border:1px solid var(--line2);border-radius:6px;padding:6px 11px;background:#fff;user-select:none}
+.chk:hover{border-color:var(--ink2)}
+.chk input{width:16px;height:16px;margin:0;accent-color:var(--brand)}
+.chk.on{border-color:var(--brand);background:var(--brand-soft);color:var(--brand-ink);font-weight:550}
+.note{font-size:12px;color:var(--ink3)}
+.more{margin-top:8px}
+.more summary{font-weight:600;color:var(--ink);font-family:var(--serif);font-size:16px;padding:8px 0}
+
+
+/* Sentencia completa */
+.doc .cab{text-align:center;font-family:var(--serif);margin-bottom:26px;padding-bottom:20px;border-bottom:1.5px solid var(--ink)}
+.doc .cab .nsent{font-size:20px;font-weight:600;letter-spacing:.04em}
+.doc .cab .org{font-size:14.5px;color:var(--ink2);margin-top:4px}
+.doc .cab .partes{font-size:13.5px;color:var(--ink2);margin-top:12px;line-height:1.55;max-width:560px;margin-left:auto;margin-right:auto;text-align:left}
+.doc .cab .partes b{color:var(--ink);display:inline-block;min-width:150px}
+.doc .lugar{font-family:var(--serif);font-size:16px;margin:18px 0 22px;line-height:1.65;color:#202227}
+.doc .seccion{font-family:var(--serif);font-size:14.5px;font-weight:600;letter-spacing:.14em;color:var(--brand-ink);text-align:center;margin:28px 0 14px;padding-top:12px;border-top:1px solid var(--line)}
+.doc .fallo{font-family:var(--serif);font-size:16.5px;line-height:1.75;color:#202227;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--oxblood);padding:16px 20px;border-radius:var(--r);margin-top:8px}
+.doc .fallo p{margin:0 0 10px}
+.doc .fallo p:last-child{margin-bottom:0}
+.doc .rec{font-family:var(--serif);font-size:13.5px;color:var(--ink2);font-style:italic;margin-top:20px;padding-top:12px;border-top:1px solid var(--line);line-height:1.6}
+
+/* ---------- Composer ---------- */
+.seg{display:flex;flex-direction:column;gap:7px;margin-bottom:4px}
+.opt{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line2);border-radius:6px;
+  padding:8px 11px;background:#fff;cursor:pointer;font-size:13.8px;line-height:1.35}
+.opt:hover{border-color:var(--ink2)}
+.opt input{width:16px;height:16px;margin:1px 0 0;accent-color:var(--brand);flex:none}
+.opt.on{border-color:var(--brand);background:var(--brand-soft)}
+.opt.on.ox{border-color:var(--oxblood);background:var(--ox-soft)}
+.opt.on.gr{border-color:var(--green);background:var(--gr-soft)}
+.opt b{font-weight:600}
+.selcount{font-size:13px;color:var(--ink2);background:var(--card);border:1px solid var(--line);
+  border-radius:6px;padding:9px 12px;margin-bottom:14px;line-height:1.5}
+.selcount b{color:var(--brand-ink)}
+
+.docwrap{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow);overflow:hidden}
+.docbar{display:flex;gap:9px;flex-wrap:wrap;align-items:center;padding:12px 16px;
+  border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:2}
+.docbar .sp{flex:1}
+.doc{padding:40px clamp(22px,5vw,64px) 54px;max-width:760px;margin:0 auto}
+.doc .enc{text-align:center;font-family:var(--serif);margin-bottom:30px;padding-bottom:22px;
+  border-bottom:1px solid var(--line)}
+.doc .enc .t{font-size:13px;color:var(--ink2);letter-spacing:.14em;margin-bottom:12px}
+.doc .enc .fd-title{font-size:24px;font-weight:600}
+.fd{margin:0 0 30px;position:relative}
+.fd h3{font-family:var(--serif);font-size:19px;font-weight:600;margin:0 0 10px;color:var(--ink);
+  padding-left:14px;border-left:3px solid var(--brand)}
+.fd .body{font-family:var(--serif);font-size:16.5px;line-height:1.72;color:#202227}
+.fd .body[contenteditable]{outline:none;border-radius:5px;transition:background .1s}
+.fd .body[contenteditable]:focus{background:#fff;box-shadow:0 0 0 3px var(--brand-soft)}
+.fd .body p{margin:0 0 12px}
+.fd .body .cite{margin:12px 0;padding:9px 6px 9px 15px;border-left:3px solid var(--oxblood);
+  background:#fff;font-size:15.5px}
+.fd .body .cite .src{display:block;margin-top:6px;font-family:var(--mono);font-size:11.5px;color:var(--ink3)}
+.fd .warn{font-family:var(--sans);font-size:13px;color:var(--amber);background:var(--am-soft);
+  border-radius:5px;padding:8px 12px;margin:10px 0}
+/* Lectura fácil suprimida */
+.fdtools{margin-top:8px;display:flex;gap:10px}
+.fdtools button{font-size:12.5px;color:var(--ink3);background:none;border:0;text-decoration:underline;
+  text-underline-offset:2px;padding:0}
+.fdtools button:hover{color:var(--brand)}
+.doc-empty{padding:60px 30px;text-align:center;color:var(--ink2);font-family:var(--serif);font-size:17px}
+.doc-empty .big{font-size:40px;line-height:1;margin-bottom:14px;color:var(--line2)}
+
+/* ---------- Cabecera: alcance ---------- */
+.mast .scope{font-size:13.5px;color:var(--ink2);margin:10px 0 0;max-width:64ch;line-height:1.5}
+.mast .scope b{color:var(--ink);font-weight:600}
+.mast .scope .inf{display:block;margin-top:3px;color:var(--ink3);font-size:12.5px}
+.metod .aviso-m{border-left:3px solid var(--amber);background:var(--am-soft);padding:10px 14px;border-radius:0 6px 6px 0}
+.modes{overflow-x:auto}.mode{white-space:nowrap}
+@media(max-width:620px){.modes{padding:14px 12px 0}.mode{padding:10px 11px 12px;font-size:13.5px}.mode .n{display:none}main{padding:20px 16px 34px}.mast-in{padding:20px 16px 16px}}
+
+/* ---------- Veredicto ---------- */
+.verd{border:1px solid var(--line);border-left:6px solid var(--brand);border-radius:var(--r);background:var(--card);
+  padding:20px 22px 15px;margin-bottom:22px;box-shadow:var(--shadow)}
+.verd.sup{border-left-color:var(--oxblood)}.verd.inf{border-left-color:var(--green)}.verd.mar{border-left-color:var(--amber)}
+.v-k{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);font-weight:600;margin-bottom:6px}
+.v-h{font-family:var(--serif);font-size:28px;font-weight:600;line-height:1.12;letter-spacing:-.012em}
+.verd.sup .v-h{color:var(--oxblood)}.verd.inf .v-h{color:var(--green)}.verd.mar .v-h{color:var(--amber)}
+.v-s{color:var(--ink2);font-size:14px;margin-top:5px}
+.scale{position:relative;height:86px;margin:16px 8px 4px}
+.scale .trk{position:absolute;left:0;right:0;top:36px;height:9px;border-radius:5px;background:var(--gr-soft);overflow:hidden;border:1px solid var(--line2)}
+.scale .trk i{position:absolute;top:0;bottom:0;right:0;background:var(--ox-soft)}
+.scale .trk b{position:absolute;top:0;bottom:0;background:var(--am-soft)}
+.scale .mk{position:absolute;top:30px;width:2px;height:21px;background:var(--ink2);margin-left:-1px}
+.scale .lb{position:absolute;top:56px;transform:translateX(-50%);font-size:11.5px;color:var(--ink2);white-space:nowrap;text-align:center;line-height:1.3}
+.scale .lb b{display:block;color:var(--ink);font-family:var(--mono);font-size:12.5px}
+.scale .dot{position:absolute;top:31px;width:19px;height:19px;border-radius:50%;background:var(--ink);border:3px solid var(--card);margin-left:-9.5px;box-shadow:0 0 0 1.5px var(--ink)}
+.verd.sup .dot{background:var(--oxblood);box-shadow:0 0 0 1.5px var(--oxblood)}
+.verd.inf .dot{background:var(--green);box-shadow:0 0 0 1.5px var(--green)}
+.verd.mar .dot{background:var(--amber);box-shadow:0 0 0 1.5px var(--amber)}
+.scale .dl{position:absolute;top:4px;transform:translateX(-50%);font:600 13px/1.2 var(--mono);white-space:nowrap}
+.v-rows{margin-top:14px;border-top:1px solid var(--line)}
+.v-row{display:grid;grid-template-columns:150px 1fr auto;gap:5px 14px;align-items:baseline;padding:10px 0;
+  border-bottom:1px solid var(--line);font-size:14.5px;line-height:1.45}
+.v-row .q{color:var(--ink2);font-size:13px}
+.v-row .a b{font-variant-numeric:tabular-nums}
+.v-row .a small{display:block;color:var(--ink2);font-size:12.8px;margin-top:2px}
+.pill.ok{border-color:var(--brand);color:var(--brand-ink);background:var(--brand-soft)}
+.v-doc{font-size:13.2px;color:var(--ink2);line-height:1.55;margin-top:12px}
+.v-doc b{color:var(--ink)}
+.v-note{font-size:12px;color:var(--ink3);margin-top:8px;line-height:1.5}
+.v-warn{font-size:13px;color:var(--amber);background:var(--am-soft);border-radius:5px;padding:8px 12px;margin-top:12px;line-height:1.45}
+@media(max-width:620px){.v-row{grid-template-columns:1fr}.v-h{font-size:23px}.verd{padding:16px 16px 13px}.scale .lb{font-size:10.5px}}
+
+/* ---------- Metodología ---------- */
+.metod{max-width:760px}
+.metod h2{font-family:var(--serif);font-size:21px;font-weight:600;margin:30px 0 10px;padding-left:14px;border-left:3px solid var(--brand)}
+.metod h2:first-child{margin-top:4px}
+.metod p,.metod li{font-family:var(--serif);font-size:16.5px;line-height:1.68;color:#202227}
+.metod p{margin:0 0 12px}.metod ul{margin:0 0 12px;padding-left:22px}.metod li{margin-bottom:7px}
+.metod .stats{margin:4px 0 16px}
+
+.toast{visibility:hidden;opacity:0}.toast.on{visibility:visible;opacity:1}
+.v-row .pill{justify-self:start;white-space:nowrap}
+.mode .sm{display:none}
+@media(max-width:620px){.mode .lg{display:none}.mode .sm{display:inline}.work{display:flex;flex-direction:column}.rail{display:flex;flex-direction:column;width:100%}.rail .ocr{order:5;margin-top:15px}}
+
+.selbar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--ink);color:#fff;display:flex;gap:12px;align-items:center;justify-content:center;padding:11px 16px calc(11px + env(safe-area-inset-bottom));font-size:14.5px;box-shadow:0 -6px 20px -10px rgba(0,0,0,.45)}
+.selbar button{background:#fff;color:var(--ink);border:0;border-radius:6px;padding:9px 14px;font-weight:650;font-size:14.5px}
+div.toast{bottom:84px}
+.noused{margin:14px 16px 0;font-size:13px;color:var(--amber);background:var(--am-soft);border-radius:6px;padding:9px 13px;line-height:1.5}
+@media print{.selbar,.noused{display:none!important}}
+
+a.ghost{text-decoration:none;display:inline-block}
+@media(max-width:620px){.mast .kicker,.mast .scope .inf{display:none}.mast .scope{font-size:12.5px;margin-top:6px}.mast .dateline{font-size:11.5px}.mast-in{gap:8px}}
+/* ---------- Inicio ---------- */
+.hero{margin:0 0 28px}
+.hero-q{display:grid;grid-template-columns:minmax(220px,1.5fr) 128px 128px minmax(170px,1fr) auto;gap:12px;align-items:end;margin-bottom:12px}
+.hero-o{margin:-2px 0 12px;font-size:13.5px}
+.hero-s{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:end;margin-bottom:20px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+.hero-s .hs-t{font-size:13.5px;font-weight:600;color:var(--ink);align-self:center;margin-right:6px}.hero-s .hs-t small{display:block;font-weight:400;color:var(--ink2);font-size:12px}
+.hero-s label{display:block}.hero-s label>span{display:block;font-size:12px;color:var(--ink2);margin-bottom:3px}
+.hero-s input,.hero-s select{width:118px;padding:8px 9px;font-size:15px}
+.v-h2{font-family:var(--serif);font-size:20px;font-weight:600;margin-top:2px}.v-h2.sup{color:var(--oxblood)}.v-h2.inf{color:var(--green)}.v-h2.mar{color:var(--amber)}
+.v-sub{margin-top:18px;padding-top:14px;border-top:1.5px solid var(--ink)}
+.big select{font:500 17px/1.2 var(--sans);padding:17px 12px;border:1.5px solid var(--ink);border-radius:8px;background:#fff;height:62px}
+.big{display:block}
+.big>span{display:block;font-size:13px;color:var(--ink2);font-weight:550;margin-bottom:6px}
+.big input{font:600 30px/1.2 var(--serif);padding:12px 14px;border:1.5px solid var(--ink);border-radius:8px;background:#fff;font-variant-numeric:tabular-nums}
+.hero-q .cta{width:auto;padding:17px 22px;font-size:16px;white-space:nowrap}
+.hero-r{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;align-items:start}
+.hero-r.has-v{grid-template-columns:minmax(0,1.08fr) minmax(0,1fr)}
+.hero-r .verd{margin-bottom:0}
+#verd:empty,#chart:empty{display:none}
+@media(max-width:980px){.hero-r.has-v{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:1000px){.hero-q{grid-template-columns:1fr 1fr 1fr}.hero-q .ent{grid-column:1/-1}.hero-q .cta{grid-column:1/-1;width:100%}}
+@media(max-width:760px){.hero-s .hs-t{width:100%}.hero-s label{flex:1 1 0;min-width:0}.hero-s input,.hero-s select{width:100%}}
+@media(max-width:760px){.hero-q{grid-template-columns:1fr 1fr;gap:10px}.hero-q .cta,.hero-q .sel{grid-column:1/-1;width:100%}.big input{font-size:26px;padding:10px 12px}.big select{height:52px;padding:12px}}
+.filtros>summary{cursor:pointer;font-family:var(--serif);font-weight:600;font-size:16px;padding:4px 2px 12px;list-style:none}
+.filtros>summary::-webkit-details-marker{display:none}
+.filtros>summary::after{content:" ▾";color:var(--ink3)}
+.filtros[open]>summary::after{content:" ▴"}
+.v-acts{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
+/* ---------- Gráfico ---------- */
+.chart{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:16px 16px 12px;box-shadow:var(--shadow);position:relative}
+.chart h3{font-family:var(--serif);font-size:18px;font-weight:600;margin:0 0 3px}
+.chart .sub{font-size:12.8px;color:var(--ink2);line-height:1.45;margin:0 0 8px}
+.chart svg{display:block;touch-action:manipulation;cursor:pointer;overflow:visible}
+.chart .ax{font:11px var(--sans);fill:var(--ink2)}
+.chart .dl{font:600 11px var(--sans);fill:var(--ink)}
+.chart .lg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--ink2);margin-top:8px}
+.chart .lg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.chart .lg u{display:inline-block;width:18px;height:0;border-top:2px solid var(--ink);margin-right:5px;vertical-align:3px;text-decoration:none}
+.chart .lg u.d{border-top:1.5px dashed var(--ink2)}
+.ctip{position:absolute;pointer-events:none;background:var(--ink);color:#fff;font-size:12.5px;line-height:1.4;padding:7px 10px;border-radius:6px;white-space:nowrap;transform:translate(-50%,-100%);z-index:3;display:none}
+.chart details{margin-top:8px;font-size:12.5px}
+.chart details>summary{cursor:pointer;color:var(--brand)}
+.chart .tw{max-height:260px;overflow:auto;margin-top:8px}
+.chart table{border-collapse:collapse;font-size:12.5px;font-variant-numeric:tabular-nums;width:100%}
+.chart th,.chart td{padding:4px 8px;border-bottom:1px solid var(--line);text-align:right;font-weight:400}
+.chart th{color:var(--ink2);position:sticky;top:0;background:var(--card)}
+.chart th:first-child,.chart td:first-child{text-align:left}
+/* ---------- Fichas plegadas ---------- */
+details.ficha{padding:0}
+details.ficha>summary{list-style:none;cursor:pointer;padding:13px 16px 12px 20px;color:var(--ink);font-size:16px;font-weight:400}
+details.ficha>summary::-webkit-details-marker{display:none}
+details.ficha>summary::before,details.ficha[open]>summary::before{content:none}
+.fsum .match{margin:8px 0 0}
+.fsum .tags{margin:8px 0 0}
+.fline{display:flex;gap:10px;align-items:center;margin-top:10px}
+.use{font-size:13px;border:1px solid var(--line2);border-radius:6px;padding:6px 11px;background:#fff;color:var(--ink)}
+.use:hover{border-color:var(--ink2)}
+.use.on{border-color:var(--brand);background:var(--brand-soft);color:var(--brand-ink);font-weight:600}
+.abrir{margin-left:auto;font-size:12.8px;color:var(--brand);font-weight:500}
+.abrir::before{content:"Ver ficha ▾"}
+details.ficha[open]>summary .abrir::before{content:"Cerrar ▴"}
+.fbody{padding:2px 18px 15px 20px;border-top:1px solid var(--line)}
+/* ---------- Toast ---------- */
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(140%);
+  background:var(--ink);color:#fff;padding:12px 20px;border-radius:9px;font-size:14px;
+  box-shadow:0 10px 30px -10px rgba(0,0,0,.5);z-index:50;transition:transform .28s cubic-bezier(.2,.8,.2,1);max-width:90vw}
+.toast.on{transform:translateX(-50%) translateY(0)}
+
+footer{border-top:1px solid var(--line);margin-top:30px}
+.foot-in{max-width:1180px;margin:0 auto;padding:22px 28px 46px;color:var(--ink3);font-size:12.5px;line-height:1.6;max-width:900px}
+
+@media print{
+  .mast,.modes,.rail,.docbar,footer,.fdtools,.ocr{display:none!important}
+  .work{grid-template-columns:1fr}.docwrap{border:0;box-shadow:none}
+  body{background:#fff}.doc{max-width:none;padding:0}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="mast">
+  <div class="mast-in">
+    <div>
+      <p class="kicker">Usura, transparencia y cláusulas abusivas · qué se ha resuelto ya</p>
+      <h1>Criterio <span class="bis">25 bis</span></h1>
+      <p class="scope">Basada principalmente en las sentencias de la <b>Sección 25.ª bis de la Audiencia Provincial de Madrid</b> y en la jurisprudencia del <b>Tribunal Supremo</b>. Actualización mensual. <span class="inf">Herramienta informativa: compruebe siempre la resolución en el CENDOJ.</span></p>
+    </div>
+    <p class="dateline" id="dateline"></p>
+  </div>
+</header>
+
+<nav class="modes" role="tablist" aria-label="Modo de trabajo">
+  <button class="mode" id="tab-consulta" role="tab" aria-selected="true" aria-controls="v-consulta">
+    <span class="n">01</span><span class="lg">Consultar jurisprudencia</span><span class="sm">Consultar</span></button>
+  <button class="mode" id="tab-redactar" role="tab" aria-selected="false" aria-controls="v-redactar">
+    <span class="n">02</span><span class="lg">Redactar sentencia</span><span class="sm">Redactar</span></button>
+  <button class="mode" id="tab-metodo" role="tab" aria-selected="false" aria-controls="v-metodo">
+    <span class="n">03</span><span class="lg">Metodología y límites</span><span class="sm">Metodología</span></button>
+</nav>
+<div class="sheet">
+<main>
+
+<!-- ============ VIEW: CONSULTA ============ -->
+<section class="view on" id="v-consulta" role="tabpanel" aria-labelledby="tab-consulta">
+<section class="hero" aria-label="Consulta rápida">
+  <div class="hero-q">
+    <label class="big sel ent"><span>Entidad</span><select id="ent" form="f"></select></label>
+    <label class="big"><span>Año del contrato</span><input id="anio" form="f" type="number" inputmode="numeric" min="1980" max="2035" placeholder="2016"></label>
+    <label class="big"><span>TAE (%)</span><input id="tae" form="f" inputmode="decimal" placeholder="27,24"></label>
+<label class="big sel"><span>Cuestión</span><select id="cla" form="f">
+        <option value="">Usura y transparencia</option>
+        <option value="multidivisa">Multidivisa</option>
+        <option value="clausula_suelo">Cláusula suelo</option>
+        <option value="irph">IRPH</option>
+        <option value="gastos">Gastos</option>
+        <option value="comision_apertura">Comisión de apertura</option>
+        <option value="intereses_demora">Intereses de demora</option>
+        <option value="vencimiento_anticipado">Vencimiento anticipado</option>
+        <option value="comision_impagados">Comisión por impagados</option>
+        <option value="seguro_vinculado">Seguro vinculado</option></select></label>
+    <button class="cta" type="submit" form="f">Ver resoluciones</button>
+  </div>
+  <p class="hero-o"><button type="button" class="linkbtn" id="ocr_go">O lea el contrato con una foto o un PDF</button></p>
+  <div class="hero-s">
+    <span class="hs-t">Subida de tipo posterior <small>para la usura sobrevenida</small></span>
+    <label><span>Año</span><input id="sanio" form="f" type="number" inputmode="numeric" min="1990" max="2035" placeholder="2018"></label>
+    <label><span>Mes</span><select id="smes" form="f"><option value="">—</option></select></label>
+    <label><span>Nueva TAE (%)</span><input id="stae" form="f" inputmode="decimal" placeholder="26,82"></label>
+  </div>
+  <div class="hero-r" id="hero_r"><div id="verd" aria-live="polite"></div><div id="chart"></div></div>
+</section>
+<div class="work">
+  <form class="rail" id="f" autocomplete="off">
+  <details class="filtros" id="filtros"><summary>Afinar la búsqueda</summary>
+    <fieldset><legend>El contrato</legend>
+      <label class="fld"><span>Mes de firma</span><select id="mes"><option value="">—</option></select></label>
+      <label class="fld"><span>Producto</span><select id="prod">
+        <option value="">Cualquiera</option>
+        <option value="tarjeta_revolving">Tarjeta revolving</option>
+        <option value="linea_credito_revolving">Línea de crédito revolving</option>
+        <option value="tarjeta_pago_aplazado">Tarjeta de pago aplazado</option>
+        <option value="prestamo_personal">Préstamo personal</option>
+        <option value="microcredito">Microcrédito</option>
+        <option value="prestamo_hipotecario">Préstamo hipotecario</option>
+        <option value="hipoteca_multidivisa">Hipoteca multidivisa</option></select></label>
+      <label class="fld"><span>Nombre de la tarjeta o referencia del documento</span><input id="txt" placeholder="Opcional"></label>
+    </fieldset>
+
+
+    <div class="ocr" id="ocrzone">
+      <h3>Leer el contrato</h3>
+      <p>Suba una foto o el PDF del contrato y se intentará reconocer la entidad, la fecha y la TAE para rellenar la búsqueda.</p>
+      <label class="pick" for="ocrfile">Elegir archivo</label>
+      <input id="ocrfile" type="file" accept="image/*,application/pdf" hidden>
+      <div class="ocr-bar" id="ocrbar"><i id="ocrbari"></i></div>
+      <div class="ocr-status" id="ocrstatus"></div>
+      <div class="ocr-found" id="ocrfound"></div>
+    </div>
+
+  </details>
+    <button class="cta" type="submit">Buscar resoluciones</button>
+    <p class="hint" style="margin-top:11px"><button class="linkbtn" type="button" id="reset">Limpiar el formulario</button></p>
+  </form>
+
+  <div>
+  <section id="out" aria-live="polite">
+    <p class="empty">Indique arriba la <b>entidad</b>, el <b>año del contrato</b> y la <b>TAE</b>: verá al momento si ya se ha resuelto sobre ese contrato y en qué sentido. Con <b>Buscar resoluciones</b> se abren las fichas, con los pasajes literales del <b>Tribunal Supremo</b> y de la <b>Audiencia Provincial de Madrid</b>.</p>
+  </section>
+  </div>
+</div>
+</section>
+
+<!-- ============ VIEW: REDACTAR ============ -->
+<section class="view" id="v-redactar" role="tabpanel" aria-labelledby="tab-redactar">
+<div class="work">
+  <form class="rail" id="cf" autocomplete="off">
+    <fieldset><legend>Datos del caso</legend>
+      <label class="fld"><span>Tipo de órgano</span><select id="c_tipo">
+        <option value="unipersonal" selected>Unipersonal (juez de primera instancia)</option>
+        <option value="colegiado">Colegiado (Sala de la AP, apelación)</option>
+      </select></label>
+      <label class="fld"><span>Órgano</span><input id="c_org" placeholder="Juzgado de Primera Instancia nº … de Madrid"></label>
+      <div class="two">
+        <label class="fld"><span>Procedimiento</span><input id="c_proc" placeholder="Ordinario …/…"></label>
+        <label class="fld"><span>Sentencia nº</span><input id="c_num" placeholder="…/…"></label>
+      </div>
+      <div class="two">
+        <label class="fld"><span>Lugar</span><input id="c_lugar" placeholder="Madrid" value="Madrid"></label>
+        <label class="fld"><span>Fecha de la sentencia</span><input id="c_fs" placeholder="25 de noviembre de 2026"></label>
+      </div>
+      <label class="fld"><span>Parte actora</span><input id="c_act" placeholder="Nombre de la parte actora"></label>
+      <label class="fld"><span>Parte demandada</span><input id="c_dem" placeholder="WiZink Bank, S.A."></label>
+      <label class="fld"><span>Letrado/a de la parte actora (opcional)</span><input id="c_letact" placeholder=""></label>
+      <label class="fld"><span>Letrado/a de la demandada (opcional)</span><input id="c_letdem" placeholder=""></label>
+    </fieldset>
+
+    <fieldset><legend>El contrato enjuiciado</legend>
+      <label class="fld"><span>Entidad contratante</span><input id="c_ent" placeholder="p. ej. Banco Popular-e"></label>
+      <div class="two">
+        <label class="fld"><span>Fecha del contrato</span><input id="c_fecha" placeholder="mayo de 2015"></label>
+        <label class="fld"><span>Producto</span><input id="c_prod" placeholder="tarjeta revolving"></label>
+      </div>
+      <div class="two">
+        <label class="fld"><span>TAE pactada (%)</span><input id="c_tae" inputmode="decimal" placeholder="27,24"></label>
+        <label class="fld"><span>Tipo medio (%)</span><input id="c_ref" inputmode="decimal" placeholder="21,23"></label>
+      </div>
+      <p class="hint">El tipo medio y el umbral se proponen a partir de la referencia que más utiliza la Audiencia para ese año; compruébelos.</p>
+      <label class="fld"><span>Umbral de usura</span><input id="c_umbral" placeholder="tipo medio + 6 puntos (STS 258/2023)"></label>
+    </fieldset>
+
+    <fieldset><legend>Sentido del fallo</legend>
+      <p class="hint" style="margin-top:0">Se propone según las resoluciones que ha elegido. Cámbielo si resuelve en otro sentido: solo se citan las resoluciones que resuelven en el sentido marcado.</p>
+      <div class="fld"><span>Usura (TAE inicial)</span><div class="seg" id="s_usura"></div></div>
+      <div class="fld"><span>Transparencia</span><div class="seg" id="s_trans"></div></div>
+      <div class="fld"><span>Usura sobrevenida</span><div class="seg" id="s_sob"></div></div>
+      <div class="fld"><span>Prescripción</span><div class="seg" id="s_presc"></div></div>
+      <div class="fld"><span>Costas</span><div class="seg" id="s_costas"></div></div>
+    </fieldset>
+
+    <div class="selcount" id="selcount"></div>
+    <button class="cta" type="submit">Redactar la sentencia</button>
+    <p class="hint" style="margin-top:11px"><button class="linkbtn" type="button" id="c_reset">Vaciar</button></p>
+  </form>
+
+  <section>
+    <div class="docwrap">
+      <div class="docbar">
+        <button class="ghost" type="button" id="d_copy">Copiar todo</button>
+        <button class="ghost" type="button" id="d_word">Exportar a Word</button>
+        <button class="ghost" type="button" id="d_print">Imprimir</button>
+        <span class="sp"></span>
+        <span class="note" id="d_meta"></span>
+      </div>
+      <div class="noused" id="d_aviso" hidden></div>
+      <div class="doc" id="doc">
+        <div class="doc-empty"><div class="big">§</div>Elija en la pestaña <b>Consultar</b> las resoluciones en que quiere apoyarse (botón «Usar en el borrador»), fije arriba el sentido del fallo y pulse <b>Redactar la sentencia</b>. Se generará con antecedentes, fundamentos de derecho y fallo, imitando la estructura de una sentencia real.</div>
+      </div>
+    </div>
+  </section>
+</div>
+</section>
+
+<!-- ============ VIEW: METODOLOGÍA ============ -->
+<section class="view" id="v-metodo" role="tabpanel" aria-labelledby="tab-metodo">
+<div class="metod">
+  <h2>Qué es</h2>
+  <p>Una herramienta <b>informativa</b> para jueces y magistrados. Con los datos de un contrato muestra qué se ha resuelto sobre un contrato igual en usura, transparencia y cláusulas abusivas, con pasajes literales y la referencia oficial de cada resolución.</p>
+  <p class="aviso-m">Tiene carácter meramente informativo. Se recomienda <b>comprobar siempre la resolución directamente en el CENDOJ</b> antes de citarla: cada ficha tiene un botón que copia el ECLI y abre su buscador.</p>
+
+  <h2>En qué se basa</h2>
+  <div class="stats" id="m_stats"></div>
+  <p>Principalmente, en las sentencias de la <b>Sección 25.ª bis de la Audiencia Provincial de Madrid</b> y en la jurisprudencia del <b>Tribunal Supremo</b>, que se muestra siempre primero. Otras Audiencias pueden seguir criterios distintos.</p>
+
+  <h2>Cómo leerla</h2>
+  <ul>
+    <li>Las fichas se han elaborado con ayuda de inteligencia artificial a partir de las resoluciones publicadas en el CENDOJ. Pueden contener errores.</li>
+    <li>Los pasajes entre comillas son literales.</li>
+    <li>El veredicto es orientativo. Usa el tipo medio que más aplica la Audiencia para ese año y el umbral de la STS (Pleno) 258/2023, de 15 de febrero (ROJ STS 442/2023; ECLI:ES:TS:2023:442).</li>
+    <li>El borrador de sentencia es un texto de trabajo. No sustituye el examen del asunto ni la decisión del juez.</li>
+  </ul>
+
+  <h2>Autoría y actualización</h2>
+  <p><b>Julio Ruiz Llario</b>, magistrado de la Audiencia Provincial de Madrid (Sección 25.ª bis). Iniciativa personal: no es una publicación oficial del Consejo General del Poder Judicial ni de la Audiencia Provincial.</p>
+  <p>Se actualiza cada mes. Última actualización: <b id="m_fecha"></b>. Si encuentra un error, pulse <b>Avisar de un error</b> en la ficha.<span id="m_contacto"></span></p>
+</div>
+</section>
+
+</main>
+</div>
+<footer><div class="foot-in" id="pie"></div></footer>
+<div class="selbar" id="selbar" hidden><span id="selbar_t"></span><button type="button" id="selbar_b">Redactar con ellas →</button></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script>
+<script>
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){})}
+fetch('datos.json').then(function(r){return r.json()}).then(function(__C){
+"use strict";
+var D={generado:'2026-11-25',contratos:__C}, C=D.contratos;
+var MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+var $=function(id){return document.getElementById(id)};
+function el(t,a,k){var e=document.createElement(t);if(a)for(var x in a){if(x==='text')e.textContent=a[x];else if(x==='html')e.innerHTML=a[x];else if(x==='cls')e.className=a[x];else e.setAttribute(x,a[x])}(k||[]).forEach(function(c){if(c)e.appendChild(typeof c==='string'?document.createTextNode(c):c)});return e}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function num(v){v=(v||'').toString().replace(',','.').replace('%','').trim();var n=parseFloat(v);return isNaN(n)?null:n}
+function fmt(n){return n==null?'—':String(n).replace('.',',')+' %'}
+function ym(s){var m=/^(\d{4})(?:-(\d{2}))?/.exec(s||'');return m?{a:+m[1],m:m[2]?+m[2]:null}:null}
+function fecha(s){var m=/^(\d{4})-(\d{2})-(\d{2})/.exec(s||'');return m?(+m[3])+'/'+(+m[2])+'/'+m[1]:(s||'—')}
+function fechaLarga(s){var m=/^(\d{4})-(\d{2})(?:-(\d{2}))?/.exec(s||'');if(!m)return s||'';var a=m[1],mes=MESES[(+m[2])-1]||'';if(m[3])return (+m[3])+' de '+mes+' de '+a;return (mes?mes+' de ':'')+a}
+function trib(c){return c.org==='TS'?'Tribunal Supremo':(c.bis?'Audiencia Provincial de Madrid, Sección 25.ª bis':(c.bis===false?'Audiencia Provincial de Madrid':'Audiencia Provincial de Madrid'))}
+function tribCorto(c){return c.org==='TS'?'Tribunal Supremo':(c.bis?'AP Madrid · 25.ª bis':'AP Madrid')}
+function citaSala(c,fd){return '— '+trib(c)+', sentencia de '+fechaLarga(c.fs)+'. ROJ '+c.roj+' · '+(c.ecli||'—')+(fd?' · '+fd:'')}
+
+var TXT={allanamiento_consumidor:['Usura: allanamiento del consumidor','am'],usurario:['Usura: sí','si'],no_usurario:['Usura: no','no'],allanamiento:['Usura: allanamiento','am'],no_resuelto:['Usura: no resuelta','']};
+var TTR={allanamiento_consumidor:['Transparencia: allanamiento del consumidor','am'],no_supera:['Transparencia: no supera','si'],supera:['Transparencia: supera','no'],allanamiento:['Transparencia: allanamiento','am'],no_resuelto:['Transparencia: no resuelta','']};
+var DEF={condiciones_no_aportadas:'condiciones no aportadas',letra_ilegible:'letra ilegible',clausula_no_firmada:'cláusula no firmada',sin_info_precontractual:'falta de información precontractual',sin_explicacion_sistema_amortizacion:'falta de explicación del sistema de amortización',sin_advertencia_riesgo_deuda_perpetua:'falta de advertencia sobre el riesgo de deuda perpetua',tae_no_destacada:'TAE no destacada',sin_ejemplo_representativo:'ausencia de ejemplo representativo',modificacion_no_comunicada:'modificación del tipo no comunicada',remision_generica_doctrina_ts:'remisión genérica a la doctrina del Tribunal Supremo'};
+function defLabel(d){if(DEF[d])return DEF[d];return d.replace(/^otro:/,'').replace(/_/g,' ')}
+
+/* ============ SHARED SELECTION STATE ============ */
+var SEL={}; // id -> true
+function selList(){var a=C.filter(function(c){return SEL[c.id]});a.sort(function(x,y){var tx=x.org==='TS'?1:0,ty=y.org==='TS'?1:0;return (ty-tx)||((y.fs||'')<(x.fs||'')?-1:1)});return a}
+function selN(){return Object.keys(SEL).length}
+function toggleSel(c,on){if(on)SEL[c.id]=(lastQuery&&lastQuery.cla&&lastQuery.cla!=='interes')?lastQuery.cla:true;else delete SEL[c.id];updateSelUI()}
+function updateSelUI(){
+  var n=selN();
+  $('selcount').innerHTML=n?('<b>'+n+'</b> '+(n===1?'resolución elegida':'resoluciones elegidas')+' para apoyar el borrador. Sus pasajes se citarán con la referencia oficial.'):'Aún no ha elegido resoluciones de apoyo. Puede redactar igualmente: el texto quedará con huecos para citar los pasajes.';
+  var sb=$('selbar');if(sb){sb.hidden=!(n&&$('v-consulta').classList.contains('on'));$('selbar_t').innerHTML='<b>'+n+'</b> '+(n===1?'resolución elegida':'resoluciones elegidas')}
+  document.querySelectorAll('.use[data-id]').forEach(function(b){var on=!!SEL[b.getAttribute('data-id')];b.classList.toggle('on',on);b.textContent=on?'✓ En el borrador':'Usar en el borrador'});
+  // refresh any visible checkboxes
+  document.querySelectorAll('.chk[data-id]').forEach(function(l){var on=!!SEL[l.getAttribute('data-id')];l.classList.toggle('on',on);var i=l.querySelector('input');if(i)i.checked=on});
+}
+
+/* ============ TOAST ============ */
+var toastT;
+function toast(msg){var t=$('toast');t.textContent=msg;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on')},2600)}
+
+/* ============ MODE TABS ============ */
+var MODES=['consulta','redactar','metodo'];
+function setMode(which){
+  MODES.forEach(function(m){var on=m===which;$('tab-'+m).setAttribute('aria-selected',on);$('v-'+m).classList.toggle('on',on)});
+  if(which==='redactar')prefillComposer();
+  updateSelUI();
+  try{window.scrollTo({top:0,behavior:'smooth'})}catch(e){}
+}
+MODES.forEach(function(m){$('tab-'+m).addEventListener('click',function(){setMode(m)})});
+$('selbar_b').addEventListener('click',function(){setMode('redactar')});
+
+/* ============ FORM SETUP ============ */
+['mes','smes'].forEach(function(id){MESES.forEach(function(m,i){$(id).appendChild(el('option',{value:i+1,text:m}))})});
+var ents={};C.forEach(function(c){ents[c.ent]=(ents[c.ent]||0)+1});
+$('ent').appendChild(el('option',{value:'*',text:'Cualquier entidad'}));var nwz=C.filter(function(c){return c.grupo==='WiZink'}).length;if(nwz)$('ent').appendChild(el('option',{value:'WZ',text:'Cartera WiZink completa ('+nwz+'): incluye Citibank, Banco Popular-e y Barclaycard'}));
+Object.keys(ents).sort(function(a,b){return ents[b]-ents[a]}).forEach(function(e){$('ent').appendChild(el('option',{value:e,text:e+' ('+ents[e]+')'}))});
+
+/* ============ SEARCH LOGIC ============ */
+function nivel(c,q){
+  if(q.txt&&((c.ref&&c.ref.toLowerCase().indexOf(q.txt)>=0)||(c.den&&c.den.toLowerCase().indexOf(q.txt)>=0)||(c.rasgos||[]).join(' ').toLowerCase().indexOf(q.txt)>=0))return [3,'Mismo modelo o denominación'];
+  var mismaFecha=q.anio&&c.fa===q.anio&&(!q.mes||!c.fm||c.fm===q.mes);
+  var taeCerca=q.tae!=null&&c.tae!=null&&Math.abs(c.tae-q.tae)<=0.3;
+  if(mismaFecha&&(q.tae==null||taeCerca))return [2,'Misma época'+(taeCerca?' y TAE':'')];
+  if(q.anio&&c.fa&&Math.abs(c.fa-q.anio)<=1&&(q.tae==null||taeCerca))return [1,'Época próxima'+(taeCerca?' y TAE similar':'')];
+  if(!q.anio&&taeCerca)return [1,'TAE similar'];
+  if(!q.anio&&q.tae==null&&!q.txt&&!q.sanio)return [1,'Misma entidad'];
+  return [0,''];
+}
+function sobMatch(c,q){
+  if(!q.sanio)return null;var r=null;
+  (c.mods||[]).forEach(function(m){var f=ym(m.fecha);if(!f)return;var dm=(f.a-q.sanio)*12+((f.m||6)-(q.smes||6));var t=q.stae==null||m.tae==null||Math.abs(m.tae-q.stae)<=0.3;if(Math.abs(dm)<=(q.smes?2:12)&&t)r=m});return r;
+}
+var lastQuery=null;
+
+function ficha(c,lv,sm,last){
+  var u=TXT[c.usura]||['Usura: —',''],t=TTR[c.tr]||['Transparencia: —',''];
+  var ucls=c.usura==='allanamiento_consumidor'?'u-am':c.usura==='usurario'?'u-si':(c.usura==='no_usurario'?'u-no':(c.usura==='allanamiento'?'u-am':''));
+  var wrap=el('details',{cls:'ficha '+ucls}),sumr=el('summary',{cls:'fsum'}),card=el('div',{cls:'fbody'});
+  var orgTxt=tribCorto(c);
+  sumr.appendChild(el('div',{cls:'top'},[
+    el('span',{},[el('span',{cls:'roj',text:c.roj}),el('span',{cls:'org'+(c.org==='TS'?' ts':''),text:orgTxt})]),
+    el('span',{cls:'fecha',text:fechaLarga(c.fs)})]));
+  sumr.appendChild(el('span',{cls:'match',text:lv[1]}));
+  if(c.u_inst&&(c.usura==='usurario'||c.usura==='no_usurario'))u=[u[0]+' (instancia, no revisada por la Sala)',u[1]];
+  if(c.t_inst&&(c.tr==='no_supera'||c.tr==='supera'))t=[t[0]+' (instancia, no revisada por la Sala)',t[1]];
+  var tags=el('div',{cls:'tags'},[el('span',{cls:'pill '+u[1],text:u[0]}),el('span',{cls:'pill '+t[1],text:t[0]})]);
+  if(c.incompleta)tags.appendChild(el('span',{cls:'pill am',text:'Ficha parcial: texto de origen incompleto'}));
+  if(c.sob)tags.appendChild(el('span',{cls:'pill si',text:'Usura sobrevenida'+(c.sob_desde?' desde '+c.sob_desde:'')}));
+  if(c.presc)tags.appendChild(el('span',{cls:'pill',text:'Prescripción apreciada'}));
+  if(c.tae!=null)tags.appendChild(el('span',{cls:'pill',text:'TAE '+fmt(c.tae)}));
+  var use=el('button',{cls:'use'+(SEL[c.id]?' on':''),type:'button','data-id':c.id,text:SEL[c.id]?'✓ En el borrador':'Usar en el borrador'});
+  use.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var on=!SEL[c.id];toggleSel(c,on);toast(on?'Añadida al borrador ('+selN()+')':'Quitada del borrador')});
+  sumr.appendChild(tags);sumr.appendChild(el('div',{cls:'fline'},[use,el('span',{cls:'abrir'})]));
+  var g=el('dl',{cls:'kv'});
+  function fila(k,v){if(v==null||v===''||(Array.isArray(v)&&!v.length))return;g.appendChild(el('dt',{text:k}));g.appendChild(el('dd',{text:Array.isArray(v)?v.join('; '):String(v)}))}
+  fila('Contrato',(c.ent_lit||c.ent||'')+(c.fc?', '+c.fc:'')+(c.prod?', '+c.prod.replace(/_/g,' '):''));
+  fila('TAE',c.tae!=null?fmt(c.tae)+(c.tae_tipo&&c.tae_tipo!=='tae'?' ('+c.tae_tipo.replace(/_/g,' ')+')':''):null);
+  fila('Referencia de la Sala',c.ref_val!=null?fmt(c.ref_val)+(c.ref_serie?', '+c.ref_serie.replace(/_/g,' '):''):null);
+  fila('Umbral',c.umbral);
+  fila('Defectos',(c.tr_def||[]).map(defLabel));
+  fila('Documento',c.rasgos);
+  fila('Criterio',c.criterio);
+  (c.claus||[]).forEach(function(k){var t=(k.tipo==='otra'?'Cláusula':(k.tipo||'Cláusula').replace(/_/g,' ')).replace(/^otra:/,'');fila(t.charAt(0).toUpperCase()+t.slice(1),[(k.resultado||'').replace(/_/g,' ')+(k.control?' ('+k.control.replace(/_/g,' ')+')':'')].concat(k.motivos||[]))});
+  card.appendChild(g);
+  if(sm){var d=el('dl',{cls:'kv'});
+    [['Subida de tipo',sm.fecha],['TAE',(sm.tae_anterior!=null?fmt(sm.tae_anterior)+' → ':'')+fmt(sm.tae)],['Comunicación',sm.forma_comunicacion],['Resultado',sm.resultado&&sm.resultado.replace(/_/g,' ')]].forEach(function(p){if(p[1]){d.appendChild(el('dt',{text:p[0]}));d.appendChild(el('dd',{text:p[1]}))}});card.appendChild(d);
+    if(sm.pasaje_clave)card.appendChild(el('blockquote',{},['«'+sm.pasaje_clave+'»',el('span',{cls:'src',text:(sm.fundamento||'')})]))}
+  if(last&&c.ref_per&&c.ref_per!=='no_consta'&&last!==c.ref_per)card.appendChild(el('div',{cls:'flag',text:'Criterio anterior: esta resolución usa '+c.ref_per.replace(/_/g,' ')+'; las más recientes usan '+last.replace(/_/g,' ')+'.'}));
+  if(c.u_pas||c.t_pas){var det=el('details',{},[el('summary',{text:'Pasajes literales de la Sala'})]);
+    if(c.u_pas)det.appendChild(el('blockquote',{},['Usura. «'+c.u_pas+'»',el('span',{cls:'src',text:(c.u_fd||'')})]));
+    if(c.t_pas)det.appendChild(el('blockquote',{},['Transparencia. «'+c.t_pas+'»',el('span',{cls:'src',text:(c.t_fd||'')})]));
+    card.appendChild(det)}
+  // actions
+  var chk=el('label',{cls:'chk'+(SEL[c.id]?' on':''),'data-id':c.id});
+  var box=el('input',{type:'checkbox'});box.checked=!!SEL[c.id];
+  box.addEventListener('change',function(){toggleSel(c,box.checked);toast(box.checked?'Añadida al borrador ('+selN()+')':'Quitada del borrador')});
+  chk.appendChild(box);chk.appendChild(document.createTextNode('Usar en el borrador'));
+  var cop=el('a',{cls:'ghost',href:'https://www.poderjudicial.es/search/indexAN.jsp',target:'_blank',rel:'noopener',text:'Copiar ECLI y abrir el CENDOJ'}),nt=el('span',{cls:'note',text:c.ecli||''});
+  cop.addEventListener('click',function(){var done=function(){nt.textContent='ECLI copiado: péguelo en el campo ECLI del buscador'};try{navigator.clipboard.writeText(c.ecli).then(done,done)}catch(e){done()}});
+  var av=el('button',{cls:'linkbtn',type:'button',text:'Avisar de un error'});av.addEventListener('click',function(){avisar(c)});
+  card.appendChild(el('div',{cls:'acts'},[cop,nt,av]));
+  wrap.appendChild(sumr);wrap.appendChild(card);return wrap;
+}
+
+function buscar(ev){
+  if(ev)ev.preventDefault();
+  var q=readQ();
+  lastQuery=q;veredicto(q);
+  if(ev){setTimeout(function(){try{$('out').scrollIntoView({behavior:'smooth',block:'start'})}catch(e){}},60)}
+  var R=[];C.forEach(function(c){if(q.ent==='WZ'){if(c.grupo!=='WiZink')return}else if(q.ent!=='*'&&c.ent!==q.ent)return;if(q.prod&&c.prod&&c.prod!==q.prod)return;if(q.cla==='interes'){if(c.usura==='no_resuelto'&&c.tr==='no_resuelto'&&!c.sob)return}else if(q.cla){if(!(c.claus||[]).some(function(k){return (k.tipo||'').indexOf(q.cla)===0}))return}var lv=nivel(c,q),sm=sobMatch(c,q);if(!lv[0]&&!sm)return;if(!lv[0])lv=[1,'Misma subida de tipo'];R.push({c:c,lv:lv,sm:sm})});
+  R.sort(function(a,b){var ta=a.c.org==='TS'?1:0,tb=b.c.org==='TS'?1:0;return (b.lv[0]-a.lv[0])||(tb-ta)||((b.c.fs||'')<(a.c.fs||'')?-1:1)});
+  var top=R.length?R[0].lv[0]:0,P=R.filter(function(r){return r.lv[0]===top}),O=R.filter(function(r){return r.lv[0]!==top});
+  var out=$('out');out.textContent='';
+  if(!R.length){out.appendChild(el('p',{cls:'empty',html:'No hay resoluciones de <b>'+esc(q.ent==='*'?'la cartera':q.ent)+'</b> que coincidan con esos datos. Pruebe sin el mes o sin la TAE.'}));return}
+  var cnt=function(f){return P.filter(function(r){return f(r.c)}).length};
+  var sum=el('div',{cls:'summary'});
+  sum.appendChild(el('div',{cls:'head',text:P.length+(P.length===1?' resolución':' resoluciones')}));
+  sum.appendChild(el('div',{cls:'sub',text:'Coincidencia máxima: '+P[0].lv[1]+'. Primero el Tribunal Supremo y lo más reciente.'}));
+  var stats=el('div',{cls:'stats'});
+  function stat(lab,a,sa){stats.appendChild(el('div',{cls:'stat'},[el('div',{cls:'lab',text:lab}),el('div',{cls:'fig'},[document.createTextNode(String(a)),el('span',{cls:'s',text:' '+sa})])]))}
+  stat('Usura inicial',cnt(function(c){return c.usura==='usurario'}),'sí · '+cnt(function(c){return c.usura==='no_usurario'})+' no');
+  stat('Transparencia',cnt(function(c){return c.tr==='no_supera'}),'no supera · '+cnt(function(c){return c.tr==='supera'})+' supera');
+  stat('Usura sobrevenida',cnt(function(c){return c.sob}),'resoluciones');
+  stat('Tribunal Supremo',cnt(function(c){return c.org==='TS'}),'resoluciones');
+  sum.appendChild(stats);
+  out.appendChild(sum);
+  var last=null;R.slice().sort(function(a,b){return (b.c.fs||'')<(a.c.fs||'')?-1:1}).some(function(r){if(r.c.org!=='TS'&&r.c.ref_per&&r.c.ref_per!=='no_consta'){last=r.c.ref_per;return true}});
+  P.forEach(function(r,i){var fc=ficha(r.c,r.lv,r.sm,last);if(i===0)fc.open=true;out.appendChild(fc)});
+  if(O.length){var det=el('details',{cls:'more'},[el('summary',{text:'Otras '+O.length+' resoluciones con coincidencia menor (época próxima o solo la entidad)'})]);O.forEach(function(r){det.appendChild(ficha(r.c,r.lv,r.sm,last))});out.appendChild(det)}
+}
+$('f').addEventListener('submit',buscar);
+$('reset').addEventListener('click',function(){$('f').reset();veredicto(readQ());$('out').innerHTML='<p class="empty">Introduzca los datos del contrato que tiene delante.</p>'});
+
+/* ============ VEREDICTO ORIENTATIVO ============ */
+var CONTACTO="";
+function readQ(){return {cla:$('cla').value,ent:$('ent').value,anio:+$('anio').value||null,mes:+$('mes').value||null,tae:num($('tae').value),prod:$('prod').value,txt:($('txt').value||'').trim().toLowerCase(),sanio:+$('sanio').value||null,smes:+$('smes').value||null,stae:num($('stae').value)}}
+function fam(p){p=p||'';if(/revolving|tarjeta|pago_aplazado/.test(p))return 'rev';if(/microcredito/.test(p))return 'micro';if(/personal|consumo/.test(p))return 'cons';if(/hipotec|multidivisa/.test(p))return 'hip';return 'otro'}
+var FAMTXT={rev:'tarjetas y créditos revolving',cons:'préstamos personales y créditos al consumo',micro:'microcréditos'};
+var CLANOM={multidivisa:'Cláusula multidivisa',clausula_suelo:'Cláusula suelo',irph:'IRPH',gastos:'Cláusula de gastos',comision_apertura:'Comisión de apertura',intereses_demora:'Intereses de demora',vencimiento_anticipado:'Vencimiento anticipado',comision_impagados:'Comisión por impagados',seguro_vinculado:'Seguro vinculado'};
+function f2(n){return n.toFixed(2).replace('.',',')+' %'}
+function pl(n,s,p){return n+' '+(n===1?s:p)}
+var REFC={};
+function refModal(f,anio){
+  var key=f+'|'+anio;if(REFC[key]!==undefined)return REFC[key];
+  var cnt={},n=0,per={};
+  C.forEach(function(c){if(c.org==='TS'||c.fa!==anio||c.ref_val==null||fam(c.prod)!==f)return;n++;cnt[c.ref_val]=(cnt[c.ref_val]||0)+1});
+  var best=null;Object.keys(cnt).forEach(function(v){if(best==null||cnt[v]>cnt[best])best=v});
+  var r=null;
+  if(best!=null){var val=parseFloat(best);
+    C.forEach(function(c){if(c.org!=='TS'&&c.fa===anio&&c.ref_val===val&&fam(c.prod)===f&&c.ref_per&&c.ref_per!=='no_consta')per[c.ref_per]=(per[c.ref_per]||0)+1});
+    var bp=null;Object.keys(per).forEach(function(p){if(bp==null||per[p]>per[bp])bp=p});
+    r={val:val,k:cnt[best],n:n,per:bp,fiable:n>=3&&cnt[best]/n>=0.6}}
+  REFC[key]=r;return r;
+}
+function decU(c){return !c.u_inst&&(c.usura==='usurario'||c.usura==='no_usurario')}
+function decT(c){return !c.t_inst&&(c.tr==='no_supera'||c.tr==='supera')}
+var REGLA=(function(){var ok=0,n=0;C.forEach(function(c){if(c.org==='TS'||fam(c.prod)!=='rev'||c.tae==null||!c.fa||!decU(c))return;var m=refModal('rev',c.fa);if(!m||!m.fiable)return;n++;if((c.tae>m.val+6.2?'usurario':'no_usurario')===c.usura)ok++});return {ok:ok,n:n,pct:n?(Math.round(ok/n*1000)/10):null}})();
+function etiqueta(a,n){if(!n)return null;if(n<5)return ['Pocos precedentes','am'];return Math.max(a,n-a)/n>=0.85?['Criterio consolidado','ok']:['Resoluciones dispares','am']}
+function vrow(rows,q,html,et){VR.push({q:q,t:String(html).replace(/<small>[\s\S]*?<\/small>/g,'').replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>'),e:et?et[0]:''});var r=el('div',{cls:'v-row'},[el('div',{cls:'q',text:q}),el('div',{cls:'a',html:html})]);if(et)r.appendChild(el('span',{cls:'pill '+et[1],text:et[0]}));rows.appendChild(r)}
+function avisar(c){
+  var asunto='Criterio 25 bis · aviso de error en '+c.roj;
+  var cuerpo='Resolución: ROJ '+c.roj+' · '+(c.ecli||'')+'\nVersión de los datos: '+D.generado+'\n\nDato de la ficha que es incorrecto:\n\nLo que dice la resolución:\n';
+  if(CONTACTO){window.location.href='mailto:'+CONTACTO+'?subject='+encodeURIComponent(asunto)+'&body='+encodeURIComponent(cuerpo);return}
+  copyText(asunto+'\n\n'+cuerpo);toast('Aviso copiado. Péguelo en un correo al autor.');
+}
+
+function veredicto(q){
+  var box=$('verd');box.textContent='';
+  q=Object.assign({},q);if(q.anio&&(q.anio<1980||q.anio>2035))q.anio=null;
+  var inEnt=function(c){return q.ent==='*'||(q.ent==='WZ'?c.grupo==='WiZink':c.ent===q.ent)};
+  var entTxt=q.ent==='*'?'':(q.ent==='WZ'?' de la cartera WiZink':' de '+esc(q.ent));
+  var v=el('div',{cls:'verd'}),rows=el('div',{cls:'v-rows'});
+  function tsTxt(list,f){var t=list.filter(function(x){return (x.c||x).org==='TS'});if(!t.length)return '';return '<small>Tribunal Supremo: '+f(t)+'.</small>'}
+
+  /* ----- cláusulas distintas del interés ----- */
+  if(q.cla&&q.cla!=='interes'){
+    var ks=[];C.forEach(function(c){if(!inEnt(c))return;(c.claus||[]).forEach(function(k){if((k.tipo||'').indexOf(q.cla)===0)ks.push({c:c,k:k})})});
+    if(!ks.length)return;
+    var dec=ks.filter(function(x){return x.k.resultado==='nula'||x.k.resultado==='valida'}),nul=dec.filter(function(x){return x.k.resultado==='nula'}).length;
+    var alla=ks.filter(function(x){return x.k.resultado==='allanamiento'}).length;
+    var nom=CLANOM[q.cla]||'Cláusula';
+    v.appendChild(el('div',{cls:'v-k',text:'Qué se ha resuelto'+(q.ent==='*'?'':' · '+(q.ent==='WZ'?'cartera WiZink':q.ent))}));
+    if(dec.length){v.className='verd '+(nul/dec.length>=0.5?'sup':'inf');
+      v.appendChild(el('div',{cls:'v-h',text:nom+': '+(nul/dec.length>=0.5?'nula en '+nul:'válida en '+(dec.length-nul))+' de '+dec.length+(dec.length===1?' resolución':' resoluciones')}));}
+    else v.appendChild(el('div',{cls:'v-h',text:nom+': sin pronunciamiento de fondo en la base'}));
+    var et=etiqueta(nul,dec.length);
+    vrow(rows,'Pronunciamientos','<b>'+nul+'</b> la declaran nula y <b>'+(dec.length-nul)+'</b> válida'+tsTxt(dec,function(t){var tn=t.filter(function(x){return x.k.resultado==='nula'}).length;return 'nula en '+tn+' de '+t.length}),et);
+    if(alla)vrow(rows,'Allanamientos','La entidad se allanó en <b>'+alla+'</b> '+(alla===1?'resolución':'resoluciones')+'.');
+    v.appendChild(rows);
+    v.appendChild(el('div',{cls:'v-note',text:'Información orientativa: compruebe siempre la resolución en el CENDOJ. Pulse «Buscar resoluciones» para ver las fichas.'}));
+    box.appendChild(v);return;
+  }
+
+  /* ----- interés remuneratorio: usura y transparencia ----- */
+  var f=q.prod?fam(q.prod):'rev';
+  if(!FAMTXT[f])return;
+  if(!q.anio&&q.tae==null&&q.ent==='*'&&!q.sanio)return;
+  var m=q.anio?refModal(f,q.anio):null,calc=f==='rev'&&m&&m.fiable,lo=calc?m.val+6.2:null,hi=calc?m.val+6.3:null,estado=null;
+  var soloEnt=!q.anio&&q.tae==null,conEnt=q.ent!=='*',entNom=q.ent==='WZ'?'cartera WiZink':q.ent;
+  var MM=C.filter(function(c){return inEnt(c)&&fam(c.prod)===f&&(!q.anio||c.fa===q.anio)&&(!q.mes||!c.fm||c.fm===q.mes)&&(q.tae==null||(c.tae!=null&&Math.abs(c.tae-q.tae)<=0.3))});
+  var nrj={};MM.forEach(function(c){nrj[c.roj]=1});var NR=Object.keys(nrj).length;
+  if(calc&&q.tae!=null)estado=q.tae>hi?'sup':(q.tae<=lo?'inf':'mar');
+  var us=MM.filter(function(c){return decU(c)&&c.usura==='usurario'}).length,un=MM.filter(function(c){return decU(c)&&c.usura==='no_usurario'}).length;
+  v.className='verd '+(us>un?'sup':(un>us?'inf':(estado||'')));
+  v.appendChild(el('div',{cls:'v-k',text:soloEnt?'Qué se ha resuelto sobre esta entidad':(conEnt?'¿Se ha resuelto ya sobre este contrato?':'¿Se ha resuelto ya sobre un contrato así?')}));
+  v.appendChild(el('div',{cls:'v-h',text:NR?((conEnt&&!soloEnt?'Sí: ':'')+pl(NR,'resolución','resoluciones')+(conEnt?(soloEnt?' sobre contratos de esta entidad':' sobre este contrato'):' sobre contratos iguales')):(conEnt?'No consta ninguna resolución sobre este contrato':'No consta ninguna resolución sobre un contrato igual')}));
+  var ctx=[];if(conEnt)ctx.push(entNom);if(q.anio)ctx.push('contrato de '+(q.mes?MESES[q.mes-1]+' de ':'')+q.anio);if(q.tae!=null)ctx.push('TAE '+fmt(q.tae));ctx.push(FAMTXT[f]);
+  v.appendChild(el('div',{cls:'v-s',text:ctx.join(' · ')}));
+  if(soloEnt&&conEnt)vrow(rows,'Contrato','Añada el año y la TAE para saber si se ha resuelto sobre ese mismo contrato.');
+  if(!conEnt)vrow(rows,'Entidad','Elija la entidad para saber si se ha resuelto sobre ese mismo contrato. Ahora se cuentan las de cualquier entidad.');
+  if(!NR&&conEnt){var e1={},e2={};C.forEach(function(c){if(fam(c.prod)!==f)return;if(inEnt(c))e1[c.roj]=1;if((!q.anio||c.fa===q.anio)&&(q.tae==null||(c.tae!=null&&Math.abs(c.tae-q.tae)<=0.3)))e2[c.roj]=1});
+    vrow(rows,'Lo más próximo','De '+esc(entNom)+' hay <b>'+Object.keys(e1).length+'</b> resoluciones sobre otros contratos. Con ese año y esa TAE hay <b>'+Object.keys(e2).length+'</b> de otras entidades. Pulse «Ver resoluciones» para verlas.')}
+  /* precedentes de usura */
+  var S=C.filter(function(c){return inEnt(c)&&fam(c.prod)===f&&decU(c)&&(!q.anio||c.fa===q.anio)&&(q.tae==null||(c.tae!=null&&Math.abs(c.tae-q.tae)<=0.3))});
+  var a=S.filter(function(c){return c.usura==='usurario'}).length,n=S.length;
+  var base=(q.anio||entTxt)?'sobre contratos'+(q.anio?' de '+q.anio:'')+entTxt:'de la base';
+  var donde='sobre contratos'+(q.anio?' de '+q.anio:'')+(q.tae!=null?' con TAE entre '+f2(q.tae-0.3).replace(' %','')+' y '+f2(q.tae+0.3):'')+entTxt;
+  if(n){
+    vrow(rows,'Usura inicial',(a/n>=0.5?'Apreciada en <b>'+a:'Descartada en <b>'+(n-a))+' de '+n+'</b> '+(n===1?'resolución':'resoluciones')+' '+donde+'.'+tsTxt(S,function(t){return 'apreciada en '+t.filter(function(c){return c.usura==='usurario'}).length+' de '+t.length}),etiqueta(a,n));
+    if(estado&&estado!=='mar'&&n>=5){var may=a/n>=0.5?'sup':'inf';if(may!==estado)v.appendChild(el('div',{cls:'v-warn',text:'La mayoría de los precedentes no coincide con el cálculo. Revise las resoluciones antes de apoyarse en él.'}))}
+  }else vrow(rows,'Usura inicial','Sin resoluciones de fondo '+donde+'.');
+
+  /* frontera empírica */
+  if(f==='rev'&&q.anio){
+    var Y=C.filter(function(c){return fam(c.prod)==='rev'&&c.fa===q.anio&&decU(c)&&c.tae!=null&&c.org!=='TS'}),G={};
+    Y.forEach(function(c){var g=G[c.tae]||(G[c.tae]={t:c.tae,si:[],no:[]});(c.usura==='usurario'?g.si:g.no).push(c)});
+    var gs=Object.keys(G).map(function(k){return G[k]}),rec=function(l){return l.slice().sort(function(x,y){return (y.fs||'')<(x.fs||'')?-1:1})[0]};
+    var gNo=gs.filter(function(g){return g.no.length>g.si.length}).sort(function(x,y){return y.t-x.t})[0],gSi=gs.filter(function(g){return g.si.length>g.no.length}).sort(function(x,y){return x.t-y.t})[0];
+    var fuera=0;gs.forEach(function(g){fuera+=Math.min(g.si.length,g.no.length)});
+    if(gNo&&gSi&&gNo.t<gSi.t){var no=rec(gNo.no),si=rec(gSi.si);
+      vrow(rows,'Dónde está la línea','En contratos de '+q.anio+', la TAE más alta que la Audiencia no considera usuraria es <b>'+fmt(no.tae)+'</b> ('+esc(no.roj)+'). La más baja que declara usuraria, <b>'+fmt(si.tae)+'</b> ('+esc(si.roj)+').'+(fuera?'<small>'+pl(fuera,'resolución se aparta','resoluciones se apartan')+' del sentido mayoritario para su misma TAE.</small>':''));}
+    else if(gNo&&gSi)vrow(rows,'Dónde está la línea','En contratos de '+q.anio+' no hay una línea clara: hay resoluciones en los dos sentidos entre el '+fmt(gSi.t)+' y el '+fmt(gNo.t)+'. Revíselas.');
+  }
+
+  /* transparencia */
+  var T=C.filter(function(c){return inEnt(c)&&fam(c.prod)===f&&decT(c)&&(!q.anio||c.fa===q.anio)}),ns=T.filter(function(c){return c.tr==='no_supera'});
+  if(T.length){
+    var dc={};ns.forEach(function(c){(c.tr_def||[]).forEach(function(d){if(DEF[d])dc[d]=(dc[d]||0)+1})});
+    var top=Object.keys(dc).sort(function(x,y){return dc[y]-dc[x]}).slice(0,3).map(function(d){return DEF[d]});
+    vrow(rows,'Transparencia',(ns.length/T.length>=0.5?'No se supera en <b>'+ns.length:'Se supera en <b>'+(T.length-ns.length))+' de '+T.length+'</b> '+(T.length===1?'resolución':'resoluciones')+' '+base+'.'+(top.length?'<small>Defectos más repetidos: '+top.join('; ')+'.</small>':'')+tsTxt(T,function(t){return 'no se supera en '+t.filter(function(c){return c.tr==='no_supera'}).length+' de '+t.length}),etiqueta(ns.length,T.length));
+  }
+  /* usura sobrevenida */
+  if(q.sanio){
+    var SM=[];C.forEach(function(c){if(!inEnt(c)||fam(c.prod)!==f)return;var mm=sobMatch(c,q);if(mm)SM.push(mm)});
+    var sa=SM.filter(function(x){return x.resultado==='usuraria'}).length,sn=SM.filter(function(x){return x.resultado==='no_usuraria'}).length,cu=(q.smes?MESES[q.smes-1]+' de ':'')+q.sanio+(q.stae!=null?' al '+fmt(q.stae):'');
+    if(sa+sn)vrow(rows,'Usura sobrevenida','Subida de tipo en '+cu+': '+(sa>=sn?'declarada usuraria en <b>'+sa:'no se consideró usuraria en <b>'+sn)+' de '+(sa+sn)+'</b> '+(sa+sn===1?'resolución':'resoluciones')+entTxt+'.',etiqueta(sa,sa+sn));
+    else vrow(rows,'Usura sobrevenida','Sin resoluciones de fondo sobre una subida de tipo en '+cu+entTxt+'.'+(SM.length?' Hay '+pl(SM.length,'resolución que la menciona','resoluciones que la mencionan')+' sin resolver sobre ella.':''));
+  }else{
+    var SB=C.filter(function(c){return inEnt(c)&&fam(c.prod)===f&&c.sob&&(!q.anio||c.fa===q.anio)}).length;
+    if(SB)vrow(rows,'Usura sobrevenida','Apreciada en <b>'+SB+'</b> '+(SB===1?'resolución':'resoluciones')+entTxt+' por subidas posteriores del tipo. Indique arriba la subida para ver su caso.');
+  }
+  v.appendChild(rows);
+  var rows2=el('div',{cls:'v-rows'});
+  if(calc){
+    VS={val:m.val,lo:lo,hi:hi,tae:q.tae};
+    var mn=Math.floor(m.val-2),mx=Math.ceil(Math.max(hi,q.tae||0)+2),P=function(x){return Math.max(0,Math.min(100,(x-mn)/(mx-mn)*100))},cl=function(p){return Math.max(9,Math.min(91,p))};
+    var sub=el('div',{cls:'v-sub'});sub.appendChild(el('div',{cls:'v-k',text:'Cálculo orientativo del umbral'}));
+    sub.appendChild(el('div',{cls:'v-h2 '+(estado||''),text:estado==='sup'?'Por encima del umbral de usura':(estado==='inf'?'Por debajo del umbral de usura':(estado==='mar'?'En el margen del umbral de usura':'Umbral de usura: '+f2(lo).replace(' %','')+' – '+f2(hi)))}));v.appendChild(sub);
+    var sc=el('div',{cls:'scale'});
+    var trk=el('div',{cls:'trk'});var ir=el('i');ir.style.left=P(hi)+'%';var bb=el('b');bb.style.left=P(lo)+'%';bb.style.width=(P(hi)-P(lo))+'%';trk.appendChild(ir);trk.appendChild(bb);sc.appendChild(trk);
+    [[m.val,'Tipo medio',fmt(m.val)],[(lo+hi)/2,'Umbral',f2(lo).replace(' %','')+' – '+f2(hi)]].forEach(function(t){var k=el('div',{cls:'mk'});k.style.left=P(t[0])+'%';sc.appendChild(k);var l=el('div',{cls:'lb',html:'<b>'+t[2]+'</b>'+t[1]});l.style.left=cl(P(t[0]))+'%';sc.appendChild(l)});
+    if(q.tae!=null){var d=el('div',{cls:'dot'});d.style.left=P(q.tae)+'%';sc.appendChild(d);var dl=el('div',{cls:'dl',text:'Su TAE: '+fmt(q.tae)});dl.style.left=cl(P(q.tae))+'%';sc.appendChild(dl)}
+    v.appendChild(sc);
+    var perTxt=m.per==='dato_2010_contratos_anteriores'?' Para contratos anteriores a junio de 2010 se toma el dato de 2010.':(m.per==='media_anual'?' Media anual.':(m.per==='media_mensual'?' Media mensual.':''));
+    var dif=q.tae!=null?(q.tae-m.val):null;
+    vrow(rows2,'Cálculo','Tipo medio de referencia: <b>'+fmt(m.val)+'</b>. Umbral: <b>'+f2(lo).replace(' %','')+' – '+f2(hi)+'</b> (tipo medio + 0,20 o 0,30 + 6 puntos).'+(dif!=null?' Su TAE supera el tipo medio en <b>'+dif.toFixed(2).replace('.',',')+' puntos</b>.':'')+'<small>Referencia utilizada por la Audiencia en '+m.k+' de '+m.n+' resoluciones sobre contratos de '+q.anio+'.'+perTxt+'</small>');
+    if(estado==='mar')v.appendChild(el('div',{cls:'v-warn',text:'La TAE queda entre los dos umbrales: el resultado depende de que se sumen 0,20 o 0,30 al tipo medio. Revise las resoluciones.'}));
+  }else if(f==='rev'&&q.anio){
+    vrow(rows2,'Cálculo',m?'Para contratos de '+q.anio+' la base tiene '+pl(m.n,'resolución','resoluciones')+' con referencia, sin un valor dominante. No se calcula el umbral.':'La base no tiene resoluciones con tipo de referencia para contratos de '+q.anio+'. No se calcula el umbral.');
+  }
+
+  if(rows2.firstChild)v.appendChild(rows2);
+  if(f==='rev')v.appendChild(el('div',{cls:'v-doc',html:'<b>Doctrina.</b> STS (Pleno) 258/2023, de 15 de febrero (ROJ STS 442/2023; ECLI:ES:TS:2023:442): en las tarjetas revolving es usurario el interés que supera en más de 6 puntos el tipo medio de su categoría.'}));
+  v.appendChild(el('div',{cls:'v-note',text:(calc&&REGLA.pct!=null?'Orientativo. El cálculo usa la referencia de las propias resoluciones y coincide con lo resuelto por la Audiencia en el '+String(REGLA.pct).replace('.',',')+' % de los '+mil(REGLA.n)+' contratos de la base. ':'Orientativo. ')+'Información orientativa: compruebe siempre la resolución en el CENDOJ.'}));
+  box.appendChild(v);
+}
+/* ============ GRÁFICO POR AÑO ============ */
+var CHC={si:'#8a2b2b',no:'#4f9a63'},CHD=null,CHG=null,lastVQ=null;
+function chartData(){
+  if(CHD)return CHD;var G={},out=0;
+  C.forEach(function(c){if(c.org==='TS'||fam(c.prod)!=='rev'||!decU(c)||c.tae==null||!c.fa)return;
+    if(c.fa<1996||c.fa>2022||c.tae<15||c.tae>30){out++;return}
+    var k=c.fa+'|'+c.tae+'|'+c.usura;(G[k]||(G[k]={a:c.fa,t:c.tae,u:c.usura,n:0})).n++});
+  var L=Object.keys(G).map(function(k){return G[k]}).sort(function(x,y){return y.n-x.n});
+  var ys=L.map(function(g){return g.a});
+  return CHD={L:L,out:out,a0:Math.min.apply(null,ys),a1:Math.max.apply(null,ys)};
+}
+function renderChart(q){
+  var host=$('chart');if(!host)return;
+  var f=q&&q.prod?fam(q.prod):'rev';
+  if((q&&q.cla&&q.cla!=='interes')||f!=='rev'){host.textContent='';return}
+  var d=chartData();if(!d.L.length){host.textContent='';return}
+  host.innerHTML='<div class="chart"><h3>Dónde está la línea, año a año</h3><p class="sub">Tarjetas y créditos revolving. Cada círculo agrupa las resoluciones de la Audiencia sobre contratos de ese año con esa TAE; el tamaño indica cuántas son. Toque un círculo para ver ese caso.</p><div class="plot"></div><div class="ctip"></div><div class="lg"></div><details><summary>Ver como tabla</summary><div class="tw"></div></details></div>';
+  var plot=host.querySelector('.plot'),tip=host.querySelector('.ctip');
+  var W=Math.max(280,Math.round(plot.clientWidth||640)),nar=W<520,H=nar?280:320,m={l:34,r:nar?12:78,t:12,b:26};
+  var nx=d.a1-d.a0+1,x=function(a){return m.l+(a-d.a0+0.5)/nx*(W-m.l-m.r)},y=function(t){return m.t+(30-t)/15*(H-m.t-m.b)},half=(W-m.l-m.r)/nx/2;
+  var s='<svg viewBox="0 0 '+W+' '+H+'" width="100%" height="'+H+'" role="img" aria-label="Resoluciones de la Audiencia por año del contrato y TAE, con el umbral de usura de cada año">';
+  [15,20,25,30].forEach(function(t){s+='<line x1="'+m.l+'" x2="'+(W-m.r)+'" y1="'+y(t)+'" y2="'+y(t)+'" stroke="#dcded7" stroke-width="1"/><text class="ax" x="'+(m.l-6)+'" y="'+(y(t)+4)+'" text-anchor="end">'+t+' %</text>'});
+  for(var a=d.a0;a<=d.a1;a++){if(a%5===0)s+='<text class="ax" x="'+x(a)+'" y="'+(H-8)+'" text-anchor="middle">'+a+'</text>'}
+  var R=[];for(a=d.a0;a<=d.a1;a++){var mr=refModal('rev',a);if(mr&&mr.fiable)R.push({a:a,v:mr.val})}
+  function step(off){var p='',prev=null;R.forEach(function(r){var yy=y(r.v+off),x0=x(r.a)-half,x1=x(r.a)+half;if(prev&&prev.a===r.a-1)p+='L'+x0.toFixed(1)+' '+yy.toFixed(1);else p+='M'+x0.toFixed(1)+' '+yy.toFixed(1);p+='L'+x1.toFixed(1)+' '+yy.toFixed(1);prev=r});return p}
+  if(R.length){
+    s+='<path d="'+step(0)+'" fill="none" stroke="#565a61" stroke-width="1.5" stroke-dasharray="4 3"/>';
+    s+='<path d="'+step(6.25)+'" fill="none" stroke="#17191d" stroke-width="2"/>';
+    if(!nar){var lr=R[R.length-1];s+='<text class="dl" x="'+(x(lr.a)+half+6)+'" y="'+(y(lr.v+6.25)+4)+'">Umbral</text><text class="dl" x="'+(x(lr.a)+half+6)+'" y="'+(y(lr.v)+4)+'" style="font-weight:400;fill:#565a61">Tipo medio</text>'}
+  }
+  CHG=d.L.map(function(g){return {g:g,cx:x(g.a),cy:y(g.t),r:Math.min(13,3.4+1.8*Math.sqrt(g.n))}});
+  CHG.forEach(function(b){s+='<circle cx="'+b.cx.toFixed(1)+'" cy="'+b.cy.toFixed(1)+'" r="'+b.r.toFixed(1)+'" fill="'+(b.g.u==='usurario'?CHC.si:CHC.no)+'" fill-opacity=".9" stroke="#fbfbf9" stroke-width="1.5"/>'});
+  if(q&&q.anio&&q.tae!=null&&q.anio>=d.a0&&q.anio<=d.a1&&q.tae>=15&&q.tae<=30){var ux=x(q.anio),uy=y(q.tae),lab=uy<34?uy+26:uy-16;
+    s+='<circle cx="'+ux+'" cy="'+uy+'" r="11" fill="none" stroke="#fbfbf9" stroke-width="5"/><circle cx="'+ux+'" cy="'+uy+'" r="11" fill="none" stroke="#17191d" stroke-width="2.5"/>';
+    s+='<text class="dl" x="'+Math.max(m.l+34,Math.min(W-m.r-34,ux))+'" y="'+lab+'" text-anchor="middle" stroke="#fbfbf9" stroke-width="4" paint-order="stroke">Su contrato</text>'}
+  s+='</svg>';plot.innerHTML=s;
+  host.querySelector('.lg').innerHTML='<span><i style="background:'+CHC.si+'"></i>Usura apreciada</span><span><i style="background:'+CHC.no+'"></i>Usura descartada</span><span><u></u>Umbral (tipo medio + 6,20 a 6,30)</span><span><u class="d"></u>Tipo medio</span>'+(d.out?'<span>'+d.out+' fuera de escala</span>':'');
+  var by={};d.L.forEach(function(g){var r=by[g.a]||(by[g.a]={si:0,no:0});r[g.u==='usurario'?'si':'no']+=g.n});
+  var tb='<table><thead><tr><th>Año</th><th>Tipo medio</th><th>Umbral</th><th>Usura sí</th><th>Usura no</th></tr></thead><tbody>';
+  for(a=d.a1;a>=d.a0;a--){var rr=by[a];if(!rr)continue;var mm=refModal('rev',a),okm=mm&&mm.fiable;tb+='<tr><td>'+a+'</td><td>'+(okm?fmt(mm.val):'—')+'</td><td>'+(okm?f2(mm.val+6.2).replace(' %','')+' – '+f2(mm.val+6.3):'—')+'</td><td>'+rr.si+'</td><td>'+rr.no+'</td></tr>'}
+  host.querySelector('.tw').innerHTML=tb+'</tbody></table>';
+  var svg=plot.querySelector('svg');
+  function near(ev){var bx=svg.getBoundingClientRect(),px=(ev.clientX-bx.left)*W/bx.width,py=(ev.clientY-bx.top)*H/bx.height,best=null,bd=1e9;
+    CHG.forEach(function(b){var dd=Math.sqrt((b.cx-px)*(b.cx-px)+(b.cy-py)*(b.cy-py))-b.r;if(dd<bd){bd=dd;best=b}});return bd<=14?best:null}
+  function show(b){if(!b){tip.style.display='none';return}var bx=svg.getBoundingClientRect(),hb=host.firstChild.getBoundingClientRect();
+    tip.textContent='Contrato de '+b.g.a+' · TAE '+fmt(b.g.t)+' · usura '+(b.g.u==='usurario'?'apreciada':'descartada')+' en '+pl(b.g.n,'resolución','resoluciones');
+    tip.style.display='block';var lx=bx.left-hb.left+b.cx*bx.width/W,tw=tip.offsetWidth/2+6;
+    tip.style.left=Math.max(tw,Math.min(hb.width-tw,lx))+'px';tip.style.top=(bx.top-hb.top+(b.cy-b.r)*bx.height/H-8)+'px'}
+  svg.addEventListener('mousemove',function(ev){show(near(ev))});
+  svg.addEventListener('mouseleave',function(){show(null)});
+  svg.addEventListener('click',function(ev){var b=near(ev);if(!b)return;$('anio').value=b.g.a;$('tae').value=String(b.g.t).replace('.',',');veredicto(readQ());try{$('verd').scrollIntoView({behavior:'smooth',block:'nearest'})}catch(e){}});
+}
+var _veredicto=veredicto;
+veredicto=function(q){VR=[];VS=null;_veredicto(q);lastVQ=q;
+  var v=$('verd').querySelector('.verd');$('hero_r').classList.toggle('has-v',!!v);
+  if(v&&v.querySelector('.v-h')){var acts=el('div',{cls:'v-acts'}),bs=el('button',{cls:'ghost',type:'button',text:'Guardar el veredicto como imagen'});bs.addEventListener('click',compartir);acts.appendChild(bs);v.appendChild(acts)}
+  renderChart(q)};
+var rzT;window.addEventListener('resize',function(){clearTimeout(rzT);rzT=setTimeout(function(){renderChart(lastVQ||readQ())},200)});
+if(window.innerWidth>=900)$('filtros').open=true;
+$('ocr_go').addEventListener('click',function(){$('filtros').open=true;try{$('ocrzone').scrollIntoView({behavior:'smooth',block:'center'})}catch(e){}});
+setTimeout(function(){renderChart(readQ())},0);
+
+/* ============ ENTREGA DE ARCHIVOS ============ */
+function entregar(blob,name,mime){
+  var okT=function(){toast('Archivo preparado: '+name)},koT=function(){toast('No se ha podido guardar el archivo')};
+  if(window.claude&&window.claude.use){window.claude.use('downloads').then(function(d){if(!d)throw 0;return d.save({filename:name,data:blob})}).then(okT,function(e){if(!e||e.code!=='declined')koT()});return}
+  var f=null;try{f=new File([blob],name,{type:mime})}catch(e){}
+  if(f&&/Android|iPhone|iPad/i.test(navigator.userAgent)&&navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f],title:'Criterio 25 bis'}).catch(function(){});return}
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();okT();
+}
+
+/* ============ VEREDICTO COMO IMAGEN ============ */
+var VR=[],VS=null;
+function compartir(){
+  var v=$('verd').querySelector('.verd');if(!v)return;
+  var W=1080,H=1350,cv=document.createElement('canvas');cv.width=W;cv.height=H;var g=cv.getContext('2d');
+  var SER='Georgia,"Times New Roman",serif',SAN='system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif';
+  var col=v.classList.contains('sup')?'#8a2b2b':(v.classList.contains('inf')?'#2f5d3a':(v.classList.contains('mar')?'#8a5a12':'#1f3a57'));
+  function wrap(t,x,y,mw,lh,max){var ws=String(t).split(/\s+/),ln='',n=0;for(var i=0;i<ws.length;i++){var tt=ln?ln+' '+ws[i]:ws[i];if(g.measureText(tt).width>mw&&ln){g.fillText(ln,x,y);y+=lh;n++;ln=ws[i];if(max&&n>=max-1){while(i+1<ws.length&&g.measureText(ln+' '+ws[i+1]+'…').width<=mw){ln+=' '+ws[++i]}if(i+1<ws.length)ln+='…';break}}else ln=tt}g.fillText(ln,x,y);return y+lh}
+  g.fillStyle='#f4f5f2';g.fillRect(0,0,W,H);g.fillStyle=col;g.fillRect(0,0,18,H);
+  var X=84,MW=W-X-70,y=112;
+  g.textBaseline='alphabetic';g.fillStyle='#17191d';g.font='600 46px '+SER;g.fillText('Criterio ',X,y);var cw=g.measureText('Criterio ').width;g.fillStyle='#8a2b2b';g.fillText('25 bis',X+cw,y);
+  g.fillStyle='#565a61';g.font='400 24px '+SAN;g.textAlign='right';g.fillText('Datos de '+fechaLarga(D.generado),W-70,y);g.textAlign='left';
+  g.fillStyle='#17191d';g.fillRect(X,y+26,MW,2);
+  y+=104;g.fillStyle='#878b90';g.font='600 23px '+SAN;g.fillText(v.querySelector('.v-k').textContent.toUpperCase(),X,y);
+  y+=84;g.fillStyle=col;g.font='600 64px '+SER;y=wrap(v.querySelector('.v-h').textContent,X,y,MW,74,3);
+  var sub=v.querySelector('.v-s');if(sub){g.fillStyle='#565a61';g.font='400 30px '+SAN;y=wrap(sub.textContent,X,y+4,MW,40,2)}
+  if(VS){y+=64;var mn=Math.floor(VS.val-2),mx=Math.ceil(Math.max(VS.hi,VS.tae||0)+2),P=function(t){return X+Math.max(0,Math.min(1,(t-mn)/(mx-mn)))*MW};
+    g.fillStyle='#e9f0ea';g.fillRect(X,y,MW,16);g.fillStyle='#f5e9e8';g.fillRect(P(VS.hi),y,X+MW-P(VS.hi),16);g.fillStyle='#f5efe0';g.fillRect(P(VS.lo),y,P(VS.hi)-P(VS.lo),16);
+    g.strokeStyle='#c8cabf';g.lineWidth=2;g.strokeRect(X,y,MW,16);
+    g.fillStyle='#565a61';g.fillRect(P(VS.val)-2,y-10,4,36);g.fillRect(P((VS.lo+VS.hi)/2)-2,y-10,4,36);
+    g.font='600 25px '+SAN;g.fillStyle='#17191d';g.textAlign='center';
+    var cl=function(px){return Math.max(X+90,Math.min(X+MW-150,px))};
+    g.fillText(fmt(VS.val),cl(P(VS.val)),y+62);g.fillText(f2(VS.lo).replace(' %','')+' – '+f2(VS.hi),cl(P((VS.lo+VS.hi)/2)),y+62);
+    g.font='400 22px '+SAN;g.fillStyle='#565a61';g.fillText('Tipo medio',cl(P(VS.val)),y+92);g.fillText('Umbral',cl(P((VS.lo+VS.hi)/2)),y+92);
+    if(VS.tae!=null){g.fillStyle=col;g.beginPath();g.arc(P(VS.tae),y+8,17,0,Math.PI*2);g.fill();g.strokeStyle='#f4f5f2';g.lineWidth=5;g.stroke();g.fillStyle='#17191d';g.font='600 26px '+SAN;g.fillText('TAE '+fmt(VS.tae),cl(P(VS.tae)),y-30)}
+    g.textAlign='left';y+=128}
+  var yMax=H-262;
+  VR.filter(function(r){return r.q!=='Cálculo'}).forEach(function(r){if(y>yMax-96)return;g.fillStyle='#dcded7';g.fillRect(X,y,MW,2);y+=42;g.fillStyle='#878b90';g.font='600 22px '+SAN;g.fillText((r.q+(r.e?' · '+r.e:'')).toUpperCase(),X,y);y+=38;g.fillStyle='#17191d';g.font='400 28px '+SAN;y=wrap(r.t,X,y,MW,38,3)+2});
+  var fy=H-212;g.fillStyle='#17191d';g.fillRect(X,fy,MW,2);
+  g.font='600 34px '+SER;g.fillText('Julio Ruiz Llario',X,fy+54);
+  g.font='400 24px '+SAN;g.fillStyle='#565a61';g.fillText('Magistrado de la Audiencia Provincial de Madrid (Sección 25.ª bis)',X,fy+90);
+  g.font='400 21px '+SAN;g.fillText('Basado en resoluciones del Tribunal Supremo y de la Audiencia Provincial de Madrid.',X,fy+132);
+  g.fillText('Información orientativa: compruebe siempre la resolución en el CENDOJ.',X,fy+164);
+  cv.toBlob(function(b){if(!b){toast('No se ha podido crear la imagen');return}entregar(b,'criterio25bis_veredicto.png','image/png')},'image/png');
+}
+
+var verdT;function verdLive(){clearTimeout(verdT);verdT=setTimeout(function(){veredicto(readQ())},180)}
+['ent','anio','mes','tae','prod','cla','sanio','smes','stae'].forEach(function(id){$(id).addEventListener('input',verdLive);$(id).addEventListener('change',verdLive)});
+
+/* ============ OCR ============ */
+var ocrLibs=null;
+function loadScript(src){return new Promise(function(res,rej){var s=document.createElement('script');s.src=src;s.crossOrigin='anonymous';s.onload=res;s.onerror=function(){rej(new Error('No se pudo cargar '+src))};document.head.appendChild(s)})}
+function ensureOCR(){
+  if(ocrLibs)return ocrLibs;
+  ocrLibs=(window.Tesseract?Promise.resolve():loadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'))
+    .then(function(){if(window.pdfjsLib){try{pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js'}catch(e){}}});
+  return ocrLibs;
+}
+function setBar(p){var b=$('ocrbar');b.classList.add('on');$('ocrbari').style.width=Math.round(p*100)+'%'}
+function ocrStatus(t){$('ocrstatus').textContent=t||''}
+async function pdfToText(buf){
+  if(!window.pdfjsLib)throw new Error('pdf');
+  var pdf=await pdfjsLib.getDocument({data:buf}).promise;var txt='';var pages=Math.min(pdf.numPages,2);
+  for(var i=1;i<=pages;i++){var page=await pdf.getPage(i);var vp=page.getViewport({scale:2});var cv=document.createElement('canvas');cv.width=vp.width;cv.height=vp.height;var cx=cv.getContext('2d');await page.render({canvasContext:cx,viewport:vp}).promise;
+    var r=await Tesseract.recognize(cv,'spa',{logger:function(m){if(m.status==='recognizing text')setBar((i-1+m.progress)/pages)}});txt+='\n'+r.data.text}
+  return txt;
+}
+async function handleFile(file){
+  if(!file)return;
+  $('ocrfound').classList.remove('on');ocrStatus('Preparando el lector…');setBar(0.02);
+  try{
+    await ensureOCR();
+    var text;
+    if(file.type==='application/pdf'||/\.pdf$/i.test(file.name)){var buf=await file.arrayBuffer();ocrStatus('Leyendo el PDF…');text=await pdfToText(buf)}
+    else{ocrStatus('Leyendo la imagen…');var r=await Tesseract.recognize(file,'spa',{logger:function(m){if(m.status==='recognizing text')setBar(m.progress)}});text=r.data.text}
+    setBar(1);ocrStatus('');
+    var f=parseContrato(text||'');
+    aplicaOCR(f);
+  }catch(e){
+    $('ocrbar').classList.remove('on');
+    ocrStatus('No se pudo leer el documento automáticamente. Puede que no haya conexión para cargar el lector la primera vez. Introduzca los datos a mano.');
+  }
+}
+function parseContrato(text){
+  var low=' '+text.toLowerCase().replace(/\s+/g,' ')+' ';
+  var out={ent:null,anio:null,mes:null,tae:null};
+  // TAE
+  var mt=/t\.?\s*a\.?\s*e\.?\s*(?:anual|nominal)?\s*[:=]?\s*(?:del?\s*)?(\d{1,2}[.,]\d{1,2})\s*%/.exec(low);
+  if(!mt){var all=low.match(/(\d{1,2}[.,]\d{1,2})\s*%/g)||[];for(var i=0;i<all.length;i++){var n=num(all[i]);if(n!=null&&n>=10&&n<=45){out.tae=n;break}}}
+  else out.tae=num(mt[1]);
+  // fecha dd/mm/yyyy
+  var md=/\b([0-3]?\d)[\/\-.]([01]?\d)[\/\-.](\d{4})\b/.exec(low);
+  if(md){out.anio=+md[3];out.mes=+md[2]||null}
+  if(!out.anio){var mm=/\bde\s+(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|setiembre|octubre|noviembre|diciembre)\s+de\s+(\d{4})\b/.exec(low);if(mm){out.anio=+mm[2];out.mes=MESES.indexOf(mm[1].replace('setiembre','septiembre'))+1||null}}
+  if(!out.anio){var my=/\b(19[89]\d|20[0-2]\d)\b/.exec(low);if(my)out.anio=+my[1]}
+  // entidad
+  var map=[['wizink','WiZink'],['wi zink','WiZink'],['citibank','Citibank (hoy WiZink)'],['citi bank','Citibank (hoy WiZink)'],['barclaycard','Barclays (Barclaycard)'],['barclays','Barclays (Barclaycard)'],['barclay','Barclays (Barclaycard)'],['popular-e','WiZink'],['popular e','WiZink'],['banco popular','WiZink'],['cofidis','Cofidís'],['cofidís','Cofidís'],['oney','Oney Servicios Financieros'],['caixabank payments','CaixaBank Payments & Consumer'],['bankinter consumer','Bankinter Consumer Finance'],['cetelem','Banco Cetelem'],['evofinance','Evo Finance'],['evo finance','Evo Finance'],['sabadell','Banco Sabadell'],['bbva','Banco Bilbao Vizcaya Argentaria'],['mbna','Mbna']];
+  for(var j=0;j<map.length;j++){if(low.indexOf(map[j][0])>=0){out.ent=map[j][1];break}}
+  return out;
+}
+function optExists(sel,val){return Array.prototype.some.call(sel.options,function(o){return o.value===val})}
+function aplicaOCR(f){
+  var found=$('ocrfound');found.classList.add('on');found.innerHTML='';
+  function row(k,v,ok){found.innerHTML+='<div><span class="k">'+k+'</span><span class="'+(ok?'v':'pend')+'">'+esc(ok?v:'no reconocido — introdúzcalo a mano')+'</span></div>'}
+  if(f.ent&&optExists($('ent'),f.ent)){$('ent').value=f.ent;row('Entidad',f.ent,true)}else row('Entidad',null,false);
+  if(f.anio){$('anio').value=f.anio;$('mes').value=f.mes||'';row('Fecha',(f.mes?MESES[f.mes-1]+' de ':'')+f.anio,true)}else row('Fecha',null,false);
+  if(f.tae!=null){$('tae').value=String(f.tae).replace('.',',');row('TAE',fmt(f.tae),true)}else row('TAE',null,false);
+  found.innerHTML+='<div style="margin-top:6px;color:var(--ink3);font-size:11.5px">Revise los datos antes de buscar: el reconocimiento puede fallar.</div>';
+  toast('Documento leído. Revise los datos.');
+}
+$('ocrfile').addEventListener('change',function(e){handleFile(e.target.files[0]);e.target.value=''});
+var oz=$('ocrzone');
+['dragenter','dragover'].forEach(function(ev){oz.addEventListener(ev,function(e){e.preventDefault();oz.classList.add('drag')})});
+['dragleave','drop'].forEach(function(ev){oz.addEventListener(ev,function(e){e.preventDefault();oz.classList.remove('drag')})});
+oz.addEventListener('drop',function(e){if(e.dataTransfer.files[0])handleFile(e.dataTransfer.files[0])});
+
+/* ============ COMPOSER ============ */
+var EJES={
+  usura:{host:'s_usura',opts:[['si','Aprecio la usura','ox'],['no','No aprecio la usura','gr'],['','No la examino','']]},
+  trans:{host:'s_trans',opts:[['no_supera','No supera la transparencia','ox'],['supera','Supera la transparencia','gr'],['','No la examino','']]},
+  sob:{host:'s_sob',opts:[['si','Aprecio usura sobrevenida','ox'],['no','La descarto','gr'],['','No procede','']]},
+  presc:{host:'s_presc',opts:[['estimo','Estimo la prescripción','ox'],['desestimo','La desestimo','gr'],['','No se planteó','']]},
+  costas:{host:'s_costas',opts:[['dem','A la parte demandada',''],['act','A la parte actora',''],['sin','Sin imposición',''],['','No me pronuncio','']]}
+};
+var EST={usura:'',trans:'',sob:'',presc:'',costas:''},TOUCH={};
+function setEje(key,val){EST[key]=val;var cfg=EJES[key];$(cfg.host).querySelectorAll('.opt').forEach(function(x){var inp=x.querySelector('input'),on=inp.value===val,o=cfg.opts.filter(function(q){return q[0]===inp.value})[0];inp.checked=on;x.className='opt'+(on?' on'+(o&&o[2]?' '+o[2]:''):'')})}
+function autoSentido(){
+  var L=selList();
+  function may(key,a,b,va,vb){if(TOUCH[key])return;setEje(key,(a||b)?(a>=b?va:vb):'')}
+  may('usura',L.filter(function(c){return c.usura==='usurario'&&!c.u_inst}).length,L.filter(function(c){return c.usura==='no_usurario'&&!c.u_inst}).length,'si','no');
+  may('trans',L.filter(function(c){return c.tr==='no_supera'&&!c.t_inst}).length,L.filter(function(c){return c.tr==='supera'&&!c.t_inst}).length,'no_supera','supera');
+  if(!TOUCH.sob)setEje('sob',L.some(function(c){return c.sob})?'si':'');
+}
+Object.keys(EJES).forEach(function(key){
+  var cfg=EJES[key],host=$(cfg.host);
+  cfg.opts.forEach(function(o){
+    var lab=el('label',{cls:'opt'});var inp=el('input',{type:'radio',name:'ej_'+key});inp.value=o[0];if(o[0]==='')inp.checked=true;
+    inp.addEventListener('change',function(){TOUCH[key]=true;EST[key]=o[0];host.querySelectorAll('.opt').forEach(function(x){x.className='opt'});lab.className='opt on'+(o[2]?' '+o[2]:'')});
+    lab.appendChild(inp);lab.appendChild(el('b',{text:o[1]}));
+    if(o[0]==='')lab.className='opt on';
+    host.appendChild(lab);
+  });
+});
+
+function cv(id){return ($(id).value||'').trim()}
+function ph(v,txt){return v?esc(v):'<span style="color:#8a5a12">['+esc(txt)+']</span>'}
+
+function prefillComposer(){
+  function fill(id,val){if(val!=null&&val!==''&&!$(id).value)$(id).value=val}
+  if(lastQuery){
+    if(lastQuery.ent&&lastQuery.ent!=='*')fill('c_ent',lastQuery.ent==='WZ'?'WiZink':lastQuery.ent);
+    if(lastQuery.anio){var fch=(lastQuery.mes?MESES[lastQuery.mes-1]+' de ':'')+lastQuery.anio;fill('c_fecha',fch)}
+    if(lastQuery.tae!=null)fill('c_tae',String(lastQuery.tae).replace('.',','));
+    var PRODTXT={prestamo_hipotecario:'préstamo hipotecario',hipoteca_multidivisa:'préstamo hipotecario multidivisa',prestamo_personal:'préstamo personal',microcredito:'microcrédito',tarjeta_revolving:'tarjeta revolving',linea_credito_revolving:'línea de crédito revolving',tarjeta_pago_aplazado:'tarjeta de pago aplazado'};if(lastQuery.prod&&PRODTXT[lastQuery.prod])fill('c_prod',PRODTXT[lastQuery.prod]);
+    var yr=lastQuery.anio;if(yr){var mr=refModal('rev',yr);if(mr&&mr.fiable){fill('c_ref',String(mr.val).replace('.',','));fill('c_umbral','tipo medio + 0,20 o 0,30 + 6 puntos: '+f2(mr.val+6.2).replace(' %','')+' – '+f2(mr.val+6.3)+' (STS 258/2023)')}}
+  }
+  autoSentido();
+  if(!$('c_fs').value){var d=new Date();$('c_fs').value=d.getDate()+' de '+MESES[d.getMonth()]+' de '+d.getFullYear()}
+}
+
+/* ----- Selección con prelación TS y ampliación a 4 citas ----- */
+function pick(result,field,pasKey,n){
+  var a=selList().filter(function(c){return c[field]===result&&c[pasKey]});
+  // Prelación: TS primero, dentro de cada grupo la más reciente antes.
+  a.sort(function(x,y){
+    var tx=x.org==='TS'?1:0,ty=y.org==='TS'?1:0;
+    if(tx!==ty)return ty-tx;
+    return (y.fs||'')<(x.fs||'')?-1:1;
+  });
+  var r=a.slice(0,n||4);r.forEach(function(c){USED[c.id]=1});return r;
+}
+var USED={};
+function refOf(c){return esc(trib(c)+', sentencia de '+fechaLarga(c.fs)+' (ROJ '+c.roj+'; '+(c.ecli||'')+')')}
+function otras(result,field,shown){
+  var ids={};(shown||[]).forEach(function(c){ids[c.id]=1});var inst=field==='usura'?'u_inst':'t_inst';
+  var o=selList().filter(function(c){return c[field]===result&&!c[inst]&&!ids[c.id]});if(!o.length)return '';
+  o.forEach(function(c){USED[c.id]=1});
+  return '<p>En el mismo sentido: '+o.map(refOf).join('; ')+'.</p>';
+}
+function citeBlocks(list,pasKey,fdKey){
+  return list.map(function(c){
+    return '<div class="cite">«'+esc(c[pasKey])+'»<span class="src">'+esc(citaSala(c,c[fdKey]))+'</span></div>';
+  }).join('');
+}
+function warn(t){return '<div class="warn">'+esc(t)+'</div>'}
+
+/* ----- Voz según órgano ----- */
+function V(){
+  var t=cv('c_tipo')||'unipersonal';
+  if(t==='colegiado'){
+    return {
+      yo:'esta Sala',
+      yoMay:'Esta Sala',
+      juzgar:'juzgar',
+      fallo:'FALLAMOS',
+      decidimos:'acordamos',
+      resuelvo:'Fallamos',
+      articulo394:'artículo 394 de la Ley de Enjuiciamiento Civil',
+      instancia:'la instancia',
+      recurso:'Notifíquese esta resolución a las partes, haciéndoles saber que contra la misma cabe recurso de casación y, en su caso, extraordinario por infracción procesal ante la Sala Primera del Tribunal Supremo, en los términos previstos en los artículos 477 y siguientes de la Ley de Enjuiciamiento Civil.',
+    };
+  }
+  return {
+    yo:'este juzgador',
+    yoMay:'Este juzgador',
+    juzgar:'juzgar',
+    fallo:'FALLO',
+    decidimos:'acuerdo',
+    resuelvo:'Fallo',
+    articulo394:'artículo 394 de la Ley de Enjuiciamiento Civil',
+    instancia:'esta instancia',
+    recurso:'Notifíquese esta resolución a las partes, haciéndoles saber que contra la misma cabe recurso de apelación ante la Audiencia Provincial de Madrid, que deberá interponerse ante este mismo Juzgado en el plazo de veinte días desde su notificación, con los requisitos del artículo 458 de la Ley de Enjuiciamiento Civil.',
+  };
+}
+
+var MAT='';
+/* ========== ANTECEDENTES ========== */
+function antecedentes(caso){
+  var V0=V();
+  var p1='<p><b>Primero.</b> Por la representación procesal de '+ph(caso.act,'la parte actora')+' se formuló demanda de juicio ordinario frente a '+ph(caso.dem,'la parte demandada')+', en ejercicio de la acción de nulidad del contrato de '+ph(caso.prod,'tarjeta revolving')+(caso.ent?' suscrito con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+', por su carácter usurario y, subsidiariamente, por falta de transparencia de las cláusulas relativas al interés remuneratorio y al sistema de amortización, con los efectos restitutorios inherentes a la declaración de nulidad.</p>';
+  if(MAT)p1='<p><b>Primero.</b> Por la representación procesal de '+ph(caso.act,'la parte actora')+' se formuló demanda de juicio ordinario frente a '+ph(caso.dem,'la parte demandada')+', en ejercicio de la acción de nulidad, por abusivas, de determinadas condiciones generales del contrato de '+ph(caso.prod,'préstamo')+(caso.ent?' suscrito con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+', en concreto '+esc(MAT)+', con los efectos restitutorios inherentes a la declaración de nulidad.</p>';
+  var p2='<p><b>Segundo.</b> Admitida a trámite la demanda y emplazada la parte demandada, compareció en tiempo y forma y contestó oponiéndose a las pretensiones ejercitadas, con las alegaciones que obran en autos y que, por evitar reiteraciones innecesarias, se dan aquí por reproducidas.</p>';
+  var p3='<p><b>Tercero.</b> Convocadas las partes al acto de la audiencia previa, se tuvo por fijados los términos del debate, se practicó la prueba propuesta y declarada pertinente en el acto del juicio y, oídas las conclusiones de las partes, quedaron los autos vistos para sentencia.</p>';
+  var p4='<p><b>Cuarto.</b> En la tramitación del presente procedimiento se han observado las prescripciones legales de aplicación.</p>';
+  if(V0.yo==='esta Sala'){
+    p1='<p><b>Primero.</b> Por el Juzgado de Primera Instancia se dictó sentencia en los autos de referencia, seguidos a instancia de '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+', cuyo fallo es del tenor literal siguiente: '+ph('','transcriba el fallo de la sentencia de instancia')+'.</p>';
+    p2='<p><b>Segundo.</b> Contra la anterior resolución se interpuso recurso de apelación por '+ph('','la parte apelante')+', que fue admitido, y, en su virtud, previos los oportunos emplazamientos, se remitieron las actuaciones a esta Sección, sustanciándose el recurso por sus trámites legales.</p>';
+    p3='<p><b>Tercero.</b> En la tramitación de este recurso se han observado las prescripciones legales.</p>';p4='';
+  }
+  return {title:'',body:p1+p2+p3+p4,sec:'ANTECEDENTES DE HECHO'};
+}
+
+/* ========== FUNDAMENTOS ========== */
+function fdObjeto(caso){
+  var motivos=[];if(EST.usura==='si'||EST.usura==='no')motivos.push('usuraria');if(EST.trans)motivos.push('falta de transparencia de las cláusulas de precio');
+  var mot=motivos.length?motivos.join(' y '):'nulidad de las condiciones del crédito';
+  var V0=V();
+  var b='<p>Ejercita '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+' la acción de nulidad del contrato de '+ph(caso.prod,'tarjeta revolving')+(caso.ent?' suscrito con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+', por '+esc(mot)+'. Resueltas las cuestiones procesales y fijados los términos del debate, procede entrar en el fondo con arreglo a los fundamentos que siguen.</p>';
+  b+='<p>Antes de examinar los concretos motivos, conviene recordar que, por virtud del principio jura novit curia, '+V0.yo+' no se halla vinculad'+ (V0.yo==='esta Sala'?'a':'o')+' a la calificación jurídica propuesta por los litigantes, lo que resulta de particular relevancia en materia de nulidad por usura y por falta de transparencia, pues ambas acciones comparten una misma dirección impugnatoria del precio del crédito revolving y han sido objeto de un cuerpo doctrinal reiterado por el Tribunal Supremo y por la Sala vigesimoquinta bis de esta Audiencia Provincial.</p>';
+  if(MAT)b='<p>Ejercita '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+' la acción de nulidad, por abusivas, de determinadas condiciones generales del contrato de '+ph(caso.prod,'préstamo')+(caso.ent?' suscrito con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+': '+esc(MAT)+'. Se examinan por separado en los fundamentos que siguen, con arreglo a la Directiva 93/13/CEE, al texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios y a la jurisprudencia que los interpreta.</p>';
+  return {title:'Objeto del proceso y planteamiento',body:b};
+}
+
+function fdUsura(caso){
+  var V0=V();
+  var pct=function(v,t){return v?esc(v)+(/%/.test(v)?'':' %'):ph('',t)};var tae=pct(caso.tae,'TAE'),ref=pct(caso.ref,'tipo medio'),umb=caso.umbral?esc(caso.umbral):'[umbral]';
+  var p1='<p>El contrato enjuiciado'+(caso.ent?', suscrito con '+esc(caso.ent):'')+(caso.fecha?', de '+esc(caso.fecha)+',':'')+' fijó una TAE del '+tae+'. El tipo medio de referencia de los créditos revolving publicado por el Banco de España para esa fecha se situaba en el '+ref+'.</p>';
+  var p2='<p>El criterio jurisprudencial aplicable viene fijado por el Tribunal Supremo en la sentencia 258/2023, de 15 de febrero (Pleno), conforme a la cual el interés de una tarjeta revolving es usurario cuando su TAE supera en más de seis puntos porcentuales el tipo medio de referencia (TEDR) de ese segmento publicado por el Banco de España para el mes de la contratación, incrementado en 0,20 o 0,30 puntos por las comisiones habituales. '+V0.yoMay+' debe, por consiguiente, cotejar la TAE pactada con el umbral así obtenido y verificar si lo supera.</p>';
+  if(EST.usura==='si'){
+    var cl=pick('usurario','usura','u_pas',4);
+    var tsFirst=cl.filter(function(c){return c.org==='TS'});
+    var b=p1+p2+'<p>En el caso de autos, la TAE pactada ('+tae+') rebasa el umbral de '+umb+', por lo que debe reputarse notablemente superior al normal del dinero y manifiestamente desproporcionada con las circunstancias del caso, en el sentido del artículo 1 de la Ley de 23 de julio de 1908, de Represión de la Usura.</p>';
+    if(tsFirst.length){
+      b+='<p>Así lo tiene declarado el Tribunal Supremo en resoluciones directamente aplicables al presente caso:</p>'+citeBlocks(tsFirst,'u_pas','u_fd');
+      var ap=cl.filter(function(c){return c.org!=='TS'});
+      if(ap.length)b+='<p>En el mismo sentido se ha pronunciado la Sala vigesimoquinta bis de la Audiencia Provincial de Madrid:</p>'+citeBlocks(ap,'u_pas','u_fd');
+    } else if(cl.length){
+      b+='<p>Así lo tiene declarado la Sala vigesimoquinta bis de la Audiencia Provincial de Madrid en supuestos equivalentes al enjuiciado:</p>'+citeBlocks(cl,'u_pas','u_fd');
+    } else {
+      b+=warn('Elija en «Consultar» alguna resolución que aprecie la usura para que se incorporen aquí sus pasajes literales.');
+    }
+    b+=otras('usurario','usura',cl);
+    b+='<p>Procede, en consecuencia, declarar la nulidad del contrato por su carácter usurario, con los efectos restitutorios previstos en el artículo 3 de la Ley de Represión de la Usura, que se precisan más adelante.</p>';
+    return {title:'Carácter usurario del interés remuneratorio',body:b};
+  }
+  var cl2=pick('no_usurario','usura','u_pas',4);
+  var ts2=cl2.filter(function(c){return c.org==='TS'});
+  var b2=p1+p2+'<p>En el caso de autos, la diferencia entre la TAE pactada ('+tae+') y el tipo medio de referencia ('+ref+'), una vez incorporada la corrección por comisiones, no alcanza el umbral de '+umb+'. El interés no puede, por tanto, calificarse de notablemente superior al normal del dinero a los efectos del artículo 1 de la Ley de 23 de julio de 1908.</p>';
+  if(ts2.length){
+    b2+='<p>Esta conclusión se ajusta al criterio del Tribunal Supremo:</p>'+citeBlocks(ts2,'u_pas','u_fd');
+    var ap2=cl2.filter(function(c){return c.org!=='TS'});
+    if(ap2.length)b2+='<p>Y a lo resuelto por la Sala vigesimoquinta bis en supuestos equivalentes:</p>'+citeBlocks(ap2,'u_pas','u_fd');
+  } else if(cl2.length){
+    b2+='<p>Así lo ha declarado la Sala vigesimoquinta bis en supuestos equivalentes:</p>'+citeBlocks(cl2,'u_pas','u_fd');
+  } else {
+    b2+=warn('Elija en «Consultar» alguna resolución que descarte la usura para que se incorporen aquí sus pasajes literales.');
+  }
+  b2+=otras('no_usurario','usura',cl2);
+  b2+='<p>Descartada la usura, debe examinarse, por así haberse planteado de forma subsidiaria, si las cláusulas relativas al precio superan el control de transparencia material, pues su eventual nulidad conduce a consecuencias restitutorias análogas.</p>';
+  return {title:'No se aprecia el carácter usurario del interés remuneratorio',body:b2};
+}
+
+function fdTrans(caso){
+  var V0=V();
+  if(EST.trans==='no_supera'){
+    var cl=pick('no_supera','tr','t_pas',4);
+    var tsCl=cl.filter(function(c){return c.org==='TS'});
+    var defs={};selList().forEach(function(c){if(c.tr==='no_supera')(c.tr_def||[]).forEach(function(d){defs[defLabel(d)]=1})});
+    var dl=Object.keys(defs);
+    var defTxt=dl.length?('En el contrato examinado se aprecian, entre otros, los siguientes defectos: '+dl.slice(0,8).join('; ')+'.'):'[describa los defectos de transparencia apreciados en el contrato].';
+    var b='<p>Se ejercita, con carácter subsidiario, la acción de nulidad por falta de transparencia de las cláusulas que fijan el interés remuneratorio y el sistema de amortización del crédito revolving.</p>';
+    b+='<p>El control de transparencia material, con arreglo a reiterada doctrina del Tribunal Supremo (SSTS 241/2013, 464/2014, 138/2015 y 367/2017, entre otras, y, en el ámbito del crédito revolving, SSTS 154/2025 y 155/2025), exige que el consumidor haya podido conocer, antes de contratar y con sencillez, la carga económica y jurídica del producto y, en particular, el modo de funcionamiento del sistema de amortización y las consecuencias de los pagos mínimos, de manera que no deba esperar al cobro efectivo para advertir el verdadero coste del crédito y el riesgo de deuda perpetua. El control opera, por lo demás, respecto de cláusulas no negociadas individualmente y sometidas a la Directiva 93/13/CEE.</p>';
+    b+='<p>'+esc(defTxt)+'</p>';
+    if(tsCl.length){
+      b+='<p>En este sentido se ha pronunciado el Tribunal Supremo:</p>'+citeBlocks(tsCl,'t_pas','t_fd');
+      var apCl=cl.filter(function(c){return c.org!=='TS'});
+      if(apCl.length)b+='<p>Y la Sala vigesimoquinta bis de esta Audiencia Provincial en supuestos de contratación equivalentes:</p>'+citeBlocks(apCl,'t_pas','t_fd');
+    } else if(cl.length){
+      b+='<p>Así lo ha apreciado la Sala vigesimoquinta bis en supuestos equivalentes:</p>'+citeBlocks(cl,'t_pas','t_fd');
+    } else {
+      b+=warn('Elija en «Consultar» alguna resolución que declare la falta de transparencia para que se incorporen aquí sus pasajes literales.');
+    }
+    b+=otras('no_supera','tr',cl);
+    b+='<p>Las cláusulas relativas al precio y al sistema de amortización no superan, por ello, el control de transparencia material, lo que determina, por su carácter esencial, la nulidad del contrato en su conjunto. En consecuencia, conforme a la doctrina sentada en las SSTS 154/2025 y 155/2025, procederá la restitución recíproca de prestaciones con arreglo al artículo 1303 del Código Civil, en los términos que se precisan a continuación.</p>';
+    return {title:'Falta de transparencia de las cláusulas de precio',body:b};
+  }
+  var cl2=pick('supera','tr','t_pas',4);
+  var b2='<p>Se examina, a continuación, la transparencia de las cláusulas que fijan el interés y el sistema de amortización. Como se ha expuesto, el control de transparencia material exige que el consumidor haya podido conocer, antes de contratar, la carga económica y jurídica del producto y, señaladamente, el funcionamiento del sistema de amortización revolving y el riesgo de deuda perpetua.</p>';
+  b2+='<p>En el caso de autos, la información precontractual facilitada permitía conocer con suficiente claridad el funcionamiento y el coste del crédito [precise la prueba documental aportada por la entidad y las concretas razones por las que se considera superado el control].</p>';
+  b2+=cl2.length?('<p>En este sentido se ha pronunciado el Tribunal Supremo y la Sala vigesimoquinta bis en supuestos equivalentes:</p>'+citeBlocks(cl2,'t_pas','t_fd')):'';
+  b2+=otras('supera','tr',cl2);
+  b2+='<p>Las cláusulas superan, en consecuencia, el control de transparencia material, no procediendo por ello su declaración de nulidad por este motivo.</p>';
+  return {title:'Superación del control de transparencia',body:b2};
+}
+
+function fdSob(caso){
+  var V0=V();
+  if(EST.sob==='si'){
+    var cl=selList().filter(function(c){return c.sob&&(c.u_pas||(c.mods&&c.mods.length&&c.mods[0].pasaje_clave))});
+    cl.sort(function(x,y){var tx=x.org==='TS'?1:0,ty=y.org==='TS'?1:0;return (ty-tx)||((y.fs||'')<(x.fs||'')?-1:1)});
+    var blocks=cl.slice(0,3).map(function(c){USED[c.id]=1;var m=(c.mods||[]).find?(c.mods||[]).find(function(x){return x.pasaje_clave}):null;var pas=m?m.pasaje_clave:c.u_pas;var fd=m?m.fundamento:c.u_fd;return '<div class="cite">«'+esc(pas)+'»<span class="src">'+esc(citaSala(c,fd))+'</span></div>'}).join('');
+    var b='<p>Se alega, además, que con posterioridad a la firma la entidad elevó unilateralmente el tipo de interés aplicable al contrato, lo que convierte la modificación en una elevación igualmente usuraria o, cuando menos, carente de eficacia frente a la prestataria por no haber sido debidamente comunicada.</p>';
+    b+='<p>Conforme a la doctrina del Tribunal Supremo (STS 317/2023), cada modificación unilateral del tipo equivale a un nuevo contrato a los efectos de examen de usura; y, con arreglo a la normativa sobre crédito al consumo y a los deberes de información precontractual (artículos 17 y 33 de la Ley 16/2011, de Contratos de Crédito al Consumo, y artículo 5 de la Ley 7/1998, de Condiciones Generales de la Contratación), la elevación solo es oponible al consumidor cuando se le comunica en forma que pueda conocerla y, en su caso, resolver el contrato; de no acreditarse esa comunicación, la modificación no produce efecto frente al prestatario.</p>';
+    b+=blocks?('<p>En este sentido se ha pronunciado:</p>'+blocks):warn('Elija en «Consultar» alguna resolución sobre subida de tipo para que se incorporen aquí sus pasajes literales.');
+    b+='<p>Procede, en consecuencia, apreciar el carácter usurario sobrevenido desde '+ph(caso.sobDesde,'fecha de la elevación')+', con los efectos restitutorios que se dirán.</p>';
+    return {title:'Usura sobrevenida por la elevación posterior del tipo',body:b};
+  }
+  var b2='<p>Se alega, finalmente, usura sobrevenida derivada de la elevación posterior del tipo. Examinada la modificación, [el nuevo tipo no supera el umbral aplicable con arreglo al criterio de la STS 258/2023 / la modificación fue debidamente comunicada a la parte prestataria y no fue impugnada en su momento], por lo que no concurre el supuesto de usura sobrevenida pretendido.</p>';
+  return {title:'No concurrencia de usura sobrevenida',body:b2};
+}
+
+function fdEfectos(caso){
+  var b;
+  if(EST.usura==='si'){
+    b='<p>Declarada la nulidad del contrato por su carácter usurario, resulta de aplicación el artículo 3 de la Ley de 23 de julio de 1908, conforme al cual el prestatario queda obligado únicamente a devolver el capital efectivamente dispuesto, sin intereses. La entidad prestamista, por su parte, debe restituir cuantas cantidades hubiera percibido por encima de ese capital por cualquier concepto (intereses, comisiones, gastos, primas de seguro vinculado o cualesquiera otros), con los intereses legales desde la fecha de cada cobro y hasta su efectiva restitución.</p>';
+    b+='<p>La liquidación de las cantidades a restituir se determinará, de no ser posible en este momento procesal, en ejecución de sentencia, partiendo de los extractos aportados por la entidad y, en su defecto, de los que resulten del propio funcionamiento del contrato.</p>';
+  }else{
+    b='<p>La declaración de falta de transparencia de las cláusulas relativas al precio y al sistema de amortización determina su nulidad y, por su carácter esencial, la del contrato en su conjunto, con las consecuencias restitutorias previstas en el artículo 1303 del Código Civil, en los términos sentados por las SSTS 154/2025 y 155/2025: el prestatario debe devolver únicamente el capital dispuesto y la entidad restituir las cantidades abonadas que excedan de él, con los intereses legales desde cada pago y hasta su efectiva restitución.</p>';
+    b+='<p>La liquidación se practicará, si no fuera posible en este momento procesal, en ejecución de sentencia.</p>';
+  }
+  return {title:'Efectos de la declaración de nulidad y restitución de prestaciones',body:b};
+}
+
+function fdPresc(caso){
+  if(EST.presc==='estimo'){
+    var src=selList().filter(function(c){return c.presc&&c.presc_crit})[0];if(src)USED[src.id]=1;
+    var crit=src?('Esta conclusión se asienta en que '+esc(src.presc_crit)+' ('+esc(tribCorto(src))+', '+esc(src.roj)+').'):'[exprese el criterio de prescripción que se aplica en el caso concreto].';
+    var b='<p>Opuesta por la parte demandada la prescripción de la acción de restitución, procede su estimación. '+crit+'</p><p>En consecuencia, la condena restitutoria se limita a las cantidades reclamables dentro del plazo no prescrito.</p>';
+    return {title:'Prescripción parcial de la acción de restitución',body:b};
+  }
+  var b2='<p>Opuesta la prescripción de la acción de restitución, procede su desestimación. Conforme a reiterada doctrina (STS 350/2025 y las que en ella se citan), la acción de nulidad es imprescriptible y la de restitución, consecuencia necesaria de aquella, no puede entenderse prescrita en los términos planteados por la parte demandada. La reclamación se ha ejercitado dentro del plazo legalmente establecido.</p>';
+  return {title:'Desestimación de la excepción de prescripción',body:b2};
+}
+
+function fdCostas(){
+  var V0=V(),t;
+  if(EST.costas==='dem')t='De conformidad con el '+V0.articulo394+', al estimarse sustancialmente la demanda, las costas de '+V0.instancia+' se imponen a la parte demandada.';
+  else if(EST.costas==='act')t='De conformidad con el '+V0.articulo394+', al desestimarse la demanda, las costas de '+V0.instancia+' se imponen a la parte actora.';
+  else t='Dadas las serias dudas de hecho y de derecho que presenta la materia, no procede hacer especial imposición de las costas de '+V0.instancia+' (artículo 394.1 de la Ley de Enjuiciamiento Civil).';
+  return {title:'Costas procesales',body:'<p>'+t+'</p>'};
+}
+
+/* ========== CLÁUSULAS ========== */
+var CLATXT={multidivisa:'la cláusula multidivisa',clausula_suelo:'la cláusula suelo',irph:'la cláusula que referencia el interés al IRPH',gastos:'la cláusula de gastos',comision_apertura:'la comisión de apertura',intereses_demora:'la cláusula de intereses de demora',vencimiento_anticipado:'la cláusula de vencimiento anticipado',comision_impagados:'la comisión por reclamación de posiciones deudoras',seguro_vinculado:'el seguro vinculado',otra:'las demás cláusulas impugnadas'};
+var RESCLA={nula:'la declara nula',valida:'la declara válida',allanamiento:'allanamiento de la entidad',allanamiento_consumidor:'allanamiento del consumidor'};
+function clausSel(){
+  var T={},orden=[];
+  selList().forEach(function(c){var solo=typeof SEL[c.id]==='string'?SEL[c.id]:null;
+    (c.claus||[]).forEach(function(k){if(!k.pasaje_clave)return;var t=(k.tipo||'otra').split(':')[0];if(!CLATXT[t])t='otra';if(solo&&t!==solo)return;if(!T[t]){T[t]=[];orden.push(t)}T[t].push({c:c,k:k})})});
+  return orden.map(function(t){return {tipo:t,items:T[t]}});
+}
+function fdClausula(g){
+  var txt=CLATXT[g.tipo],its=g.items.slice(0,4);
+  function bloque(l){return l.map(function(x){USED[x.c.id]=1;return '<div class="cite">«'+esc(x.k.pasaje_clave)+'»<span class="src">'+esc(citaSala(x.c,x.k.fundamento||''))+(RESCLA[x.k.resultado]?' · '+RESCLA[x.k.resultado]:'')+'</span></div>'}).join('')}
+  var ts=its.filter(function(x){return x.c.org==='TS'}),ap=its.filter(function(x){return x.c.org!=='TS'});
+  var b='<p>Se examina a continuación '+txt+' del contrato'+'.</p>';
+  if(ts.length)b+='<p>Sobre esta cuestión se ha pronunciado el Tribunal Supremo:</p>'+bloque(ts);
+  if(ap.length)b+='<p>'+(ts.length?'En el mismo sentido, la':'Sobre esta cuestión se ha pronunciado la')+' Audiencia Provincial de Madrid:</p>'+bloque(ap);
+  var resto=g.items.slice(4);if(resto.length){resto.forEach(function(x){USED[x.c.id]=1});b+='<p>En el mismo sentido: '+resto.map(function(x){return refOf(x.c)}).join('; ')+'.</p>'}
+  b+='<p>'+ph('','Aplique el criterio expuesto al contrato enjuiciado y concrete el pronunciamiento sobre '+txt)+'</p>';
+  return {title:'Sobre '+txt,body:b};
+}
+
+/* ========== FALLO ========== */
+function fdFallo(caso){
+  var V0=V();
+  var items=[];
+  if(EST.usura==='si'){
+    items.push('Declarar la NULIDAD del contrato de '+ph(caso.prod,'tarjeta revolving')+(caso.ent?' suscrito con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+' por su carácter USURARIO.');
+    items.push('Condenar a '+ph(caso.dem,'la demandada')+' a restituir a '+ph(caso.act,'la actora')+' todas las cantidades percibidas por cualquier concepto por encima del capital efectivamente dispuesto, con los intereses legales desde la fecha de cada cobro y hasta su efectiva restitución, cantidades que se determinarán, en su caso, en ejecución de sentencia.');
+  } else if(EST.trans==='no_supera'){
+    items.push('Declarar la NULIDAD, por falta de transparencia de las cláusulas de precio y del sistema de amortización, del contrato de '+ph(caso.prod,'tarjeta revolving')+(caso.ent?' suscrito con '+esc(caso.ent):'')+(caso.fecha?' de '+esc(caso.fecha):'')+'.');
+    items.push('Condenar a '+ph(caso.dem,'la demandada')+' a restituir a '+ph(caso.act,'la actora')+' las cantidades abonadas por encima del capital dispuesto, con los intereses legales desde la fecha de cada pago y hasta su efectiva restitución, a liquidar, en su caso, en ejecución de sentencia (artículo 1303 del Código Civil).');
+  } else if(EST.usura==='no'||EST.trans==='supera'){
+    items.push('Desestimar íntegramente la demanda interpuesta por '+ph(caso.act,'la parte actora')+' frente a '+ph(caso.dem,'la parte demandada')+', con absolución de esta última de todos los pedimentos deducidos en su contra.');
+  } else {
+    items.push(ph('','Fije aquí el contenido del fallo conforme al sentido que resulte de los fundamentos anteriores'));
+  }
+  clausSel().forEach(function(g){items.push(ph('','Pronunciamiento sobre '+CLATXT[g.tipo]))});
+  // sobrevenida
+  if(EST.sob==='si') items.splice(1,0,'Declarar, con carácter subsidiario, el carácter USURARIO SOBREVENIDO del contrato desde '+ph(caso.sobDesde,'la fecha de la elevación posterior del tipo')+', con idénticos efectos restitutorios en cuanto a lo percibido con posterioridad a esa fecha.');
+  // costas
+  if(EST.costas==='dem') items.push('Imponer a la parte demandada las costas de '+V0.instancia+'.');
+  else if(EST.costas==='act') items.push('Imponer a la parte actora las costas de '+V0.instancia+'.');
+  else if(EST.costas==='sin') items.push('No hacer especial imposición de las costas de '+V0.instancia+'.');
+  var html='<p>Vistos los preceptos legales citados y demás de general y pertinente aplicación,</p>';
+  html+='<div class="fallo"><p>'+(V0.yo==='esta Sala'?'En atención a lo expuesto, la Sala acuerda:':'En atención a lo expuesto, acuerdo:')+'</p>';
+  items.forEach(function(it,i){ html+='<p><b>'+(i+1)+'.º</b> '+it+'</p>'; });
+  html+='</div>';
+  html+='<div class="rec">'+V0.recurso+'</div>';
+  html+='<div class="rec">'+(V0.yo==='esta Sala'?'Así, por esta nuestra sentencia, lo pronunciamos, mandamos y firmamos.':'Así por esta mi sentencia, de la que se expedirá testimonio para su unión a los autos, lo pronuncio, mando y firmo.')+'</div>';
+  return {title:'',body:html,sec:'FALLO',raw:true};
+}
+
+/* ========== REDACTAR ========== */
+var ORD=['primero','segundo','tercero','cuarto','quinto','sexto','séptimo','octavo','noveno','décimo','undécimo','duodécimo'];
+function cab(caso){
+  var V0=V();
+  var html='<div class="cab">';
+  html+='<div class="nsent">SENTENCIA '+(caso.num?'N.º '+esc(caso.num):'N.º …/…')+'</div>';
+  if(caso.org) html+='<div class="org">'+esc(caso.org)+'</div>';
+  if(caso.proc) html+='<div class="org">'+esc(caso.proc)+'</div>';
+  html+='<div class="partes">';
+  if(caso.act) html+='<div><b>Parte actora:</b> '+esc(caso.act)+(caso.letact?' ('+esc(caso.letact)+')':'')+'</div>';
+  if(caso.dem) html+='<div><b>Parte demandada:</b> '+esc(caso.dem)+(caso.letdem?' ('+esc(caso.letdem)+')':'')+'</div>';
+  html+='</div></div>';
+  html+='<div class="lugar">En '+esc(caso.lugar||'Madrid')+', a '+esc(caso.fs||'[fecha de la sentencia]')+'.</div>';
+  var intro;
+  if(V0.yo==='esta Sala'){
+    intro='<div class="lugar">Vistos por la Sección Vigesimoquinta bis de la Audiencia Provincial de Madrid, integrada por las Magistradas y Magistrados cuyo nombre consta al margen, el recurso de apelación interpuesto contra la sentencia dictada por el Juzgado de Primera Instancia, en el procedimiento de referencia, sobre '+(MAT?'nulidad de condiciones generales de la contratación':'nulidad de contrato de tarjeta revolving por usura y falta de transparencia')+'.</div>';
+  } else {
+    intro='<div class="lugar">Vistos por '+esc(caso.org||'este Juzgado de Primera Instancia')+' los autos de juicio ordinario registrados con el número de referencia, seguidos a instancia de '+ph(caso.act,'la parte actora')+', frente a '+ph(caso.dem,'la parte demandada')+', sobre '+(MAT?'nulidad de condiciones generales de la contratación':'nulidad de contrato de tarjeta revolving por usura y falta de transparencia')+', procede dictar la presente resolución con arreglo a los siguientes</div>';
+  }
+  html+=intro;
+  return html;
+}
+
+function redactar(ev){
+  if(ev)ev.preventDefault();
+  var caso={
+    tipo:cv('c_tipo')||'unipersonal',
+    org:cv('c_org'),proc:cv('c_proc'),num:cv('c_num'),
+    lugar:cv('c_lugar'),fs:cv('c_fs'),
+    act:cv('c_act'),dem:cv('c_dem'),letact:cv('c_letact'),letdem:cv('c_letdem'),
+    ent:cv('c_ent'),fecha:cv('c_fecha'),prod:cv('c_prod'),
+    tae:cv('c_tae'),ref:cv('c_ref'),umbral:cv('c_umbral'),sobDesde:''
+  };
+
+  USED={};var GC=clausSel();MAT=(!EST.usura&&!EST.trans&&!EST.sob&&GC.length)?GC.map(function(g){return CLATXT[g.tipo]}).join(', ').replace(/, ([^,]*)$/,' y $1'):'';
+  var doc=$('doc');doc.innerHTML='';
+  // Encabezado + lugar + intro
+  var cabE=document.createElement('div');cabE.innerHTML=cab(caso);while(cabE.firstChild)doc.appendChild(cabE.firstChild);
+
+  // ANTECEDENTES
+  doc.appendChild(el('div',{cls:'seccion',text:'ANTECEDENTES DE HECHO'}));
+  var ant=antecedentes(caso);
+  var artA=el('article',{cls:'fd'});
+  artA.appendChild(el('div',{cls:'body',contenteditable:'true',html:ant.body}));
+  doc.appendChild(artA);
+
+  // FUNDAMENTOS DE DERECHO
+  doc.appendChild(el('div',{cls:'seccion',text:'FUNDAMENTOS DE DERECHO'}));
+  var blocks=[fdObjeto(caso)];
+  if(EST.usura)blocks.push(fdUsura(caso));
+  if(EST.trans)blocks.push(fdTrans(caso));
+  if(EST.sob)blocks.push(fdSob(caso));
+  GC.forEach(function(g){blocks.push(fdClausula(g))});
+  if(EST.usura==='si'||EST.trans==='no_supera')blocks.push(fdEfectos(caso));
+  if(EST.presc)blocks.push(fdPresc(caso));
+  if(EST.costas)blocks.push(fdCostas());
+
+  blocks.forEach(function(blk,i){
+    var art=el('article',{cls:'fd'});
+    art.appendChild(el('h3',{text:'Fundamento de derecho '+(ORD[i]||(i+1)+'.º')+'. '+blk.title}));
+    art.appendChild(el('div',{cls:'body',contenteditable:'true',html:blk.body}));
+    var tools=el('div',{cls:'fdtools'});
+    var bc=el('button',{type:'button',text:'Copiar este fundamento'});
+    bc.addEventListener('click',function(){copyText(fdPlain(art));toast('Fundamento copiado')});
+    tools.appendChild(bc);
+    art.appendChild(tools);
+    doc.appendChild(art);
+  });
+
+  // FALLO
+  doc.appendChild(el('div',{cls:'seccion',text:caso.tipo==='colegiado'?'FALLAMOS':'FALLO'}));
+  var fallo=fdFallo(caso);
+  var artF=el('article',{cls:'fd'});
+  artF.appendChild(el('div',{cls:'body',contenteditable:'true',html:fallo.body}));
+  doc.appendChild(artF);
+
+  var noU=selList().filter(function(c){return !USED[c.id]}),av=$('d_aviso');
+  $('d_meta').textContent=blocks.length+' fundamentos · '+Object.keys(USED).length+' de '+selN()+' resoluciones elegidas citadas · '+(caso.tipo==='colegiado'?'órgano colegiado':'órgano unipersonal');
+  if(noU.length){av.hidden=false;av.textContent=(noU.length===1?'No se ha citado 1 resolución elegida':'No se han citado '+noU.length+' resoluciones elegidas')+(noU.length===1?' porque no resuelve en el sentido marcado o no trata los puntos activos: ':' porque no resuelven en el sentido marcado o no tratan los puntos activos: ')+noU.map(function(c){return c.roj}).join('; ')+'. Cambie el sentido del fallo si quiere citarla'+(noU.length===1?'':'s')+'.'}else av.hidden=true;
+  if(ev&&window.innerWidth<900){try{$('doc').parentNode.scrollIntoView({behavior:'smooth',block:'start'})}catch(e){}}
+  toast('Sentencia redactada. Puede editarla directamente sobre el documento.');
+}
+function fdPlain(art){
+  var h=art.querySelector('h3');
+  var be=art.querySelector('.body');
+  var body=((be.innerText||be.textContent)||'').replace(/\n{2,}/g,'\n\n').trim();
+  return (h?h.textContent+'\n\n':'')+body+'\n';
+}
+function docPlain(){
+  var parts=[];
+  // Encabezado
+  var cab=document.querySelector('#doc .cab');if(cab)parts.push(cab.innerText.trim()+'\n');
+  var lugar=document.querySelector('#doc .lugar');if(lugar)parts.push(lugar.innerText.trim()+'\n');
+  document.querySelectorAll('#doc .seccion, #doc .fd').forEach(function(el){
+    if(el.classList.contains('seccion')) parts.push('\n\n'+el.textContent.trim()+'\n');
+    else parts.push(fdPlain(el));
+  });
+  return parts.join('\n');
+}
+function copyText(t){var fb=function(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e2){}ta.remove()};try{navigator.clipboard.writeText(t).catch(fb)}catch(e){fb()}}
+
+$('cf').addEventListener('submit',redactar);
+$('c_reset').addEventListener('click',function(){TOUCH={};$('cf').reset();Object.keys(EST).forEach(function(k){EST[k]='';var h=$(EJES[k].host);h.querySelectorAll('.opt').forEach(function(x,idx){x.className='opt';var inp=x.querySelector('input');if(inp.value===''){inp.checked=true;x.className='opt on'}else inp.checked=false})});});
+$('d_copy').addEventListener('click',function(){if(!document.querySelector('#doc .fd')){toast('Primero redacte la sentencia');return}copyText(docPlain());toast('Sentencia copiada al portapapeles')});
+$('d_print').addEventListener('click',function(){if(!document.querySelector('#doc .fd')){toast('Primero redacte la sentencia');return}window.print()});
+/* ---------- .docx: zip sin compresión y WordprocessingML ---------- */
+var CRCT=(function(){var t=[],c,n,k;for(n=0;n<256;n++){c=n;for(k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+function crc32(u){var c=0xFFFFFFFF;for(var i=0;i<u.length;i++)c=CRCT[(c^u[i])&0xFF]^(c>>>8);return (c^0xFFFFFFFF)>>>0}
+function zipStore(files){
+  var enc=new TextEncoder(),parts=[],cen=[],off=0;
+  function u16(n){return [n&255,(n>>>8)&255]}function u32(n){return [n&255,(n>>>8)&255,(n>>>16)&255,(n>>>24)&255]}
+  files.forEach(function(f){var nm=enc.encode(f.name),dt=enc.encode(f.data),cr=crc32(dt);
+    var lh=new Uint8Array([].concat([0x50,0x4b,3,4],u16(20),u16(0x0800),u16(0),u16(0),u16(0x21),u32(cr),u32(dt.length),u32(dt.length),u16(nm.length),u16(0)));
+    parts.push(lh,nm,dt);
+    cen.push({h:new Uint8Array([].concat([0x50,0x4b,1,2],u16(20),u16(20),u16(0x0800),u16(0),u16(0),u16(0x21),u32(cr),u32(dt.length),u32(dt.length),u16(nm.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(off))),n:nm});
+    off+=lh.length+nm.length+dt.length});
+  var cs=0;cen.forEach(function(c){parts.push(c.h,c.n);cs+=c.h.length+c.n.length});
+  parts.push(new Uint8Array([].concat([0x50,0x4b,5,6],u16(0),u16(0),u16(files.length),u16(files.length),u32(cs),u32(off),u16(0))));
+  return new Blob(parts,{type:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+}
+function xe(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g,'')}
+function wRun(t,o){o=o||{};if(!t)return '';return '<w:r><w:rPr>'+(o.b?'<w:b/>':'')+(o.i?'<w:i/>':'')+(o.hl?'<w:highlight w:val="yellow"/>':'')+(o.sz?'<w:sz w:val="'+o.sz+'"/><w:szCs w:val="'+o.sz+'"/>':'')+'</w:rPr><w:t xml:space="preserve">'+xe(t)+'</w:t></w:r>'}
+function wPar(runs,o){o=o||{};return '<w:p><w:pPr>'+(o.keep?'<w:keepNext/>':'')+'<w:spacing w:before="'+(o.before||0)+'" w:after="'+(o.after==null?140:o.after)+'" w:line="'+(o.line||360)+'" w:lineRule="auto"/>'+((o.left||o.first)?'<w:ind w:left="'+(o.left||0)+'" w:firstLine="'+(o.first||0)+'"/>':'')+'<w:jc w:val="'+(o.jc||'both')+'"/></w:pPr>'+runs+'</w:p>'}
+function wRunsOf(node,o){var s='';o=o||{};
+  node.childNodes.forEach(function(n){
+    if(n.nodeType===3){s+=wRun(n.nodeValue.replace(/\s+/g,' '),o);return}
+    if(n.nodeType!==1)return;var tg=n.tagName,o2={b:o.b,i:o.i,hl:o.hl,sz:o.sz};
+    if(tg==='B'||tg==='STRONG')o2.b=true;if(tg==='I'||tg==='EM')o2.i=true;
+    if(tg==='SPAN'&&/8a5a12/i.test(n.getAttribute('style')||''))o2.hl=true;
+    if(tg==='BR'){s+='<w:r><w:br/></w:r>';return}
+    s+=wRunsOf(n,o2)});return s}
+var ORDM=['PRIMERO','SEGUNDO','TERCERO','CUARTO','QUINTO','SEXTO','SÉPTIMO','OCTAVO','NOVENO','DÉCIMO','UNDÉCIMO','DUODÉCIMO'];
+function docxSentencia(){
+  var col=cv('c_tipo')==='colegiado',B=[],H=function(t,o){return wPar(wRun(t,{b:true}),o)},T=function(t,o){return wPar(wRun(t),o)},HL=function(t){return wRun('['+t+']',{hl:true})};
+  var act=cv('c_act'),dem=cv('c_dem'),num=cv('c_num'),proc=cv('c_proc'),org=cv('c_org'),lugar=cv('c_lugar')||'Madrid',fs=cv('c_fs'),la=cv('c_letact'),ld=cv('c_letdem');
+  var L={jc:'left',after:40,line:276};
+  if(col){
+    (org?org.split(/\s*[\/|]\s*|\n/):['Audiencia Provincial Civil de Madrid','Sección 25 BIS']).forEach(function(t){B.push(H(t,L))});
+    B.push(wPar(wRun('N.I.G.: ')+HL('número'),L));
+    B.push(wPar(wRun('Recurso de Apelación ',{b:true})+(proc?wRun(proc,{b:true}):HL('número/año')),L));
+    B.push(wPar(wRun('O. Judicial Origen: ')+HL('juzgado de origen'),L));
+    B.push(wPar(wRun('Autos de ')+HL('procedimiento de origen'),L));
+    B.push(wPar(wRun('APELANTE: ',{b:true})+HL('parte apelante'),{jc:'left',after:40,line:276,before:160}));
+    B.push(wPar(wRun('PROCURADOR D./Dña. ')+HL('nombre'),L));
+    B.push(wPar(wRun('APELADO: ',{b:true})+HL('parte apelada'),L));
+    B.push(wPar(wRun('PROCURADOR D./Dña. ')+HL('nombre'),L));
+    B.push(wPar(wRun('SENTENCIA Nº ',{b:true})+(num?wRun(num,{b:true}):HL('número/año')),{jc:'center',before:360,after:240}));
+    B.push(H('TRIBUNAL QUE LO DICTA:',L));B.push(H('ILMOS/AS SRES./SRAS. MAGISTRADOS/AS:',L));
+    for(var i=0;i<3;i++)B.push(wPar(wRun('D./Dña. ')+HL('nombre'),L));
+    B.push(wPar(wRun('En '+lugar+', a ')+(fs?wRun(fs):HL('fecha'))+wRun('.'),{before:300,first:709}));
+    B.push(wPar(wRun('La Sección 25 BIS de la Ilma. Audiencia Provincial de esta Capital, constituida por los Sres. que al margen se expresan, ha visto en trámite de apelación los presentes autos civiles ')+HL('procedimiento de origen')+wRun(' seguidos en ')+HL('juzgado de origen')+wRun(' a instancia de ')+(act?wRun(act):HL('parte actora'))+(la?wRun(', defendido por el/la Letrado/a '+la):'')+wRun(' contra ')+(dem?wRun(dem):HL('parte demandada'))+(ld?wRun(', defendido por el/la Letrado/a '+ld):'')+wRun('; todo ello en virtud del recurso de apelación interpuesto contra la sentencia dictada por el mencionado Juzgado, de fecha ')+HL('fecha')+wRun('.'),{first:709}));
+    B.push(wPar(wRun('VISTO, siendo Magistrado/a Ponente D./Dña. ',{b:true})+HL('nombre')+wRun('.'),{first:709}));
+  }else{
+    B.push(H((org||'JUZGADO DE PRIMERA INSTANCIA Nº … DE '+lugar.toUpperCase()).toUpperCase(),L));
+    B.push(wPar(wRun('Procedimiento: ',{b:true})+(proc?wRun(proc):HL('clase y número')),L));
+    B.push(wPar(wRun('Demandante: ',{b:true})+(act?wRun(act):HL('parte actora'))+(la?wRun('. Letrado/a: '+la):''),{jc:'left',after:40,line:276,before:160}));
+    B.push(wPar(wRun('Demandado: ',{b:true})+(dem?wRun(dem):HL('parte demandada'))+(ld?wRun('. Letrado/a: '+ld):''),L));
+    B.push(wPar(wRun('SENTENCIA Nº ',{b:true})+(num?wRun(num,{b:true}):HL('número/año')),{jc:'center',before:360,after:240}));
+    B.push(wPar(wRun('En '+lugar+', a ')+(fs?wRun(fs):HL('fecha'))+wRun('.'),{first:709}));
+    B.push(wPar(wRun('Vistos por mí, ')+HL('nombre')+wRun(', Magistrado/a-Juez/a del '+(org||'Juzgado de Primera Instancia')+', los presentes autos de juicio ordinario')+(proc?wRun(' '+proc):'')+wRun(', seguidos a instancia de ')+(act?wRun(act):HL('parte actora'))+wRun(' frente a ')+(dem?wRun(dem):HL('parte demandada'))+wRun(', sobre '+(MAT?'nulidad de condiciones generales de la contratación':'nulidad de contrato por usura y falta de transparencia')+', dicto la presente resolución con base en los siguientes'),{first:709}));
+  }
+  var nfd=0;
+  document.querySelectorAll('#doc .seccion, #doc article.fd').forEach(function(e){
+    if(e.classList.contains('seccion')){var t=e.textContent.trim();if(t==='FALLO'&&col)t='FALLAMOS';B.push(wPar(wRun(t,{b:true}),{jc:'center',before:360,after:200,keep:true}));return}
+    var h3=e.querySelector('h3'),body=e.querySelector('.body');if(!body)return;var pre='';
+    if(h3){var tt=h3.textContent.replace(/^Fundamento de derecho [^.]+\.\s*/,'');pre=wRun((ORDM[nfd]||String(nfd+1)+'.º')+'.- ',{b:true})+wRun(tt+'.',{b:true});nfd++;B.push(wPar(pre,{first:709,keep:true}))}
+    (function walk(box){Array.prototype.forEach.call(box.children,function(p){
+      if(p.classList.contains('warn')||p.classList.contains('fdtools'))return;
+      if(p.classList.contains('cite')){var src=p.querySelector('.src'),q=p.cloneNode(true),sq=q.querySelector('.src');if(sq)sq.remove();
+        B.push(wPar(wRunsOf(q,{i:true,sz:22}),{left:851,after:60,line:300}));if(src)B.push(wPar(wRun(src.textContent.replace(/^—\s*/,''),{sz:18}),{left:851,after:160,line:276,jc:'left'}));return}
+      if(p.classList.contains('fallo')){walk(p);return}
+      if(p.tagName==='P'||p.classList.contains('rec')){var r=wRunsOf(p,{});
+        r=r.replace(/(<w:r><w:rPr><w:b\/><\/w:rPr><w:t xml:space="preserve">)(Primero|Segundo|Tercero|Cuarto|Quinto)\.(<\/w:t>)/,function(m,a,o,z){return a+o.toUpperCase()+'.-'+z});
+        B.push(wPar(r,{first:709}))}
+    })})(body)});
+  var doc='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>'+B.join('')+'<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1418" w:right="1418" w:bottom="1418" w:left="1701" w:header="709" w:footer="709" w:gutter="0"/></w:sectPr></w:body></w:document>';
+  var sty='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="Arial" w:hAnsi="Arial" w:cs="Arial" w:eastAsia="Arial"/><w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="es-ES" w:eastAsia="es-ES" w:bidi="ar-SA"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="140" w:line="360" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:qFormat/></w:style></w:styles>';
+  return zipStore([
+    {name:'[Content_Types].xml',data:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/></Types>'},
+    {name:'_rels/.rels',data:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>'},
+    {name:'word/_rels/document.xml.rels',data:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>'},
+    {name:'word/document.xml',data:doc},{name:'word/styles.xml',data:sty}]);
+}
+$('d_word').addEventListener('click',function(){
+  if(!document.querySelector('#doc .fd')){toast('Primero redacte la sentencia');return}
+  try{entregar(docxSentencia(),'Sentencia_borrador.docx','application/vnd.openxmlformats-officedocument.wordprocessingml.document')}catch(e){toast('No se ha podido crear el documento de Word')}
+});
+
+/* ============ FOOTER / DATELINE ============ */
+var nres={};C.forEach(function(c){nres[c.roj]=1});
+var nR=Object.keys(nres).length,nTS={},nBis={},fmin=null,fmax=null;
+C.forEach(function(c){if(c.org==='TS')nTS[c.roj]=1;else if(c.bis)nBis[c.roj]=1;if(c.fs){if(!fmin||c.fs<fmin)fmin=c.fs;if(!fmax||c.fs>fmax)fmax=c.fs}});
+function mil(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.')}
+$('dateline').innerHTML='<b>'+mil(nR)+'</b> resoluciones · <b>'+mil(C.length)+'</b> contratos analizados<br>Actualización mensual · última: <b>'+esc(fechaLarga(D.generado))+'</b>';
+$('pie').innerHTML='<b>Criterio 25 bis</b> · Julio Ruiz Llario, magistrado de la Audiencia Provincial de Madrid (Sección 25.ª bis). Herramienta informativa, basada principalmente en las sentencias de esa Sección y en la jurisprudencia del Tribunal Supremo. Se recomienda comprobar siempre la resolución directamente en el CENDOJ. No es una publicación oficial y no sustituye la decisión del juez.';
+(function(){var s=$('m_stats');function st(l,a,b){s.appendChild(el('div',{cls:'stat'},[el('div',{cls:'lab',text:l}),el('div',{cls:'fig'},[document.createTextNode(a),el('span',{cls:'s',text:b?' '+b:''})])]))}
+  st('Resoluciones',mil(nR),'');st('Tribunal Supremo',mil(Object.keys(nTS).length),'');st('AP Madrid, Sección 25.ª bis',mil(Object.keys(nBis).length),'');st('Contratos analizados',mil(C.length),'');st('Periodo',fecha(fmin)+' – '+fecha(fmax),'');
+  $('m_fecha').textContent=fechaLarga(D.generado);
+  if(CONTACTO)$('m_contacto').textContent=' También puede escribir a '+CONTACTO+'.';
+})();
+updateSelUI();
+}).catch(function(e){document.getElementById('out').innerHTML='<p class="empty">No se han podido cargar los datos. Recargue la página.</p>'});
+</script>
+</body>
+</html>

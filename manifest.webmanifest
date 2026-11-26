@@ -1,0 +1,15 @@
+{
+  "name": "Criterio 25 bis",
+  "short_name": "Criterio 25 bis",
+  "description": "Usura, transparencia y cláusulas abusivas: qué han resuelto el Tribunal Supremo y la Audiencia Provincial de Madrid (Sección 25.ª bis).",
+  "lang": "es",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f5f2",
+  "theme_color": "#1f3a57",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}
