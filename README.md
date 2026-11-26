@@ -9,4 +9,4 @@ Con los datos de un contrato (entidad, año, TAE y subida de tipo posterior) mue
 - Tiene carácter meramente informativo. Se recomienda comprobar siempre la resolución directamente en el CENDOJ.
 - Desarrollada por Julio Ruiz Llario, magistrado de la Audiencia Provincial de Madrid (Sección 25.ª bis). Iniciativa personal: no es una publicación oficial del Consejo General del Poder Judicial ni de la Audiencia Provincial.
 
-Dirección: https://julioruizll.github.io/criterio-25-bis/
+Dirección: https://julioruizll.github.io/usura-transparencia/
