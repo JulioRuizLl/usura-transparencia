@@ -404,7 +404,6 @@ footer{border-top:1px solid var(--line);margin-top:30px}
 <nav class="subtabs" id="prodtabs">
   <button class="subtab on" data-prod="revolving" type="button">Revolving<span class="stcount" id="st_rev"></span></button>
   <button class="subtab" data-prod="microcredito" type="button">Micropréstamos<span class="stcount" id="st_mic"></span></button>
-  <button class="subtab" data-prod="hipotecario" type="button">Hipotecarios<span class="stcount" id="st_hip"></span></button>
   <button class="subtab" data-prod="otros" type="button">Otras cláusulas<span class="stcount" id="st_otr"></span></button>
 </nav>
 <section class="hero" aria-label="Consulta rápida">
@@ -414,9 +413,6 @@ footer{border-top:1px solid var(--line);margin-top:30px}
     <label class="big"><span>TAE (%)</span><input id="tae" form="f" inputmode="decimal" placeholder="27,24"></label>
 <label class="big sel"><span>Cuestión</span><select id="cla" form="f">
         <option value="">Usura y transparencia</option>
-        <option value="multidivisa">Multidivisa</option>
-        <option value="clausula_suelo">Cláusula suelo</option>
-        <option value="irph">IRPH</option>
         <option value="gastos">Gastos</option>
         <option value="comision_apertura">Comisión de apertura</option>
         <option value="intereses_demora">Intereses de demora</option>
@@ -446,8 +442,7 @@ footer{border-top:1px solid var(--line);margin-top:30px}
         <option value="tarjeta_pago_aplazado">Tarjeta de pago aplazado</option>
         <option value="prestamo_personal">Préstamo personal</option>
         <option value="microcredito">Microcrédito</option>
-        <option value="prestamo_hipotecario">Préstamo hipotecario</option>
-        <option value="hipoteca_multidivisa">Hipoteca multidivisa</option></select></label>
+        <option value="credito_al_consumo">Crédito al consumo</option></select></label>
       <label class="fld"><span>Nombre de la tarjeta o referencia del documento</span><input id="txt" placeholder="Opcional"></label>
     </fieldset>
 
@@ -508,8 +503,6 @@ footer{border-top:1px solid var(--line);margin-top:30px}
           <option value="tarjeta revolving">Tarjeta revolving</option>
           <option value="línea de crédito revolving">Línea de crédito revolving</option>
           <option value="microcrédito">Micropréstamo / microcrédito</option>
-          <option value="préstamo hipotecario">Préstamo hipotecario</option>
-          <option value="préstamo hipotecario multidivisa">Hipoteca multidivisa</option>
           <option value="préstamo personal">Préstamo personal</option>
           <option value="crédito al consumo">Crédito al consumo</option>
           <option value="otro">Otro producto</option>
@@ -1650,27 +1643,23 @@ $('pie').innerHTML='<b>Usura y transparencia</b>: jurisprudencia de la AP Madrid
 (function(){
   var REV_PRODS={'tarjeta_revolving':1,'linea_credito_revolving':1,'tarjeta_pago_aplazado':1};
   var MIC_PRODS={'microcredito':1};
-  var HIP_PRODS={'prestamo_hipotecario':1,'hipoteca_multidivisa':1};
   function catOf(c){
     var p=c.prod||'';
     if(REV_PRODS[p]||(!p&&c.claus&&!c.claus.length))return 'revolving';
     if(MIC_PRODS[p])return 'microcredito';
-    if(HIP_PRODS[p])return 'hipotecario';
     if(/otro:/i.test(p))return 'otros';
     return p?'otros':'revolving';
   }
-  var counts={revolving:0,microcredito:0,hipotecario:0,otros:0};
+  var counts={revolving:0,microcredito:0,otros:0};
   C.forEach(function(c){var cat=catOf(c);if(counts[cat]!=null)counts[cat]++});
   var e=function(id){return document.getElementById(id)};
   if(e('st_rev'))e('st_rev').textContent=mil(counts.revolving);
   if(e('st_mic'))e('st_mic').textContent=mil(counts.microcredito);
-  if(e('st_hip'))e('st_hip').textContent=mil(counts.hipotecario);
   if(e('st_otr'))e('st_otr').textContent=mil(counts.otros);
 
   var PROD_MAP={
     revolving:{prod:'',cla:'',placeholder:'Usura y transparencia en revolving'},
     microcredito:{prod:'microcredito',cla:'',placeholder:'Usura en micropréstamos'},
-    hipotecario:{prod:'prestamo_hipotecario',cla:'clausula_suelo',placeholder:'Cláusulas hipotecarias'},
     otros:{prod:'',cla:'comision_apertura',placeholder:'Otras cláusulas abusivas'}
   };
   document.querySelectorAll('.subtab').forEach(function(btn){
